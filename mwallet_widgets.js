@@ -2126,6 +2126,7 @@ ons.ready(function () {
 
           this.bindUIElements();
 
+          console.log("isgetBalanceMyWallets" + WEBPassport.requestModel.getBalanceMyWallets);
           WEBPassport.requestModel.getBalanceMyWallets(this.onGetBalanceSuccess, {pointer : this});
       },
 
@@ -2193,7 +2194,7 @@ ons.ready(function () {
       updateFieldsAndLabels: function (options)
       {
         console.log("WEBPassport.Views.MyWallets.Transfer_Bonuses_Item:updateFieldsAndLabels");
-
+        /*
         var index_from = parseInt($(options.obj.pointer.ui.my_wallets_transfer_from).prop("selectedIndex"));
         var index_to = parseInt($(options.obj.pointer.ui.my_wallets_transfer_to).prop("selectedIndex"));
         var currency_list_from = options.obj.currencies;
@@ -2215,7 +2216,8 @@ ons.ready(function () {
         $(options.obj.pointer.ui.my_wallets_transfer_bonuses_label_sum).text("Доступно: " + options.obj.pointer.bonuses[currency_list_from[index_from].short_name].amount + " " + currency_list_from[index_from].full_name);
         $(options.obj.pointer.ui.my_wallets_transfer_course_recognizer).val(expected_sum.toFixed(2));
         $(options.obj.pointer.ui.my_wallets_transfer_bonuses_coefficient_value).text("1 " + currency_list_from[index_from].full_name + " = " + currency_rate.toFixed(2) + " " + currency_list_to[index_to].full_name);
-      },
+        */
+    },
 
       onGetBalanceSuccess: function (model, response, options) {
               console.log("WEBPassport.Views.MyWallets.Transfer_Bonuses_Item:onGetBalanceSuccess");
