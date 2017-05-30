@@ -28544,20 +28544,20 @@ var minlengthDirective = function() {
 // Inspired by base2 and Prototype
 (function(){
   var initializing = false, fnTest = /xyz/.test(function(){xyz;}) ? /\b_super\b/ : /.*/;
- 
+
   // The base Class implementation (does nothing)
   this.Class = function(){};
- 
+
   // Create a new Class that inherits from this class
   Class.extend = function(prop) {
     var _super = this.prototype;
-   
+
     // Instantiate a base class (but only create the instance,
     // don't run the init constructor)
     initializing = true;
     var prototype = new this();
     initializing = false;
-   
+
     // Copy the properties over onto the new prototype
     for (var name in prop) {
       // Check if we're overwriting an existing function
@@ -28566,38 +28566,38 @@ var minlengthDirective = function() {
         (function(name, fn){
           return function() {
             var tmp = this._super;
-           
+
             // Add a new ._super() method that is the same method
             // but on the super-class
             this._super = _super[name];
-           
+
             // The method only need to be bound temporarily, so we
             // remove it when we're done executing
-            var ret = fn.apply(this, arguments);        
+            var ret = fn.apply(this, arguments);
             this._super = tmp;
-           
+
             return ret;
           };
         })(name, prop[name]) :
         prop[name];
     }
-   
+
     // The dummy class constructor
     function Class() {
       // All construction is actually done in the init method
       if ( !initializing && this.init )
         this.init.apply(this, arguments);
     }
-   
+
     // Populate our constructed prototype object
     Class.prototype = prototype;
-   
+
     // Enforce the constructor to be what we expect
     Class.prototype.constructor = Class;
- 
+
     // And make this class extendable
     Class.extend = arguments.callee;
-   
+
     return Class;
   };
 })();
@@ -31847,7 +31847,7 @@ function IScroll (el, options) {
 
 	this.options = {
 
-// INSERT POINT: OPTIONS 
+// INSERT POINT: OPTIONS
 
 		startX: 0,
 		startY: 0,
@@ -31898,7 +31898,7 @@ function IScroll (el, options) {
 
 // INSERT POINT: NORMALIZATION
 
-	// Some defaults	
+	// Some defaults
 	this.x = 0;
 	this.y = 0;
 	this.directionX = 0;
@@ -32508,7 +32508,7 @@ return IScroll;
 })(window, document, Math);
 /**
  * MicroEvent - to make any js object an event emitter (server or browser)
- * 
+ *
  * - pure javascript - server compatible, browser compatible
  * - dont rely on the browser doms
  * - super simple - you get it immediatly, no mistery, no magic involved
@@ -32617,7 +32617,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     slice = classes.slice,
 
-    featureName, 
+    featureName,
 
 
     injectElementWithStyles = function( rule, callback, nodes, testnames ) {
@@ -32666,7 +32666,7 @@ window.Modernizr = (function( window, document, undefined ) {
       };
     }
     else {
-      hasOwnProp = function (object, property) { 
+      hasOwnProp = function (object, property) {
         return ((property in object) && is(object.constructor.prototype[property], 'undefined'));
       };
     }
@@ -32853,7 +32853,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
        }
 
-       return Modernizr; 
+       return Modernizr;
      };
 
 
@@ -33607,7 +33607,7 @@ limitations under the License.
  * @ngdoc object
  * @name ons
  * @category util
- * @description 
+ * @description
  *   [ja]Onsen UIで利用できるグローバルなオブジェクトです。このオブジェクトは、AngularJSのスコープから参照することができます。 [/ja]
  *   [en]A global object that's used in Onsen UI. This object can be reached from the AngularJS scope.[/en]
  */
@@ -33615,7 +33615,7 @@ limitations under the License.
 /**
  * @ngdoc method
  * @signature ready(callback)
- * @description 
+ * @description
  *   [ja]アプリの初期化に利用するメソッドです。渡された関数は、Onsen UIの初期化が終了している時点で必ず呼ばれます。[/ja]
  *   [en]Method used to wait for app initialization. The callback will not be executed until Onsen UI has been completely initialized.[/en]
  * @param {Function} callback
@@ -33626,13 +33626,13 @@ limitations under the License.
 /**
  * @ngdoc method
  * @signature bootstrap([moduleName, [dependencies]])
- * @description 
+ * @description
  *   [ja]Onsen UIの初期化を行います。Angular.jsのng-app属性を利用すること無しにOnsen UIを読み込んで初期化してくれます。[/ja]
  *   [en]Initialize Onsen UI. Can be used to load Onsen UI without using the <code>ng-app</code> attribute from AngularJS.[/en]
- * @param {String} [moduleName] 
+ * @param {String} [moduleName]
  *   [en]AngularJS module name.[/en]
  *   [ja]Angular.jsでのモジュール名[/ja]
- * @param {Array} [dependencies] 
+ * @param {Array} [dependencies]
  *   [en]List of AngularJS module dependencies.[/en]
  *   [ja]依存するAngular.jsのモジュール名の配列[/ja]
  * @return {Object}
@@ -33643,7 +33643,7 @@ limitations under the License.
 /**
  * @ngdoc method
  * @signature enableAutoStatusBarFill()
- * @description 
+ * @description
  *   [en]Enable status bar fill feature on iOS7 and above.[/en]
  *   [ja]iOS7以上で、ステータスバー部分の高さを自動的に埋める処理を有効にします。[/ja]
  */
@@ -33651,7 +33651,7 @@ limitations under the License.
 /**
  * @ngdoc method
  * @signature disableAutoStatusBarFill()
- * @description 
+ * @description
  *   [en]Disable status bar fill feature on iOS7 and above.[/en]
  *   [ja]iOS7以上で、ステータスバー部分の高さを自動的に埋める処理を無効にします。[/ja]
  */
@@ -33668,7 +33668,7 @@ limitations under the License.
  * @return {Object}
  *   [en]Component object. Will return null if no component was found.[/en]
  *   [ja]コンポーネントのオブジェクトを返します。もしコンポーネントが見つからなかった場合にはnullを返します。[/ja]
- * @description 
+ * @description
  *   [en]Find parent component object of <code>dom</code> element.[/en]
  *   [ja]指定されたdom引数の親要素をたどってコンポーネントを検索します。[/ja]
  */
@@ -33685,7 +33685,7 @@ limitations under the License.
  * @return {Object}
  *   [en]Component object. Will return null if no component was found.[/en]
  *   [ja]コンポーネントのオブジェクトを返します。もしコンポーネントが見つからなかった場合にはnullを返します。[/ja]
- * @description 
+ * @description
  *   [en]Find component object using CSS selector.[/en]
  *   [ja]CSSセレクタを使ってコンポーネントのオブジェクトを検索します。[/ja]
  */
@@ -33693,10 +33693,10 @@ limitations under the License.
 /**
  * @ngdoc method
  * @signature setDefaultDeviceBackButtonListener(listener)
- * @param {Function} listener 
+ * @param {Function} listener
  *   [en]Function that executes when device back button is pressed.[/en]
  *   [ja]デバイスのバックボタンが押された時に実行される関数オブジェクトを指定します。[/ja]
- * @description 
+ * @description
  *   [en]Set default handler for device back button.[/en]
  *   [ja]デバイスのバックボタンのためのデフォルトのハンドラを設定します。[/ja]
  */
@@ -33704,7 +33704,7 @@ limitations under the License.
 /**
  * @ngdoc method
  * @signature disableDeviceBackButtonHandler()
- * @description 
+ * @description
  * [en]Disable device back button event handler.[/en]
  * [ja]デバイスのバックボタンのイベントを受け付けないようにします。[/ja]
  */
@@ -33712,7 +33712,7 @@ limitations under the License.
 /**
  * @ngdoc method
  * @signature enableDeviceBackButtonHandler()
- * @description 
+ * @description
  * [en]Enable device back button event handler.[/en]
  * [ja]デバイスのバックボタンのイベントを受け付けるようにします。[/ja]
  */
@@ -33723,7 +33723,7 @@ limitations under the License.
  * @return {Boolean}
  *   [en]Will be true if Onsen UI is initialized.[/en]
  *   [ja]初期化されているかどうかを返します。[/ja]
- * @description 
+ * @description
  *   [en]Returns true if Onsen UI is initialized.[/en]
  *   [ja]Onsen UIがすでに初期化されているかどうかを返すメソッドです。[/ja]
  */
@@ -33734,7 +33734,7 @@ limitations under the License.
  * @param {HTMLElement} dom
  *   [en]Element to compile.[/en]
  *   [ja]コンパイルする要素を指定します。[/ja]
- * @description 
+ * @description
  *   [en]Compile Onsen UI components.[/en]
  *   [ja]通常のHTMLの要素をOnsen UIのコンポーネントにコンパイルします。[/ja]
  */
@@ -33745,7 +33745,7 @@ limitations under the License.
  * @return {Boolean}
  *   [en]Will be true if the app is running in Cordova.[/en]
  *   [ja]Cordovaで実行されている場合にtrueになります。[/ja]
- * @description 
+ * @description
  *   [en]Returns true if running inside Cordova.[/en]
  *   [ja]Cordovaで実行されているかどうかを返すメソッドです。[/ja]
  */
@@ -33765,7 +33765,7 @@ limitations under the License.
  * @return {Promise}
  *   [en]Promise object that resolves to the alert dialog component object.[/en]
  *   [ja]ダイアログのコンポーネントオブジェクトを解決するPromiseオブジェクトを返します。[/ja]
- * @description 
+ * @description
  *   [en]Create a alert dialog instance from a template.[/en]
  *   [ja]テンプレートからアラートダイアログのインスタンスを生成します。[/ja]
  */
@@ -33785,7 +33785,7 @@ limitations under the License.
  * @return {Promise}
  *   [en]Promise object that resolves to the dialog component object.[/en]
  *   [ja]ダイアログのコンポーネントオブジェクトを解決するPromiseオブジェクトを返します。[/ja]
- * @description 
+ * @description
  *   [en]Create a dialog instance from a template.[/en]
  *   [ja]テンプレートからダイアログのインスタンスを生成します。[/ja]
  */
@@ -33805,7 +33805,7 @@ limitations under the License.
  * @return {Promise}
  *   [en]Promise object that resolves to the popover component object.[/en]
  *   [ja]ポップオーバーのコンポーネントオブジェクトを解決するPromiseオブジェクトを返します。[/ja]
- * @description 
+ * @description
  *   [en]Create a popover instance from a template.[/en]
  *   [ja]テンプレートからポップオーバーのインスタンスを生成します。[/ja]
  */
@@ -33904,7 +33904,7 @@ window.ons = (function(){
 
     document.addEventListener('deviceready', function() {
       if (!bindEvents()) {
-        if (document.querySelector('[ons-keyboard-active]') || 
+        if (document.querySelector('[ons-keyboard-active]') ||
           document.querySelector('[ons-keyboard-inactive]')) {
           noPluginError();
         }
@@ -34130,7 +34130,7 @@ window.ons = (function(){
           // Copy attributes and insert html.
           var attrs = el.prop('attributes');
           for (var i = 0, l = attrs.length; i < l; i++) {
-            alertDialog.attr(attrs[i].name, attrs[i].value); 
+            alertDialog.attr(attrs[i].name, attrs[i].value);
           }
           alertDialog.html(el.html());
 
@@ -34182,7 +34182,7 @@ window.ons = (function(){
           // Copy attributes and insert html.
           var attrs = el.prop('attributes');
           for (var i = 0, l = attrs.length; i < l; i++) {
-            dialog.attr(attrs[i].name, attrs[i].value); 
+            dialog.attr(attrs[i].name, attrs[i].value);
           }
           dialog.html(el.html());
 
@@ -34209,8 +34209,8 @@ window.ons = (function(){
               childStyle = child.getAttribute('style'),
               newStyle = (function(a, b) {
                 var c =
-                (a.substr(-1) === ';' ? a : a + ';') + 
-                  (b.substr(-1) === ';' ? b : b + ';'); 
+                (a.substr(-1) === ';' ? a : a + ';') +
+                  (b.substr(-1) === ';' ? b : b + ';');
                 return c;
               })(parentStyle, childStyle);
 
@@ -34255,7 +34255,7 @@ window.ons = (function(){
           // Copy attributes and insert html.
           var attrs = el.prop('attributes');
           for (var i = 0, l = attrs.length; i < l; i++) {
-            popover.attr(attrs[i].name, attrs[i].value); 
+            popover.attr(attrs[i].name, attrs[i].value);
           }
           popover.html(el.html());
 
@@ -34282,11 +34282,11 @@ window.ons = (function(){
                 childStyle = child.getAttribute('style'),
                 newStyle = (function(a, b) {
                 var c =
-                  (a.substr(-1) === ';' ? a : a + ';') + 
-                  (b.substr(-1) === ';' ? b : b + ';'); 
+                  (a.substr(-1) === ';' ? a : a + ';') +
+                  (b.substr(-1) === ';' ? b : b + ';');
                 return c;
               })(parentStyle, childStyle);
-  
+
               child.setAttribute('style', newStyle);
             }
 
@@ -34351,7 +34351,7 @@ limitations under the License.
         this._visible = false;
         this._doorLock = new DoorLock();
 
-        this._animation = AlertDialogView._animatorDict[typeof attrs.animation !== 'undefined' ? 
+        this._animation = AlertDialogView._animatorDict[typeof attrs.animation !== 'undefined' ?
           attrs.animation : 'default'];
 
         if (!this._animation) {
@@ -34380,7 +34380,7 @@ limitations under the License.
           alertDialog: this,
           cancel: function() { cancel = true; }
         });
-        
+
         if (!cancel) {
           this._doorLock.waitUnlock(function() {
             var unlock = this._doorLock.lock(),
@@ -34389,11 +34389,11 @@ limitations under the License.
             this._mask.css('display', 'block');
             this._mask.css('opacity', 1);
             this._element.css('display', 'block');
-            
+
             if (options.animation) {
               animation = AlertDialogView._animatorDict[options.animation];
             }
-            
+
             animation.show(this, function() {
               this._visible = true;
               unlock();
@@ -34415,7 +34415,7 @@ limitations under the License.
         options = options || {};
         var cancel = false,
           callback = options.callback || function() {};
-        
+
         this.emit('prehide', {
           alertDialog: this,
           cancel: function() { cancel = true; }
@@ -34478,7 +34478,7 @@ limitations under the License.
       /**
        * Disable or enable alert dialog.
        *
-       * @param {Boolean} 
+       * @param {Boolean}
        */
       setDisabled: function(disabled) {
         if (typeof disabled !== 'boolean') {
@@ -34502,14 +34502,14 @@ limitations under the License.
       },
 
       /**
-       * Make alert dialog cancelable or uncancelable. 
+       * Make alert dialog cancelable or uncancelable.
        *
        * @param {Boolean}
        */
       setCancelable: function(cancelable) {
         if (typeof cancelable !== 'boolean') {
-          throw new Error('Argument must be a boolean.'); 
-        }  
+          throw new Error('Argument must be a boolean.');
+        }
 
         if (cancelable) {
           this._element.attr('cancelable', true);
@@ -34547,7 +34547,7 @@ limitations under the License.
         });
 
         this._mask.on('click', this._cancel.bind(this));
- 
+
         if (color) {
           this._mask.css('background-color', color);
         }
@@ -34612,7 +34612,7 @@ limitations under the License.
     var AndroidAlertDialogAnimator = DialogAnimator.extend({
 
       timing: 'cubic-bezier(.1, .7, .1, 1)',
-      duration: 0.2, 
+      duration: 0.2,
 
       init: function(options) {
         options = options || {};
@@ -34666,7 +34666,7 @@ limitations under the License.
       },
 
       /**
-       * @param {Object} dialog 
+       * @param {Object} dialog
        * @param {Function} callback
        */
       hide: function(dialog, callback) {
@@ -34748,7 +34748,7 @@ limitations under the License.
     var AndroidDialogAnimator = DialogAnimator.extend({
 
       timing: 'ease-in-out',
-      duration: 0.3, 
+      duration: 0.3,
 
       init: function(options) {
         options = options || {};
@@ -34802,7 +34802,7 @@ limitations under the License.
       },
 
       /**
-       * @param {Object} dialog 
+       * @param {Object} dialog
        * @param {Function} callback
        */
       hide: function(dialog, callback) {
@@ -34929,7 +34929,7 @@ limitations under the License.
           this._scope.animation = animation;
         }.bind(this));
       },
-  
+
       /**
        * Returns whether the button is disabled or not.
        */
@@ -35051,7 +35051,7 @@ limitations under the License.
 
         var sizeAttr = this._getCarouselItemSizeAttr();
         var sizeInfo = this._decomposeSizeString(sizeAttr);
-        
+
         for (var i = 0; i < children.length; i++) {
           angular.element(children[i]).css({
             position: 'absolute',
@@ -35477,7 +35477,7 @@ limitations under the License.
       _getTouchEvents: function() {
         var EVENTS = [
           'drag', 'dragstart', 'dragend',
-          'dragup', 'dragdown', 'dragleft', 
+          'dragup', 'dragdown', 'dragleft',
           'dragright', 'swipe', 'swipeup',
           'swipedown', 'swipeleft', 'swiperight'
         ];
@@ -35525,7 +35525,7 @@ limitations under the License.
           var size = this._getCarouselItemSize();
 
           for (var i = 0; i < this._getCarouselItemCount(); i++) {
-            if (max >= i * size) { 
+            if (max >= i * size) {
               arr.push(i * size);
             }
           }
@@ -35653,7 +35653,7 @@ limitations under the License.
 
       _scrollToKillOverScroll: function() {
         var duration = 0.4;
-        
+
         if (this._scroll < 0) {
           animit(this._getCarouselItemElements())
             .queue({
@@ -35717,7 +35717,7 @@ limitations under the License.
 
           if (this._isOverScroll(scroll)) {
             this._scrollToKillOverScroll();
-          } 
+          }
           else {
             if (this.isAutoScrollEnabled()) {
               scroll = this._normalizeScrollPosition(scroll);
@@ -35815,7 +35815,7 @@ limitations under the License.
         this._visible = false;
         this._doorLock = new DoorLock();
 
-        this._animation = DialogView._animatorDict[typeof attrs.animation !== 'undefined' ? 
+        this._animation = DialogView._animatorDict[typeof attrs.animation !== 'undefined' ?
           attrs.animation : 'default'];
 
         if (!this._animation) {
@@ -35854,7 +35854,7 @@ limitations under the License.
           dialog: this,
           cancel: function() { cancel = true; }
         });
-        
+
         if (!cancel) {
           this._doorLock.waitUnlock(function() {
             var unlock = this._doorLock.lock(),
@@ -35868,7 +35868,7 @@ limitations under the License.
             if (options.animation) {
               animation = DialogView._animatorDict[options.animation];
             }
-            
+
             animation.show(this, function() {
               this._visible = true;
               unlock();
@@ -35890,7 +35890,7 @@ limitations under the License.
         options = options || {};
         var cancel = false,
           callback = options.callback || function() {};
-        
+
         this.emit('prehide', {
           dialog: this,
           cancel: function() { cancel = true; }
@@ -35950,7 +35950,7 @@ limitations under the License.
       /**
        * Disable or enable dialog.
        *
-       * @param {Boolean} 
+       * @param {Boolean}
        */
       setDisabled: function(disabled) {
         if (typeof disabled !== 'boolean') {
@@ -35974,14 +35974,14 @@ limitations under the License.
       },
 
       /**
-       * Make dialog cancelable or uncancelable. 
+       * Make dialog cancelable or uncancelable.
        *
        * @param {Boolean}
        */
       setCancelable: function(cancelable) {
         if (typeof cancelable !== 'boolean') {
-          throw new Error('Argument must be a boolean.'); 
-        }  
+          throw new Error('Argument must be a boolean.');
+        }
 
         if (cancelable) {
           this._element.attr('cancelable', true);
@@ -36112,7 +36112,7 @@ limitations under the License.
     var FadePopoverAnimator = PopoverAnimator.extend({
 
       timing: 'cubic-bezier(.1, .7, .1, 1)',
-      duration: 0.2, 
+      duration: 0.2,
 
       init: function(options) {
         options = options || {};
@@ -36122,7 +36122,7 @@ limitations under the License.
       },
 
       /**
-      * @param {Object} popover 
+      * @param {Object} popover
       * @param {Function} callback
       */
       show: function(popover, callback) {
@@ -36135,7 +36135,7 @@ limitations under the License.
             opacity: 0
           })
           .queue({
-            opacity: 1.0 
+            opacity: 1.0
           }, {
             duration: this.duration,
             timing: this.timing
@@ -36148,7 +36148,7 @@ limitations under the License.
           })
           .queue({
             transform: 'scale3d(1.0, 1.0,  1.0)',
-            opacity: 1.0 
+            opacity: 1.0
           }, {
             duration: this.duration,
             timing: this.timing
@@ -36162,7 +36162,7 @@ limitations under the License.
       },
 
       /**
-      * @param {Object} popover 
+      * @param {Object} popover
       * @param {Function} callback
       */
       hide: function(popover, callback) {
@@ -36175,7 +36175,7 @@ limitations under the License.
             opacity: 1.0
           })
           .queue({
-            opacity: 0 
+            opacity: 0
           }, {
             duration: this.duration,
             timing: this.timing
@@ -36186,7 +36186,7 @@ limitations under the License.
             opacity: 1.0
           })
           .queue({
-            opacity: 0 
+            opacity: 0
           }, {
             duration: this.duration,
             timing: this.timing
@@ -36414,7 +36414,7 @@ limitations under the License.
     var IOSAlertDialogAnimator = DialogAnimator.extend({
 
       timing: 'cubic-bezier(.1, .7, .1, 1)',
-      duration: 0.2, 
+      duration: 0.2,
 
       init: function(options) {
         options = options || {};
@@ -36468,7 +36468,7 @@ limitations under the License.
       },
 
       /**
-       * @param {Object} dialog 
+       * @param {Object} dialog
        * @param {Function} callback
        */
       hide: function(dialog, callback) {
@@ -36548,7 +36548,7 @@ limitations under the License.
     var IOSDialogAnimator = DialogAnimator.extend({
 
       timing: 'ease-in-out',
-      duration: 0.3, 
+      duration: 0.3,
 
       init: function(options) {
         options = options || {};
@@ -36600,7 +36600,7 @@ limitations under the License.
       },
 
       /**
-       * @param {Object} dialog 
+       * @param {Object} dialog
        * @param {Function} callback
        */
       hide: function(dialog, callback) {
@@ -36809,7 +36809,7 @@ limitations under the License.
               .resetStyle({
                 duration: 0.1,
                 transition:
-                  'background-color 0.1s linear, ' + 
+                  'background-color 0.1s linear, ' +
                   'border-color 0.1s linear'
               }),
 
@@ -36953,7 +36953,7 @@ limitations under the License.
       pop: function(enterPage, leavePage, done) {
         var mask = this.backgroundMask.remove();
         enterPage.element[0].parentNode.insertBefore(mask[0], enterPage.element[0].nextSibling);
-        
+
         var enterPageDecomposition = this._decompose(enterPage);
         var leavePageDecomposition = this._decompose(leavePage);
 
@@ -37071,7 +37071,7 @@ limitations under the License.
                 timing: 'cubic-bezier(.1, .7, .1, 1)'
               })
               .wait(0),
-             
+
 
             animit(leavePageDecomposition.other)
               .queue({
@@ -37249,7 +37249,7 @@ limitations under the License.
       _getItemHeight: function(i) {
         return this._delegate.calculateItemHeight(i);
       },
-      
+
       _getTopOffset: function() {
         return this._parentElement[0].getBoundingClientRect().top;
       },
@@ -37276,7 +37276,7 @@ limitations under the License.
       _isRendered: function(i) {
         return this._renderedElements.hasOwnProperty(i);
       },
-      
+
       _renderElement: function(item) {
         if (this._isRendered(item.index)) {
           // Update content even if it's already added to DOM
@@ -37663,7 +37663,7 @@ limitations under the License.
           //    duration: 0.4,
           //    timing: 'cubic-bezier(.1, .7, .1, 1)'
           //  })
-            
+
 
           animit(leavePage.element[0])
             .queue({
@@ -37684,7 +37684,7 @@ limitations under the License.
                 callback();
                 done();
             })
-            
+
         );
       }
     });
@@ -38084,7 +38084,7 @@ limitations under the License.
        * @param {String/NavigatorTransitionAnimator} [options.animation]
        * @param {Function} [options.onTransitionEnd]
        */
-      
+
       pushPage: function (page, options) {
           //TODO: ARSHE - fix
           if (window.currentPage && window.currentPage == page) return;
@@ -38334,7 +38334,7 @@ limitations under the License.
         }
 
         var enterPage = this.pages[this.pages.length -1];
-        
+
           //TODO: ARSHE - fix
         if (leavePage && leavePage.name == window.currentPage) window.currentPage = enterPage.name;
 
@@ -38675,8 +38675,8 @@ limitations under the License.
        * @param {Boolean} instant
        */
       openMenu: function(callback, instant) {
-        var duration = instant === true ? 0.0 : this._duration;        
-        
+        var duration = instant === true ? 0.0 : this._duration;
+
         this._menuPage.css('display', 'block');
         this._blackMask.css('display', 'block');
 
@@ -39113,7 +39113,7 @@ limitations under the License.
         this._visible = false;
         this._doorLock = new DoorLock();
 
-        this._animation = PopoverView._animatorDict[typeof attrs.animation !== 'undefined' ? 
+        this._animation = PopoverView._animatorDict[typeof attrs.animation !== 'undefined' ?
           attrs.animation : 'fade'];
 
         if (!this._animation) {
@@ -39161,7 +39161,7 @@ limitations under the License.
         } else {
           throw new Error('Invalid direction.');
         }
-      
+
         if (!this._scope.$$phase) {
           this._scope.$apply();
         }
@@ -39248,7 +39248,7 @@ limitations under the License.
           down: window.innerHeight - position.bottom
         };
 
-        var orderedDirections = Object.keys(scores).sort(function(a, b) {return -(scores[a] - scores[b]);}); 
+        var orderedDirections = Object.keys(scores).sort(function(a, b) {return -(scores[a] - scores[b]);});
         for (var i = 0, l = orderedDirections.length; i < l; i++) {
           var direction = orderedDirections[i];
           if (directions.indexOf(direction) > -1) {
@@ -39273,13 +39273,13 @@ limitations under the License.
         } else if (target instanceof Event) {
           target = target.target;
         }
-      
+
         if (!target) {
          throw new Error('Target undefined');
         }
 
         options = options || {};
-        
+
         var cancel = false;
         this.emit('preshow', {
           popover: this,
@@ -39388,7 +39388,7 @@ limitations under the License.
        */
       setCancelable: function(cancelable) {
         if (typeof cancelable !== 'boolean') {
-          throw new Error('Argument must be a boolean.');  
+          throw new Error('Argument must be a boolean.');
         }
 
         if (cancelable) {
@@ -39470,7 +39470,7 @@ limitations under the License.
       }
     });
 
-    return PopoverAnimator; 
+    return PopoverAnimator;
   });
 })();
 
@@ -39540,7 +39540,7 @@ limitations under the License.
         pageElement.append(scrollElement);
         scrollElement.append(children);
 
-        return scrollElement; 
+        return scrollElement;
       },
 
       _setStyle: function() {
@@ -39552,7 +39552,7 @@ limitations under the License.
           lineHeight: h + 'px'
         });
       },
-    
+
       _onScroll: function(event) {
         var el = this._pageElement[0];
 
@@ -39616,7 +39616,7 @@ limitations under the License.
         else {
           this._setState(this.STATE_INITIAL);
         }
- 
+
         event.stopPropagation();
         this._translateTo(scroll);
       },
@@ -39858,7 +39858,7 @@ limitations under the License.
       _mainPage: undefined,
       _width: undefined,
       _duration: false,
-      
+
       /**
        * @param {jqLite} element "ons-sliding-menu" or "ons-split-view" element
        * @param {jqLite} mainPage
@@ -39940,7 +39940,7 @@ limitations under the License.
        * @param {Boolean} instant
        */
       openMenu: function(callback, instant) {
-        var duration = instant === true ? 0.0 : this._duration;        
+        var duration = instant === true ? 0.0 : this._duration;
 
         this._menuPage.css('display', 'block');
 
@@ -39979,7 +39979,7 @@ limitations under the License.
        * @param {Boolean} instant
        */
       closeMenu: function(callback, instant) {
-        var duration = instant === true ? 0.0 : this._duration;        
+        var duration = instant === true ? 0.0 : this._duration;
 
         var aboveTransform = this._generateAbovePageTransform(0);
         var behindStyle = this._generateBehindPageStyle(0);
@@ -40200,8 +40200,8 @@ limitations under the License.
        * @param {Boolean} instant
        */
       openMenu: function(callback, instant) {
-        var duration = instant === true ? 0.0 : this._duration;        
-        
+        var duration = instant === true ? 0.0 : this._duration;
+
         this._menuPage.css('display', 'block');
         this._blackMask.css('display', 'block');
 
@@ -40240,7 +40240,7 @@ limitations under the License.
        * @param {Boolean} instant
        */
       closeMenu: function(callback, instant) {
-        var duration = instant === true ? 0.0 : this._duration;        
+        var duration = instant === true ? 0.0 : this._duration;
 
         this._blackMask.css('display', 'block');
 
@@ -40372,7 +40372,7 @@ limitations under the License.
       ),
 
       timing: 'cubic-bezier(.1, .7, .1, 1)',
-      duration: 0.3, 
+      duration: 0.3,
       blackMaskOpacity: 0.4,
 
       init: function(options) {
@@ -40555,7 +40555,7 @@ limitations under the License.
     var SlideDialogAnimator = DialogAnimator.extend({
 
       timing: 'cubic-bezier(.1, .7, .1, 1)',
-      duration: 0.2, 
+      duration: 0.2,
 
       init: function(options) {
         options = options || {};
@@ -40607,7 +40607,7 @@ limitations under the License.
       },
 
       /**
-       * @param {Object} dialog 
+       * @param {Object} dialog
        * @param {Function} callback
        */
       hide: function(dialog, callback) {
@@ -40811,7 +40811,7 @@ limitations under the License.
   });
   MicroEvent.mixin(SlidingMenuViewModel);
 
-  module.factory('SlidingMenuView', ['$onsen', '$compile', 'SlidingMenuAnimator', 'RevealSlidingMenuAnimator', 'PushSlidingMenuAnimator', 'OverlaySlidingMenuAnimator', function($onsen, $compile, SlidingMenuAnimator, RevealSlidingMenuAnimator, 
+  module.factory('SlidingMenuView', ['$onsen', '$compile', 'SlidingMenuAnimator', 'RevealSlidingMenuAnimator', 'PushSlidingMenuAnimator', 'OverlaySlidingMenuAnimator', function($onsen, $compile, SlidingMenuAnimator, RevealSlidingMenuAnimator,
                                              PushSlidingMenuAnimator, OverlaySlidingMenuAnimator) {
 
     var SlidingMenuView = Class.extend({
@@ -41258,7 +41258,7 @@ limitations under the License.
       /**
        * Close sliding-menu page.
        *
-       * @param {Object} options 
+       * @param {Object} options
        */
       close: function(options) {
         options = options || {};
@@ -41426,7 +41426,7 @@ limitations under the License.
 
   module.factory('SlidingMenuAnimator', function() {
     return Class.extend({
-      
+
       /**
        * @param {jqLite} element "ons-sliding-menu" or "ons-split-view" element
        * @param {jqLite} mainPage
@@ -41664,9 +41664,9 @@ limitations under the License.
         var should = this._shouldCollapse();
 
         if (this._doSplit) {
-          this._activateSplitMode(); 
+          this._activateSplitMode();
         } else if (this._doCollapse) {
-          this._activateCollapseMode(); 
+          this._activateCollapseMode();
         } else if (should) {
           this._activateCollapseMode();
         } else if (!should) {
@@ -41741,7 +41741,7 @@ limitations under the License.
         this.emit(name, {
           splitView: this,
           width: window.innerWidth,
-          orientation: this._getOrientation() 
+          orientation: this._getOrientation()
         });
       },
 
@@ -41762,13 +41762,13 @@ limitations under the License.
           },
           width: window.innerWidth,
           orientation: this._getOrientation()
-        }); 
+        });
       },
 
       _activateCollapseMode: function() {
         if (this._mode !== COLLAPSE_MODE) {
           this._fireEvent('precollapse');
-       
+
           this._secondaryPage.attr('style', '');
           this._mainPage.attr('style', '');
 
@@ -41796,7 +41796,7 @@ limitations under the License.
 
           this._mode = SPLIT_MODE;
           this._setSize();
-       
+
           this._fireEvent('postsplit');
         }
       },
@@ -42243,7 +42243,7 @@ limitations under the License.
           if (options.callback instanceof Function) {
             options.callback();
           }
-        } 
+        }
       },
 
       /**
@@ -42734,16 +42734,16 @@ limitations under the License.
  *   [en]Back button component for ons-toolbar. Can be used with ons-navigator to provide back button support.[/en]
  *   [ja]ons-toolbarに配置できる「戻るボタン」用コンポーネントです。ons-navigatorと共に使用し、ページを1つ前に戻る動作を行います。[/ja]
  * @codepen aHmGL
- * @seealso ons-toolbar 
+ * @seealso ons-toolbar
  *   [en]ons-toolbar component[/en]
  *   [ja]ons-toolbarコンポーネント[/ja]
  * @seealso ons-navigator
  *   [en]ons-navigator component[/en]
  *   [ja]ons-navigatorコンポーネント[/en]
- * @guide Addingatoolbar 
+ * @guide Addingatoolbar
  *   [en]Adding a toolbar[/en]
  *   [ja]ツールバーの追加[/ja]
- * @guide Returningfromapage 
+ * @guide Returningfromapage
  *   [en]Returning from a page[/en]
  *   [ja]一つ前のページに戻る[/ja]
  * @example
@@ -43149,7 +43149,7 @@ limitations under the License.
  * @description
  *   [en]Fired just after the current carousel item has changed.[/en]
  *   [ja]現在表示しているカルーセルの要素が変わった時に発火します。[/ja]
- * @param {Object} event 
+ * @param {Object} event
  *   [en]Event object.[/en]
  *   [ja]イベントオブジェクトです。[/ja]
  * @param {Object} event.carousel
@@ -43183,7 +43183,7 @@ limitations under the License.
  * @description
  *   [en]Fired when the carousel has been overscrolled.[/en]
  *   [ja]カルーセルがオーバースクロールした時に発火します。[/ja]
- * @param {Object} event 
+ * @param {Object} event
  *   [en]Event object.[/en]
  *   [ja]イベントオブジェクトです。[/ja]
  * @param {Object} event.carousel
@@ -43807,7 +43807,7 @@ limitations under the License.
  * @param {Object} event.dialog
  *   [en]Component object.[/en]
  *   [ja]コンポーネントのオブジェクト。[/ja]
- * @param {Function} event.cancel 
+ * @param {Function} event.cancel
  *   [en]Execute this function to stop the dialog from being shown.[/en]
  *   [ja]この関数を実行すると、ダイアログの表示がキャンセルされます。[/ja]
  */
@@ -43834,7 +43834,7 @@ limitations under the License.
  * @param {Object} event.dialog
  *   [en]Component object.[/en]
  *   [ja]コンポーネントのオブジェクト。[/ja]
- * @param {Function} event.cancel 
+ * @param {Function} event.cancel
  *   [en]Execute this function to stop the dialog from being hidden.[/en]
  *   [ja]この関数を実行すると、ダイアログの非表示がキャンセルされます。[/ja]
  */
@@ -44750,7 +44750,7 @@ limitations under the License.
  * @id lazy-repeat
  * @name ons-lazy-repeat
  * @category control
- * @description 
+ * @description
  *   [en]
  *     Using this component a list with millions of items can be rendered without a drop in performance.
  *     It does that by "lazily" loading elements into the DOM when they come into view and
@@ -44762,7 +44762,7 @@ limitations under the License.
  *     このコンポーネントを使うことで、パフォーマンスを劣化させること無しに巨大な数の要素を描画できます。
  *   [/ja]
  * @codepen QwrGBm
- * @guide UsingLazyRepeat 
+ * @guide UsingLazyRepeat
  *   [en]How to use Lazy Repeat[/en]
  *   [ja]レイジーリピートの使い方[/ja]
  * @example
@@ -45015,7 +45015,7 @@ limitations under the License.
  * @seealso ons-list-header
  *   [en]ons-list-header component[/en]
  *   [ja]ons-list-headerコンポーネント[/ja]
- * @guide UsingList 
+ * @guide UsingList
  *   [en]Using lists[/en]
  *   [ja]リストを使う[/ja]
  * @codepen yxcCt
@@ -45157,7 +45157,7 @@ limitations under the License.
  * @id modal
  * @name ons-modal
  * @category modal
- * @description 
+ * @description
  *   [en]
  *     Modal component that masks current screen.
  *     Underlying components are not subject to any events while the modal component is shown.
@@ -45968,7 +45968,7 @@ limitations under the License.
  * <script>
  * ons.ready(function() {
  *   ons.createPopover('popover.html').then(function(popover) {
- *     popover.show('#mybutton');   
+ *     popover.show('#mybutton');
  *   });
  * });
  * </script>
@@ -45990,7 +45990,7 @@ limitations under the License.
  * @param {Object} event.popover
  *   [en]Component object.[/en]
  *   [ja]コンポーネントのオブジェクト。[/ja]
- * @param {Function} event.cancel 
+ * @param {Function} event.cancel
  *   [en]Call this function to stop the popover from being shown.[/en]
  *   [ja]この関数を呼び出すと、ポップオーバーの表示がキャンセルされます。[/ja]
  */
@@ -46017,7 +46017,7 @@ limitations under the License.
  * @param {Object} event.popover
  *   [en]Component object.[/en]
  *   [ja]コンポーネントのオブジェクト。[/ja]
- * @param {Function} event.cancel 
+ * @param {Function} event.cancel
  *   [en]Call this function to stop the popover from being hidden.[/en]
  *   [ja]この関数を呼び出すと、ポップオーバーが隠れる処理をキャンセルします。[/ja]
  */
@@ -46349,7 +46349,7 @@ limitations under the License.
  *   [en]Component that adds "pull-to-refresh" to an <ons-page> element.[/en]
  *   [ja]ons-page要素以下でいわゆるpull to refreshを実装するためのコンポーネントです。[/ja]
  * @codepen WbJogM
- * @guide UsingPullHook 
+ * @guide UsingPullHook
  *   [en]How to use Pull Hook[/en]
  *   [ja]プルフックを使う[/ja]
  * @example
@@ -48804,7 +48804,7 @@ limitations under the License.
   var module = angular.module('onsen');
 
   var ComponentCleaner = {
-    
+
     /**
      * @param {jqLite} element
      */
@@ -49148,7 +49148,7 @@ limitations under the License.
       function find(node) {
         if (node.children.length === 0) {
           return node.element;
-        } 
+        }
 
         if (node.children.length === 1) {
           return find(node.children[0]);
@@ -49253,7 +49253,7 @@ limitations under the License.
             //  element = element.parentNode;
             //  debug(element);
             //  if (!element || !element.hasAttribute) {
-              
+
             //  }
             //}
           }
@@ -49341,7 +49341,7 @@ limitations under the License.
             deferred.resolve(this.normalizePageHTML(html));
 
             return deferred.promise;
-            
+
           } else {
             return $http({
               url: page,
@@ -49364,7 +49364,7 @@ limitations under the License.
           if (!html.match(/^<(ons-page|ons-navigator|ons-tabbar|ons-sliding-menu|ons-split-view)/)) {
             html = '<ons-page>' + html + '</ons-page>';
           }
-          
+
           return html;
         },
 
@@ -49373,7 +49373,7 @@ limitations under the License.
          *
          * @param {Object} attrs
          * @param {Array} [modifiers] an array of appendix modifier
-         * @return {Function} 
+         * @return {Function}
          */
         generateModifierTemplater: function(attrs, modifiers) {
           var attrModifiers = attrs && typeof attrs.modifier === 'string' ? attrs.modifier.trim().split(/ +/) : [];
@@ -49395,7 +49395,7 @@ limitations under the License.
          *
          * @param {Object} view object
          * @param {String} template
-         * @param {jqLite} element 
+         * @param {jqLite} element
          */
         addModifierMethods: function(view, template, element) {
           var _tr = function(modifier) {
@@ -49412,7 +49412,7 @@ limitations under the License.
             },
 
             addModifier: function(modifier) {
-              element.addClass(_tr(modifier)); 
+              element.addClass(_tr(modifier));
             },
 
             setModifier: function(modifier) {
@@ -49433,7 +49433,7 @@ limitations under the License.
             toggleModifier: function(modifier) {
               var cls = _tr(modifier);
               if (element.hasClass(cls)) {
-                element.removeClass(cls);  
+                element.removeClass(cls);
               } else {
                 element.addClass(cls);
               }
@@ -49956,7 +49956,7 @@ window.animit = (function(){
     var styles = window.getComputedStyle(document.documentElement, ''),
       pre = (Array.prototype.slice
         .call(styles)
-        .join('') 
+        .join('')
         .match(/-(moz|webkit|ms)-/) || (styles.OLink === '' && ['', 'o'])
       )[1];
     return pre;
@@ -50179,7 +50179,7 @@ limitations under the License.
  * @name ons.notification
  * @category dialog
  * @codepen Qwwxyp
- * @description 
+ * @description
  *   [en]Utility methods to create different kinds of alert dialogs. There are three methods available: alert, confirm and prompt.[/en]
  *   [ja]いくつかの種類のアラートダイアログを作成するためのユーティリティメソッドを収めたオブジェクトです。[/ja]
  * @example
@@ -50233,7 +50233,7 @@ limitations under the License.
  * @param {Function} [options.callback]
  *   [en]Function that executes after dialog has been closed.[/en]
  *   [ja]アラートダイアログが閉じられた時に呼び出される関数オブジェクトを指定します。[/ja]
- * @description 
+ * @description
  *   [en]
  *     Display an alert dialog to show the user a message.
  *     The content of the message can be either simple text or HTML.
@@ -50285,7 +50285,7 @@ limitations under the License.
  *     この関数の引数として、押されたボタンのインデックス値が渡されます。
  *     もしダイアログがキャンセルされた場合には-1が渡されます。
  *   [/ja]
- * @description 
+ * @description
  *   [en]
  *     Display a dialog to ask the user for confirmation.
  *     The default button labels are "Cancel" and "OK" but they can be customized.
@@ -50337,9 +50337,9 @@ limitations under the License.
  *     ダイアログが閉じられた後に実行される関数オブジェクトを指定します。
  *     関数の引数として、インプット要素の中の値が渡されます。ダイアログがキャンセルされた場合には、nullが渡されます。
  *   [/ja]
- * @description 
+ * @description
  *   [en]
- *     Display a dialog with a prompt to ask the user a question. 
+ *     Display a dialog with a prompt to ask the user a question.
  *     Must specify either message or messageHTML.
  *   [/en]
  *   [ja]
@@ -50446,7 +50446,7 @@ window.ons.notification = (function() {
       }
     });
 
-    dialogEl = titleEl = messageEl = footerEl = null; 
+    dialogEl = titleEl = messageEl = footerEl = null;
   };
 
   return {
@@ -50473,9 +50473,9 @@ window.ons.notification = (function() {
         throw new Error('Alert dialog must contain a message.');
       }
       createAlertDialog(
-        options.title, 
-        options.message || options.messageHTML, 
-        [options.buttonLabel], 
+        options.title,
+        options.message || options.messageHTML,
+        [options.buttonLabel],
         0,
         options.modifier,
         options.animation,
@@ -50595,7 +50595,7 @@ limitations under the License.
  * @ngdoc object
  * @name ons.orientation
  * @category util
- * @description 
+ * @description
  *   [en]Utility methods for orientation detection.[/en]
  *   [ja]画面のオリエンテーション検知のためのユーティリティメソッドを収めているオブジェクトです。[/ja]
  */
@@ -50620,7 +50620,7 @@ limitations under the License.
  * @return {Boolean}
  *   [en]Will be true if the current orientation is portrait mode.[/en]
  *   [ja]オリエンテーションがportraitモードの場合にtrueになります。[/ja]
- * @description 
+ * @description
  *   [en]Returns whether the current screen orientation is portrait or not.[/en]
  *   [ja]オリエンテーションがportraitモードかどうかを返します。[/ja]
  */
@@ -50631,7 +50631,7 @@ limitations under the License.
  * @return {Boolean}
  *   [en]Will be true if the current orientation is landscape mode.[/en]
  *   [ja]オリエンテーションがlandscapeモードの場合にtrueになります。[/ja]
- * @description 
+ * @description
  *   [en]Returns whether the current screen orientation is landscape or not.[/en]
  *   [ja]オリエンテーションがlandscapeモードかどうかを返します。[/ja]
  */
@@ -50797,7 +50797,7 @@ limitations under the License.
  * @ngdoc object
  * @name ons.platform
  * @category util
- * @description 
+ * @description
  *   [en]Utility methods to detect current platform.[/en]
  *   [ja]現在実行されているプラットフォームを検知するためのユーティリティメソッドを収めたオブジェクトです。[/ja]
  */
@@ -50805,7 +50805,7 @@ limitations under the License.
 /**
  * @ngdoc method
  * @signature isWebView()
- * @description 
+ * @description
  *   [en]Returns whether app is running in Cordova.[/en]
  *   [ja]Cordova内で実行されているかどうかを返します。[/ja]
  * @return {Boolean}
@@ -50814,7 +50814,7 @@ limitations under the License.
 /**
  * @ngdoc method
  * @signature isIOS()
- * @description 
+ * @description
  *   [en]Returns whether the OS is iOS.[/en]
  *   [ja]iOS上で実行されているかどうかを返します。[/ja]
  * @return {Boolean}
@@ -50823,7 +50823,7 @@ limitations under the License.
 /**
  * @ngdoc method
  * @signature isAndroid()
- * @description 
+ * @description
  *   [en]Returns whether the OS is Android.[/en]
  *   [ja]Android上で実行されているかどうかを返します。[/ja]
  * @return {Boolean}
@@ -50832,7 +50832,7 @@ limitations under the License.
 /**
  * @ngdoc method
  * @signature isIPhone()
- * @description 
+ * @description
  *   [en]Returns whether the device is iPhone.[/en]
  *   [ja]iPhone上で実行されているかどうかを返します。[/ja]
  * @return {Boolean}
@@ -50841,7 +50841,7 @@ limitations under the License.
 /**
  * @ngdoc method
  * @signature isIPad()
- * @description 
+ * @description
  *   [en]Returns whether the device is iPad.[/en]
  *   [ja]iPad上で実行されているかどうかを返します。[/ja]
  * @return {Boolean}
@@ -50850,7 +50850,7 @@ limitations under the License.
 /**
  * @ngdoc method
  * @signature isBlackBerry()
- * @description 
+ * @description
  *   [en]Returns whether the device is BlackBerry.[/en]
  *   [ja]BlackBerry上で実行されているかどうかを返します。[/ja]
  * @return {Boolean}
@@ -50859,7 +50859,7 @@ limitations under the License.
 /**
  * @ngdoc method
  * @signature isOpera()
- * @description 
+ * @description
  *   [en]Returns whether the browser is Opera.[/en]
  *   [ja]Opera上で実行されているかどうかを返します。[/ja]
  * @return {Boolean}
@@ -50868,7 +50868,7 @@ limitations under the License.
 /**
  * @ngdoc method
  * @signature isFirefox()
- * @description 
+ * @description
  *   [en]Returns whether the browser is Firefox.[/en]
  *   [ja]Firefox上で実行されているかどうかを返します。[/ja]
  * @return {Boolean}
@@ -50877,7 +50877,7 @@ limitations under the License.
 /**
  * @ngdoc method
  * @signature isSafari()
- * @description 
+ * @description
  *   [en]Returns whether the browser is Safari.[/en]
  *   [ja]Safari上で実行されているかどうかを返します。[/ja]
  * @return {Boolean}
@@ -50886,7 +50886,7 @@ limitations under the License.
 /**
  * @ngdoc method
  * @signature isChrome()
- * @description 
+ * @description
  *   [en]Returns whether the browser is Chrome.[/en]
  *   [ja]Chrome上で実行されているかどうかを返します。[/ja]
  * @return {Boolean}
@@ -50895,7 +50895,7 @@ limitations under the License.
 /**
  * @ngdoc method
  * @signature isIE()
- * @description 
+ * @description
  *   [en]Returns whether the browser is Internet Explorer.[/en]
  *   [ja]Internet Explorer上で実行されているかどうかを返します。[/ja]
  * @return {Boolean}
@@ -50904,7 +50904,7 @@ limitations under the License.
 /**
  * @ngdoc method
  * @signature isIOS7above()
- * @description 
+ * @description
  *   [en]Returns whether the iOS version is 7 or above.[/en]
  *   [ja]iOS7以上で実行されているかどうかを返します。[/ja]
  * @return {Boolean}
@@ -63230,43 +63230,43 @@ return jQuery;
   // Handlers
   // --------
   // A registry of functions to call, given a name
-  
+
   Wreqr.Handlers = (function(Backbone, _){
     "use strict";
-    
+
     // Constructor
     // -----------
-  
+
     var Handlers = function(options){
       this.options = options;
       this._wreqrHandlers = {};
-      
+
       if (_.isFunction(this.initialize)){
         this.initialize(options);
       }
     };
-  
+
     Handlers.extend = Backbone.Model.extend;
-  
+
     // Instance Members
     // ----------------
-  
+
     _.extend(Handlers.prototype, Backbone.Events, {
-  
+
       // Add multiple handlers using an object literal configuration
       setHandlers: function(handlers){
         _.each(handlers, function(handler, name){
           var context = null;
-  
+
           if (_.isObject(handler) && !_.isFunction(handler)){
             context = handler.context;
             handler = handler.callback;
           }
-  
+
           this.setHandler(name, handler, context);
         }, this);
       },
-  
+
       // Add a handler for the given name, with an
       // optional context to run the handler within
       setHandler: function(name, handler, context){
@@ -63274,105 +63274,105 @@ return jQuery;
           callback: handler,
           context: context
         };
-  
+
         this._wreqrHandlers[name] = config;
-  
+
         this.trigger("handler:add", name, handler, context);
       },
-  
+
       // Determine whether or not a handler is registered
       hasHandler: function(name){
         return !! this._wreqrHandlers[name];
       },
-  
+
       // Get the currently registered handler for
       // the specified name. Throws an exception if
       // no handler is found.
       getHandler: function(name){
         var config = this._wreqrHandlers[name];
-  
+
         if (!config){
           return;
         }
-  
+
         return function(){
           return config.callback.apply(config.context, arguments);
         };
       },
-  
+
       // Remove a handler for the specified name
       removeHandler: function(name){
         delete this._wreqrHandlers[name];
       },
-  
+
       // Remove all handlers from this registry
       removeAllHandlers: function(){
         this._wreqrHandlers = {};
       }
     });
-  
+
     return Handlers;
   })(Backbone, _);
-  
+
   // Wreqr.CommandStorage
   // --------------------
   //
   // Store and retrieve commands for execution.
   Wreqr.CommandStorage = (function(){
     "use strict";
-  
+
     // Constructor function
     var CommandStorage = function(options){
       this.options = options;
       this._commands = {};
-  
+
       if (_.isFunction(this.initialize)){
         this.initialize(options);
       }
     };
-  
+
     // Instance methods
     _.extend(CommandStorage.prototype, Backbone.Events, {
-  
+
       // Get an object literal by command name, that contains
       // the `commandName` and the `instances` of all commands
       // represented as an array of arguments to process
       getCommands: function(commandName){
         var commands = this._commands[commandName];
-  
+
         // we don't have it, so add it
         if (!commands){
-  
+
           // build the configuration
           commands = {
-            command: commandName, 
+            command: commandName,
             instances: []
           };
-  
+
           // store it
           this._commands[commandName] = commands;
         }
-  
+
         return commands;
       },
-  
+
       // Add a command by name, to the storage and store the
       // args for the command
       addCommand: function(commandName, args){
         var command = this.getCommands(commandName);
         command.instances.push(args);
       },
-  
+
       // Clear all commands for the given `commandName`
       clearCommands: function(commandName){
         var command = this.getCommands(commandName);
         command.instances = [];
       }
     });
-  
+
     return CommandStorage;
   })();
-  
+
   // Wreqr.Commands
   // --------------
   //
@@ -63380,63 +63380,63 @@ return jQuery;
   // handler and execute it.
   Wreqr.Commands = (function(Wreqr, _){
     "use strict";
-  
+
     return Wreqr.Handlers.extend({
       // default storage type
       storageType: Wreqr.CommandStorage,
-  
+
       constructor: function(options){
         this.options = options || {};
-  
+
         this._initializeStorage(this.options);
         this.on("handler:add", this._executeCommands, this);
-  
+
         Wreqr.Handlers.prototype.constructor.apply(this, arguments);
       },
-  
+
       // Execute a named command with the supplied args
       execute: function(name){
         name = arguments[0];
         var args = _.rest(arguments);
-  
+
         if (this.hasHandler(name)){
           this.getHandler(name).apply(this, args);
         } else {
           this.storage.addCommand(name, args);
         }
-  
+
       },
-  
+
       // Internal method to handle bulk execution of stored commands
       _executeCommands: function(name, handler, context){
         var command = this.storage.getCommands(name);
-  
+
         // loop through and execute all the stored command instances
         _.each(command.instances, function(args){
           handler.apply(context, args);
         });
-  
+
         this.storage.clearCommands(name);
       },
-  
+
       // Internal method to initialize storage either from the type's
       // `storageType` or the instance `options.storageType`.
       _initializeStorage: function(options){
         var storage;
-  
+
         var StorageType = options.storageType || this.storageType;
         if (_.isFunction(StorageType)){
           storage = new StorageType();
         } else {
           storage = StorageType;
         }
-  
+
         this.storage = storage;
       }
     });
-  
+
   })(Wreqr, _);
-  
+
   // Wreqr.RequestResponse
   // ---------------------
   //
@@ -63444,7 +63444,7 @@ return jQuery;
   // request handler, and return a response from it
   Wreqr.RequestResponse = (function(Wreqr, _){
     "use strict";
-  
+
     return Wreqr.Handlers.extend({
       request: function(name){
         if (this.hasHandler(name)) {
@@ -63452,27 +63452,27 @@ return jQuery;
         }
       }
     });
-  
+
   })(Wreqr, _);
-  
+
   // Event Aggregator
   // ----------------
   // A pub-sub object that can be used to decouple various parts
   // of an application through event-driven architecture.
-  
+
   Wreqr.EventAggregator = (function(Backbone, _){
     "use strict";
     var EA = function(){};
-  
+
     // Copy the `extend` function used by Backbone's classes
     EA.extend = Backbone.Model.extend;
-  
+
     // Copy the basic Backbone.Events on to the event aggregator
     _.extend(EA.prototype, Backbone.Events);
-  
+
     return EA;
   })(Backbone, _);
-  
+
   // Wreqr.Channel
   // --------------
   //
@@ -63480,16 +63480,16 @@ return jQuery;
   // EventAggregator, RequestResponse, Commands
   Wreqr.Channel = (function(Wreqr){
     "use strict";
-  
+
     var Channel = function(channelName) {
       this.vent        = new Backbone.Wreqr.EventAggregator();
       this.reqres      = new Backbone.Wreqr.RequestResponse();
       this.commands    = new Backbone.Wreqr.Commands();
       this.channelName = channelName;
     };
-  
+
     _.extend(Channel.prototype, {
-  
+
       // Remove all handlers from the messaging systems of this channel
       reset: function() {
         this.vent.off();
@@ -63498,49 +63498,49 @@ return jQuery;
         this.commands.removeAllHandlers();
         return this;
       },
-  
+
       // Connect a hash of events; one for each messaging system
       connectEvents: function(hash, context) {
         this._connect('vent', hash, context);
         return this;
       },
-  
+
       connectCommands: function(hash, context) {
         this._connect('commands', hash, context);
         return this;
       },
-  
+
       connectRequests: function(hash, context) {
         this._connect('reqres', hash, context);
         return this;
       },
-  
+
       // Attach the handlers to a given message system `type`
       _connect: function(type, hash, context) {
         if (!hash) {
           return;
         }
-  
+
         context = context || this;
         var method = (type === 'vent') ? 'on' : 'setHandler';
-  
+
         _.each(hash, function(fn, eventName) {
           this[type][method](eventName, _.bind(fn, context));
         }, this);
       }
     });
-  
-  
+
+
     return Channel;
   })(Wreqr);
-  
+
   // Wreqr.Radio
   // --------------
   //
   // An object that lets you communicate with many channels.
   Wreqr.radio = (function(Wreqr, _){
     "use strict";
-  
+
     var Radio = function() {
       this._channels = {};
       this.vent = {};
@@ -63548,28 +63548,28 @@ return jQuery;
       this.reqres = {};
       this._proxyMethods();
     };
-  
+
     _.extend(Radio.prototype, {
-  
+
       channel: function(channelName) {
         if (!channelName) {
           throw new Error('Channel must receive a name');
         }
-  
+
         return this._getChannel( channelName );
       },
-  
+
       _getChannel: function(channelName) {
         var channel = this._channels[channelName];
-  
+
         if(!channel) {
           channel = new Wreqr.Channel(channelName);
           this._channels[channelName] = channel;
         }
-  
+
         return channel;
       },
-  
+
       _proxyMethods: function() {
         _.each(['vent', 'commands', 'reqres'], function(system) {
           _.each( messageSystems[system], function(method) {
@@ -63578,8 +63578,8 @@ return jQuery;
         }, this);
       }
     });
-  
-  
+
+
     var messageSystems = {
       vent: [
         'on',
@@ -63590,7 +63590,7 @@ return jQuery;
         'listenTo',
         'listenToOnce'
       ],
-  
+
       commands: [
         'execute',
         'setHandler',
@@ -63598,7 +63598,7 @@ return jQuery;
         'removeHandler',
         'removeAllHandlers'
       ],
-  
+
       reqres: [
         'request',
         'setHandler',
@@ -63607,19 +63607,19 @@ return jQuery;
         'removeAllHandlers'
       ]
     };
-  
+
     var proxyMethod = function(radio, system, method) {
       return function(channelName) {
         var messageSystem = radio._getChannel(channelName)[system];
-  
+
         return messageSystem[method].apply(messageSystem, _.rest(arguments));
       };
     };
-  
+
     return new Radio();
-  
+
   })(Wreqr, _);
-  
+
 
   return Backbone.Wreqr;
 
@@ -64130,33 +64130,33 @@ return jQuery;
   Marionette.Deferred = Backbone.$.Deferred;
 
   /* jshint unused: false *//* global console */
-  
+
   // Helpers
   // -------
-  
+
   // Marionette.extend
   // -----------------
-  
+
   // Borrow the Backbone `extend` method so we can use it as needed
   Marionette.extend = Backbone.Model.extend;
-  
+
   // Marionette.isNodeAttached
   // -------------------------
-  
+
   // Determine if `el` is a child of the document
   Marionette.isNodeAttached = function(el) {
     return Backbone.$.contains(document.documentElement, el);
   };
-  
+
   // Merge `keys` from `options` onto `this`
   Marionette.mergeOptions = function(options, keys) {
     if (!options) { return; }
     _.extend(this, _.pick(options, keys));
   };
-  
+
   // Marionette.getOption
   // --------------------
-  
+
   // Retrieve an object, function or other value from a target
   // object or its `options`, with `options` taking precedence.
   Marionette.getOption = function(target, optionName) {
@@ -64167,12 +64167,12 @@ return jQuery;
       return target[optionName];
     }
   };
-  
+
   // Proxy `Marionette.getOption`
   Marionette.proxyGetOption = function(optionName) {
     return Marionette.getOption(this, optionName);
   };
-  
+
   // Similar to `_.result`, this is a simple helper
   // If a function is provided we call it with context
   // otherwise just return the value. If the value is
@@ -64183,10 +64183,10 @@ return jQuery;
     }
     return value;
   };
-  
+
   // Marionette.normalizeMethods
   // ----------------------
-  
+
   // Pass in a mapping of events => functions or function names
   // and return a mapping of events => functions
   Marionette.normalizeMethods = function(hash) {
@@ -64200,7 +64200,7 @@ return jQuery;
       return normalizedHash;
     }, {}, this);
   };
-  
+
   // utility method for parsing @ui. syntax strings
   // into associated selector
   Marionette.normalizeUIString = function(uiString, ui) {
@@ -64208,7 +64208,7 @@ return jQuery;
       return ui[r.slice(4)];
     });
   };
-  
+
   // allows for the use of the @ui. syntax within
   // a given key for triggers and events
   // swaps the @ui with the associated selector.
@@ -64220,7 +64220,7 @@ return jQuery;
       return memo;
     }, {});
   };
-  
+
   // allows for the use of the @ui. syntax within
   // a given value for regions
   // swaps the @ui with the associated selector
@@ -64241,7 +64241,7 @@ return jQuery;
     });
     return hash;
   };
-  
+
   // Mix in methods from Underscore, for iteration, and other
   // collection related features.
   // Borrowing this code from Backbone.Collection:
@@ -64251,7 +64251,7 @@ return jQuery;
       'select', 'reject', 'every', 'all', 'some', 'any', 'include',
       'contains', 'invoke', 'toArray', 'first', 'initial', 'rest',
       'last', 'without', 'isEmpty', 'pluck'];
-  
+
     _.each(methods, function(method) {
       object[method] = function() {
         var list = _.values(_.result(this, listProperty));
@@ -64260,7 +64260,7 @@ return jQuery;
       };
     });
   };
-  
+
   var deprecate = Marionette.deprecate = function(message, test) {
     if (_.isObject(message)) {
       message = (
@@ -64269,49 +64269,49 @@ return jQuery;
         (message.url ? ' See: ' + message.url : '')
       );
     }
-  
+
     if ((test === undefined || !test) && !deprecate._cache[message]) {
       deprecate._warn('Deprecation warning: ' + message);
       deprecate._cache[message] = true;
     }
   };
-  
+
   deprecate._warn = typeof console !== 'undefined' && (console.warn || console.log) || function() {};
   deprecate._cache = {};
-  
+
   /* jshint maxstatements: 14, maxcomplexity: 7 */
-  
+
   // Trigger Method
   // --------------
-  
+
   Marionette._triggerMethod = (function() {
     // split the event name on the ":"
     var splitter = /(^|:)(\w)/gi;
-  
+
     // take the event section ("section1:section2:section3")
     // and turn it in to uppercase name
     function getEventName(match, prefix, eventName) {
       return eventName.toUpperCase();
     }
-  
+
     return function(context, event, args) {
       var noEventArg = arguments.length < 3;
       if (noEventArg) {
         args = event;
         event = args[0];
       }
-  
+
       // get the method name from the event name
       var methodName = 'on' + event.replace(splitter, getEventName);
       var method = context[methodName];
       var result;
-  
+
       // call the onMethodName if it exists
       if (_.isFunction(method)) {
         // pass all args, except the event name
         result = method.apply(context, noEventArg ? _.rest(args) : args);
       }
-  
+
       // trigger the event, if a trigger method exists
       if (_.isFunction(context.trigger)) {
         if (noEventArg + args.length > 1) {
@@ -64320,11 +64320,11 @@ return jQuery;
           context.trigger(event);
         }
       }
-  
+
       return result;
     };
   })();
-  
+
   // Trigger an event and/or a corresponding method name. Examples:
   //
   // `this.triggerMethod("foo")` will trigger the "foo" event and
@@ -64335,7 +64335,7 @@ return jQuery;
   Marionette.triggerMethod = function(event) {
     return Marionette._triggerMethod(this, arguments);
   };
-  
+
   // triggerMethodOn invokes triggerMethod on a specific context
   //
   // e.g. `Marionette.triggerMethodOn(view, 'show')`
@@ -64344,32 +64344,32 @@ return jQuery;
     var fnc = _.isFunction(context.triggerMethod) ?
                   context.triggerMethod :
                   Marionette.triggerMethod;
-  
+
     return fnc.apply(context, _.rest(arguments));
   };
-  
+
   // DOM Refresh
   // -----------
-  
+
   // Monitor a view's state, and after it has been rendered and shown
   // in the DOM, trigger a "dom:refresh" event every time it is
   // re-rendered.
-  
+
   Marionette.MonitorDOMRefresh = function(view) {
-  
+
     // track when the view has been shown in the DOM,
     // using a Marionette.Region (or by other means of triggering "show")
     function handleShow() {
       view._isShown = true;
       triggerDOMRefresh();
     }
-  
+
     // track when the view has been rendered
     function handleRender() {
       view._isRendered = true;
       triggerDOMRefresh();
     }
-  
+
     // Trigger the "dom:refresh" event and corresponding "onDomRefresh" method
     function triggerDOMRefresh() {
       if (view._isShown && view._isRendered && Marionette.isNodeAttached(view.el)) {
@@ -64378,15 +64378,15 @@ return jQuery;
         }
       }
     }
-  
+
     view.on({
       show: handleShow,
       render: handleRender
     });
   };
-  
+
   /* jshint maxparams: 5 */
-  
+
   // Bind Entity Events & Unbind Entity Events
   // -----------------------------------------
   //
@@ -64401,52 +64401,52 @@ return jQuery;
   // The third parameter is a hash of { "event:name": "eventHandler" }
   // configuration. Multiple handlers can be separated by a space. A
   // function can be supplied instead of a string handler name.
-  
+
   (function(Marionette) {
     'use strict';
-  
+
     // Bind the event to handlers specified as a string of
     // handler names on the target object
     function bindFromStrings(target, entity, evt, methods) {
       var methodNames = methods.split(/\s+/);
-  
+
       _.each(methodNames, function(methodName) {
-  
+
         var method = target[methodName];
         if (!method) {
           throw new Marionette.Error('Method "' + methodName +
             '" was configured as an event handler, but does not exist.');
         }
-  
+
         target.listenTo(entity, evt, method);
       });
     }
-  
+
     // Bind the event to a supplied callback function
     function bindToFunction(target, entity, evt, method) {
       target.listenTo(entity, evt, method);
     }
-  
+
     // Bind the event to handlers specified as a string of
     // handler names on the target object
     function unbindFromStrings(target, entity, evt, methods) {
       var methodNames = methods.split(/\s+/);
-  
+
       _.each(methodNames, function(methodName) {
         var method = target[methodName];
         target.stopListening(entity, evt, method);
       });
     }
-  
+
     // Bind the event to a supplied callback function
     function unbindToFunction(target, entity, evt, method) {
       target.stopListening(entity, evt, method);
     }
-  
+
     // generic looping function
     function iterateEvents(target, entity, bindings, functionCallback, stringCallback) {
       if (!entity || !bindings) { return; }
-  
+
       // type-check bindings
       if (!_.isObject(bindings)) {
         throw new Marionette.Error({
@@ -64454,13 +64454,13 @@ return jQuery;
           url: 'marionette.functions.html#marionettebindentityevents'
         });
       }
-  
+
       // allow the bindings to be a function
       bindings = Marionette._getValue(bindings, target);
-  
+
       // iterate the bindings and bind them
       _.each(bindings, function(methods, evt) {
-  
+
         // allow for a function as the handler,
         // or a list of event names as a string
         if (_.isFunction(methods)) {
@@ -64468,39 +64468,39 @@ return jQuery;
         } else {
           stringCallback(target, entity, evt, methods);
         }
-  
+
       });
     }
-  
+
     // Export Public API
     Marionette.bindEntityEvents = function(target, entity, bindings) {
       iterateEvents(target, entity, bindings, bindToFunction, bindFromStrings);
     };
-  
+
     Marionette.unbindEntityEvents = function(target, entity, bindings) {
       iterateEvents(target, entity, bindings, unbindToFunction, unbindFromStrings);
     };
-  
+
     // Proxy `bindEntityEvents`
     Marionette.proxyBindEntityEvents = function(entity, bindings) {
       return Marionette.bindEntityEvents(this, entity, bindings);
     };
-  
+
     // Proxy `unbindEntityEvents`
     Marionette.proxyUnbindEntityEvents = function(entity, bindings) {
       return Marionette.unbindEntityEvents(this, entity, bindings);
     };
   })(Marionette);
-  
+
 
   // Error
   // -----
-  
+
   var errorProps = ['description', 'fileName', 'lineNumber', 'name', 'message', 'number'];
-  
+
   Marionette.Error = Marionette.extend.call(Error, {
     urlRoot: 'http://marionettejs.com/docs/v' + Marionette.VERSION + '/',
-  
+
     constructor: function(message, options) {
       if (_.isObject(message)) {
         options = message;
@@ -64508,33 +64508,33 @@ return jQuery;
       } else if (!options) {
         options = {};
       }
-  
+
       var error = Error.call(this, message);
       _.extend(this, _.pick(error, errorProps), _.pick(options, errorProps));
-  
+
       this.captureStackTrace();
-  
+
       if (options.url) {
         this.url = this.urlRoot + options.url;
       }
     },
-  
+
     captureStackTrace: function() {
       if (Error.captureStackTrace) {
         Error.captureStackTrace(this, Marionette.Error);
       }
     },
-  
+
     toString: function() {
       return this.name + ': ' + this.message + (this.url ? ' See: ' + this.url : '');
     }
   });
-  
+
   Marionette.Error.extend = Marionette.extend;
-  
+
   // Callbacks
   // ---------
-  
+
   // A simple way of managing a collection of callbacks
   // and executing them at a later point in time, using jQuery's
   // `Deferred` object.
@@ -64542,23 +64542,23 @@ return jQuery;
     this._deferred = Marionette.Deferred();
     this._callbacks = [];
   };
-  
+
   _.extend(Marionette.Callbacks.prototype, {
-  
+
     // Add a callback to be executed. Callbacks added here are
     // guaranteed to execute, even if they are added after the
     // `run` method is called.
     add: function(callback, contextOverride) {
       var promise = _.result(this._deferred, 'promise');
-  
+
       this._callbacks.push({cb: callback, ctx: contextOverride});
-  
+
       promise.then(function(args) {
         if (contextOverride) { args.context = contextOverride; }
         callback.call(args.context, args.options);
       });
     },
-  
+
     // Run all registered callbacks with the context specified.
     // Additional callbacks can be added after this has been run
     // and they will still be executed.
@@ -64568,139 +64568,139 @@ return jQuery;
         context: context
       });
     },
-  
+
     // Resets the list of callbacks to be run, allowing the same list
     // to be run multiple times - whenever the `run` method is called.
     reset: function() {
       var callbacks = this._callbacks;
       this._deferred = Marionette.Deferred();
       this._callbacks = [];
-  
+
       _.each(callbacks, function(cb) {
         this.add(cb.cb, cb.ctx);
       }, this);
     }
   });
-  
+
   // Controller
   // ----------
-  
+
   // A multi-purpose object to use as a controller for
   // modules and routers, and as a mediator for workflow
   // and coordination of other objects, views, and more.
   Marionette.Controller = function(options) {
     this.options = options || {};
-  
+
     if (_.isFunction(this.initialize)) {
       this.initialize(this.options);
     }
   };
-  
+
   Marionette.Controller.extend = Marionette.extend;
-  
+
   // Controller Methods
   // --------------
-  
+
   // Ensure it can trigger events with Backbone.Events
   _.extend(Marionette.Controller.prototype, Backbone.Events, {
     destroy: function() {
       Marionette._triggerMethod(this, 'before:destroy', arguments);
       Marionette._triggerMethod(this, 'destroy', arguments);
-  
+
       this.stopListening();
       this.off();
       return this;
     },
-  
+
     // import the `triggerMethod` to trigger events with corresponding
     // methods if the method exists
     triggerMethod: Marionette.triggerMethod,
-  
+
     // A handy way to merge options onto the instance
     mergeOptions: Marionette.mergeOptions,
-  
+
     // Proxy `getOption` to enable getting options from this or this.options by name.
     getOption: Marionette.proxyGetOption
-  
+
   });
-  
+
   // Object
   // ------
-  
+
   // A Base Class that other Classes should descend from.
   // Object borrows many conventions and utilities from Backbone.
   Marionette.Object = function(options) {
     this.options = _.extend({}, _.result(this, 'options'), options);
-  
+
     this.initialize.apply(this, arguments);
   };
-  
+
   Marionette.Object.extend = Marionette.extend;
-  
+
   // Object Methods
   // --------------
-  
+
   // Ensure it can trigger events with Backbone.Events
   _.extend(Marionette.Object.prototype, Backbone.Events, {
-  
+
     //this is a noop method intended to be overridden by classes that extend from this base
     initialize: function() {},
-  
+
     destroy: function() {
       this.triggerMethod('before:destroy');
       this.triggerMethod('destroy');
       this.stopListening();
-  
+
       return this;
     },
-  
+
     // Import the `triggerMethod` to trigger events with corresponding
     // methods if the method exists
     triggerMethod: Marionette.triggerMethod,
-  
+
     // A handy way to merge options onto the instance
     mergeOptions: Marionette.mergeOptions,
-  
+
     // Proxy `getOption` to enable getting options from this or this.options by name.
     getOption: Marionette.proxyGetOption,
-  
+
     // Proxy `bindEntityEvents` to enable binding view's events from another entity.
     bindEntityEvents: Marionette.proxyBindEntityEvents,
-  
+
     // Proxy `unbindEntityEvents` to enable unbinding view's events from another entity.
     unbindEntityEvents: Marionette.proxyUnbindEntityEvents
   });
-  
+
   /* jshint maxcomplexity: 16, maxstatements: 45, maxlen: 120 */
-  
+
   // Region
   // ------
-  
+
   // Manage the visual regions of your composite application. See
   // http://lostechies.com/derickbailey/2011/12/12/composite-js-apps-regions-and-region-managers/
-  
+
   Marionette.Region = Marionette.Object.extend({
     constructor: function(options) {
-  
+
       // set options temporarily so that we can get `el`.
       // options will be overriden by Object.constructor
       this.options = options || {};
       this.el = this.getOption('el');
-  
+
       // Handle when this.el is passed in as a $ wrapped element.
       this.el = this.el instanceof Backbone.$ ? this.el[0] : this.el;
-  
+
       if (!this.el) {
         throw new Marionette.Error({
           name: 'NoElError',
           message: 'An "el" must be specified for a region.'
         });
       }
-  
+
       this.$el = this.getEl(this.el);
       Marionette.Object.call(this, options);
     },
-  
+
     // Displays a backbone view instance inside of the region.
     // Handles calling the `render` method for you. Reads content
     // directly from the `el` attribute. Also calls an optional
@@ -64714,46 +64714,46 @@ return jQuery;
       if (!this._ensureElement()) {
         return;
       }
-  
+
       this._ensureViewIsIntact(view);
-  
+
       var showOptions     = options || {};
       var isDifferentView = view !== this.currentView;
       var preventDestroy  = !!showOptions.preventDestroy;
       var forceShow       = !!showOptions.forceShow;
-  
+
       // We are only changing the view if there is a current view to change to begin with
       var isChangingView = !!this.currentView;
-  
+
       // Only destroy the current view if we don't want to `preventDestroy` and if
       // the view given in the first argument is different than `currentView`
       var _shouldDestroyView = isDifferentView && !preventDestroy;
-  
+
       // Only show the view given in the first argument if it is different than
       // the current view or if we want to re-show the view. Note that if
       // `_shouldDestroyView` is true, then `_shouldShowView` is also necessarily true.
       var _shouldShowView = isDifferentView || forceShow;
-  
+
       if (isChangingView) {
         this.triggerMethod('before:swapOut', this.currentView, this, options);
       }
-  
+
       if (this.currentView) {
         delete this.currentView._parent;
       }
-  
+
       if (_shouldDestroyView) {
         this.empty();
-  
+
       // A `destroy` event is attached to the clean up manually removed views.
       // We need to detach this event when a new view is going to be shown as it
       // is no longer relevant.
       } else if (isChangingView && _shouldShowView) {
         this.currentView.off('destroy', this.empty, this);
       }
-  
+
       if (_shouldShowView) {
-  
+
         // We need to listen for if a view is destroyed
         // in a way other than through the region.
         // If this happens we need to remove the reference
@@ -64761,79 +64761,79 @@ return jQuery;
         // we can not reuse it.
         view.once('destroy', this.empty, this);
         view.render();
-  
+
         view._parent = this;
-  
+
         if (isChangingView) {
           this.triggerMethod('before:swap', view, this, options);
         }
-  
+
         this.triggerMethod('before:show', view, this, options);
         Marionette.triggerMethodOn(view, 'before:show', view, this, options);
-  
+
         if (isChangingView) {
           this.triggerMethod('swapOut', this.currentView, this, options);
         }
-  
+
         // An array of views that we're about to display
         var attachedRegion = Marionette.isNodeAttached(this.el);
-  
+
         // The views that we're about to attach to the document
         // It's important that we prevent _getNestedViews from being executed unnecessarily
         // as it's a potentially-slow method
         var displayedViews = [];
-  
+
         var attachOptions = _.extend({
           triggerBeforeAttach: this.triggerBeforeAttach,
           triggerAttach: this.triggerAttach
         }, showOptions);
-  
+
         if (attachedRegion && attachOptions.triggerBeforeAttach) {
           displayedViews = this._displayedViews(view);
           this._triggerAttach(displayedViews, 'before:');
         }
-  
+
         this.attachHtml(view);
         this.currentView = view;
-  
+
         if (attachedRegion && attachOptions.triggerAttach) {
           displayedViews = this._displayedViews(view);
           this._triggerAttach(displayedViews);
         }
-  
+
         if (isChangingView) {
           this.triggerMethod('swap', view, this, options);
         }
-  
+
         this.triggerMethod('show', view, this, options);
         Marionette.triggerMethodOn(view, 'show', view, this, options);
-  
+
         return this;
       }
-  
+
       return this;
     },
-  
+
     triggerBeforeAttach: true,
     triggerAttach: true,
-  
+
     _triggerAttach: function(views, prefix) {
       var eventName = (prefix || '') + 'attach';
       _.each(views, function(view) {
         Marionette.triggerMethodOn(view, eventName, view, this);
       }, this);
     },
-  
+
     _displayedViews: function(view) {
       return _.union([view], _.result(view, '_getNestedViews') || []);
     },
-  
+
     _ensureElement: function() {
       if (!_.isObject(this.el)) {
         this.$el = this.getEl(this.el);
         this.el = this.$el[0];
       }
-  
+
       if (!this.$el || this.$el.length === 0) {
         if (this.getOption('allowMissingEl')) {
           return false;
@@ -64843,7 +64843,7 @@ return jQuery;
       }
       return true;
     },
-  
+
     _ensureViewIsIntact: function(view) {
       if (!view) {
         throw new Marionette.Error({
@@ -64851,7 +64851,7 @@ return jQuery;
           message: 'The view passed is undefined and therefore invalid. You must pass a view instance to show.'
         });
       }
-  
+
       if (view.isDestroyed) {
         throw new Marionette.Error({
           name: 'ViewDestroyedError',
@@ -64859,65 +64859,65 @@ return jQuery;
         });
       }
     },
-  
+
     // Override this method to change how the region finds the DOM
     // element that it manages. Return a jQuery selector object scoped
     // to a provided parent el or the document if none exists.
     getEl: function(el) {
       return Backbone.$(el, Marionette._getValue(this.options.parentEl, this));
     },
-  
+
     // Override this method to change how the new view is
     // appended to the `$el` that the region is managing
     attachHtml: function(view) {
       this.$el.contents().detach();
-  
+
       this.el.appendChild(view.el);
     },
-  
+
     // Destroy the current view, if there is one. If there is no
     // current view, it does nothing and returns immediately.
     empty: function(options) {
       var view = this.currentView;
-  
+
       var preventDestroy = Marionette._getValue(options, 'preventDestroy', this);
       // If there is no view in the region
       // we should not remove anything
       if (!view) { return; }
-  
+
       view.off('destroy', this.empty, this);
       this.triggerMethod('before:empty', view);
       if (!preventDestroy) {
         this._destroyView();
       }
       this.triggerMethod('empty', view);
-  
+
       // Remove region pointer to the currentView
       delete this.currentView;
-  
+
       if (preventDestroy) {
         this.$el.contents().detach();
       }
-  
+
       return this;
     },
-  
+
     // call 'destroy' or 'remove', depending on which is found
     // on the view (if showing a raw Backbone view or a Marionette View)
     _destroyView: function() {
       var view = this.currentView;
-  
+
       if (view.destroy && !view.isDestroyed) {
         view.destroy();
       } else if (view.remove) {
         view.remove();
-  
+
         // appending isDestroyed to raw Backbone View allows regions
         // to throw a ViewDestroyedError for this view
         view.isDestroyed = true;
       }
     },
-  
+
     // Attach an existing view to the region. This
     // will not call `render` or `onShow` for the new view,
     // and will not replace the current HTML for the `el`
@@ -64926,34 +64926,34 @@ return jQuery;
       this.currentView = view;
       return this;
     },
-  
+
     // Checks whether a view is currently present within
     // the region. Returns `true` if there is and `false` if
     // no view is present.
     hasView: function() {
       return !!this.currentView;
     },
-  
+
     // Reset the region by destroying any existing view and
     // clearing out the cached `$el`. The next time a view
     // is shown via this region, the region will re-query the
     // DOM for the region's `el`.
     reset: function() {
       this.empty();
-  
+
       if (this.$el) {
         this.el = this.$el.selector;
       }
-  
+
       delete this.$el;
       return this;
     }
-  
+
   },
-  
+
   // Static Methods
   {
-  
+
     // Build an instance of a region by passing in a configuration object
     // and a default region class to use if none is specified in the config.
     //
@@ -64973,26 +64973,26 @@ return jQuery;
       if (_.isString(regionConfig)) {
         return this._buildRegionFromSelector(regionConfig, DefaultRegionClass);
       }
-  
+
       if (regionConfig.selector || regionConfig.el || regionConfig.regionClass) {
         return this._buildRegionFromObject(regionConfig, DefaultRegionClass);
       }
-  
+
       if (_.isFunction(regionConfig)) {
         return this._buildRegionFromRegionClass(regionConfig);
       }
-  
+
       throw new Marionette.Error({
         message: 'Improper region configuration type.',
         url: 'marionette.region.html#region-configuration-types'
       });
     },
-  
+
     // Build the region from a string selector like '#foo-region'
     _buildRegionFromSelector: function(selector, DefaultRegionClass) {
       return new DefaultRegionClass({el: selector});
     },
-  
+
     // Build the region from a configuration object
     // ```js
     // { selector: '#foo', regionClass: FooRegion, allowMissingEl: false }
@@ -65000,41 +65000,41 @@ return jQuery;
     _buildRegionFromObject: function(regionConfig, DefaultRegionClass) {
       var RegionClass = regionConfig.regionClass || DefaultRegionClass;
       var options = _.omit(regionConfig, 'selector', 'regionClass');
-  
+
       if (regionConfig.selector && !options.el) {
         options.el = regionConfig.selector;
       }
-  
+
       return new RegionClass(options);
     },
-  
+
     // Build the region directly from a given `RegionClass`
     _buildRegionFromRegionClass: function(RegionClass) {
       return new RegionClass();
     }
   });
-  
+
   // Region Manager
   // --------------
-  
+
   // Manage one or more related `Marionette.Region` objects.
   Marionette.RegionManager = Marionette.Controller.extend({
     constructor: function(options) {
       this._regions = {};
       this.length = 0;
-  
+
       Marionette.Controller.call(this, options);
-  
+
       this.addRegions(this.getOption('regions'));
     },
-  
+
     // Add multiple regions using an object literal or a
     // function that returns an object literal, where
     // each key becomes the region name, and each value is
     // the region definition.
     addRegions: function(regionDefinitions, defaults) {
       regionDefinitions = Marionette._getValue(regionDefinitions, this, arguments);
-  
+
       return _.reduce(regionDefinitions, function(regions, definition, name) {
         if (_.isString(definition)) {
           definition = {selector: definition};
@@ -65042,51 +65042,51 @@ return jQuery;
         if (definition.selector) {
           definition = _.defaults({}, definition, defaults);
         }
-  
+
         regions[name] = this.addRegion(name, definition);
         return regions;
       }, {}, this);
     },
-  
+
     // Add an individual region to the region manager,
     // and return the region instance
     addRegion: function(name, definition) {
       var region;
-  
+
       if (definition instanceof Marionette.Region) {
         region = definition;
       } else {
         region = Marionette.Region.buildRegion(definition, Marionette.Region);
       }
-  
+
       this.triggerMethod('before:add:region', name, region);
-  
+
       region._parent = this;
       this._store(name, region);
-  
+
       this.triggerMethod('add:region', name, region);
       return region;
     },
-  
+
     // Get a region by name
     get: function(name) {
       return this._regions[name];
     },
-  
+
     // Gets all the regions contained within
     // the `regionManager` instance.
     getRegions: function() {
       return _.clone(this._regions);
     },
-  
+
     // Remove a region by name
     removeRegion: function(name) {
       var region = this._regions[name];
       this._remove(name, region);
-  
+
       return region;
     },
-  
+
     // Empty all regions in the region manager, and
     // remove them
     removeRegions: function() {
@@ -65094,10 +65094,10 @@ return jQuery;
       _.each(this._regions, function(region, name) {
         this._remove(name, region);
       }, this);
-  
+
       return regions;
     },
-  
+
     // Empty all regions in the region manager, but
     // leave them attached
     emptyRegions: function() {
@@ -65105,68 +65105,68 @@ return jQuery;
       _.invoke(regions, 'empty');
       return regions;
     },
-  
+
     // Destroy all regions and shut down the region
     // manager entirely
     destroy: function() {
       this.removeRegions();
       return Marionette.Controller.prototype.destroy.apply(this, arguments);
     },
-  
+
     // internal method to store regions
     _store: function(name, region) {
       if (!this._regions[name]) {
         this.length++;
       }
-  
+
       this._regions[name] = region;
     },
-  
+
     // internal method to remove a region
     _remove: function(name, region) {
       this.triggerMethod('before:remove:region', name, region);
       region.empty();
       region.stopListening();
-  
+
       delete region._parent;
       delete this._regions[name];
       this.length--;
       this.triggerMethod('remove:region', name, region);
     }
   });
-  
+
   Marionette.actAsCollection(Marionette.RegionManager.prototype, '_regions');
-  
+
 
   // Template Cache
   // --------------
-  
+
   // Manage templates stored in `<script>` blocks,
   // caching them for faster access.
   Marionette.TemplateCache = function(templateId) {
     this.templateId = templateId;
   };
-  
+
   // TemplateCache object-level methods. Manage the template
   // caches from these method calls instead of creating
   // your own TemplateCache instances
   _.extend(Marionette.TemplateCache, {
     templateCaches: {},
-  
+
     // Get the specified template by id. Either
     // retrieves the cached version, or loads it
     // from the DOM.
     get: function(templateId, options) {
       var cachedTemplate = this.templateCaches[templateId];
-  
+
       if (!cachedTemplate) {
         cachedTemplate = new Marionette.TemplateCache(templateId);
         this.templateCaches[templateId] = cachedTemplate;
       }
-  
+
       return cachedTemplate.load(options);
     },
-  
+
     // Clear templates from the cache. If no arguments
     // are specified, clears all templates:
     // `clear()`
@@ -65178,7 +65178,7 @@ return jQuery;
       var i;
       var args = _.toArray(arguments);
       var length = args.length;
-  
+
       if (length > 0) {
         for (i = 0; i < length; i++) {
           delete this.templateCaches[args[i]];
@@ -65188,26 +65188,26 @@ return jQuery;
       }
     }
   });
-  
+
   // TemplateCache instance methods, allowing each
   // template cache object to manage its own state
   // and know whether or not it has been loaded
   _.extend(Marionette.TemplateCache.prototype, {
-  
+
     // Internal method to load the template
     load: function(options) {
       // Guard clause to prevent loading this template more than once
       if (this.compiledTemplate) {
         return this.compiledTemplate;
       }
-  
+
       // Load the template and compile it
       var template = this.loadTemplate(this.templateId, options);
       this.compiledTemplate = this.compileTemplate(template, options);
-  
+
       return this.compiledTemplate;
     },
-  
+
     // Load a template from the DOM, by default. Override
     // this method to provide your own template retrieval
     // For asynchronous loading with AMD/RequireJS, consider
@@ -65215,17 +65215,17 @@ return jQuery;
     // https://github.com/marionettejs/backbone.marionette/wiki/Using-marionette-with-requirejs
     loadTemplate: function(templateId, options) {
       var template = Backbone.$(templateId).html();
-  
+
       if (!template || template.length === 0) {
         throw new Marionette.Error({
           name: 'NoTemplateError',
           message: 'Could not find template: "' + templateId + '"'
         });
       }
-  
+
       return template;
     },
-  
+
     // Pre-compile the template before caching it. Override
     // this method if you do not need to pre-compile a template
     // (JST / RequireJS for example) or if you want to change
@@ -65234,14 +65234,14 @@ return jQuery;
       return _.template(rawTemplate, options);
     }
   });
-  
+
   // Renderer
   // --------
-  
+
   // Render a template with data by passing in the template
   // selector and the data to render.
   Marionette.Renderer = {
-  
+
     // Render a template with data. The `template` parameter is
     // passed to the `TemplateCache` object to retrieve the
     // template function. Override this method to provide your own
@@ -65253,40 +65253,40 @@ return jQuery;
           message: 'Cannot render the template since its false, null or undefined.'
         });
       }
-  
+
       var templateFunc = _.isFunction(template) ? template : Marionette.TemplateCache.get(template);
-  
+
       return templateFunc(data);
     }
   };
-  
+
 
   /* jshint maxlen: 114, nonew: false */
   // View
   // ----
-  
+
   // The core view class that other Marionette views extend from.
   Marionette.View = Backbone.View.extend({
     isDestroyed: false,
-  
+
     constructor: function(options) {
       _.bindAll(this, 'render');
-  
+
       options = Marionette._getValue(options, this);
-  
+
       // this exposes view options to the view initializer
       // this is a backfill since backbone removed the assignment
       // of this.options
       // at some point however this may be removed
       this.options = _.extend({}, _.result(this, 'options'), options);
-  
+
       this._behaviors = Marionette.Behaviors(this);
-  
+
       Backbone.View.call(this, this.options);
-  
+
       Marionette.MonitorDOMRefresh(this);
     },
-  
+
     // Get the template for this view
     // instance. You can set a `template` attribute in the view
     // definition or pass a `template: "whatever"` parameter in
@@ -65294,13 +65294,13 @@ return jQuery;
     getTemplate: function() {
       return this.getOption('template');
     },
-  
+
     // Serialize a model by returning its attributes. Clones
     // the attributes to allow modification.
     serializeModel: function(model) {
       return model.toJSON.apply(model, _.rest(arguments));
     },
-  
+
     // Mix in template helper methods. Looks for a
     // `templateHelpers` attribute, which can either be an
     // object literal, or a function that returns an object
@@ -65312,14 +65312,14 @@ return jQuery;
       templateHelpers = Marionette._getValue(templateHelpers, this);
       return _.extend(target, templateHelpers);
     },
-  
+
     // normalize the keys of passed hash with the views `ui` selectors.
     // `{"@ui.foo": "bar"}`
     normalizeUIKeys: function(hash) {
       var uiBindings = _.result(this, '_uiBindings');
       return Marionette.normalizeUIKeys(hash, uiBindings || _.result(this, 'ui'));
     },
-  
+
     // normalize the values of passed hash with the views `ui` selectors.
     // `{foo: "@ui.bar"}`
     normalizeUIValues: function(hash, properties) {
@@ -65327,15 +65327,15 @@ return jQuery;
       var uiBindings = _.result(this, '_uiBindings');
       return Marionette.normalizeUIValues(hash, uiBindings || ui, properties);
     },
-  
+
     // Configure `triggers` to forward DOM events to view
     // events. `triggers: {"click .foo": "do:foo"}`
     configureTriggers: function() {
       if (!this.triggers) { return; }
-  
+
       // Allow `triggers` to be configured as a function
       var triggers = this.normalizeUIKeys(_.result(this, 'triggers'));
-  
+
       // Configure the triggers, prevent default
       // action and stop propagation of DOM events
       return _.reduce(triggers, function(events, value, key) {
@@ -65343,59 +65343,59 @@ return jQuery;
         return events;
       }, {}, this);
     },
-  
+
     // Overriding Backbone.View's delegateEvents to handle
     // the `triggers`, `modelEvents`, and `collectionEvents` configuration
     delegateEvents: function(events) {
       this._delegateDOMEvents(events);
       this.bindEntityEvents(this.model, this.getOption('modelEvents'));
       this.bindEntityEvents(this.collection, this.getOption('collectionEvents'));
-  
+
       _.each(this._behaviors, function(behavior) {
         behavior.bindEntityEvents(this.model, behavior.getOption('modelEvents'));
         behavior.bindEntityEvents(this.collection, behavior.getOption('collectionEvents'));
       }, this);
-  
+
       return this;
     },
-  
+
     // internal method to delegate DOM events and triggers
     _delegateDOMEvents: function(eventsArg) {
       var events = Marionette._getValue(eventsArg || this.events, this);
-  
+
       // normalize ui keys
       events = this.normalizeUIKeys(events);
       if (_.isUndefined(eventsArg)) {this.events = events;}
-  
+
       var combinedEvents = {};
-  
+
       // look up if this view has behavior events
       var behaviorEvents = _.result(this, 'behaviorEvents') || {};
       var triggers = this.configureTriggers();
       var behaviorTriggers = _.result(this, 'behaviorTriggers') || {};
-  
+
       // behavior events will be overriden by view events and or triggers
       _.extend(combinedEvents, behaviorEvents, events, triggers, behaviorTriggers);
-  
+
       Backbone.View.prototype.delegateEvents.call(this, combinedEvents);
     },
-  
+
     // Overriding Backbone.View's undelegateEvents to handle unbinding
     // the `triggers`, `modelEvents`, and `collectionEvents` config
     undelegateEvents: function() {
       Backbone.View.prototype.undelegateEvents.apply(this, arguments);
-  
+
       this.unbindEntityEvents(this.model, this.getOption('modelEvents'));
       this.unbindEntityEvents(this.collection, this.getOption('collectionEvents'));
-  
+
       _.each(this._behaviors, function(behavior) {
         behavior.unbindEntityEvents(this.model, behavior.getOption('modelEvents'));
         behavior.unbindEntityEvents(this.collection, behavior.getOption('collectionEvents'));
       }, this);
-  
+
       return this;
     },
-  
+
     // Internal helper method to verify whether the view hasn't been destroyed
     _ensureViewIsIntact: function() {
       if (this.isDestroyed) {
@@ -65405,143 +65405,143 @@ return jQuery;
         });
       }
     },
-  
+
     // Default `destroy` implementation, for removing a view from the
     // DOM and unbinding it. Regions will call this method
     // for you. You can specify an `onDestroy` method in your view to
     // add custom code that is called after the view is destroyed.
     destroy: function() {
       if (this.isDestroyed) { return this; }
-  
+
       var args = _.toArray(arguments);
-  
+
       this.triggerMethod.apply(this, ['before:destroy'].concat(args));
-  
+
       // mark as destroyed before doing the actual destroy, to
       // prevent infinite loops within "destroy" event handlers
       // that are trying to destroy other views
       this.isDestroyed = true;
       this.triggerMethod.apply(this, ['destroy'].concat(args));
-  
+
       // unbind UI elements
       this.unbindUIElements();
-  
+
       this.isRendered = false;
-  
+
       // remove the view from the DOM
       this.remove();
-  
+
       // Call destroy on each behavior after
       // destroying the view.
       // This unbinds event listeners
       // that behaviors have registered for.
       _.invoke(this._behaviors, 'destroy', args);
-  
+
       return this;
     },
-  
+
     bindUIElements: function() {
       this._bindUIElements();
       _.invoke(this._behaviors, this._bindUIElements);
     },
-  
+
     // This method binds the elements specified in the "ui" hash inside the view's code with
     // the associated jQuery selectors.
     _bindUIElements: function() {
       if (!this.ui) { return; }
-  
+
       // store the ui hash in _uiBindings so they can be reset later
       // and so re-rendering the view will be able to find the bindings
       if (!this._uiBindings) {
         this._uiBindings = this.ui;
       }
-  
+
       // get the bindings result, as a function or otherwise
       var bindings = _.result(this, '_uiBindings');
-  
+
       // empty the ui so we don't have anything to start with
       this.ui = {};
-  
+
       // bind each of the selectors
       _.each(bindings, function(selector, key) {
         this.ui[key] = this.$(selector);
       }, this);
     },
-  
+
     // This method unbinds the elements specified in the "ui" hash
     unbindUIElements: function() {
       this._unbindUIElements();
       _.invoke(this._behaviors, this._unbindUIElements);
     },
-  
+
     _unbindUIElements: function() {
       if (!this.ui || !this._uiBindings) { return; }
-  
+
       // delete all of the existing ui bindings
       _.each(this.ui, function($el, name) {
         delete this.ui[name];
       }, this);
-  
+
       // reset the ui element to the original bindings configuration
       this.ui = this._uiBindings;
       delete this._uiBindings;
     },
-  
+
     // Internal method to create an event handler for a given `triggerDef` like
     // 'click:foo'
     _buildViewTrigger: function(triggerDef) {
       var hasOptions = _.isObject(triggerDef);
-  
+
       var options = _.defaults({}, (hasOptions ? triggerDef : {}), {
         preventDefault: true,
         stopPropagation: true
       });
-  
+
       var eventName = hasOptions ? options.event : triggerDef;
-  
+
       return function(e) {
         if (e) {
           if (e.preventDefault && options.preventDefault) {
             e.preventDefault();
           }
-  
+
           if (e.stopPropagation && options.stopPropagation) {
             e.stopPropagation();
           }
         }
-  
+
         var args = {
           view: this,
           model: this.model,
           collection: this.collection
         };
-  
+
         this.triggerMethod(eventName, args);
       };
     },
-  
+
     setElement: function() {
       var ret = Backbone.View.prototype.setElement.apply(this, arguments);
-  
+
       // proxy behavior $el to the view's $el.
       // This is needed because a view's $el proxy
       // is not set until after setElement is called.
       _.invoke(this._behaviors, 'proxyViewProperties', this);
-  
+
       return ret;
     },
-  
+
     // import the `triggerMethod` to trigger events with corresponding
     // methods if the method exists
     triggerMethod: function() {
       var ret = Marionette._triggerMethod(this, arguments);
-  
+
       this._triggerEventOnBehaviors(arguments);
       this._triggerEventOnParentLayout(arguments[0], _.rest(arguments));
-  
+
       return ret;
     },
-  
+
     _triggerEventOnBehaviors: function(args) {
       var triggerMethod = Marionette._triggerMethod;
       var behaviors = this._behaviors;
@@ -65550,60 +65550,60 @@ return jQuery;
         triggerMethod(behaviors[i], args);
       }
     },
-  
+
     _triggerEventOnParentLayout: function(eventName, args) {
       var layoutView = this._parentLayoutView();
       if (!layoutView) {
         return;
       }
-  
+
       // invoke triggerMethod on parent view
       var eventPrefix = Marionette.getOption(layoutView, 'childViewEventPrefix');
       var prefixedEventName = eventPrefix + ':' + eventName;
-  
+
       Marionette._triggerMethod(layoutView, [prefixedEventName, this].concat(args));
-  
+
       // call the parent view's childEvents handler
       var childEvents = Marionette.getOption(layoutView, 'childEvents');
       var normalizedChildEvents = layoutView.normalizeMethods(childEvents);
-  
+
       if (!!normalizedChildEvents && _.isFunction(normalizedChildEvents[eventName])) {
         normalizedChildEvents[eventName].apply(layoutView, [this].concat(args));
       }
     },
-  
+
     // This method returns any views that are immediate
     // children of this view
     _getImmediateChildren: function() {
       return [];
     },
-  
+
     // Returns an array of every nested view within this view
     _getNestedViews: function() {
       var children = this._getImmediateChildren();
-  
+
       if (!children.length) { return children; }
-  
+
       return _.reduce(children, function(memo, view) {
         if (!view._getNestedViews) { return memo; }
         return memo.concat(view._getNestedViews());
       }, children);
     },
-  
+
     // Internal utility for building an ancestor
     // view tree list.
     _getAncestors: function() {
       var ancestors = [];
       var parent  = this._parent;
-  
+
       while (parent) {
         ancestors.push(parent);
         parent = parent._parent;
       }
-  
+
       return ancestors;
     },
-  
+
     // Returns the containing parent view.
     _parentLayoutView: function() {
       var ancestors = this._getAncestors();
@@ -65611,38 +65611,38 @@ return jQuery;
         return parent instanceof Marionette.LayoutView;
       });
     },
-  
+
     // Imports the "normalizeMethods" to transform hashes of
     // events=>function references/names to a hash of events=>function references
     normalizeMethods: Marionette.normalizeMethods,
-  
+
     // A handy way to merge passed-in options onto the instance
     mergeOptions: Marionette.mergeOptions,
-  
+
     // Proxy `getOption` to enable getting options from this or this.options by name.
     getOption: Marionette.proxyGetOption,
-  
+
     // Proxy `bindEntityEvents` to enable binding view's events from another entity.
     bindEntityEvents: Marionette.proxyBindEntityEvents,
-  
+
     // Proxy `unbindEntityEvents` to enable unbinding view's events from another entity.
     unbindEntityEvents: Marionette.proxyUnbindEntityEvents
   });
-  
+
   // Item View
   // ---------
-  
+
   // A single item view implementation that contains code for rendering
   // with underscore.js templates, serializing the view's model or collection,
   // and calling several methods on extended views, such as `onRender`.
   Marionette.ItemView = Marionette.View.extend({
-  
+
     // Setting up the inheritance chain which allows changes to
     // Marionette.View.prototype.constructor which allows overriding
     constructor: function() {
       Marionette.View.apply(this, arguments);
     },
-  
+
     // Serialize the model or collection for the view. If a model is
     // found, the view's `serializeModel` is called. If a collection is found,
     // each model in the collection is serialized by calling
@@ -65654,12 +65654,12 @@ return jQuery;
       if (!this.model && !this.collection) {
         return {};
       }
-  
+
       var args = [this.model || this.collection];
       if (arguments.length) {
         args.push.apply(args, arguments);
       }
-  
+
       if (this.model) {
         return this.serializeModel.apply(this, args);
       } else {
@@ -65668,12 +65668,12 @@ return jQuery;
         };
       }
     },
-  
+
     // Serialize a collection by serializing each of its models.
     serializeCollection: function(collection) {
       return collection.toJSON.apply(collection, _.rest(arguments));
     },
-  
+
     // Render the view, defaulting to underscore.js templates.
     // You can override this in your view definition to provide
     // a very specific rendering for your view. In general, though,
@@ -65681,47 +65681,47 @@ return jQuery;
     // change how Marionette renders views.
     render: function() {
       this._ensureViewIsIntact();
-  
+
       this.triggerMethod('before:render', this);
-  
+
       this._renderTemplate();
       this.isRendered = true;
       this.bindUIElements();
-  
+
       this.triggerMethod('render', this);
-  
+
       return this;
     },
-  
+
     // Internal method to render the template with the serialized data
     // and template helpers via the `Marionette.Renderer` object.
     // Throws an `UndefinedTemplateError` error if the template is
     // any falsely value but literal `false`.
     _renderTemplate: function() {
       var template = this.getTemplate();
-  
+
       // Allow template-less item views
       if (template === false) {
         return;
       }
-  
+
       if (!template) {
         throw new Marionette.Error({
           name: 'UndefinedTemplateError',
           message: 'Cannot render the template since it is null or undefined.'
         });
       }
-  
+
       // Add in entity data and template helpers
       var data = this.mixinTemplateHelpers(this.serializeData());
-  
+
       // Render and add to el
       var html = Marionette.Renderer.render(template, data, this);
       this.attachElContent(html);
-  
+
       return this;
     },
-  
+
     // Attaches the content of a given view.
     // This method can be overridden to optimize rendering,
     // or to render in a non standard way.
@@ -65736,27 +65736,27 @@ return jQuery;
     // ```
     attachElContent: function(html) {
       this.$el.html(html);
-  
+
       return this;
     }
   });
-  
+
   /* jshint maxstatements: 20, maxcomplexity: 7 */
-  
+
   // Collection View
   // ---------------
-  
+
   // A view that iterates over a Backbone.Collection
   // and renders an individual child view for each model.
   Marionette.CollectionView = Marionette.View.extend({
-  
+
     // used as the prefix for child view events
     // that are forwarded through the collectionview
     childViewEventPrefix: 'childview',
-  
+
     // flag for maintaining the sorted order of the collection
     sort: true,
-  
+
     // constructor
     // option to pass `{sort: false}` to prevent the `CollectionView` from
     // maintaining the sorted order of the collection.
@@ -65767,9 +65767,9 @@ return jQuery;
     constructor: function(options) {
       this.once('render', this._initialEvents);
       this._initChildViewStorage();
-  
+
       Marionette.View.apply(this, arguments);
-  
+
       this.on({
         'before:show':   this._onBeforeShowCalled,
         'show':          this._onShowCalled,
@@ -65778,26 +65778,26 @@ return jQuery;
       });
       this.initRenderBuffer();
     },
-  
+
     // Instead of inserting elements one by one into the page,
     // it's much more performant to insert elements into a document
     // fragment and then insert that document fragment into the page
     initRenderBuffer: function() {
       this._bufferedChildren = [];
     },
-  
+
     startBuffering: function() {
       this.initRenderBuffer();
       this.isBuffering = true;
     },
-  
+
     endBuffering: function() {
       // Only trigger attach if already shown and attached, otherwise Region#show() handles this.
       var canTriggerAttach = this._isShown && Marionette.isNodeAttached(this.el);
       var nestedViews;
-  
+
       this.isBuffering = false;
-  
+
       if (this._isShown) {
         this._triggerMethodMany(this._bufferedChildren, this, 'before:show');
       }
@@ -65805,9 +65805,9 @@ return jQuery;
         nestedViews = this._getNestedViews();
         this._triggerMethodMany(nestedViews, this, 'before:attach');
       }
-  
+
       this.attachBuffer(this, this._createBuffer());
-  
+
       if (canTriggerAttach && this._triggerAttach) {
         nestedViews = this._getNestedViews();
         this._triggerMethodMany(nestedViews, this, 'attach');
@@ -65817,15 +65817,15 @@ return jQuery;
       }
       this.initRenderBuffer();
     },
-  
+
     _triggerMethodMany: function(targets, source, eventName) {
       var args = _.drop(arguments, 3);
-  
+
       _.each(targets, function(target) {
         Marionette.triggerMethodOn.apply(target, [target, eventName, target, source].concat(args));
       });
     },
-  
+
     // Configured the initial events that the collection view
     // binds to.
     _initialEvents: function() {
@@ -65833,13 +65833,13 @@ return jQuery;
         this.listenTo(this.collection, 'add', this._onCollectionAdd);
         this.listenTo(this.collection, 'remove', this._onCollectionRemove);
         this.listenTo(this.collection, 'reset', this.render);
-  
+
         if (this.getOption('sort')) {
           this.listenTo(this.collection, 'sort', this._sortViews);
         }
       }
     },
-  
+
     // Handle a child added to the collection
     _onCollectionAdd: function(child, collection, opts) {
       var index;
@@ -65848,21 +65848,21 @@ return jQuery;
       } else {
         index = _.indexOf(this._filteredSortedModels(), child);
       }
-  
+
       if (this._shouldAddChild(child, index)) {
         this.destroyEmptyView();
         var ChildView = this.getChildView(child);
         this.addChild(child, ChildView, index);
       }
     },
-  
+
     // get the child view by model it holds, and remove it
     _onCollectionRemove: function(model) {
       var view = this.children.findByModel(model);
       this.removeChildView(view);
       this.checkEmpty();
     },
-  
+
     _onBeforeShowCalled: function() {
       // Reset attach event flags at the top of the Region#show() event lifecycle; if the Region's
       // show() options permit onBeforeAttach/onAttach events, these flags will be set true again.
@@ -65871,23 +65871,23 @@ return jQuery;
         Marionette.triggerMethodOn(childView, 'before:show', childView);
       });
     },
-  
+
     _onShowCalled: function() {
       this.children.each(function(childView) {
         Marionette.triggerMethodOn(childView, 'show', childView);
       });
     },
-  
+
     // If during Region#show() onBeforeAttach was fired, continue firing it for child views
     _onBeforeAttachCalled: function() {
       this._triggerBeforeAttach = true;
     },
-  
+
     // If during Region#show() onAttach was fired, continue firing it for child views
     _onAttachCalled: function() {
       this._triggerAttach = true;
     },
-  
+
     // Render children views. Override this method to
     // provide your own implementation of a render function for
     // the collection view.
@@ -65899,7 +65899,7 @@ return jQuery;
       this.triggerMethod('render', this);
       return this;
     },
-  
+
     // Reorder DOM after sorting. When your element's rendering
     // do not use their index, you can pass reorderOnSort: true
     // to only reorder the DOM after a sort instead of rendering
@@ -65910,7 +65910,7 @@ return jQuery;
       var modelsChanged = _.find(models, function(model) {
         return !children.findByModel(model);
       });
-  
+
       // If the models we're displaying have changed due to filtering
       // We need to add and/or remove child views
       // So render as normal
@@ -65923,7 +65923,7 @@ return jQuery;
           view._index = index;
           return view.el;
         });
-  
+
         // since append moves elements that are already in the DOM,
         // appending the elements will effectively reorder them
         this.triggerMethod('before:reorder');
@@ -65931,7 +65931,7 @@ return jQuery;
         this.triggerMethod('reorder');
       }
     },
-  
+
     // Render view after sorting. Override this method to
     // change how the view renders after a `sort` on the collection.
     // An example of this would be to only `renderChildren` in a `CompositeView`
@@ -65943,39 +65943,39 @@ return jQuery;
         this.render();
       }
     },
-  
+
     // Internal method. This checks for any changes in the order of the collection.
     // If the index of any view doesn't match, it will render.
     _sortViews: function() {
       var models = this._filteredSortedModels();
-  
+
       // check for any changes in sort order of views
       var orderChanged = _.find(models, function(item, index) {
         var view = this.children.findByModel(item);
         return !view || view._index !== index;
       }, this);
-  
+
       if (orderChanged) {
         this.resortView();
       }
     },
-  
+
     // Internal reference to what index a `emptyView` is.
     _emptyViewIndex: -1,
-  
+
     // Internal method. Separated so that CompositeView can append to the childViewContainer
     // if necessary
     _appendReorderedChildren: function(children) {
       this.$el.append(children);
     },
-  
+
     // Internal method. Separated so that CompositeView can have
     // more control over events being triggered, around the rendering
     // process
     _renderChildren: function() {
       this.destroyEmptyView();
       this.destroyChildren({checkEmpty: false});
-  
+
       if (this.isEmpty(this.collection)) {
         this.showEmptyView();
       } else {
@@ -65984,31 +65984,31 @@ return jQuery;
         this.showCollection();
         this.endBuffering();
         this.triggerMethod('render:collection', this);
-  
+
         // If we have shown children and none have passed the filter, show the empty view
         if (this.children.isEmpty()) {
           this.showEmptyView();
         }
       }
     },
-  
+
     // Internal method to loop through collection and show each child view.
     showCollection: function() {
       var ChildView;
-  
+
       var models = this._filteredSortedModels();
-  
+
       _.each(models, function(child, index) {
         ChildView = this.getChildView(child);
         this.addChild(child, ChildView, index);
       }, this);
     },
-  
+
     // Allow the collection to be sorted by a custom view comparator
     _filteredSortedModels: function() {
       var models;
       var viewComparator = this.getViewComparator();
-  
+
       if (viewComparator) {
         if (_.isString(viewComparator) || viewComparator.length === 1) {
           models = this.collection.sortBy(viewComparator, this);
@@ -66018,52 +66018,52 @@ return jQuery;
       } else {
         models = this.collection.models;
       }
-  
+
       // Filter after sorting in case the filter uses the index
       if (this.getOption('filter')) {
         models = _.filter(models, function(model, index) {
           return this._shouldAddChild(model, index);
         }, this);
       }
-  
+
       return models;
     },
-  
+
     // Internal method to show an empty view in place of
     // a collection of child views, when the collection is empty
     showEmptyView: function() {
       var EmptyView = this.getEmptyView();
-  
+
       if (EmptyView && !this._showingEmptyView) {
         this.triggerMethod('before:render:empty');
-  
+
         this._showingEmptyView = true;
         var model = new Backbone.Model();
         this.addEmptyView(model, EmptyView);
-  
+
         this.triggerMethod('render:empty');
       }
     },
-  
+
     // Internal method to destroy an existing emptyView instance
     // if one exists. Called when a collection view has been
     // rendered empty, and then a child is added to the collection.
     destroyEmptyView: function() {
       if (this._showingEmptyView) {
         this.triggerMethod('before:remove:empty');
-  
+
         this.destroyChildren();
         delete this._showingEmptyView;
-  
+
         this.triggerMethod('remove:empty');
       }
     },
-  
+
     // Retrieve the empty view class
     getEmptyView: function() {
       return this.getOption('emptyView');
     },
-  
+
     // Render and show the emptyView. Similar to addChild method
     // but "add:child" events are not fired, and the event from
     // emptyView are not forwarded
@@ -66072,32 +66072,32 @@ return jQuery;
       // Region#show() handles this.
       var canTriggerAttach = this._isShown && !this.isBuffering && Marionette.isNodeAttached(this.el);
       var nestedViews;
-  
+
       // get the emptyViewOptions, falling back to childViewOptions
       var emptyViewOptions = this.getOption('emptyViewOptions') ||
                             this.getOption('childViewOptions');
-  
+
       if (_.isFunction(emptyViewOptions)) {
         emptyViewOptions = emptyViewOptions.call(this, child, this._emptyViewIndex);
       }
-  
+
       // build the empty view
       var view = this.buildChildView(child, EmptyView, emptyViewOptions);
-  
+
       view._parent = this;
-  
+
       // Proxy emptyView events
       this.proxyChildEvents(view);
-  
+
       // trigger the 'before:show' event on `view` if the collection view has already been shown
       if (this._isShown) {
         Marionette.triggerMethodOn(view, 'before:show', view);
       }
-  
+
       // Store the `emptyView` like a `childView` so we can properly
       // remove and/or close it later
       this.children.add(view);
-  
+
       // Trigger `before:attach` following `render` to avoid adding logic and event triggers
       // to public method `renderChildView()`.
       if (canTriggerAttach && this._triggerBeforeAttach) {
@@ -66106,10 +66106,10 @@ return jQuery;
           this._triggerMethodMany(nestedViews, this, 'before:attach');
         }, this);
       }
-  
+
       // Render it and show it
       this.renderChildView(view, this._emptyViewIndex);
-  
+
       // Trigger `attach`
       if (canTriggerAttach && this._triggerAttach) {
         nestedViews = [view].concat(view._getNestedViews());
@@ -66120,7 +66120,7 @@ return jQuery;
         Marionette.triggerMethodOn(view, 'show', view);
       }
     },
-  
+
     // Retrieve the `childView` class, either from `this.options.childView`
     // or from the `childView` in the object definition. The "options"
     // takes precedence.
@@ -66129,17 +66129,17 @@ return jQuery;
     // to determine what `childView` class to return.
     getChildView: function(child) {
       var childView = this.getOption('childView');
-  
+
       if (!childView) {
         throw new Marionette.Error({
           name: 'NoChildViewError',
           message: 'A "childView" must be specified'
         });
       }
-  
+
       return childView;
     },
-  
+
     // Render the child's view and add it to the
     // HTML for the collection view at a given index.
     // This will also update the indices of later views in the collection
@@ -66147,33 +66147,33 @@ return jQuery;
     addChild: function(child, ChildView, index) {
       var childViewOptions = this.getOption('childViewOptions');
       childViewOptions = Marionette._getValue(childViewOptions, this, [child, index]);
-  
+
       var view = this.buildChildView(child, ChildView, childViewOptions);
-  
+
       // increment indices of views after this one
       this._updateIndices(view, true, index);
-  
+
       this.triggerMethod('before:add:child', view);
       this._addChildView(view, index);
       this.triggerMethod('add:child', view);
-  
+
       view._parent = this;
-  
+
       return view;
     },
-  
+
     // Internal method. This decrements or increments the indices of views after the
     // added/removed view to keep in sync with the collection.
     _updateIndices: function(view, increment, index) {
       if (!this.getOption('sort')) {
         return;
       }
-  
+
       if (increment) {
         // assign the index to the view
         view._index = index;
       }
-  
+
       // update the indexes of views after this one
       this.children.each(function(laterView) {
         if (laterView._index >= view._index) {
@@ -66181,7 +66181,7 @@ return jQuery;
         }
       });
     },
-  
+
     // Internal Method. Add the view to children and render it at
     // the given index.
     _addChildView: function(view, index) {
@@ -66189,18 +66189,18 @@ return jQuery;
       // Region#show() handles this.
       var canTriggerAttach = this._isShown && !this.isBuffering && Marionette.isNodeAttached(this.el);
       var nestedViews;
-  
+
       // set up the child view event forwarding
       this.proxyChildEvents(view);
-  
+
       // trigger the 'before:show' event on `view` if the collection view has already been shown
       if (this._isShown && !this.isBuffering) {
         Marionette.triggerMethodOn(view, 'before:show', view);
       }
-  
+
       // Store the child view itself so we can properly remove and/or destroy it later
       this.children.add(view);
-  
+
       // Trigger `before:attach` following `render` to avoid adding logic and event triggers
       // to public method `renderChildView()`.
       if (canTriggerAttach && this._triggerBeforeAttach) {
@@ -66209,9 +66209,9 @@ return jQuery;
           this._triggerMethodMany(nestedViews, this, 'before:attach');
         }, this);
       }
-  
+
       this.renderChildView(view, index);
-  
+
       // Trigger `attach`
       if (canTriggerAttach && this._triggerAttach) {
         nestedViews = [view].concat(view._getNestedViews());
@@ -66222,65 +66222,65 @@ return jQuery;
         Marionette.triggerMethodOn(view, 'show', view);
       }
     },
-  
+
     // render the child view
     renderChildView: function(view, index) {
       view.render();
       this.attachHtml(this, view, index);
       return view;
     },
-  
+
     // Build a `childView` for a model in the collection.
     buildChildView: function(child, ChildViewClass, childViewOptions) {
       var options = _.extend({model: child}, childViewOptions);
       return new ChildViewClass(options);
     },
-  
+
     // Remove the child view and destroy it.
     // This function also updates the indices of
     // later views in the collection in order to keep
     // the children in sync with the collection.
     removeChildView: function(view) {
-  
+
       if (view) {
         this.triggerMethod('before:remove:child', view);
-  
+
         // call 'destroy' or 'remove', depending on which is found
         if (view.destroy) {
           view.destroy();
         } else if (view.remove) {
           view.remove();
         }
-  
+
         delete view._parent;
         this.stopListening(view);
         this.children.remove(view);
         this.triggerMethod('remove:child', view);
-  
+
         // decrement the index of views after this one
         this._updateIndices(view, false);
       }
-  
+
       return view;
     },
-  
+
     // check if the collection is empty
     isEmpty: function() {
       return !this.collection || this.collection.length === 0;
     },
-  
+
     // If empty, show the empty view
     checkEmpty: function() {
       if (this.isEmpty(this.collection)) {
         this.showEmptyView();
       }
     },
-  
+
     // You might need to override this if you've overridden attachHtml
     attachBuffer: function(collectionView, buffer) {
       collectionView.$el.append(buffer);
     },
-  
+
     // Create a fragment buffer from the currently buffered children
     _createBuffer: function() {
       var elBuffer = document.createDocumentFragment();
@@ -66289,7 +66289,7 @@ return jQuery;
       });
       return elBuffer;
     },
-  
+
     // Append the HTML to the collection's `el`.
     // Override this method to do something other
     // than `.append`.
@@ -66308,7 +66308,7 @@ return jQuery;
         }
       }
     },
-  
+
     // Internal method. Check whether we need to insert the view into
     // the correct position.
     _insertBefore: function(childView, index) {
@@ -66320,56 +66320,56 @@ return jQuery;
           return view._index === index + 1;
         });
       }
-  
+
       if (currentView) {
         currentView.$el.before(childView.el);
         return true;
       }
-  
+
       return false;
     },
-  
+
     // Internal method. Append a view to the end of the $el
     _insertAfter: function(childView) {
       this.$el.append(childView.el);
     },
-  
+
     // Internal method to set up the `children` object for
     // storing all of the child views
     _initChildViewStorage: function() {
       this.children = new Backbone.ChildViewContainer();
     },
-  
+
     // Handle cleanup and other destroying needs for the collection of views
     destroy: function() {
       if (this.isDestroyed) { return this; }
-  
+
       this.triggerMethod('before:destroy:collection');
       this.destroyChildren({checkEmpty: false});
       this.triggerMethod('destroy:collection');
-  
+
       return Marionette.View.prototype.destroy.apply(this, arguments);
     },
-  
+
     // Destroy the child views that this collection view
     // is holding on to, if any
     destroyChildren: function(options) {
       var destroyOptions = options || {};
       var shouldCheckEmpty = true;
       var childViews = this.children.map(_.identity);
-  
+
       if (!_.isUndefined(destroyOptions.checkEmpty)) {
         shouldCheckEmpty = destroyOptions.checkEmpty;
       }
-  
+
       this.children.each(this.removeChildView, this);
-  
+
       if (shouldCheckEmpty) {
         this.checkEmpty();
       }
       return childViews;
     },
-  
+
     // Return true if the given child should be shown
     // Return false otherwise
     // The filter will be passed (child, index, collection)
@@ -66381,50 +66381,50 @@ return jQuery;
       var filter = this.getOption('filter');
       return !_.isFunction(filter) || filter.call(this, child, index, this.collection);
     },
-  
+
     // Set up the child view event forwarding. Uses a "childview:"
     // prefix in front of all forwarded events.
     proxyChildEvents: function(view) {
       var prefix = this.getOption('childViewEventPrefix');
-  
+
       // Forward all child view events through the parent,
       // prepending "childview:" to the event name
       this.listenTo(view, 'all', function() {
         var args = _.toArray(arguments);
         var rootEvent = args[0];
         var childEvents = this.normalizeMethods(_.result(this, 'childEvents'));
-  
+
         args[0] = prefix + ':' + rootEvent;
         args.splice(1, 0, view);
-  
+
         // call collectionView childEvent if defined
         if (typeof childEvents !== 'undefined' && _.isFunction(childEvents[rootEvent])) {
           childEvents[rootEvent].apply(this, args.slice(1));
         }
-  
+
         this.triggerMethod.apply(this, args);
       });
     },
-  
+
     _getImmediateChildren: function() {
       return _.values(this.children._views);
     },
-  
+
     getViewComparator: function() {
       return this.getOption('viewComparator');
     }
   });
-  
+
   /* jshint maxstatements: 17, maxlen: 117 */
-  
+
   // Composite View
   // --------------
-  
+
   // Used for rendering a branch-leaf, hierarchical structure.
   // Extends directly from CollectionView and also renders an
   // a child view as `modelView`, for the top leaf
   Marionette.CompositeView = Marionette.CollectionView.extend({
-  
+
     // Setting up the inheritance chain which allows changes to
     // Marionette.CollectionView.prototype.constructor which allows overriding
     // option to pass '{sort: false}' to prevent the CompositeView from
@@ -66433,92 +66433,92 @@ return jQuery;
     constructor: function() {
       Marionette.CollectionView.apply(this, arguments);
     },
-  
+
     // Configured the initial events that the composite view
     // binds to. Override this method to prevent the initial
     // events, or to add your own initial events.
     _initialEvents: function() {
-  
+
       // Bind only after composite view is rendered to avoid adding child views
       // to nonexistent childViewContainer
-  
+
       if (this.collection) {
         this.listenTo(this.collection, 'add', this._onCollectionAdd);
         this.listenTo(this.collection, 'remove', this._onCollectionRemove);
         this.listenTo(this.collection, 'reset', this._renderChildren);
-  
+
         if (this.getOption('sort')) {
           this.listenTo(this.collection, 'sort', this._sortViews);
         }
       }
     },
-  
+
     // Retrieve the `childView` to be used when rendering each of
     // the items in the collection. The default is to return
     // `this.childView` or Marionette.CompositeView if no `childView`
     // has been defined
     getChildView: function(child) {
       var childView = this.getOption('childView') || this.constructor;
-  
+
       return childView;
     },
-  
+
     // Serialize the model for the view.
     // You can override the `serializeData` method in your own view
     // definition, to provide custom serialization for your view's data.
     serializeData: function() {
       var data = {};
-  
+
       if (this.model) {
         data = _.partial(this.serializeModel, this.model).apply(this, arguments);
       }
-  
+
       return data;
     },
-  
+
     // Renders the model and the collection.
     render: function() {
       this._ensureViewIsIntact();
       this._isRendering = true;
       this.resetChildViewContainer();
-  
+
       this.triggerMethod('before:render', this);
-  
+
       this._renderTemplate();
       this._renderChildren();
-  
+
       this._isRendering = false;
       this.isRendered = true;
       this.triggerMethod('render', this);
       return this;
     },
-  
+
     _renderChildren: function() {
       if (this.isRendered || this._isRendering) {
         Marionette.CollectionView.prototype._renderChildren.call(this);
       }
     },
-  
+
     // Render the root template that the children
     // views are appended to
     _renderTemplate: function() {
       var data = {};
       data = this.serializeData();
       data = this.mixinTemplateHelpers(data);
-  
+
       this.triggerMethod('before:render:template');
-  
+
       var template = this.getTemplate();
       var html = Marionette.Renderer.render(template, data, this);
       this.attachElContent(html);
-  
+
       // the ui bindings is done here and not at the end of render since they
       // will not be available until after the model is rendered, but should be
       // available before the collection is rendered.
       this.bindUIElements();
       this.triggerMethod('render:template');
     },
-  
+
     // Attaches the content of the root.
     // This method can be overridden to optimize rendering,
     // or to render in a non standard way.
@@ -66533,16 +66533,16 @@ return jQuery;
     // ```
     attachElContent: function(html) {
       this.$el.html(html);
-  
+
       return this;
     },
-  
+
     // You might need to override this if you've overridden attachHtml
     attachBuffer: function(compositeView, buffer) {
       var $container = this.getChildViewContainer(compositeView);
       $container.append(buffer);
     },
-  
+
     // Internal method. Append a view to the end of the $el.
     // Overidden from CollectionView to ensure view is appended to
     // childViewContainer
@@ -66550,7 +66550,7 @@ return jQuery;
       var $container = this.getChildViewContainer(this, childView);
       $container.append(childView.el);
     },
-  
+
     // Internal method. Append reordered childView'.
     // Overidden from CollectionView to ensure reordered views
     // are appended to childViewContainer
@@ -66558,41 +66558,41 @@ return jQuery;
       var $container = this.getChildViewContainer(this);
       $container.append(children);
     },
-  
+
     // Internal method to ensure an `$childViewContainer` exists, for the
     // `attachHtml` method to use.
     getChildViewContainer: function(containerView, childView) {
       if (!!containerView.$childViewContainer) {
         return containerView.$childViewContainer;
       }
-  
+
       var container;
       var childViewContainer = Marionette.getOption(containerView, 'childViewContainer');
       if (childViewContainer) {
-  
+
         var selector = Marionette._getValue(childViewContainer, containerView);
-  
+
         if (selector.charAt(0) === '@' && containerView.ui) {
           container = containerView.ui[selector.substr(4)];
         } else {
           container = containerView.$(selector);
         }
-  
+
         if (container.length <= 0) {
           throw new Marionette.Error({
             name: 'ChildViewContainerMissingError',
             message: 'The specified "childViewContainer" was not found: ' + containerView.childViewContainer
           });
         }
-  
+
       } else {
         container = containerView.$el;
       }
-  
+
       containerView.$childViewContainer = container;
       return container;
     },
-  
+
     // Internal method to reset the `$childViewContainer` on render
     resetChildViewContainer: function() {
       if (this.$childViewContainer) {
@@ -66600,10 +66600,10 @@ return jQuery;
       }
     }
   });
-  
+
   // Layout View
   // -----------
-  
+
   // Used for managing application layoutViews, nested layoutViews and
   // multiple regions within an application or sub-application.
   //
@@ -66612,33 +66612,33 @@ return jQuery;
   // Used for composite view management and sub-application areas.
   Marionette.LayoutView = Marionette.ItemView.extend({
     regionClass: Marionette.Region,
-  
+
     options: {
       destroyImmediate: false
     },
-  
+
     // used as the prefix for child view events
     // that are forwarded through the layoutview
     childViewEventPrefix: 'childview',
-  
+
     // Ensure the regions are available when the `initialize` method
     // is called.
     constructor: function(options) {
       options = options || {};
-  
+
       this._firstRender = true;
       this._initializeRegions(options);
-  
+
       Marionette.ItemView.call(this, options);
     },
-  
+
     // LayoutView's render will use the existing region objects the
     // first time it is called. Subsequent calls will destroy the
     // views that the regions are showing and then reset the `el`
     // for the regions to the newly rendered DOM elements.
     render: function() {
       this._ensureViewIsIntact();
-  
+
       if (this._firstRender) {
         // if this is the first render, don't do anything to
         // reset the regions
@@ -66648,10 +66648,10 @@ return jQuery;
         // re-initialize the `el` for each region
         this._reInitializeRegions();
       }
-  
+
       return Marionette.ItemView.prototype.render.apply(this, arguments);
     },
-  
+
     // Handle destroying regions, and then destroy the view itself.
     destroy: function() {
       if (this.isDestroyed) { return this; }
@@ -66663,117 +66663,117 @@ return jQuery;
       this.regionManager.destroy();
       return Marionette.ItemView.prototype.destroy.apply(this, arguments);
     },
-  
+
     showChildView: function(regionName, view) {
       return this.getRegion(regionName).show(view);
     },
-  
+
     getChildView: function(regionName) {
       return this.getRegion(regionName).currentView;
     },
-  
+
     // Add a single region, by name, to the layoutView
     addRegion: function(name, definition) {
       var regions = {};
       regions[name] = definition;
       return this._buildRegions(regions)[name];
     },
-  
+
     // Add multiple regions as a {name: definition, name2: def2} object literal
     addRegions: function(regions) {
       this.regions = _.extend({}, this.regions, regions);
       return this._buildRegions(regions);
     },
-  
+
     // Remove a single region from the LayoutView, by name
     removeRegion: function(name) {
       delete this.regions[name];
       return this.regionManager.removeRegion(name);
     },
-  
+
     // Provides alternative access to regions
     // Accepts the region name
     // getRegion('main')
     getRegion: function(region) {
       return this.regionManager.get(region);
     },
-  
+
     // Get all regions
     getRegions: function() {
       return this.regionManager.getRegions();
     },
-  
+
     // internal method to build regions
     _buildRegions: function(regions) {
       var defaults = {
         regionClass: this.getOption('regionClass'),
         parentEl: _.partial(_.result, this, 'el')
       };
-  
+
       return this.regionManager.addRegions(regions, defaults);
     },
-  
+
     // Internal method to initialize the regions that have been defined in a
     // `regions` attribute on this layoutView.
     _initializeRegions: function(options) {
       var regions;
       this._initRegionManager();
-  
+
       regions = Marionette._getValue(this.regions, this, [options]) || {};
-  
+
       // Enable users to define `regions` as instance options.
       var regionOptions = this.getOption.call(options, 'regions');
-  
+
       // enable region options to be a function
       regionOptions = Marionette._getValue(regionOptions, this, [options]);
-  
+
       _.extend(regions, regionOptions);
-  
+
       // Normalize region selectors hash to allow
       // a user to use the @ui. syntax.
       regions = this.normalizeUIValues(regions, ['selector', 'el']);
-  
+
       this.addRegions(regions);
     },
-  
+
     // Internal method to re-initialize all of the regions by updating the `el` that
     // they point to
     _reInitializeRegions: function() {
       this.regionManager.invoke('reset');
     },
-  
+
     // Enable easy overriding of the default `RegionManager`
     // for customized region interactions and business specific
     // view logic for better control over single regions.
     getRegionManager: function() {
       return new Marionette.RegionManager();
     },
-  
+
     // Internal method to initialize the region manager
     // and all regions in it
     _initRegionManager: function() {
       this.regionManager = this.getRegionManager();
       this.regionManager._parent = this;
-  
+
       this.listenTo(this.regionManager, 'before:add:region', function(name) {
         this.triggerMethod('before:add:region', name);
       });
-  
+
       this.listenTo(this.regionManager, 'add:region', function(name, region) {
         this[name] = region;
         this.triggerMethod('add:region', name, region);
       });
-  
+
       this.listenTo(this.regionManager, 'before:remove:region', function(name) {
         this.triggerMethod('before:remove:region', name);
       });
-  
+
       this.listenTo(this.regionManager, 'remove:region', function(name, region) {
         delete this[name];
         this.triggerMethod('remove:region', name, region);
       });
     },
-  
+
     _getImmediateChildren: function() {
       return _.chain(this.regionManager.getRegions())
         .pluck('currentView')
@@ -66781,16 +66781,16 @@ return jQuery;
         .value();
     }
   });
-  
+
 
   // Behavior
   // --------
-  
+
   // A Behavior is an isolated set of DOM /
   // user interactions that can be mixed into any View.
   // Behaviors allow you to blackbox View specific interactions
   // into portable logical chunks, keeping your views simple and your code DRY.
-  
+
   Marionette.Behavior = Marionette.Object.extend({
     constructor: function(options, view) {
       // Setup reference to the view.
@@ -66806,105 +66806,105 @@ return jQuery;
       // defined in the parent view as well as those
       // defined in the given behavior.
       this.ui = _.extend({}, _.result(view, 'ui'), _.result(this, 'ui'));
-  
+
       Marionette.Object.apply(this, arguments);
     },
-  
+
     // proxy behavior $ method to the view
     // this is useful for doing jquery DOM lookups
     // scoped to behaviors view.
     $: function() {
       return this.view.$.apply(this.view, arguments);
     },
-  
+
     // Stops the behavior from listening to events.
     // Overrides Object#destroy to prevent additional events from being triggered.
     destroy: function() {
       this.stopListening();
-  
+
       return this;
     },
-  
+
     proxyViewProperties: function(view) {
       this.$el = view.$el;
       this.el = view.el;
     }
   });
-  
+
   /* jshint maxlen: 143 */
   // Behaviors
   // ---------
-  
+
   // Behaviors is a utility class that takes care of
   // gluing your behavior instances to their given View.
   // The most important part of this class is that you
   // **MUST** override the class level behaviorsLookup
   // method for things to work properly.
-  
+
   Marionette.Behaviors = (function(Marionette, _) {
     // Borrow event splitter from Backbone
     var delegateEventSplitter = /^(\S+)\s*(.*)$/;
-  
+
     function Behaviors(view, behaviors) {
-  
+
       if (!_.isObject(view.behaviors)) {
         return {};
       }
-  
+
       // Behaviors defined on a view can be a flat object literal
       // or it can be a function that returns an object.
       behaviors = Behaviors.parseBehaviors(view, behaviors || _.result(view, 'behaviors'));
-  
+
       // Wraps several of the view's methods
       // calling the methods first on each behavior
       // and then eventually calling the method on the view.
       Behaviors.wrap(view, behaviors, _.keys(methods));
       return behaviors;
     }
-  
+
     var methods = {
       behaviorTriggers: function(behaviorTriggers, behaviors) {
         var triggerBuilder = new BehaviorTriggersBuilder(this, behaviors);
         return triggerBuilder.buildBehaviorTriggers();
       },
-  
+
       behaviorEvents: function(behaviorEvents, behaviors) {
         var _behaviorsEvents = {};
-  
+
         _.each(behaviors, function(b, i) {
           var _events = {};
           var behaviorEvents = _.clone(_.result(b, 'events')) || {};
-  
+
           // Normalize behavior events hash to allow
           // a user to use the @ui. syntax.
           behaviorEvents = Marionette.normalizeUIKeys(behaviorEvents, getBehaviorsUI(b));
-  
+
           var j = 0;
           _.each(behaviorEvents, function(behaviour, key) {
             var match     = key.match(delegateEventSplitter);
-  
+
             // Set event name to be namespaced using the view cid,
             // the behavior index, and the behavior event index
             // to generate a non colliding event namespace
             // http://api.jquery.com/event.namespace/
             var eventName = match[1] + '.' + [this.cid, i, j++, ' '].join('');
             var selector  = match[2];
-  
+
             var eventKey  = eventName + selector;
             var handler   = _.isFunction(behaviour) ? behaviour : b[behaviour];
-  
+
             _events[eventKey] = _.bind(handler, b);
           }, this);
-  
+
           _behaviorsEvents = _.extend(_behaviorsEvents, _events);
         }, this);
-  
+
         return _behaviorsEvents;
       }
     };
-  
+
     _.extend(Behaviors, {
-  
+
       // Placeholder method to be extended by the user.
       // The method should define the object that stores the behaviors.
       // i.e.
@@ -66920,7 +66920,7 @@ return jQuery;
           url: 'marionette.behaviors.html#behaviorslookup'
         });
       },
-  
+
       // Takes care of getting the behavior class
       // given options and a key.
       // If a user passes in options.behaviorClass
@@ -66930,24 +66930,24 @@ return jQuery;
         if (options.behaviorClass) {
           return options.behaviorClass;
         }
-  
+
         // Get behavior class can be either a flat object or a method
         return Marionette._getValue(Behaviors.behaviorsLookup, this, [options, key])[key];
       },
-  
+
       // Iterate over the behaviors object, for each behavior
       // instantiate it and get its grouped behaviors.
       parseBehaviors: function(view, behaviors) {
         return _.chain(behaviors).map(function(options, key) {
           var BehaviorClass = Behaviors.getBehaviorClass(options, key);
-  
+
           var behavior = new BehaviorClass(options, view);
           var nestedBehaviors = Behaviors.parseBehaviors(view, _.result(behavior, 'behaviors'));
-  
+
           return [behavior].concat(nestedBehaviors);
         }).flatten().value();
       },
-  
+
       // Wrap view internal methods so that they delegate to behaviors. For example,
       // `onDestroy` should trigger destroy on all of the behaviors and then destroy itself.
       // i.e.
@@ -66959,7 +66959,7 @@ return jQuery;
         });
       }
     });
-  
+
     // Class to build handlers for `triggers` on behaviors
     // for views
     function BehaviorTriggersBuilder(view, behaviors) {
@@ -66967,23 +66967,23 @@ return jQuery;
       this._behaviors = behaviors;
       this._triggers  = {};
     }
-  
+
     _.extend(BehaviorTriggersBuilder.prototype, {
       // Main method to build the triggers hash with event keys and handlers
       buildBehaviorTriggers: function() {
         _.each(this._behaviors, this._buildTriggerHandlersForBehavior, this);
         return this._triggers;
       },
-  
+
       // Internal method to build all trigger handlers for a given behavior
       _buildTriggerHandlersForBehavior: function(behavior, i) {
         var triggersHash = _.clone(_.result(behavior, 'triggers')) || {};
-  
+
         triggersHash = Marionette.normalizeUIKeys(triggersHash, getBehaviorsUI(behavior));
-  
+
         _.each(triggersHash, _.bind(this._setHandlerForBehavior, this, behavior, i));
       },
-  
+
       // Internal method to create and assign the trigger handler for a given
       // behavior
       _setHandlerForBehavior: function(behavior, i, eventName, trigger) {
@@ -66991,23 +66991,23 @@ return jQuery;
         var triggerKey = trigger.replace(/^\S+/, function(triggerName) {
           return triggerName + '.' + 'behaviortriggers' + i;
         });
-  
+
         this._triggers[triggerKey] = this._view._buildViewTrigger(eventName);
       }
     });
-  
+
     function getBehaviorsUI(behavior) {
       return behavior._uiBindings || behavior.ui;
     }
-  
+
     return Behaviors;
-  
+
   })(Marionette, _);
-  
+
 
   // App Router
   // ----------
-  
+
   // Reduce the boilerplate code of handling route events
   // and then calling a single method on another object.
   // Have your routers configured to call the method on
@@ -67022,27 +67022,27 @@ return jQuery;
   // just one giant router and controller.
   //
   // You can also add standard routes to an AppRouter.
-  
+
   Marionette.AppRouter = Backbone.Router.extend({
-  
+
     constructor: function(options) {
       this.options = options || {};
-  
+
       Backbone.Router.apply(this, arguments);
-  
+
       var appRoutes = this.getOption('appRoutes');
       var controller = this._getController();
       this.processAppRoutes(controller, appRoutes);
       this.on('route', this._processOnRoute, this);
     },
-  
+
     // Similar to route method on a Backbone Router but
     // method is called on the controller
     appRoute: function(route, methodName) {
       var controller = this._getController();
       this._addAppRoute(controller, route, methodName);
     },
-  
+
     // process the route event and trigger the onRoute
     // method call, if it exists
     _processOnRoute: function(routeName, routeArgs) {
@@ -67053,49 +67053,49 @@ return jQuery;
         this.onRoute(routeName, routePath, routeArgs);
       }
     },
-  
+
     // Internal method to process the `appRoutes` for the
     // router, and turn them in to routes that trigger the
     // specified method on the specified `controller`.
     processAppRoutes: function(controller, appRoutes) {
       if (!appRoutes) { return; }
-  
+
       var routeNames = _.keys(appRoutes).reverse(); // Backbone requires reverted order of routes
-  
+
       _.each(routeNames, function(route) {
         this._addAppRoute(controller, route, appRoutes[route]);
       }, this);
     },
-  
+
     _getController: function() {
       return this.getOption('controller');
     },
-  
+
     _addAppRoute: function(controller, route, methodName) {
       var method = controller[methodName];
-  
+
       if (!method) {
         throw new Marionette.Error('Method "' + methodName + '" was not found on the controller');
       }
-  
+
       this.route(route, methodName, _.bind(method, controller));
     },
-  
+
     mergeOptions: Marionette.mergeOptions,
-  
+
     // Proxy `getOption` to enable getting options from this or this.options by name.
     getOption: Marionette.proxyGetOption,
-  
+
     triggerMethod: Marionette.triggerMethod,
-  
+
     bindEntityEvents: Marionette.proxyBindEntityEvents,
-  
+
     unbindEntityEvents: Marionette.proxyUnbindEntityEvents
   });
-  
+
   // Application
   // -----------
-  
+
   // Contain and manage the composite application as a whole.
   // Stores and starts up `Region` objects, includes an
   // event aggregator as `app.vent`
@@ -67108,24 +67108,24 @@ return jQuery;
       this._initChannel();
       Marionette.Object.call(this, options);
     },
-  
+
     // Command execution, facilitated by Backbone.Wreqr.Commands
     execute: function() {
       this.commands.execute.apply(this.commands, arguments);
     },
-  
+
     // Request/response, facilitated by Backbone.Wreqr.RequestResponse
     request: function() {
       return this.reqres.request.apply(this.reqres, arguments);
     },
-  
+
     // Add an initializer that is either run at when the `start`
     // method is called, or run immediately if added after `start`
     // has already been called.
     addInitializer: function(initializer) {
       this._initCallbacks.add(initializer);
     },
-  
+
     // kick off all of the application's processes.
     // initializes all of the regions that have been added
     // to the app, and runs all of the initializer functions
@@ -67134,7 +67134,7 @@ return jQuery;
       this._initCallbacks.run(options, this);
       this.triggerMethod('start', options);
     },
-  
+
     // Add regions to your app.
     // Accepts a hash of named strings or Region objects
     // addRegions({something: "#someRegion"})
@@ -67142,98 +67142,98 @@ return jQuery;
     addRegions: function(regions) {
       return this._regionManager.addRegions(regions);
     },
-  
+
     // Empty all regions in the app, without removing them
     emptyRegions: function() {
       return this._regionManager.emptyRegions();
     },
-  
+
     // Removes a region from your app, by name
     // Accepts the regions name
     // removeRegion('myRegion')
     removeRegion: function(region) {
       return this._regionManager.removeRegion(region);
     },
-  
+
     // Provides alternative access to regions
     // Accepts the region name
     // getRegion('main')
     getRegion: function(region) {
       return this._regionManager.get(region);
     },
-  
+
     // Get all the regions from the region manager
     getRegions: function() {
       return this._regionManager.getRegions();
     },
-  
+
     // Create a module, attached to the application
     module: function(moduleNames, moduleDefinition) {
-  
+
       // Overwrite the module class if the user specifies one
       var ModuleClass = Marionette.Module.getClass(moduleDefinition);
-  
+
       var args = _.toArray(arguments);
       args.unshift(this);
-  
+
       // see the Marionette.Module object for more information
       return ModuleClass.create.apply(ModuleClass, args);
     },
-  
+
     // Enable easy overriding of the default `RegionManager`
     // for customized region interactions and business-specific
     // view logic for better control over single regions.
     getRegionManager: function() {
       return new Marionette.RegionManager();
     },
-  
+
     // Internal method to initialize the regions that have been defined in a
     // `regions` attribute on the application instance
     _initializeRegions: function(options) {
       var regions = _.isFunction(this.regions) ? this.regions(options) : this.regions || {};
-  
+
       this._initRegionManager();
-  
+
       // Enable users to define `regions` in instance options.
       var optionRegions = Marionette.getOption(options, 'regions');
-  
+
       // Enable region options to be a function
       if (_.isFunction(optionRegions)) {
         optionRegions = optionRegions.call(this, options);
       }
-  
+
       // Overwrite current regions with those passed in options
       _.extend(regions, optionRegions);
-  
+
       this.addRegions(regions);
-  
+
       return this;
     },
-  
+
     // Internal method to set up the region manager
     _initRegionManager: function() {
       this._regionManager = this.getRegionManager();
       this._regionManager._parent = this;
-  
+
       this.listenTo(this._regionManager, 'before:add:region', function() {
         Marionette._triggerMethod(this, 'before:add:region', arguments);
       });
-  
+
       this.listenTo(this._regionManager, 'add:region', function(name, region) {
         this[name] = region;
         Marionette._triggerMethod(this, 'add:region', arguments);
       });
-  
+
       this.listenTo(this._regionManager, 'before:remove:region', function() {
         Marionette._triggerMethod(this, 'before:remove:region', arguments);
       });
-  
+
       this.listenTo(this._regionManager, 'remove:region', function(name) {
         delete this[name];
         Marionette._triggerMethod(this, 'remove:region', arguments);
       });
     },
-  
+
     // Internal method to setup the Wreqr.radio channel
     _initChannel: function() {
       this.channelName = _.result(this, 'channelName') || 'global';
@@ -67243,12 +67243,12 @@ return jQuery;
       this.reqres = _.result(this, 'reqres') || this.channel.reqres;
     }
   });
-  
+
   /* jshint maxparams: 9 */
-  
+
   // Module
   // ------
-  
+
   // A simple module system, used to create privacy and encapsulation in
   // Marionette applications
   Marionette.Module = function(moduleName, app, options) {
@@ -67257,52 +67257,52 @@ return jQuery;
     // Allow for a user to overide the initialize
     // for a given module instance.
     this.initialize = options.initialize || this.initialize;
-  
+
     // Set up an internal store for sub-modules.
     this.submodules = {};
-  
+
     this._setupInitializersAndFinalizers();
-  
+
     // Set an internal reference to the app
     // within a module.
     this.app = app;
-  
+
     if (_.isFunction(this.initialize)) {
       this.initialize(moduleName, app, this.options);
     }
   };
-  
+
   Marionette.Module.extend = Marionette.extend;
-  
+
   // Extend the Module prototype with events / listenTo, so that the module
   // can be used as an event aggregator or pub/sub.
   _.extend(Marionette.Module.prototype, Backbone.Events, {
-  
+
     // By default modules start with their parents.
     startWithParent: true,
-  
+
     // Initialize is an empty function by default. Override it with your own
     // initialization logic when extending Marionette.Module.
     initialize: function() {},
-  
+
     // Initializer for a specific module. Initializers are run when the
     // module's `start` method is called.
     addInitializer: function(callback) {
       this._initializerCallbacks.add(callback);
     },
-  
+
     // Finalizers are run when a module is stopped. They are used to teardown
     // and finalize any variables, references, events and other code that the
     // module had set up.
     addFinalizer: function(callback) {
       this._finalizerCallbacks.add(callback);
     },
-  
+
     // Start the module, and run all of its initializers
     start: function(options) {
       // Prevent re-starting a module that is already started
       if (this._isInitialized) { return; }
-  
+
       // start the sub-modules (depth-first hierarchy)
       _.each(this.submodules, function(mod) {
         // check to see if we should start the sub-module with this parent
@@ -67310,51 +67310,51 @@ return jQuery;
           mod.start(options);
         }
       });
-  
+
       // run the callbacks to "start" the current module
       this.triggerMethod('before:start', options);
-  
+
       this._initializerCallbacks.run(options, this);
       this._isInitialized = true;
-  
+
       this.triggerMethod('start', options);
     },
-  
+
     // Stop this module by running its finalizers and then stop all of
     // the sub-modules for this module
     stop: function() {
       // if we are not initialized, don't bother finalizing
       if (!this._isInitialized) { return; }
       this._isInitialized = false;
-  
+
       this.triggerMethod('before:stop');
-  
+
       // stop the sub-modules; depth-first, to make sure the
       // sub-modules are stopped / finalized before parents
       _.invoke(this.submodules, 'stop');
-  
+
       // run the finalizers
       this._finalizerCallbacks.run(undefined, this);
-  
+
       // reset the initializers and finalizers
       this._initializerCallbacks.reset();
       this._finalizerCallbacks.reset();
-  
+
       this.triggerMethod('stop');
     },
-  
+
     // Configure the module with a definition function and any custom args
     // that are to be passed in to the definition function
     addDefinition: function(moduleDefinition, customArgs) {
       this._runModuleDefinition(moduleDefinition, customArgs);
     },
-  
+
     // Internal method: run the module definition function with the correct
     // arguments
     _runModuleDefinition: function(definition, customArgs) {
       // If there is no definition short circut the method.
       if (!definition) { return; }
-  
+
       // build the correct list of arguments for the module definition
       var args = _.flatten([
         this,
@@ -67364,10 +67364,10 @@ return jQuery;
         Backbone.$, _,
         customArgs
       ]);
-  
+
       definition.apply(this, args);
     },
-  
+
     // Internal method: set up new copies of initializers and finalizers.
     // Calling this method will wipe out all existing initializers and
     // finalizers.
@@ -67375,51 +67375,51 @@ return jQuery;
       this._initializerCallbacks = new Marionette.Callbacks();
       this._finalizerCallbacks = new Marionette.Callbacks();
     },
-  
+
     // import the `triggerMethod` to trigger events with corresponding
     // methods if the method exists
     triggerMethod: Marionette.triggerMethod
   });
-  
+
   // Class methods to create modules
   _.extend(Marionette.Module, {
-  
+
     // Create a module, hanging off the app parameter as the parent object.
     create: function(app, moduleNames, moduleDefinition) {
       var module = app;
-  
+
       // get the custom args passed in after the module definition and
       // get rid of the module name and definition function
       var customArgs = _.drop(arguments, 3);
-  
+
       // Split the module names and get the number of submodules.
       // i.e. an example module name of `Doge.Wow.Amaze` would
       // then have the potential for 3 module definitions.
       moduleNames = moduleNames.split('.');
       var length = moduleNames.length;
-  
+
       // store the module definition for the last module in the chain
       var moduleDefinitions = [];
       moduleDefinitions[length - 1] = moduleDefinition;
-  
+
       // Loop through all the parts of the module definition
       _.each(moduleNames, function(moduleName, i) {
         var parentModule = module;
         module = this._getModule(parentModule, moduleName, app, moduleDefinition);
         this._addModuleDefinition(parentModule, module, moduleDefinitions[i], customArgs);
       }, this);
-  
+
       // Return the last module in the definition chain
       return module;
     },
-  
+
     _getModule: function(parentModule, moduleName, app, def, args) {
       var options = _.extend({}, def);
       var ModuleClass = this.getClass(def);
-  
+
       // Get an existing module of this name if we have one
       var module = parentModule[moduleName];
-  
+
       if (!module) {
         // Create a new module if we don't have one
         module = new ModuleClass(moduleName, app, options);
@@ -67427,10 +67427,10 @@ return jQuery;
         // store the module on the parent
         parentModule.submodules[moduleName] = module;
       }
-  
+
       return module;
     },
-  
+
     // ## Module Classes
     //
     // Module classes can be used as an alternative to the define pattern.
@@ -67439,71 +67439,71 @@ return jQuery;
     // This allows module lifecyle events like `onStart` and `onStop` to be called directly.
     getClass: function(moduleDefinition) {
       var ModuleClass = Marionette.Module;
-  
+
       if (!moduleDefinition) {
         return ModuleClass;
       }
-  
+
       // If all of the module's functionality is defined inside its class,
       // then the class can be passed in directly. `MyApp.module("Foo", FooModule)`.
       if (moduleDefinition.prototype instanceof ModuleClass) {
         return moduleDefinition;
       }
-  
+
       return moduleDefinition.moduleClass || ModuleClass;
     },
-  
+
     // Add the module definition and add a startWithParent initializer function.
     // This is complicated because module definitions are heavily overloaded
     // and support an anonymous function, module class, or options object
     _addModuleDefinition: function(parentModule, module, def, args) {
       var fn = this._getDefine(def);
       var startWithParent = this._getStartWithParent(def, module);
-  
+
       if (fn) {
         module.addDefinition(fn, args);
       }
-  
+
       this._addStartWithParent(parentModule, module, startWithParent);
     },
-  
+
     _getStartWithParent: function(def, module) {
       var swp;
-  
+
       if (_.isFunction(def) && (def.prototype instanceof Marionette.Module)) {
         swp = module.constructor.prototype.startWithParent;
         return _.isUndefined(swp) ? true : swp;
       }
-  
+
       if (_.isObject(def)) {
         swp = def.startWithParent;
         return _.isUndefined(swp) ? true : swp;
       }
-  
+
       return true;
     },
-  
+
     _getDefine: function(def) {
       if (_.isFunction(def) && !(def.prototype instanceof Marionette.Module)) {
         return def;
       }
-  
+
       if (_.isObject(def)) {
         return def.define;
       }
-  
+
       return null;
     },
-  
+
     _addStartWithParent: function(parentModule, module, startWithParent) {
       module.startWithParent = module.startWithParent && startWithParent;
-  
+
       if (!module.startWithParent || !!module.startWithParentIsConfigured) {
         return;
       }
-  
+
       module.startWithParentIsConfigured = true;
-  
+
       parentModule.addInitializer(function(options) {
         if (module.startWithParent) {
           module.start(options);
@@ -67511,7 +67511,7 @@ return jQuery;
       });
     }
   });
-  
+
 
   return Marionette;
 }));
@@ -67519,15 +67519,15 @@ return jQuery;
 /**
  * Swiper 3.3.1
  * Most modern mobile touch slider and framework with hardware accelerated transitions
- * 
+ *
  * http://www.idangero.us/swiper/
- * 
+ *
  * Copyright 2016, Vladimir Kharlampidi
  * The iDangero.us
  * http://www.idangero.us/
- * 
+ *
  * Licensed under MIT
- * 
+ *
  * Released on: February 7, 2016
  */
 (function () {
@@ -72004,7 +72004,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
             return -1;
         }
     }
-    
+
     // add lastIndexOf to non ECMA-262 standard compliant browsers
     if (!Array.prototype.lastIndexOf) {
         Array.prototype.lastIndexOf = function(searchElement /*, fromIndex*/) {
@@ -72035,11 +72035,11 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
             return -1;
         };
     }
-    
+
     // Add string trim for IE8.
     if (typeof String.prototype.trim !== 'function') {
         String.prototype.trim = function() {
-            return this.replace(/^\s+|\s+$/g, ''); 
+            return this.replace(/^\s+|\s+$/g, '');
         }
     }
 
@@ -72055,7 +72055,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
 
 
 
-    // Export the i18next object for **CommonJS**. 
+    // Export the i18next object for **CommonJS**.
     // If we're not in CommonJS, add `i18n` to the
     // global object or to jquery.
     if (typeof module !== 'undefined' && module.exports) {
@@ -72064,14 +72064,14 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
         if ($) {
             $.i18n = $.i18n || i18n;
         }
-        
+
         if (root.i18n) {
         	conflictReference = root.i18n;
         }
         root.i18n = i18n;
     }
     sync = {
-    
+
         load: function(lngs, options, cb) {
             if (options.useLocalStorage) {
                 sync._loadLocal(lngs, options, function(err, store) {
@@ -72079,12 +72079,12 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                     for (var i = 0, len = lngs.length; i < len; i++) {
                         if (!store[lngs[i]]) missingLngs.push(lngs[i]);
                     }
-    
+
                     if (missingLngs.length > 0) {
                         sync._fetch(missingLngs, options, function(err, fetched) {
                             f.extend(store, fetched);
                             sync._storeLocal(fetched);
-    
+
                             cb(err, store);
                         });
                     } else {
@@ -72097,32 +72097,32 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                 });
             }
         },
-    
+
         _loadLocal: function(lngs, options, cb) {
             var store = {}
               , nowMS = new Date().getTime();
-    
+
             if(window.localStorage) {
-    
+
                 var todo = lngs.length;
-    
+
                 f.each(lngs, function(key, lng) {
                     var local = f.localStorage.getItem('res_' + lng);
-    
+
                     if (local) {
                         local = JSON.parse(local);
-    
+
                         if (local.i18nStamp && local.i18nStamp + options.localStorageExpirationTime > nowMS) {
                             store[lng] = local;
                         }
                     }
-    
+
                     todo--; // wait for all done befor callback
                     if (todo === 0) cb(null, store);
                 });
             }
         },
-    
+
         _storeLocal: function(store) {
             if(window.localStorage) {
                 for (var m in store) {
@@ -72132,19 +72132,19 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
             }
             return;
         },
-    
+
         _fetch: function(lngs, options, cb) {
             var ns = options.ns
               , store = {};
-            
+
             if (!options.dynamicLoad) {
                 var todo = ns.namespaces.length * lngs.length
                   , errors;
-    
+
                 // load each file individual
                 f.each(ns.namespaces, function(nsIndex, nsValue) {
                     f.each(lngs, function(lngIndex, lngValue) {
-                        
+
                         // Call this once our translation has returned.
                         var loadComplete = function(err, data) {
                             if (err) {
@@ -72153,11 +72153,11 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                             }
                             store[lngValue] = store[lngValue] || {};
                             store[lngValue][nsValue] = data;
-    
+
                             todo--; // wait for all done befor callback
                             if (todo === 0) cb(errors, store);
                         };
-                        
+
                         if(typeof options.customLoad == 'function'){
                             // Use the specified custom callback.
                             options.customLoad(lngValue, nsValue, options, loadComplete);
@@ -72172,7 +72172,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                 var loadComplete = function(err, data) {
                     cb(err, data);
                 };
-    
+
                 if(typeof options.customLoad == 'function'){
                     // Use the specified custom callback.
                     options.customLoad(lngs, ns.namespaces, options, loadComplete);
@@ -72194,10 +72194,10 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                         async : options.getAsync,
                         timeout: options.ajaxTimeout
                     });
-                }    
+                }
             }
         },
-    
+
         _fetchOne: function(lng, ns, options, done) {
             var url = applyReplacement(options.resGetPath, { lng: lng, ns: ns });
             f.ajax({
@@ -72217,7 +72217,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                         var theStatus = status ? status : ((xhr && xhr.status) ? xhr.status : null);
                         f.log(theStatus + ' when loading ' + url);
                     }
-                    
+
                     done(error, {});
                 },
                 dataType: "json",
@@ -72225,13 +72225,13 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                 timeout: options.ajaxTimeout
             });
         },
-    
+
         postMissing: function(lng, ns, key, defaultValue, lngs) {
             var payload = {};
             payload[key] = defaultValue;
-    
+
             var urls = [];
-    
+
             if (o.sendMissingTo === 'fallback' && o.fallbackLng[0] !== false) {
                 for (var i = 0; i < o.fallbackLng.length; i++) {
                     urls.push({lng: o.fallbackLng[i], url: applyReplacement(o.resPostPath, { lng: o.fallbackLng[i], ns: ns })});
@@ -72243,7 +72243,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                     urls.push({lng: lngs[i], url: applyReplacement(o.resPostPath, { lng: lngs[i], ns: ns })});
                 }
             }
-    
+
             for (var y = 0, len = urls.length; y < len; y++) {
                 var item = urls[y];
                 f.ajax({
@@ -72252,7 +72252,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                     data: payload,
                     success: function(data, status, xhr) {
                         f.log('posted missing key \'' + key + '\' to: ' + item.url);
-    
+
                         // add key to resStore
                         var keys = key.split('.');
                         var x = 0;
@@ -72275,7 +72275,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                 });
             }
         },
-    
+
         reload: reload
     };
     // defaults
@@ -72301,22 +72301,22 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
         keyseparator: '.',
         selectorAttr: 'data-i18n',
         debug: false,
-    
+
         resGetPath: 'locales/__lng__/__ns__.json',
         resPostPath: 'locales/add/__lng__/__ns__',
-    
+
         getAsync: true,
         postAsync: true,
-    
+
         resStore: undefined,
         useLocalStorage: false,
         localStorageExpirationTime: 7*24*60*60*1000,
-    
+
         dynamicLoad: false,
         sendMissing: false,
         sendMissingTo: 'fallback', // current | all
         sendType: 'POST',
-    
+
         interpolationPrefix: '__',
         interpolationSuffix: '__',
         defaultVariables: false,
@@ -72328,7 +72328,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
         escapeInterpolation: false,
         indefiniteSuffix: '_indefinite',
         indefiniteNotFound: ['indefinite_not_found', Math.random()].join(''),
-    
+
         setJqueryExt: true,
         defaultValueFromContent: true,
         useDataAttrOptions: false,
@@ -72336,24 +72336,24 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
         useCookie: true,
         cookieName: 'i18next',
         cookieDomain: undefined,
-    
+
         objectTreeKeyHandler: undefined,
         postProcess: undefined,
         parseMissingKey: undefined,
         missingKeyHandler: sync.postMissing,
         ajaxTimeout: 0,
-    
+
         shortcutFunction: 'sprintf' // or: defaultValue
     };
     function _extend(target, source) {
         if (!source || typeof source === 'function') {
             return target;
         }
-    
+
         for (var attr in source) { target[attr] = source[attr]; }
         return target;
     }
-    
+
     function _deepExtend(target, source) {
         for (var prop in source)
             if (prop in target)
@@ -72362,12 +72362,12 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                 target[prop] = source[prop];
         return target;
     }
-    
+
     function _each(object, callback, args) {
         var name, i = 0,
             length = object.length,
             isObj = length === undefined || Object.prototype.toString.apply(object) !== '[object Array]' || typeof object === "function";
-    
+
         if (args) {
             if (isObj) {
                 for (name in object) {
@@ -72382,7 +72382,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                     }
                 }
             }
-    
+
         // A special, fast, case for the most common use of each
         } else {
             if (isObj) {
@@ -72399,10 +72399,10 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                 }
             }
         }
-    
+
         return object;
     }
-    
+
     var _entityMap = {
         "&": "&amp;",
         "<": "&lt;",
@@ -72411,7 +72411,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
         "'": '&#39;',
         "/": '&#x2F;'
     };
-    
+
     function _escape(data) {
         if (typeof data === 'string') {
             return data.replace(/[&<>"'\/]/g, function (s) {
@@ -72421,9 +72421,9 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
             return data;
         }
     }
-    
+
     function _ajax(options) {
-    
+
         // v0.5.0 of https://github.com/goloroden/http.js
         var getXhr = function (callback) {
             // Use the native XHR object if the browser supports it.
@@ -72437,33 +72437,33 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                     return callback(null, new ActiveXObject("Microsoft.XMLHTTP"));
                 }
             }
-    
+
             // If no XHR support was found, throw an error.
             return callback(new Error());
         };
-    
+
         var encodeUsingUrlEncoding = function (data) {
             if(typeof data === 'string') {
                 return data;
             }
-    
+
             var result = [];
             for(var dataItem in data) {
                 if(data.hasOwnProperty(dataItem)) {
                     result.push(encodeURIComponent(dataItem) + '=' + encodeURIComponent(data[dataItem]));
                 }
             }
-    
+
             return result.join('&');
         };
-    
+
         var utf8 = function (text) {
             text = text.replace(/\r\n/g, '\n');
             var result = '';
-    
+
             for(var i = 0; i < text.length; i++) {
                 var c = text.charCodeAt(i);
-    
+
                 if(c < 128) {
                         result += String.fromCharCode(c);
                 } else if((c > 127) && (c < 2048)) {
@@ -72475,35 +72475,35 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                         result += String.fromCharCode((c & 63) | 128);
                 }
             }
-    
+
             return result;
         };
-    
+
         var base64 = function (text) {
             var keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-    
+
             text = utf8(text);
             var result = '',
                     chr1, chr2, chr3,
                     enc1, enc2, enc3, enc4,
                     i = 0;
-    
+
             do {
                 chr1 = text.charCodeAt(i++);
                 chr2 = text.charCodeAt(i++);
                 chr3 = text.charCodeAt(i++);
-    
+
                 enc1 = chr1 >> 2;
                 enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
                 enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
                 enc4 = chr3 & 63;
-    
+
                 if(isNaN(chr2)) {
                     enc3 = enc4 = 64;
                 } else if(isNaN(chr3)) {
                     enc4 = 64;
                 }
-    
+
                 result +=
                     keyStr.charAt(enc1) +
                     keyStr.charAt(enc2) +
@@ -72512,14 +72512,14 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                 chr1 = chr2 = chr3 = '';
                 enc1 = enc2 = enc3 = enc4 = '';
             } while(i < text.length);
-    
+
             return result;
         };
-    
+
         var mergeHeaders = function () {
             // Use the first header object as base.
             var result = arguments[0];
-    
+
             // Iterate through the remaining header objects and add them.
             for(var i = 1; i < arguments.length; i++) {
                 var currentHeaders = arguments[i];
@@ -72529,31 +72529,31 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                     }
                 }
             }
-    
+
             // Return the merged headers.
             return result;
         };
-    
+
         var ajax = function (method, url, options, callback) {
             // Adjust parameters.
             if(typeof options === 'function') {
                 callback = options;
                 options = {};
             }
-    
+
             // Set default parameter values.
             options.cache = options.cache || false;
             options.data = options.data || {};
             options.headers = options.headers || {};
             options.jsonp = options.jsonp || false;
             options.async = options.async === undefined ? true : options.async;
-    
+
             // Merge the various header objects.
             var headers = mergeHeaders({
                 'accept': '*/*',
                 'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
             }, ajax.headers, options.headers);
-    
+
             // Encode the data according to the content-type.
             var payload;
             if (headers['content-type'] === 'application/json') {
@@ -72561,7 +72561,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
             } else {
                 payload = encodeUsingUrlEncoding(options.data);
             }
-    
+
             // Specially prepare GET requests: Setup the query string, handle caching and make a JSONP call
             // if neccessary.
             if(method === 'GET') {
@@ -72571,18 +72571,18 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                     queryString.push(payload);
                     payload = null;
                 }
-    
+
                 // Handle caching.
                 if(!options.cache) {
                     queryString.push('_=' + (new Date()).getTime());
                 }
-    
+
                 // If neccessary prepare the query string for a JSONP call.
                 if(options.jsonp) {
                     queryString.push('callback=' + options.jsonp);
                     queryString.push('jsonp=' + options.jsonp);
                 }
-    
+
                 // Merge the query string and attach it to the url.
                 queryString = queryString.join('&');
                 if (queryString.length > 1) {
@@ -72592,7 +72592,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                         url += '?' + queryString;
                     }
                 }
-    
+
                 // Make a JSONP call if neccessary.
                 if(options.jsonp) {
                     var head = document.getElementsByTagName('head')[0];
@@ -72603,37 +72603,37 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                     return;
                 }
             }
-    
+
             // Since we got here, it is no JSONP request, so make a normal XHR request.
             getXhr(function (err, xhr) {
                 if(err) return callback(err);
-    
+
                 // Open the request.
                 xhr.open(method, url, options.async);
-    
+
                 // Set the request headers.
                 for(var header in headers) {
                     if(headers.hasOwnProperty(header)) {
                         xhr.setRequestHeader(header, headers[header]);
                     }
                 }
-    
+
                 // Handle the request events.
                 xhr.onreadystatechange = function () {
                     if(xhr.readyState === 4) {
                         var data = xhr.responseText || '';
-    
+
                         // If no callback is given, return.
                         if(!callback) {
                             return;
                         }
-    
+
                         // Return an object that provides access to the data as text and JSON.
                         callback(xhr.status, {
                             text: function () {
                                 return data;
                             },
-    
+
                             json: function () {
                                 try {
                                     return JSON.parse(data)
@@ -72645,68 +72645,68 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                         });
                     }
                 };
-    
+
                 // Actually send the XHR request.
                 xhr.send(payload);
             });
         };
-    
+
         // Define the external interface.
         var http = {
             authBasic: function (username, password) {
                 ajax.headers['Authorization'] = 'Basic ' + base64(username + ':' + password);
             },
-    
+
             connect: function (url, options, callback) {
                 return ajax('CONNECT', url, options, callback);
             },
-    
+
             del: function (url, options, callback) {
                 return ajax('DELETE', url, options, callback);
             },
-    
+
             get: function (url, options, callback) {
                 return ajax('GET', url, options, callback);
             },
-    
+
             head: function (url, options, callback) {
                 return ajax('HEAD', url, options, callback);
             },
-    
+
             headers: function (headers) {
                 ajax.headers = headers || {};
             },
-    
+
             isAllowed: function (url, verb, callback) {
                 this.options(url, function (status, data) {
                     callback(data.text().indexOf(verb) !== -1);
                 });
             },
-    
+
             options: function (url, options, callback) {
                 return ajax('OPTIONS', url, options, callback);
             },
-    
+
             patch: function (url, options, callback) {
                 return ajax('PATCH', url, options, callback);
             },
-    
+
             post: function (url, options, callback) {
                 return ajax('POST', url, options, callback);
             },
-    
+
             put: function (url, options, callback) {
                 return ajax('PUT', url, options, callback);
             },
-    
+
             trace: function (url, options, callback) {
                 return ajax('TRACE', url, options, callback);
             }
         };
-    
-    
+
+
         var methode = options.type ? options.type.toLowerCase() : 'get';
-    
+
         http[methode](options.url, options, function (status, data) {
             // file: protocol always gives status code 0, so check for data
             if (status === 200 || (status === 0 && data.text())) {
@@ -72716,7 +72716,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
             }
         });
     }
-    
+
     var _cookie = {
         create: function(name,value,minutes,domain) {
             var expires;
@@ -72729,7 +72729,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
             domain = (domain)? "domain="+domain+";" : "";
             document.cookie = name+"="+value+expires+";"+domain+"path=/";
         },
-    
+
         read: function(name) {
             var nameEQ = name + "=";
             var ca = document.cookie.split(';');
@@ -72740,20 +72740,20 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
             }
             return null;
         },
-    
+
         remove: function(name) {
             this.create(name,"",-1);
         }
     };
-    
+
     var cookie_noop = {
         create: function(name,value,minutes,domain) {},
         read: function(name) { return null; },
         remove: function(name) {}
     };
-    
-    
-    
+
+
+
     // move dependent functions to a container so that
     // they can be overriden easier in no jquery environment (node.js)
     var f = {
@@ -72777,27 +72777,27 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
         },
         toLanguages: function(lng, fallbackLng) {
             var log = this.log;
-    
+
             fallbackLng = fallbackLng || o.fallbackLng;
             if (typeof fallbackLng === 'string')
                 fallbackLng = [fallbackLng];
-    
+
             function applyCase(l) {
                 var ret = l;
-    
+
                 if (typeof l === 'string' && l.indexOf('-') > -1) {
                     var parts = l.split('-');
-    
+
                     ret = o.lowerCaseLng ?
                         parts[0].toLowerCase() +  '-' + parts[1].toLowerCase() :
                         parts[0].toLowerCase() +  '-' + parts[1].toUpperCase();
                 } else {
                     ret = o.lowerCaseLng ? l.toLowerCase() : l;
                 }
-    
+
                 return ret;
             }
-    
+
             var languages = [];
             var whitelist = o.lngWhitelist || false;
             var addLanguage = function(language){
@@ -72810,13 +72810,13 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
             };
             if (typeof lng === 'string' && lng.indexOf('-') > -1) {
                 var parts = lng.split('-');
-    
+
                 if (o.load !== 'unspecific') addLanguage(applyCase(lng));
                 if (o.load !== 'current') addLanguage(applyCase(parts[this.getCountyIndexOfLng(lng)]));
             } else {
                 addLanguage(applyCase(lng));
             }
-    
+
             for (var i = 0; i < fallbackLng.length; i++) {
                 if (languages.indexOf(fallbackLng[i]) === -1 && fallbackLng[i]) languages.push(applyCase(fallbackLng[i]));
             }
@@ -72855,55 +72855,55 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
         }
     };
     function init(options, cb) {
-    
+
         if (typeof options === 'function') {
             cb = options;
             options = {};
         }
         options = options || {};
-    
+
         // override defaults with passed in options
         f.extend(o, options);
         delete o.fixLng; /* passed in each time */
-    
+
         // override functions: .log(), .detectLanguage(), etc
         if (o.functions) {
             delete o.functions;
             f.extend(f, options.functions);
         }
-    
+
         // create namespace object if namespace is passed in as string
         if (typeof o.ns == 'string') {
             o.ns = { namespaces: [o.ns], defaultNs: o.ns};
         }
-    
+
         // fallback namespaces
         if (typeof o.fallbackNS == 'string') {
             o.fallbackNS = [o.fallbackNS];
         }
-    
+
         // fallback languages
         if (typeof o.fallbackLng == 'string' || typeof o.fallbackLng == 'boolean') {
             o.fallbackLng = [o.fallbackLng];
         }
-    
+
         // escape prefix/suffix
         o.interpolationPrefixEscaped = f.regexEscape(o.interpolationPrefix);
         o.interpolationSuffixEscaped = f.regexEscape(o.interpolationSuffix);
-    
+
         if (!o.lng) o.lng = f.detectLanguage();
-    
+
         languages = f.toLanguages(o.lng);
         currentLng = languages[0];
         f.log('currentLng set to: ' + currentLng);
-    
+
         if (o.useCookie && f.cookie.read(o.cookieName) !== currentLng){ //cookie is unset or invalid
             f.cookie.create(o.cookieName, currentLng, o.cookieExpirationTime, o.cookieDomain);
         }
         if (o.detectLngFromLocalStorage && typeof document !== 'undefined' && window.localStorage) {
             f.localStorage.setItem('i18next_lng', currentLng);
         }
-    
+
         var lngTranslate = translate;
         if (options.fixLng) {
             lngTranslate = function(key, options) {
@@ -72913,22 +72913,22 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
             };
             lngTranslate.lng = currentLng;
         }
-    
+
         pluralExtensions.setCurrentLng(currentLng);
-    
+
         // add JQuery extensions
         if ($ && o.setJqueryExt) {
             addJqueryFunct && addJqueryFunct();
         } else {
            addJqueryLikeFunctionality && addJqueryLikeFunctionality();
         }
-    
+
         // jQuery deferred
         var deferred;
         if ($ && $.Deferred) {
             deferred = $.Deferred();
         }
-    
+
         // return immidiatly if res are passed in
         if (o.resStore) {
             resStore = o.resStore;
@@ -72938,7 +72938,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
             if (deferred) return deferred.promise();
             return;
         }
-    
+
         // languages to load
         var lngsToLoad = f.toLanguages(o.lng);
         if (typeof o.preload === 'string') o.preload = [o.preload];
@@ -72950,19 +72950,19 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                 }
             }
         }
-    
+
         // else load them
         i18n.sync.load(lngsToLoad, o, function(err, store) {
             resStore = store;
             initialized = true;
-    
+
             if (cb) cb(err, lngTranslate);
             if (deferred) (!err ? deferred.resolve : deferred.reject)(err || lngTranslate);
         });
-    
+
         if (deferred) return deferred.promise();
     }
-    
+
     function isInitialized() {
         return initialized;
     }
@@ -72975,7 +72975,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
         }
         return init(cb);
     }
-    
+
     function addResourceBundle(lng, ns, resources, deep) {
         if (typeof ns !== 'string') {
             resources = ns;
@@ -72983,10 +72983,10 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
         } else if (o.ns.namespaces.indexOf(ns) < 0) {
             o.ns.namespaces.push(ns);
         }
-    
+
         resStore[lng] = resStore[lng] || {};
         resStore[lng][ns] = resStore[lng][ns] || {};
-    
+
         if (deep) {
             f.deepExtend(resStore[lng][ns], resources);
         } else {
@@ -72996,46 +72996,46 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
             sync._storeLocal(resStore);
         }
     }
-    
+
     function hasResourceBundle(lng, ns) {
         if (typeof ns !== 'string') {
             ns = o.ns.defaultNs;
         }
-    
+
         resStore[lng] = resStore[lng] || {};
         var res = resStore[lng][ns] || {};
-    
+
         var hasValues = false;
         for(var prop in res) {
             if (res.hasOwnProperty(prop)) {
                 hasValues = true;
             }
         }
-    
+
         return hasValues;
     }
-    
+
     function getResourceBundle(lng, ns) {
         if (typeof ns !== 'string') {
             ns = o.ns.defaultNs;
         }
-    
+
         resStore[lng] = resStore[lng] || {};
         return f.extend({}, resStore[lng][ns]);
     }
-    
+
     function removeResourceBundle(lng, ns) {
         if (typeof ns !== 'string') {
             ns = o.ns.defaultNs;
         }
-    
+
         resStore[lng] = resStore[lng] || {};
         resStore[lng][ns] = {};
         if (o.useLocalStorage) {
             sync._storeLocal(resStore);
         }
     }
-    
+
     function addResource(lng, ns, key, value) {
         if (typeof ns !== 'string') {
             resource = ns;
@@ -73043,22 +73043,22 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
         } else if (o.ns.namespaces.indexOf(ns) < 0) {
             o.ns.namespaces.push(ns);
         }
-    
+
         resStore[lng] = resStore[lng] || {};
         resStore[lng][ns] = resStore[lng][ns] || {};
-    
+
         var keys = key.split(o.keyseparator);
         var x = 0;
         var node = resStore[lng][ns];
         var origRef = node;
-    
+
         while (keys[x]) {
             if (x == keys.length - 1)
                 node[keys[x]] = value;
             else {
                 if (node[keys[x]] == null)
                     node[keys[x]] = {};
-    
+
                 node = node[keys[x]];
             }
             x++;
@@ -73067,7 +73067,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
             sync._storeLocal(resStore);
         }
     }
-    
+
     function addResources(lng, ns, resources) {
         if (typeof ns !== 'string') {
             resource = ns;
@@ -73075,20 +73075,20 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
         } else if (o.ns.namespaces.indexOf(ns) < 0) {
             o.ns.namespaces.push(ns);
         }
-    
+
         for (var m in resources) {
             if (typeof resources[m] === 'string') addResource(lng, ns, m, resources[m]);
         }
     }
-    
+
     function setDefaultNamespace(ns) {
         o.ns.defaultNs = ns;
     }
-    
+
     function loadNamespace(namespace, cb) {
         loadNamespaces([namespace], cb);
     }
-    
+
     function loadNamespaces(namespaces, cb) {
         var opts = {
             dynamicLoad: o.dynamicLoad,
@@ -73097,7 +73097,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
             customLoad: o.customLoad,
             ns: { namespaces: namespaces, defaultNs: ''} /* new namespaces to load */
         };
-    
+
         // languages to load
         var lngsToLoad = f.toLanguages(o.lng);
         if (typeof o.preload === 'string') o.preload = [o.preload];
@@ -73109,7 +73109,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                 }
             }
         }
-    
+
         // check if we have to load
         var lngNeedLoad = [];
         for (var a = 0, lenA = lngsToLoad.length; a < lenA; a++) {
@@ -73122,26 +73122,26 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
             } else {
                 needLoad = true;
             }
-    
+
             if (needLoad) lngNeedLoad.push(lngsToLoad[a]);
         }
-    
+
         if (lngNeedLoad.length) {
             i18n.sync._fetch(lngNeedLoad, opts, function(err, store) {
                 var todo = namespaces.length * lngNeedLoad.length;
-    
+
                 // load each file individual
                 f.each(namespaces, function(nsIndex, nsValue) {
-    
+
                     // append namespace to namespace array
                     if (o.ns.namespaces.indexOf(nsValue) < 0) {
                         o.ns.namespaces.push(nsValue);
                     }
-    
+
                     f.each(lngNeedLoad, function(lngIndex, lngValue) {
                         resStore[lngValue] = resStore[lngValue] || {};
                         resStore[lngValue][nsValue] = store[lngValue][nsValue];
-    
+
                         todo--; // wait for all done befor callback
                         if (todo === 0 && cb) {
                             if (o.useLocalStorage) i18n.sync._storeLocal(resStore);
@@ -73154,7 +73154,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
             if (cb) cb();
         }
     }
-    
+
     function setLng(lng, options, cb) {
         if (typeof options === 'function') {
             cb = options;
@@ -73162,24 +73162,24 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
         } else if (!options) {
             options = {};
         }
-    
+
         options.lng = lng;
         return init(options, cb);
     }
-    
+
     function lng() {
         return currentLng;
     }
-    
+
     function reload(cb) {
         resStore = {};
         setLng(currentLng, cb);
     }
-    
+
     function noConflict() {
-        
+
         window.i18next = window.i18n;
-    
+
         if (conflictReference) {
             window.i18n = conflictReference;
         } else {
@@ -73189,22 +73189,22 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
     function addJqueryFunct() {
         // $.t shortcut
         $.t = $.t || translate;
-    
+
         function parse(ele, key, options) {
             if (key.length === 0) return;
-    
+
             var attr = 'text';
-    
+
             if (key.indexOf('[') === 0) {
                 var parts = key.split(']');
                 key = parts[1];
                 attr = parts[0].substr(1, parts[0].length-1);
             }
-    
+
             if (key.indexOf(';') === key.length-1) {
                 key = key.substr(0, key.length-2);
             }
-    
+
             var optionsToUse;
             if (attr === 'html') {
                 optionsToUse = o.defaultValueFromContent ? $.extend({ defaultValue: ele.html() }, options) : options;
@@ -73231,68 +73231,68 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                 ele.attr(attr, $.t(key, optionsToUse));
             }
         }
-    
+
         function localize(ele, options) {
             var key = ele.attr(o.selectorAttr);
             if (!key && typeof key !== 'undefined' && key !== false) key = ele.text() || ele.val();
             if (!key) return;
-    
+
             var target = ele
               , targetSelector = ele.data("i18n-target");
             if (targetSelector) {
                 target = ele.find(targetSelector) || ele;
             }
-    
+
             if (!options && o.useDataAttrOptions === true) {
                 options = ele.data("i18n-options");
             }
             options = options || {};
-    
+
             if (key.indexOf(';') >= 0) {
                 var keys = key.split(';');
-    
+
                 $.each(keys, function(m, k) {
                     if (k !== '') parse(target, k, options);
                 });
-    
+
             } else {
                 parse(target, key, options);
             }
-    
+
             if (o.useDataAttrOptions === true) ele.data("i18n-options", options);
         }
-    
+
         // fn
         $.fn.i18n = function (options) {
             return this.each(function() {
                 // localize element itself
                 localize($(this), options);
-    
+
                 // localize childs
                 var elements =  $(this).find('[' + o.selectorAttr + ']');
-                elements.each(function() { 
+                elements.each(function() {
                     localize($(this), options);
                 });
             });
         };
     }
     function addJqueryLikeFunctionality() {
-    
+
         function parse(ele, key, options) {
             if (key.length === 0) return;
-    
+
             var attr = 'text';
-    
+
             if (key.indexOf('[') === 0) {
                 var parts = key.split(']');
                 key = parts[1];
                 attr = parts[0].substr(1, parts[0].length-1);
             }
-    
+
             if (key.indexOf(';') === key.length-1) {
                 key = key.substr(0, key.length-2);
             }
-    
+
             if (attr === 'html') {
                 ele.innerHTML = translate(key, options);
             } else if (attr === 'text') {
@@ -73305,30 +73305,30 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                 ele.setAttribute(attr, translate(key, options));
             }
         }
-    
+
         function localize(ele, options) {
             var key = ele.getAttribute(o.selectorAttr);
             if (!key && typeof key !== 'undefined' && key !== false) key = ele.textContent || ele.value;
             if (!key) return;
-    
+
             var target = ele
               , targetSelector = ele.getAttribute("i18n-target");
             if (targetSelector) {
                 target = ele.querySelector(targetSelector) || ele;
             }
-            
+
             if (key.indexOf(';') >= 0) {
                 var keys = key.split(';'), index = 0, length = keys.length;
-                
+
                 for ( ; index < length; index++) {
                     if (keys[index] !== '') parse(target, keys[index], options);
                 }
-    
+
             } else {
                 parse(target, key, options);
             }
         }
-    
+
         // fn
         i18n.translateObject = function (object, options) {
             // localize childs
@@ -73341,14 +73341,14 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
     }
     function applyReplacement(str, replacementHash, nestedKey, options) {
         if (!str) return str;
-    
+
         options = options || replacementHash; // first call uses replacement hash combined with options
         if (str.indexOf(options.interpolationPrefix || o.interpolationPrefix) < 0) return str;
-    
+
         var prefix = options.interpolationPrefix ? f.regexEscape(options.interpolationPrefix) : o.interpolationPrefixEscaped
           , suffix = options.interpolationSuffix ? f.regexEscape(options.interpolationSuffix) : o.interpolationSuffixEscaped
           , unEscapingSuffix = 'HTML'+suffix;
-    
+
         var hash = replacementHash.replace && typeof replacementHash.replace === 'object' ? replacementHash.replace : replacementHash;
         f.each(hash, function(key, value) {
             var nextKey = nestedKey ? nestedKey + o.keyseparator + key : key;
@@ -73366,18 +73366,18 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
         });
         return str;
     }
-    
+
     // append it to functions
     f.applyReplacement = applyReplacement;
-    
+
     function applyReuse(translated, options) {
         var comma = ',';
         var options_open = '{';
         var options_close = '}';
-    
+
         var opts = f.extend({}, options);
         delete opts.postProcess;
-    
+
         while (translated.indexOf(o.reusePrefix) != -1) {
             replacementCounter++;
             if (replacementCounter > o.maxRecursion) { break; } // safety net for too much recursion
@@ -73385,12 +73385,12 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
             var index_of_end_of_closing = translated.indexOf(o.reuseSuffix, index_of_opening) + o.reuseSuffix.length;
             var token = translated.substring(index_of_opening, index_of_end_of_closing);
             var token_without_symbols = token.replace(o.reusePrefix, '').replace(o.reuseSuffix, '');
-    
+
             if (index_of_end_of_closing <= index_of_opening) {
                 f.error('there is an missing closing in following translation value', translated);
                 return '';
             }
-    
+
             if (token_without_symbols.indexOf(comma) != -1) {
                 var index_of_token_end_of_closing = token_without_symbols.indexOf(comma);
                 if (token_without_symbols.indexOf(options_open, index_of_token_end_of_closing) != -1 && token_without_symbols.indexOf(options_close, index_of_token_end_of_closing) != -1) {
@@ -73403,37 +73403,37 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                     }
                 }
             }
-    
+
             var translated_token = _translate(token_without_symbols, opts);
             translated = translated.replace(token, f.regexReplacementEscape(translated_token));
         }
         return translated;
     }
-    
+
     function hasContext(options) {
         return (options.context && (typeof options.context == 'string' || typeof options.context == 'number'));
     }
-    
+
     function needsPlural(options, lng) {
         return (options.count !== undefined && typeof options.count != 'string'/* && pluralExtensions.needsPlural(lng, options.count)*/);
     }
-    
+
     function needsIndefiniteArticle(options) {
         return (options.indefinite_article !== undefined && typeof options.indefinite_article != 'string' && options.indefinite_article);
     }
-    
+
     function exists(key, options) {
         options = options || {};
-    
+
         var notFound = _getDefaultValue(key, options)
             , found = _find(key, options);
-    
+
         return found !== undefined || found === notFound;
     }
-    
+
     function translate(key, options) {
         options = options || {};
-    
+
         if (!initialized) {
             f.log('i18next not finished initialization. you might have called t function before loading resources finished.')
             return options.defaultValue || '';
@@ -73441,26 +73441,26 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
         replacementCounter = 0;
         return _translate.apply(null, arguments);
     }
-    
+
     function _getDefaultValue(key, options) {
         return (options.defaultValue !== undefined) ? options.defaultValue : key;
     }
-    
+
     function _injectSprintfProcessor() {
-    
+
         var values = [];
-    
+
         // mh: build array from second argument onwards
         for (var i = 1; i < arguments.length; i++) {
             values.push(arguments[i]);
         }
-    
+
         return {
             postProcess: 'sprintf',
             sprintf:     values
         };
     }
-    
+
     function _translate(potentialKeys, options) {
         if (options && typeof options !== 'object') {
             if (o.shortcutFunction === 'sprintf') {
@@ -73474,23 +73474,23 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
         } else {
             options = options || {};
         }
-    
+
         if (typeof o.defaultVariables === 'object') {
             options = f.extend({}, o.defaultVariables, options);
         }
-    
+
         if (potentialKeys === undefined || potentialKeys === null || potentialKeys === '') return '';
-    
+
         if (typeof potentialKeys === 'number') {
             potentialKeys = String(potentialKeys);
         }
-    
+
         if (typeof potentialKeys === 'string') {
             potentialKeys = [potentialKeys];
         }
-    
+
         var key = potentialKeys[0];
-    
+
         if (potentialKeys.length > 1) {
             for (var i = 0; i < potentialKeys.length; i++) {
                 key = potentialKeys[i];
@@ -73499,20 +73499,20 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                 }
             }
         }
-    
+
         var notFound = _getDefaultValue(key, options)
             , found = _find(key, options)
             , lngs = options.lng ? f.toLanguages(options.lng, options.fallbackLng) : languages
             , ns = options.ns || o.ns.defaultNs
             , parts;
-    
+
         // split ns and key
         if (key.indexOf(o.nsseparator) > -1) {
             parts = key.split(o.nsseparator);
             ns = parts[0];
             key = parts[1];
         }
-    
+
         if (found === undefined && o.sendMissing && typeof o.missingKeyHandler === 'function') {
             if (options.lng) {
                 o.missingKeyHandler(lngs[0], ns, key, notFound, lngs);
@@ -73520,7 +73520,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                 o.missingKeyHandler(o.lng, ns, key, notFound, lngs);
             }
         }
-    
+
         var postProcessorsToApply;
         if (typeof o.postProcess === 'string' && o.postProcess !== '') {
             postProcessorsToApply = [o.postProcess];
@@ -73529,13 +73529,13 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
         } else {
             postProcessorsToApply = [];
         }
-    
+
         if (typeof options.postProcess === 'string' && options.postProcess !== '') {
             postProcessorsToApply = postProcessorsToApply.concat([options.postProcess]);
         } else if (typeof options.postProcess === 'array' || typeof options.postProcess === 'object') {
             postProcessorsToApply = postProcessorsToApply.concat(options.postProcess);
         }
-    
+
         if (found !== undefined && postProcessorsToApply.length) {
             postProcessorsToApply.forEach(function(postProcessor) {
                 if (postProcessors[postProcessor]) {
@@ -73543,7 +73543,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                 }
             });
         }
-    
+
         // process notFound if function exists
         var splitNotFound = notFound;
         if (notFound.indexOf(o.nsseparator) > -1) {
@@ -73553,11 +73553,11 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
         if (splitNotFound === key && o.parseMissingKey) {
             notFound = o.parseMissingKey(notFound);
         }
-    
+
         if (found === undefined) {
             notFound = applyReplacement(notFound, options);
             notFound = applyReuse(notFound, options);
-    
+
             if (postProcessorsToApply.length) {
                 var val = _getDefaultValue(key, options);
                 postProcessorsToApply.forEach(function(postProcessor) {
@@ -73567,65 +73567,65 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                 });
             }
         }
-    
+
         return (found !== undefined) ? found : notFound;
     }
-    
+
     function _find(key, options) {
         options = options || {};
-    
+
         var optionWithoutCount, translated
             , notFound = _getDefaultValue(key, options)
             , lngs = languages;
-    
+
         if (!resStore) { return notFound; } // no resStore to translate from
-    
+
         // CI mode
         if (lngs[0].toLowerCase() === 'cimode') return notFound;
-    
+
         // passed in lng
         if (options.lngs) lngs = options.lngs;
         if (options.lng) {
             lngs = f.toLanguages(options.lng, options.fallbackLng);
-    
+
             if (!resStore[lngs[0]]) {
                 var oldAsync = o.getAsync;
                 o.getAsync = false;
-    
+
                 i18n.sync.load(lngs, o, function(err, store) {
                     f.extend(resStore, store);
                     o.getAsync = oldAsync;
                 });
             }
         }
-    
+
         var ns = options.ns || o.ns.defaultNs;
         if (key.indexOf(o.nsseparator) > -1) {
             var parts = key.split(o.nsseparator);
             ns = parts[0];
             key = parts[1];
         }
-    
+
         if (hasContext(options)) {
             optionWithoutCount = f.extend({}, options);
             delete optionWithoutCount.context;
             optionWithoutCount.defaultValue = o.contextNotFound;
-    
+
             var contextKey = ns + o.nsseparator + key + '_' + options.context;
-    
+
             translated = translate(contextKey, optionWithoutCount);
             if (translated != o.contextNotFound) {
                 return applyReplacement(translated, { context: options.context }); // apply replacement for context only
             } // else continue translation with original/nonContext key
         }
-    
+
         if (needsPlural(options, lngs[0])) {
             optionWithoutCount = f.extend({ lngs: [lngs[0]]}, options);
             delete optionWithoutCount.count;
             optionWithoutCount._origLng = optionWithoutCount._origLng || optionWithoutCount.lng || lngs[0];
             delete optionWithoutCount.lng;
             optionWithoutCount.defaultValue = o.pluralNotFound;
-    
+
             var pluralKey;
             if (!pluralExtensions.needsPlural(lngs[0], options.count)) {
                 pluralKey = ns + o.nsseparator + key;
@@ -73638,9 +73638,9 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                     pluralKey = ns + o.nsseparator + key; // singular
                 }
             }
-    
+
             translated = translate(pluralKey, optionWithoutCount);
-    
+
             if (translated != o.pluralNotFound) {
                 return applyReplacement(translated, {
                     count: options.count,
@@ -73661,7 +73661,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                 optionWithoutCount.lng = optionWithoutCount._origLng;
                 delete optionWithoutCount._origLng;
                 translated = translate(ns + o.nsseparator + key, optionWithoutCount);
-    
+
                 return applyReplacement(translated, {
                     count: options.count,
                     interpolationPrefix: options.interpolationPrefix,
@@ -73669,7 +73669,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                 });
             }
         }
-    
+
         if (needsIndefiniteArticle(options)) {
             var optionsWithoutIndef = f.extend({}, options);
             delete optionsWithoutIndef.indefinite_article;
@@ -73681,14 +73681,14 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                 return translated;
             }
         }
-    
+
         var found;
         var keys = key.split(o.keyseparator);
         for (var i = 0, len = lngs.length; i < len; i++ ) {
             if (found !== undefined) break;
-    
+
             var l = lngs[i];
-    
+
             var x = 0;
             var value = resStore[l] && resStore[l][ns];
             while (keys[x]) {
@@ -73723,28 +73723,28 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                         value = copy;
                     }
                 }
-    
+
                 if (typeof value === 'string' && value.trim() === '' && o.fallbackOnEmpty === true)
                     value = undefined;
-    
+
                 found = value;
             }
         }
-    
+
         if (found === undefined && !options.isFallbackLookup && (o.fallbackToDefaultNS === true || (o.fallbackNS && o.fallbackNS.length > 0))) {
             // set flag for fallback lookup - avoid recursion
             options.isFallbackLookup = true;
-    
+
             if (o.fallbackNS.length) {
-    
+
                 for (var y = 0, lenY = o.fallbackNS.length; y < lenY; y++) {
                     found = _find(o.fallbackNS[y] + o.nsseparator + key, options);
-    
+
                     if (found || (found==="" && o.fallbackOnEmpty === false)) {
                         /* compare value without namespace */
                         var foundValue = found.indexOf(o.nsseparator) > -1 ? found.split(o.nsseparator)[1] : found
                           , notFoundValue = notFound.indexOf(o.nsseparator) > -1 ? notFound.split(o.nsseparator)[1] : notFound;
-    
+
                         if (foundValue !== notFoundValue) break;
                     }
                 }
@@ -73754,14 +73754,14 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
             }
             options.isFallbackLookup = false;
         }
-    
+
         return found;
     }
     function detectLanguage() {
         var detectedLng;
         var whitelist = o.lngWhitelist || [];
         var userLngChoices = [];
-    
+
         // get from qs
         var qsParm = [];
         if (typeof window !== 'undefined') {
@@ -73779,13 +73779,13 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                 }
             })();
         }
-    
+
         // get from cookie
         if (o.useCookie && typeof document !== 'undefined') {
             var c = f.cookie.read(o.cookieName);
             if (c) userLngChoices.push(c);
         }
-    
+
         // get from localStorage
         if (o.detectLngFromLocalStorage && typeof window !== 'undefined' && window.localStorage) {
             var lang = f.localStorage.getItem('i18next_lng');
@@ -73793,7 +73793,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                 userLngChoices.push(lang);
             }
         }
-    
+
         // get from navigator
         if (typeof navigator !== 'undefined') {
             if (navigator.languages) { // chrome only; not an array, so can't use .push.apply instead of iterating
@@ -73808,34 +73808,34 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                 userLngChoices.push(navigator.language);
             }
         }
-    
+
         (function() {
             for (var i=0;i<userLngChoices.length;i++) {
                 var lng = userLngChoices[i];
-    
+
                 if (lng.indexOf('-') > -1) {
                     var parts = lng.split('-');
                     lng = o.lowerCaseLng ?
                         parts[0].toLowerCase() +  '-' + parts[1].toLowerCase() :
                         parts[0].toLowerCase() +  '-' + parts[1].toUpperCase();
                 }
-    
+
                 if (whitelist.length === 0 || whitelist.indexOf(lng) > -1) {
                     detectedLng = lng;
                     break;
                 }
             }
         })();
-    
+
         //fallback
         if (!detectedLng){
           detectedLng = o.fallbackLng[0];
         }
-        
+
         return detectedLng;
     }
     // definition http://translate.sourceforge.net/wiki/l10n/pluralforms
-    
+
     /* [code, name, numbers, pluralsType] */
     var _rules = [
         ["ach", "Acholi", [1,2], 1],
@@ -73970,7 +73970,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
         ["yo", "Yoruba", [1,2], 2],
         ["zh", "Chinese", [1], 3]
     ];
-    
+
     var _rulesPluralsTypes = {
         1: function(n) {return Number(n > 1);},
         2: function(n) {return Number(n != 1);},
@@ -73994,9 +73994,9 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
         20: function(n) {return Number(n==1 ? 0 : (n===0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2);},
         21: function(n) {return Number(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n%100==4 ? 3 : 0); }
     };
-    
+
     var pluralExtensions = {
-    
+
         rules: (function () {
             var l, rules = {};
             for (l=_rules.length; l-- ;) {
@@ -74008,47 +74008,47 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
             }
             return rules;
         }()),
-    
+
         // you can add your own pluralExtensions
         addRule: function(lng, obj) {
             pluralExtensions.rules[lng] = obj;
         },
-    
+
         setCurrentLng: function(lng) {
             if (!pluralExtensions.currentRule || pluralExtensions.currentRule.lng !== lng) {
                 var parts = lng.split('-');
-    
+
                 pluralExtensions.currentRule = {
                     lng: lng,
                     rule: pluralExtensions.rules[parts[0]]
                 };
             }
         },
-    
+
         needsPlural: function(lng, count) {
             var parts = lng.split('-');
-    
+
             var ext;
             if (pluralExtensions.currentRule && pluralExtensions.currentRule.lng === lng) {
-                ext = pluralExtensions.currentRule.rule; 
+                ext = pluralExtensions.currentRule.rule;
             } else {
                 ext = pluralExtensions.rules[parts[f.getCountyIndexOfLng(lng)]];
             }
-    
+
             if (ext && ext.numbers.length <= 1) {
                 return false;
             } else {
                 return this.get(lng, count) !== 1;
             }
         },
-    
+
         get: function(lng, count) {
             var parts = lng.split('-');
-    
+
             function getResult(l, c) {
                 var ext;
                 if (pluralExtensions.currentRule && pluralExtensions.currentRule.lng === lng) {
-                    ext = pluralExtensions.currentRule.rule; 
+                    ext = pluralExtensions.currentRule.rule;
                 } else {
                     ext = pluralExtensions.rules[l];
                 }
@@ -74059,10 +74059,10 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                     } else {
                         i = ext.plurals(Math.abs(c));
                     }
-                    
+
                     var number = ext.numbers[i];
                     if (ext.numbers.length === 2 && ext.numbers[0] === 1) {
-                        if (number === 2) { 
+                        if (number === 2) {
                             number = -1; // regular plural
                         } else if (number === 1) {
                             number = 1; // singular
@@ -74073,10 +74073,10 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                     return c === 1 ? '1' : '-1';
                 }
             }
-                        
+
             return getResult(parts[f.getCountyIndexOfLng(lng)], count);
         }
-    
+
     };
     var postProcessors = {};
     var addPostProcessor = function(name, fc) {
@@ -74091,14 +74091,14 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
             for (var output = []; multiplier > 0; output[--multiplier] = input) {/* do nothing */}
             return output.join('');
         }
-    
+
         var str_format = function() {
             if (!str_format.cache.hasOwnProperty(arguments[0])) {
                 str_format.cache[arguments[0]] = str_format.parse(arguments[0]);
             }
             return str_format.format.call(null, str_format.cache[arguments[0]], arguments);
         };
-    
+
         str_format.format = function(parse_tree, argv) {
             var cursor = 1, tree_length = parse_tree.length, node_type = '', arg, output = [], i, k, match, pad, pad_character, pad_length;
             for (i = 0; i < tree_length; i++) {
@@ -74123,7 +74123,7 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
                     else { // positional argument (implicit)
                         arg = argv[cursor++];
                     }
-    
+
                     if (/[^s]/.test(match[8]) && (get_type(arg) != 'number')) {
                         throw(sprintf('[sprintf] expecting number but found %s', get_type(arg)));
                     }
@@ -74148,9 +74148,9 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
             }
             return output.join('');
         };
-    
+
         str_format.cache = {};
-    
+
         str_format.parse = function(fmt) {
             var _fmt = fmt, match = [], parse_tree = [], arg_names = 0;
             while (_fmt) {
@@ -74198,24 +74198,24 @@ function BigInteger(a,b,c){null!=a&&("number"==typeof a?this.fromNumber(a,b,c):n
             }
             return parse_tree;
         };
-    
+
         return str_format;
     })();
-    
+
     var vsprintf = function(fmt, argv) {
         argv.unshift(fmt);
         return sprintf.apply(null, argv);
     };
-    
+
     addPostProcessor("sprintf", function(val, key, opts) {
         if (!opts.sprintf) return val;
-    
+
         if (Object.prototype.toString.apply(opts.sprintf) === '[object Array]') {
             return vsprintf(val, opts.sprintf);
         } else if (typeof opts.sprintf === 'object') {
             return sprintf(val, opts.sprintf);
         }
-    
+
         return val;
     });
     // public api interface
@@ -74333,7 +74333,7 @@ if (typeof module != 'undefined' && module.exports) {
  *
  * Licensed under the MIT license:
  * http://www.opensource.org/licenses/MIT
- * 
+ *
  * Based on
  * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
  * Digest Algorithm, as defined in RFC 1321.
@@ -74818,7 +74818,7 @@ if (typeof module != 'undefined' && module.exports) {
     }
     return hex;
   };
-  
+
   if(!root.JS_SHA256_TEST && NODE_JS) {
     sha256.sha256 = sha256;
     sha256.sha224 = sha224;
@@ -75068,7 +75068,7 @@ var pin_title_names={
 };
 
 
-// функции которые должны выполн¤ть одно и тоже но на разных вариантах запуска 
+// функции которые должны выполн¤ть одно и тоже но на разных вариантах запуска
 function ShowLoader() {
     console.log("ShowLoader");
     //if(isMobile)
@@ -75129,13 +75129,13 @@ function ShowConfirm(message, callback, buttonLabels) {
                     buttonIndex ++;
                     callback(buttonIndex);
                 }
-                    
+
             }
         });
 }
 
 // нужно будет определится на счет шаблонов
-// есть идея подкгрузки картинок 
+// есть идея подкгрузки картинок
 // data-src="<% print('img/'+whiteLabel+'/icons/edit_photo2.png')%>"
 function updateImgs(el) {
     console.log("updateImgs");
@@ -75463,7 +75463,7 @@ function getCurrency() {
                     else {
                         thisCurrency = currency;
                     }
-                   
+
                     break;
                 }
             case "TripWallet":{
@@ -75629,7 +75629,7 @@ function getParamsWidget() {
                 widget_margins2:2.5
             }
     }
-   
+
 }
 
 //Email pattern
@@ -89233,14 +89233,14 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
 */
 !function($) {
     function Inputmask(alias, options) {
-        return this instanceof Inputmask ? ($.isPlainObject(alias) ? options = alias : (options = options || {}, 
-        options.alias = alias), this.el = void 0, this.opts = $.extend(!0, {}, this.defaults, options), 
-        this.noMasksCache = options && void 0 !== options.definitions, this.userOptions = options || {}, 
+        return this instanceof Inputmask ? ($.isPlainObject(alias) ? options = alias : (options = options || {},
+        options.alias = alias), this.el = void 0, this.opts = $.extend(!0, {}, this.defaults, options),
+        this.noMasksCache = options && void 0 !== options.definitions, this.userOptions = options || {},
         this.events = {}, void resolveAlias(this.opts.alias, options, this.opts)) : new Inputmask(alias, options);
     }
     function isInputEventSupported(eventName) {
         var el = document.createElement("input"), evName = "on" + eventName, isSupported = evName in el;
-        return isSupported || (el.setAttribute(evName, "return;"), isSupported = "function" == typeof el[evName]), 
+        return isSupported || (el.setAttribute(evName, "return;"), isSupported = "function" == typeof el[evName]),
         el = null, isSupported;
     }
     function isElementTypeSupported(input, opts) {
@@ -89253,18 +89253,18 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
     }
     function resolveAlias(aliasStr, options, opts) {
         var aliasDefinition = opts.aliases[aliasStr];
-        return aliasDefinition ? (aliasDefinition.alias && resolveAlias(aliasDefinition.alias, void 0, opts), 
-        $.extend(!0, opts, aliasDefinition), $.extend(!0, opts, options), !0) : (null === opts.mask && (opts.mask = aliasStr), 
+        return aliasDefinition ? (aliasDefinition.alias && resolveAlias(aliasDefinition.alias, void 0, opts),
+        $.extend(!0, opts, aliasDefinition), $.extend(!0, opts, options), !0) : (null === opts.mask && (opts.mask = aliasStr),
         !1);
     }
     function importAttributeOptions(npt, opts, userOptions) {
         function importOption(option, optionData) {
-            optionData = void 0 !== optionData ? optionData : npt.getAttribute("data-inputmask-" + option), 
-            null !== optionData && ("string" == typeof optionData && (0 === option.indexOf("on") ? optionData = window[optionData] : "false" === optionData ? optionData = !1 : "true" === optionData && (optionData = !0)), 
+            optionData = void 0 !== optionData ? optionData : npt.getAttribute("data-inputmask-" + option),
+            null !== optionData && ("string" == typeof optionData && (0 === option.indexOf("on") ? optionData = window[optionData] : "false" === optionData ? optionData = !1 : "true" === optionData && (optionData = !0)),
             userOptions[option] = optionData);
         }
         var option, dataoptions, optionData, p, attrOptions = npt.getAttribute("data-inputmask");
-        if (attrOptions && "" !== attrOptions && (attrOptions = attrOptions.replace(new RegExp("'", "g"), '"'), 
+        if (attrOptions && "" !== attrOptions && (attrOptions = attrOptions.replace(new RegExp("'", "g"), '"'),
         dataoptions = JSON.parse("{" + attrOptions + "}")), dataoptions) {
             optionData = void 0;
             for (p in dataoptions) if ("alias" === p.toLowerCase()) {
@@ -89288,8 +89288,8 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
     function generateMaskSet(opts, nocache) {
         function analyseMask(mask) {
             function MaskToken(isGroup, isOptional, isQuantifier, isAlternator) {
-                this.matches = [], this.isGroup = isGroup || !1, this.isOptional = isOptional || !1, 
-                this.isQuantifier = isQuantifier || !1, this.isAlternator = isAlternator || !1, 
+                this.matches = [], this.isGroup = isGroup || !1, this.isOptional = isOptional || !1,
+                this.isQuantifier = isQuantifier || !1, this.isAlternator = isAlternator || !1,
                 this.quantifier = {
                     min: 1,
                     max: 1
@@ -89340,27 +89340,27 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                 }), escaped = !1;
             }
             function verifyGroupMarker(lastMatch, isOpenGroup) {
-                lastMatch.isGroup && (lastMatch.isGroup = !1, insertTestDefinition(lastMatch, opts.groupmarker.start, 0), 
+                lastMatch.isGroup && (lastMatch.isGroup = !1, insertTestDefinition(lastMatch, opts.groupmarker.start, 0),
                 isOpenGroup !== !0 && insertTestDefinition(lastMatch, opts.groupmarker.end));
             }
             function maskCurrentToken(m, currentToken, lastMatch, extraCondition) {
-                currentToken.matches.length > 0 && (void 0 === extraCondition || extraCondition) && (lastMatch = currentToken.matches[currentToken.matches.length - 1], 
+                currentToken.matches.length > 0 && (void 0 === extraCondition || extraCondition) && (lastMatch = currentToken.matches[currentToken.matches.length - 1],
                 verifyGroupMarker(lastMatch)), insertTestDefinition(currentToken, m);
             }
             function defaultCase() {
                 if (openenings.length > 0) {
-                    if (currentOpeningToken = openenings[openenings.length - 1], maskCurrentToken(m, currentOpeningToken, lastMatch, !currentOpeningToken.isAlternator), 
+                    if (currentOpeningToken = openenings[openenings.length - 1], maskCurrentToken(m, currentOpeningToken, lastMatch, !currentOpeningToken.isAlternator),
                     currentOpeningToken.isAlternator) {
                         alternator = openenings.pop();
                         for (var mndx = 0; mndx < alternator.matches.length; mndx++) alternator.matches[mndx].isGroup = !1;
-                        openenings.length > 0 ? (currentOpeningToken = openenings[openenings.length - 1], 
+                        openenings.length > 0 ? (currentOpeningToken = openenings[openenings.length - 1],
                         currentOpeningToken.matches.push(alternator)) : currentToken.matches.push(alternator);
                     }
                 } else maskCurrentToken(m, currentToken, lastMatch);
             }
             function reverseTokens(maskToken) {
                 function reverseStatic(st) {
-                    return st === opts.optionalmarker.start ? st = opts.optionalmarker.end : st === opts.optionalmarker.end ? st = opts.optionalmarker.start : st === opts.groupmarker.start ? st = opts.groupmarker.end : st === opts.groupmarker.end && (st = opts.groupmarker.start), 
+                    return st === opts.optionalmarker.start ? st = opts.optionalmarker.end : st === opts.optionalmarker.end ? st = opts.optionalmarker.start : st === opts.groupmarker.start ? st = opts.groupmarker.end : st === opts.groupmarker.end && (st = opts.groupmarker.start),
                     st;
                 }
                 maskToken.matches = maskToken.matches.reverse();
@@ -89374,7 +89374,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                 }
                 return maskToken;
             }
-            for (var match, m, openingToken, currentOpeningToken, alternator, lastMatch, groupToken, tokenizer = /(?:[?*+]|\{[0-9\+\*]+(?:,[0-9\+\*]*)?\})|[^.?*+^${[]()|\\]+|./g, escaped = !1, currentToken = new MaskToken(), openenings = [], maskTokens = []; match = tokenizer.exec(mask); ) if (m = match[0], 
+            for (var match, m, openingToken, currentOpeningToken, alternator, lastMatch, groupToken, tokenizer = /(?:[?*+]|\{[0-9\+\*]+(?:,[0-9\+\*]*)?\})|[^.?*+^${[]()|\\]+|./g, escaped = !1, currentToken = new MaskToken(), openenings = [], maskTokens = []; match = tokenizer.exec(mask); ) if (m = match[0],
             escaped) defaultCase(); else switch (m.charAt(0)) {
               case opts.escapeChar:
                 escaped = !0;
@@ -89383,11 +89383,11 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
               case opts.optionalmarker.end:
               case opts.groupmarker.end:
                 if (openingToken = openenings.pop(), void 0 !== openingToken) if (openenings.length > 0) {
-                    if (currentOpeningToken = openenings[openenings.length - 1], currentOpeningToken.matches.push(openingToken), 
+                    if (currentOpeningToken = openenings[openenings.length - 1], currentOpeningToken.matches.push(openingToken),
                     currentOpeningToken.isAlternator) {
                         alternator = openenings.pop();
                         for (var mndx = 0; mndx < alternator.matches.length; mndx++) alternator.matches[mndx].isGroup = !1;
-                        openenings.length > 0 ? (currentOpeningToken = openenings[openenings.length - 1], 
+                        openenings.length > 0 ? (currentOpeningToken = openenings[openenings.length - 1],
                         currentOpeningToken.matches.push(alternator)) : currentToken.matches.push(alternator);
                     }
                 } else currentToken.matches.push(openingToken); else defaultCase();
@@ -89410,32 +89410,32 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                     max: mq1
                 }, openenings.length > 0) {
                     var matches = openenings[openenings.length - 1].matches;
-                    match = matches.pop(), match.isGroup || (groupToken = new MaskToken(!0), groupToken.matches.push(match), 
+                    match = matches.pop(), match.isGroup || (groupToken = new MaskToken(!0), groupToken.matches.push(match),
                     match = groupToken), matches.push(match), matches.push(quantifier);
-                } else match = currentToken.matches.pop(), match.isGroup || (groupToken = new MaskToken(!0), 
-                groupToken.matches.push(match), match = groupToken), currentToken.matches.push(match), 
+                } else match = currentToken.matches.pop(), match.isGroup || (groupToken = new MaskToken(!0),
+                groupToken.matches.push(match), match = groupToken), currentToken.matches.push(match),
                 currentToken.matches.push(quantifier);
                 break;
 
               case opts.alternatormarker:
-                openenings.length > 0 ? (currentOpeningToken = openenings[openenings.length - 1], 
-                lastMatch = currentOpeningToken.matches.pop()) : lastMatch = currentToken.matches.pop(), 
-                lastMatch.isAlternator ? openenings.push(lastMatch) : (alternator = new MaskToken(!1, !1, !1, !0), 
+                openenings.length > 0 ? (currentOpeningToken = openenings[openenings.length - 1],
+                lastMatch = currentOpeningToken.matches.pop()) : lastMatch = currentToken.matches.pop(),
+                lastMatch.isAlternator ? openenings.push(lastMatch) : (alternator = new MaskToken(!1, !1, !1, !0),
                 alternator.matches.push(lastMatch), openenings.push(alternator));
                 break;
 
               default:
                 defaultCase();
             }
-            for (;openenings.length > 0; ) openingToken = openenings.pop(), verifyGroupMarker(openingToken, !0), 
+            for (;openenings.length > 0; ) openingToken = openenings.pop(), verifyGroupMarker(openingToken, !0),
             currentToken.matches.push(openingToken);
-            return currentToken.matches.length > 0 && (lastMatch = currentToken.matches[currentToken.matches.length - 1], 
-            verifyGroupMarker(lastMatch), maskTokens.push(currentToken)), opts.numericInput && reverseTokens(maskTokens[0]), 
+            return currentToken.matches.length > 0 && (lastMatch = currentToken.matches[currentToken.matches.length - 1],
+            verifyGroupMarker(lastMatch), maskTokens.push(currentToken)), opts.numericInput && reverseTokens(maskTokens[0]),
             maskTokens;
         }
         function generateMask(mask, metadata) {
             if (null === mask || "" === mask) return void 0;
-            if (1 === mask.length && opts.greedy === !1 && 0 !== opts.repeat && (opts.placeholder = ""), 
+            if (1 === mask.length && opts.greedy === !1 && 0 !== opts.repeat && (opts.placeholder = ""),
             opts.repeat > 0 || "*" === opts.repeat || "+" === opts.repeat) {
                 var repeatStart = "*" === opts.repeat ? 0 : "+" === opts.repeat ? 1 : opts.repeat;
                 mask = opts.groupmarker.start + mask + opts.groupmarker.end + opts.quantifiermarker.start + repeatStart + "," + opts.repeat + opts.quantifiermarker.end;
@@ -89449,8 +89449,8 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                 buffer: void 0,
                 tests: {},
                 metadata: metadata
-            }, nocache !== !0 && (Inputmask.prototype.masksCache[opts.numericInput ? mask.split("").reverse().join("") : mask] = masksetDefinition, 
-            masksetDefinition = $.extend(!0, {}, Inputmask.prototype.masksCache[opts.numericInput ? mask.split("").reverse().join("") : mask]))) : masksetDefinition = $.extend(!0, {}, Inputmask.prototype.masksCache[opts.numericInput ? mask.split("").reverse().join("") : mask]), 
+            }, nocache !== !0 && (Inputmask.prototype.masksCache[opts.numericInput ? mask.split("").reverse().join("") : mask] = masksetDefinition,
+            masksetDefinition = $.extend(!0, {}, Inputmask.prototype.masksCache[opts.numericInput ? mask.split("").reverse().join("") : mask]))) : masksetDefinition = $.extend(!0, {}, Inputmask.prototype.masksCache[opts.numericInput ? mask.split("").reverse().join("") : mask]),
             masksetDefinition;
         }
         function preProcessMask(mask) {
@@ -89467,7 +89467,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
             }
             opts.mask = opts.mask.pop();
         }
-        return opts.mask && (ms = void 0 === opts.mask.mask || $.isFunction(opts.mask.mask) ? generateMask(preProcessMask(opts.mask), opts.mask) : generateMask(preProcessMask(opts.mask.mask), opts.mask)), 
+        return opts.mask && (ms = void 0 === opts.mask.mask || $.isFunction(opts.mask.mask) ? generateMask(preProcessMask(opts.mask), opts.mask) : generateMask(preProcessMask(opts.mask.mask), opts.mask)),
         ms;
     }
     function maskScope(actionObj, maskset, opts) {
@@ -89478,7 +89478,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                 if (baseOnInput === !0 && getMaskSet().validPositions[pos]) {
                     var validPos = getMaskSet().validPositions[pos];
                     test = validPos.match, ndxIntlzr = validPos.locator.slice(), maskTemplate.push(includeInput === !0 ? validPos.input : getPlaceholder(pos, test));
-                } else testPos = getTestTemplate(pos, ndxIntlzr, pos - 1), test = testPos.match, 
+                } else testPos = getTestTemplate(pos, ndxIntlzr, pos - 1), test = testPos.match,
                 ndxIntlzr = testPos.locator.slice(), (opts.jitMasking === !1 || lvp > pos || isFinite(opts.jitMasking) && opts.jitMasking > pos) && maskTemplate.push(getPlaceholder(pos, test));
                 pos++;
             } while ((void 0 === maxLength || maxLength > pos - 1) && null !== test.fn || null === test.fn && "" !== test.def || minimalPos >= pos);
@@ -89489,7 +89489,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
         }
         function resetMaskSet(soft) {
             var maskset = getMaskSet();
-            maskset.buffer = void 0, soft !== !0 && (maskset.tests = {}, maskset._buffer = void 0, 
+            maskset.buffer = void 0, soft !== !0 && (maskset.tests = {}, maskset._buffer = void 0,
             maskset.validPositions = {}, maskset.p = 0);
         }
         function getLastValidPosition(closestTo, strict, validPositions) {
@@ -89497,7 +89497,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
             void 0 === closestTo && (closestTo = -1);
             for (var posNdx in valids) {
                 var psNdx = parseInt(posNdx);
-                valids[psNdx] && (strict || null !== valids[psNdx].match.fn) && (closestTo >= psNdx && (before = psNdx), 
+                valids[psNdx] && (strict || null !== valids[psNdx].match.fn) && (closestTo >= psNdx && (before = psNdx),
                 psNdx >= closestTo && (after = psNdx));
             }
             return -1 !== before && closestTo - before > 1 || closestTo > after ? before : after;
@@ -89511,15 +89511,15 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                 for (i = j = pos; lvp >= i; i++) {
                     var t = positionsClone[i];
                     if (void 0 !== t) for (var posMatch = j, prevPosMatch = -1; posMatch < getMaskLength() && (null == t.match.fn && vps[i] && (vps[i].match.optionalQuantifier === !0 || vps[i].match.optionality === !0) || null != t.match.fn); ) {
-                        if (null === t.match.fn || !opts.keepStatic && vps[i] && (void 0 !== vps[i + 1] && getTests(i + 1, vps[i].locator.slice(), i).length > 1 || void 0 !== vps[i].alternation) ? posMatch++ : posMatch = seekNext(j), 
+                        if (null === t.match.fn || !opts.keepStatic && vps[i] && (void 0 !== vps[i + 1] && getTests(i + 1, vps[i].locator.slice(), i).length > 1 || void 0 !== vps[i].alternation) ? posMatch++ : posMatch = seekNext(j),
                         needsValidation === !1 && positionsClone[posMatch] && positionsClone[posMatch].match.def === t.match.def) {
-                            getMaskSet().validPositions[posMatch] = $.extend(!0, {}, positionsClone[posMatch]), 
+                            getMaskSet().validPositions[posMatch] = $.extend(!0, {}, positionsClone[posMatch]),
                             getMaskSet().validPositions[posMatch].input = t.input, j = posMatch, valid = !0;
                             break;
                         }
                         if (positionCanMatchDefinition(posMatch, t.match.def)) {
                             var result = isValid(posMatch, t.input, !0, !0);
-                            if (valid = result !== !1, j = result.caret || result.insert ? getLastValidPosition() : posMatch, 
+                            if (valid = result !== !1, j = result.caret || result.insert ? getLastValidPosition() : posMatch,
                             needsValidation = !0, valid) break;
                         } else {
                             if (valid = null == t.match.fn, prevPosMatch === posMatch) break;
@@ -89528,7 +89528,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                     }
                     if (!valid) break;
                 }
-                if (!valid) return getMaskSet().validPositions = $.extend(!0, {}, positionsClone), 
+                if (!valid) return getMaskSet().validPositions = $.extend(!0, {}, positionsClone),
                 resetMaskSet(!0), !1;
             } else getMaskSet().validPositions[pos] = validTest;
             return resetMaskSet(!0), !0;
@@ -89549,9 +89549,9 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                 var s = getMaskSet().validPositions[startPos];
                 if (startPos > i && (i = startPos + 1), void 0 === getMaskSet().validPositions[i] && isMask(i) || void 0 !== s) i++; else {
                     var t = getTestTemplate(i);
-                    needsValidation === !1 && positionsClone[startPos] && positionsClone[startPos].match.def === t.match.def ? (getMaskSet().validPositions[startPos] = $.extend(!0, {}, positionsClone[startPos]), 
-                    getMaskSet().validPositions[startPos].input = t.input, delete getMaskSet().validPositions[i], 
-                    i++) : positionCanMatchDefinition(startPos, t.match.def) ? isValid(startPos, t.input || getPlaceholder(i), !0) !== !1 && (delete getMaskSet().validPositions[i], 
+                    needsValidation === !1 && positionsClone[startPos] && positionsClone[startPos].match.def === t.match.def ? (getMaskSet().validPositions[startPos] = $.extend(!0, {}, positionsClone[startPos]),
+                    getMaskSet().validPositions[startPos].input = t.input, delete getMaskSet().validPositions[i],
+                    i++) : positionCanMatchDefinition(startPos, t.match.def) ? isValid(startPos, t.input || getPlaceholder(i), !0) !== !1 && (delete getMaskSet().validPositions[i],
                     i++, needsValidation = !0) : isMask(i) || (i++, startPos--), startPos++;
                 }
             }
@@ -89559,7 +89559,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
         }
         function getTestTemplate(pos, ndxIntlzr, tstPs) {
             var testPos = getMaskSet().validPositions[pos];
-            if (void 0 === testPos) for (var testPositions = getTests(pos, ndxIntlzr, tstPs), lvp = getLastValidPosition(), lvTest = getMaskSet().validPositions[lvp] || getTests(0)[0], lvTestAltArr = void 0 !== lvTest.alternation ? lvTest.locator[lvTest.alternation].toString().split(",") : [], ndx = 0; ndx < testPositions.length && (testPos = testPositions[ndx], 
+            if (void 0 === testPos) for (var testPositions = getTests(pos, ndxIntlzr, tstPs), lvp = getLastValidPosition(), lvTest = getMaskSet().validPositions[lvp] || getTests(0)[0], lvTestAltArr = void 0 !== lvTest.alternation ? lvTest.locator[lvTest.alternation].toString().split(",") : [], ndx = 0; ndx < testPositions.length && (testPos = testPositions[ndx],
             !(testPos.match && (opts.greedy && testPos.match.optionalQuantifier !== !0 || (testPos.match.optionality === !1 || testPos.match.newBlockMarker === !1) && testPos.match.optionalQuantifier !== !0) && (void 0 === lvTest.alternation || lvTest.alternation !== testPos.alternation || void 0 !== testPos.locator[lvTest.alternation] && checkAlternationMatch(testPos.locator[lvTest.alternation].toString().split(","), lvTestAltArr)))); ndx++) ;
             return testPos;
         }
@@ -89577,7 +89577,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
             var bestMatch, indexPos;
             return (getMaskSet().tests[pos] || getMaskSet().validPositions[pos]) && $.each(getMaskSet().tests[pos] || [ getMaskSet().validPositions[pos] ], function(ndx, lmnt) {
                 var ndxPos = lmnt.alternation ? lmnt.locator[lmnt.alternation].toString().indexOf(alternateNdx) : -1;
-                (void 0 === indexPos || indexPos > ndxPos) && -1 !== ndxPos && (bestMatch = lmnt, 
+                (void 0 === indexPos || indexPos > ndxPos) && -1 !== ndxPos && (bestMatch = lmnt,
                 indexPos = ndxPos);
             }), bestMatch;
         }
@@ -89615,11 +89615,11 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                                 var amndx, currentPos = testPos, ndxInitializerClone = ndxInitializer.slice(), altIndexArr = [];
                                 if ("string" == typeof altIndex) altIndexArr = altIndex.split(","); else for (amndx = 0; amndx < alternateToken.matches.length; amndx++) altIndexArr.push(amndx);
                                 for (var ndx = 0; ndx < altIndexArr.length; ndx++) {
-                                    if (amndx = parseInt(altIndexArr[ndx]), matches = [], ndxInitializer = resolveNdxInitializer(testPos, amndx), 
-                                    match = handleMatch(alternateToken.matches[amndx] || maskToken.matches[amndx], [ amndx ].concat(loopNdx), quantifierRecurse) || match, 
+                                    if (amndx = parseInt(altIndexArr[ndx]), matches = [], ndxInitializer = resolveNdxInitializer(testPos, amndx),
+                                    match = handleMatch(alternateToken.matches[amndx] || maskToken.matches[amndx], [ amndx ].concat(loopNdx), quantifierRecurse) || match,
                                     match !== !0 && void 0 !== match && altIndexArr[altIndexArr.length - 1] < alternateToken.matches.length) {
                                         var ntndx = $.inArray(match, maskToken.matches) + 1;
-                                        maskToken.matches.length > ntndx && (match = handleMatch(maskToken.matches[ntndx], [ ntndx ].concat(loopNdx.slice(1, loopNdx.length)), quantifierRecurse), 
+                                        maskToken.matches.length > ntndx && (match = handleMatch(maskToken.matches[ntndx], [ ntndx ].concat(loopNdx.slice(1, loopNdx.length)), quantifierRecurse),
                                         match && (altIndexArr.push(ntndx.toString()), $.each(matches, function(ndx, lmnt) {
                                             lmnt.alternation = loopNdx.length - 1;
                                         })));
@@ -89632,8 +89632,8 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                                         for (var ndx2 = 0; ndx2 < malternateMatches.length; ndx2++) {
                                             var altMatch2 = malternateMatches[ndx2];
                                             if (altMatch.match.def === altMatch2.match.def && ("string" != typeof altIndex || -1 !== $.inArray(altMatch.locator[altMatch.alternation].toString(), altIndexArr))) {
-                                                altMatch.match.mask === altMatch2.match.mask && (maltMatches.splice(ndx1, 1), ndx1--), 
-                                                -1 === altMatch2.locator[altMatch.alternation].toString().indexOf(altMatch.locator[altMatch.alternation]) && (altMatch2.locator[altMatch.alternation] = altMatch2.locator[altMatch.alternation] + "," + altMatch.locator[altMatch.alternation], 
+                                                altMatch.match.mask === altMatch2.match.mask && (maltMatches.splice(ndx1, 1), ndx1--),
+                                                -1 === altMatch2.locator[altMatch.alternation].toString().indexOf(altMatch.locator[altMatch.alternation]) && (altMatch2.locator[altMatch.alternation] = altMatch2.locator[altMatch.alternation] + "," + altMatch.locator[altMatch.alternation],
                                                 altMatch2.alternation = altMatch.alternation);
                                                 break;
                                             }
@@ -89645,9 +89645,9 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                                     if (isFinite(ndx)) {
                                         var mamatch, alternation = lmnt.alternation, altLocArr = lmnt.locator[alternation].toString().split(",");
                                         lmnt.locator[alternation] = void 0, lmnt.alternation = void 0;
-                                        for (var alndx = 0; alndx < altLocArr.length; alndx++) mamatch = -1 !== $.inArray(altLocArr[alndx], altIndexArr), 
-                                        mamatch && (void 0 !== lmnt.locator[alternation] ? (lmnt.locator[alternation] += ",", 
-                                        lmnt.locator[alternation] += altLocArr[alndx]) : lmnt.locator[alternation] = parseInt(altLocArr[alndx]), 
+                                        for (var alndx = 0; alndx < altLocArr.length; alndx++) mamatch = -1 !== $.inArray(altLocArr[alndx], altIndexArr),
+                                        mamatch && (void 0 !== lmnt.locator[alternation] ? (lmnt.locator[alternation] += ",",
+                                        lmnt.locator[alternation] += altLocArr[alndx]) : lmnt.locator[alternation] = parseInt(altLocArr[alndx]),
                                         lmnt.alternation = alternation);
                                         if (void 0 !== lmnt.locator[alternation]) return lmnt;
                                     }
@@ -89657,7 +89657,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                         } else if (match.isQuantifier && quantifierRecurse !== maskToken.matches[$.inArray(match, maskToken.matches) - 1]) for (var qt = match, qndx = ndxInitializer.length > 0 ? ndxInitializer.shift() : 0; qndx < (isNaN(qt.quantifier.max) ? qndx + 1 : qt.quantifier.max) && pos >= testPos; qndx++) {
                             var tokenGroup = maskToken.matches[$.inArray(qt, maskToken.matches) - 1];
                             if (match = handleMatch(tokenGroup, [ qndx ].concat(loopNdx), tokenGroup)) {
-                                if (latestMatch = matches[matches.length - 1].match, latestMatch.optionalQuantifier = qndx > qt.quantifier.min - 1, 
+                                if (latestMatch = matches[matches.length - 1].match, latestMatch.optionalQuantifier = qndx > qt.quantifier.min - 1,
                                 isFirstMatch(latestMatch, tokenGroup)) {
                                     if (qndx > qt.quantifier.min - 1) {
                                         insertStop = !0, testPos = pos;
@@ -89686,7 +89686,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
             if (pos > -1) {
                 if (void 0 === ndxIntlzr) {
                     for (var test, previousPos = pos - 1; void 0 === (test = getMaskSet().validPositions[previousPos] || getMaskSet().tests[previousPos]) && previousPos > -1; ) previousPos--;
-                    void 0 !== test && previousPos > -1 && (ndxInitializer = mergeLocators(test), cacheDependency = ndxInitializer.join(""), 
+                    void 0 !== test && previousPos > -1 && (ndxInitializer = mergeLocators(test), cacheDependency = ndxInitializer.join(""),
                     testPos = previousPos);
                 }
                 if (getMaskSet().tests[pos] && getMaskSet().tests[pos][0].cd === cacheDependency) return getMaskSet().tests[pos];
@@ -89707,7 +89707,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
             }), getMaskSet().tests[pos] = $.extend(!0, [], matches), getMaskSet().tests[pos];
         }
         function getBufferTemplate() {
-            return void 0 === getMaskSet()._buffer && (getMaskSet()._buffer = getMaskTemplate(!1, 1)), 
+            return void 0 === getMaskSet()._buffer && (getMaskSet()._buffer = getMaskTemplate(!1, 1)),
             getMaskSet()._buffer;
         }
         function getBuffer(noCache) {
@@ -89719,7 +89719,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
         }
         function refreshFromBuffer(start, end, buffer) {
             var i;
-            if (buffer = buffer, start === !0) resetMaskSet(), start = 0, end = buffer.length; else for (i = start; end > i; i++) delete getMaskSet().validPositions[i], 
+            if (buffer = buffer, start === !0) resetMaskSet(), start = 0, end = buffer.length; else for (i = start; end > i; i++) delete getMaskSet().validPositions[i],
             delete getMaskSet().tests[i];
             for (i = start; end > i; i++) resetMaskSet(!0), buffer[i] !== opts.skipOptionalPartCharacter && isValid(i, buffer[i], !0, !0);
         }
@@ -89756,27 +89756,27 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                         var elem = void 0 !== rslt.c ? rslt.c : c;
                         elem = elem === opts.skipOptionalPartCharacter && null === test.fn ? test.placeholder || test.def : elem;
                         var validatedPos = position, possibleModifiedBuffer = getBuffer();
-                        if (void 0 !== rslt.remove && ($.isArray(rslt.remove) || (rslt.remove = [ rslt.remove ]), 
+                        if (void 0 !== rslt.remove && ($.isArray(rslt.remove) || (rslt.remove = [ rslt.remove ]),
                         $.each(rslt.remove.sort(function(a, b) {
                             return b - a;
                         }), function(ndx, lmnt) {
                             stripValidPositions(lmnt, lmnt + 1, !0);
-                        })), void 0 !== rslt.insert && ($.isArray(rslt.insert) || (rslt.insert = [ rslt.insert ]), 
+                        })), void 0 !== rslt.insert && ($.isArray(rslt.insert) || (rslt.insert = [ rslt.insert ]),
                         $.each(rslt.insert.sort(function(a, b) {
                             return a - b;
                         }), function(ndx, lmnt) {
                             isValid(lmnt.pos, lmnt.c, !1, fromSetValid);
                         })), rslt.refreshFromBuffer) {
                             var refresh = rslt.refreshFromBuffer;
-                            if (strict = !0, refreshFromBuffer(refresh === !0 ? refresh : refresh.start, refresh.end, possibleModifiedBuffer), 
-                            void 0 === rslt.pos && void 0 === rslt.c) return rslt.pos = getLastValidPosition(), 
+                            if (strict = !0, refreshFromBuffer(refresh === !0 ? refresh : refresh.start, refresh.end, possibleModifiedBuffer),
+                            void 0 === rslt.pos && void 0 === rslt.c) return rslt.pos = getLastValidPosition(),
                             !1;
-                            if (validatedPos = void 0 !== rslt.pos ? rslt.pos : position, validatedPos !== position) return rslt = $.extend(rslt, isValid(validatedPos, elem, !0, fromSetValid)), 
+                            if (validatedPos = void 0 !== rslt.pos ? rslt.pos : position, validatedPos !== position) return rslt = $.extend(rslt, isValid(validatedPos, elem, !0, fromSetValid)),
                             !1;
-                        } else if (rslt !== !0 && void 0 !== rslt.pos && rslt.pos !== position && (validatedPos = rslt.pos, 
-                        refreshFromBuffer(position, validatedPos, getBuffer().slice()), validatedPos !== position)) return rslt = $.extend(rslt, isValid(validatedPos, elem, !0)), 
+                        } else if (rslt !== !0 && void 0 !== rslt.pos && rslt.pos !== position && (validatedPos = rslt.pos,
+                        refreshFromBuffer(position, validatedPos, getBuffer().slice()), validatedPos !== position)) return rslt = $.extend(rslt, isValid(validatedPos, elem, !0)),
                         !1;
-                        return rslt !== !0 && void 0 === rslt.pos && void 0 === rslt.c ? !1 : (ndx > 0 && resetMaskSet(!0), 
+                        return rslt !== !0 && void 0 === rslt.pos && void 0 === rslt.c ? !1 : (ndx > 0 && resetMaskSet(!0),
                         setValidPosition(validatedPos, $.extend({}, tst, {
                             input: casing(elem, test)
                         }), fromSetValid, isSelection(pos)) || (rslt = !1), !1);
@@ -89784,12 +89784,12 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                 }), rslt;
             }
             function alternate(pos, c, strict, fromSetValid) {
-                for (var lastAlt, alternation, isValidRslt, altPos, i, validPos, validPsClone = $.extend(!0, {}, getMaskSet().validPositions), testsClone = $.extend(!0, {}, getMaskSet().tests), lAlt = getLastValidPosition(); lAlt >= 0 && (altPos = getMaskSet().validPositions[lAlt], 
-                !altPos || void 0 === altPos.alternation || (lastAlt = lAlt, alternation = getMaskSet().validPositions[lastAlt].alternation, 
+                for (var lastAlt, alternation, isValidRslt, altPos, i, validPos, validPsClone = $.extend(!0, {}, getMaskSet().validPositions), testsClone = $.extend(!0, {}, getMaskSet().tests), lAlt = getLastValidPosition(); lAlt >= 0 && (altPos = getMaskSet().validPositions[lAlt],
+                !altPos || void 0 === altPos.alternation || (lastAlt = lAlt, alternation = getMaskSet().validPositions[lastAlt].alternation,
                 getTestTemplate(lastAlt).locator[altPos.alternation] === altPos.locator[altPos.alternation])); lAlt--) ;
                 if (void 0 !== alternation) {
                     lastAlt = parseInt(lastAlt);
-                    for (var decisionPos in getMaskSet().validPositions) if (decisionPos = parseInt(decisionPos), 
+                    for (var decisionPos in getMaskSet().validPositions) if (decisionPos = parseInt(decisionPos),
                     altPos = getMaskSet().validPositions[decisionPos], decisionPos >= lastAlt && void 0 !== altPos.alternation) {
                         var altNdxs;
                         0 === lastAlt ? (altNdxs = [], $.each(getMaskSet().tests[lastAlt], function(ndx, test) {
@@ -89800,28 +89800,28 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                         for (var mndx = 0; mndx < altNdxs.length; mndx++) {
                             var validInputs = [], staticInputsBeforePos = 0, staticInputsBeforePosAlternate = 0;
                             if (decisionTaker < altNdxs[mndx]) {
-                                for (var possibilityPos, possibilities, dp = decisionPos; dp >= 0; dp--) if (possibilityPos = getMaskSet().validPositions[dp], 
+                                for (var possibilityPos, possibilities, dp = decisionPos; dp >= 0; dp--) if (possibilityPos = getMaskSet().validPositions[dp],
                                 void 0 !== possibilityPos) {
                                     var bestMatch = selectBestMatch(dp, altNdxs[mndx]);
-                                    getMaskSet().validPositions[dp].match.def !== bestMatch.match.def && (validInputs.push(getMaskSet().validPositions[dp].input), 
-                                    getMaskSet().validPositions[dp] = bestMatch, getMaskSet().validPositions[dp].input = getPlaceholder(dp), 
-                                    null === getMaskSet().validPositions[dp].match.fn && staticInputsBeforePosAlternate++, 
-                                    possibilityPos = bestMatch), possibilities = possibilityPos.locator[alternation], 
+                                    getMaskSet().validPositions[dp].match.def !== bestMatch.match.def && (validInputs.push(getMaskSet().validPositions[dp].input),
+                                    getMaskSet().validPositions[dp] = bestMatch, getMaskSet().validPositions[dp].input = getPlaceholder(dp),
+                                    null === getMaskSet().validPositions[dp].match.fn && staticInputsBeforePosAlternate++,
+                                    possibilityPos = bestMatch), possibilities = possibilityPos.locator[alternation],
                                     possibilityPos.locator[alternation] = parseInt(altNdxs[mndx]);
                                     break;
                                 }
                                 if (decisionTaker !== possibilityPos.locator[alternation]) {
-                                    for (i = decisionPos + 1; i < getLastValidPosition(void 0, !0) + 1; i++) validPos = getMaskSet().validPositions[i], 
-                                    validPos && null != validPos.match.fn ? validInputs.push(validPos.input) : pos > i && staticInputsBeforePos++, 
+                                    for (i = decisionPos + 1; i < getLastValidPosition(void 0, !0) + 1; i++) validPos = getMaskSet().validPositions[i],
+                                    validPos && null != validPos.match.fn ? validInputs.push(validPos.input) : pos > i && staticInputsBeforePos++,
                                     delete getMaskSet().validPositions[i], delete getMaskSet().tests[i];
                                     for (resetMaskSet(!0), opts.keepStatic = !opts.keepStatic, isValidRslt = !0; validInputs.length > 0; ) {
                                         var input = validInputs.shift();
                                         if (input !== opts.skipOptionalPartCharacter && !(isValidRslt = isValid(getLastValidPosition(void 0, !0) + 1, input, !1, fromSetValid))) break;
                                     }
-                                    if (possibilityPos.alternation = alternation, possibilityPos.locator[alternation] = possibilities, 
+                                    if (possibilityPos.alternation = alternation, possibilityPos.locator[alternation] = possibilities,
                                     isValidRslt) {
                                         var targetLvp = getLastValidPosition(pos) + 1;
-                                        for (i = decisionPos + 1; i < getLastValidPosition() + 1; i++) validPos = getMaskSet().validPositions[i], 
+                                        for (i = decisionPos + 1; i < getLastValidPosition() + 1; i++) validPos = getMaskSet().validPositions[i],
                                         (void 0 === validPos || null == validPos.match.fn) && pos > i && staticInputsBeforePosAlternate++;
                                         pos += staticInputsBeforePosAlternate - staticInputsBeforePos, isValidRslt = isValid(pos > targetLvp ? targetLvp : pos, c, strict, fromSetValid);
                                     }
@@ -89839,7 +89839,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                 for (var vp = getMaskSet().validPositions[newPos], targetLocator = vp.locator, tll = targetLocator.length, ps = originalPos; newPos > ps; ps++) if (void 0 === getMaskSet().validPositions[ps] && !isMask(ps, !0)) {
                     var tests = getTests(ps), bestMatch = tests[0], equality = -1;
                     $.each(tests, function(ndx, tst) {
-                        for (var i = 0; tll > i && (void 0 !== tst.locator[i] && checkAlternationMatch(tst.locator[i].toString().split(","), targetLocator[i].toString().split(","))); i++) i > equality && (equality = i, 
+                        for (var i = 0; tll > i && (void 0 !== tst.locator[i] && checkAlternationMatch(tst.locator[i].toString().split(","), targetLocator[i].toString().split(","))); i++) i > equality && (equality = i,
                         bestMatch = tst);
                     }), setValidPosition(ps, $.extend({}, bestMatch, {
                         input: bestMatch.match.placeholder || bestMatch.match.def
@@ -89852,15 +89852,15 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
             for (var result = !1, positionsClone = $.extend(!0, {}, getMaskSet().validPositions), pndx = maskPos - 1; pndx > -1 && !getMaskSet().validPositions[pndx]; pndx--) ;
             var testTemplate;
             for (pndx++; maskPos > pndx; pndx++) void 0 === getMaskSet().validPositions[pndx] && (opts.jitMasking === !1 || opts.jitMasking > pndx) && ((testTemplate = getTestTemplate(pndx)).match.def === opts.radixPointDefinitionSymbol || !isMask(pndx, !0) || $.inArray(opts.radixPoint, getBuffer()) < pndx && testTemplate.match.fn && testTemplate.match.fn.test(getPlaceholder(pndx), getMaskSet(), pndx, !1, opts)) && _isValid(getLastValidPosition(pndx, !0) + 1, testTemplate.match.placeholder || (null == testTemplate.match.fn ? testTemplate.match.def : "" !== getPlaceholder(pndx) ? getPlaceholder(pndx) : getBuffer()[pndx]), !0, fromSetValid);
-            if (isSelection(pos) && (handleRemove(void 0, Inputmask.keyCode.DELETE, pos), maskPos = getMaskSet().p), 
-            maskPos < getMaskLength() && (result = _isValid(maskPos, c, strict, fromSetValid), 
+            if (isSelection(pos) && (handleRemove(void 0, Inputmask.keyCode.DELETE, pos), maskPos = getMaskSet().p),
+            maskPos < getMaskLength() && (result = _isValid(maskPos, c, strict, fromSetValid),
             (!strict || fromSetValid === !0) && result === !1)) {
                 var currentPosValid = getMaskSet().validPositions[maskPos];
                 if (!currentPosValid || null !== currentPosValid.match.fn || currentPosValid.match.def !== c && c !== opts.skipOptionalPartCharacter) {
                     if ((opts.insertMode || void 0 === getMaskSet().validPositions[seekNext(maskPos)]) && !isMask(maskPos, !0)) {
                         var staticChar = getTestTemplate(maskPos).match;
                         staticChar = staticChar.placeholder || staticChar.def, _isValid(maskPos, staticChar, strict, fromSetValid);
-                        for (var nPos = maskPos + 1, snPos = seekNext(maskPos); snPos >= nPos; nPos++) if (result = _isValid(nPos, c, strict, fromSetValid), 
+                        for (var nPos = maskPos + 1, snPos = seekNext(maskPos); snPos >= nPos; nPos++) if (result = _isValid(nPos, c, strict, fromSetValid),
                         result !== !1) {
                             trackbackAlternations(maskPos, nPos), maskPos = nPos;
                             break;
@@ -89870,16 +89870,16 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                     caret: seekNext(maskPos)
                 };
             }
-            return result === !1 && opts.keepStatic && (result = alternate(maskPos, c, strict, fromSetValid)), 
+            return result === !1 && opts.keepStatic && (result = alternate(maskPos, c, strict, fromSetValid)),
             result === !0 && (result = {
                 pos: maskPos
-            }), $.isFunction(opts.postValidation) && result !== !1 && !strict && fromSetValid !== !0 && (result = opts.postValidation(getBuffer(!0), result, opts) ? result : !1), 
-            void 0 === result.pos && (result.pos = maskPos), result === !1 && (resetMaskSet(!0), 
+            }), $.isFunction(opts.postValidation) && result !== !1 && !strict && fromSetValid !== !0 && (result = opts.postValidation(getBuffer(!0), result, opts) ? result : !1),
+            void 0 === result.pos && (result.pos = maskPos), result === !1 && (resetMaskSet(!0),
             getMaskSet().validPositions = $.extend(!0, {}, positionsClone)), result;
         }
         function isMask(pos, strict) {
             var test;
-            if (strict ? (test = getTestTemplate(pos).match, "" === test.def && (test = getTest(pos))) : test = getTest(pos), 
+            if (strict ? (test = getTestTemplate(pos).match, "" === test.def && (test = getTest(pos))) : test = getTest(pos),
             null != test.fn) return test.fn;
             if (strict !== !0 && pos > -1 && !opts.keepStatic && void 0 === getMaskSet().validPositions[pos]) {
                 var tests = getTests(pos);
@@ -89891,7 +89891,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
             var maskLength;
             maxLength = void 0 !== el ? el.maxLength : void 0, -1 === maxLength && (maxLength = void 0);
             var pos, lvp = getLastValidPosition(), testPos = getMaskSet().validPositions[lvp], ndxIntlzr = void 0 !== testPos ? testPos.locator.slice() : void 0;
-            for (pos = lvp + 1; void 0 === testPos || null !== testPos.match.fn || null === testPos.match.fn && "" !== testPos.match.def; pos++) testPos = getTestTemplate(pos, ndxIntlzr, pos - 1), 
+            for (pos = lvp + 1; void 0 === testPos || null !== testPos.match.fn || null === testPos.match.fn && "" !== testPos.match.def; pos++) testPos = getTestTemplate(pos, ndxIntlzr, pos - 1),
             ndxIntlzr = testPos.locator.slice();
             var lastTest = getTest(pos - 1);
             return maskLength = "" !== lastTest.def ? pos : pos - 1, void 0 === maxLength || maxLength > maskLength ? maskLength : maxLength;
@@ -89917,13 +89917,13 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                 if (result) {
                     if (result.refreshFromBuffer) {
                         var refresh = result.refreshFromBuffer;
-                        refreshFromBuffer(refresh === !0 ? refresh : refresh.start, refresh.end, result.buffer || buffer), 
+                        refreshFromBuffer(refresh === !0 ? refresh : refresh.start, refresh.end, result.buffer || buffer),
                         buffer = getBuffer(!0);
                     }
                     void 0 !== caretPos && (caretPos = void 0 !== result.caret ? result.caret : caretPos);
                 }
             }
-            input.inputmask._valueSet(buffer.join("")), void 0 === caretPos || void 0 !== event && "blur" === event.type || caret(input, caretPos), 
+            input.inputmask._valueSet(buffer.join("")), void 0 === caretPos || void 0 !== event && "blur" === event.type || caret(input, caretPos),
             triggerInputEvent === !0 && (skipInputEvent = !0, $(input).trigger("input"));
         }
         function getPlaceholder(pos, test) {
@@ -89931,7 +89931,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
             if (null === test.fn) {
                 if (pos > -1 && !opts.keepStatic && void 0 === getMaskSet().validPositions[pos]) {
                     var prevTest, tests = getTests(pos), staticAlternations = [];
-                    if (tests.length > 2) for (var i = 0; i < tests.length; i++) if (tests[i].match.optionality !== !0 && tests[i].match.optionalQuantifier !== !0 && (null === tests[i].match.fn || void 0 === prevTest || tests[i].match.fn.test(prevTest.match.def, getMaskSet(), pos, !0, opts) !== !1) && (staticAlternations.push(tests[i]), 
+                    if (tests.length > 2) for (var i = 0; i < tests.length; i++) if (tests[i].match.optionality !== !0 && tests[i].match.optionalQuantifier !== !0 && (null === tests[i].match.fn || void 0 === prevTest || tests[i].match.fn.test(prevTest.match.def, getMaskSet(), pos, !0, opts) !== !1) && (staticAlternations.push(tests[i]),
                     null === tests[i].match.fn && (prevTest = tests[i]), staticAlternations.length > 1)) return opts.placeholder.charAt(pos % opts.placeholder.length);
                 }
                 return test.def;
@@ -89953,7 +89953,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
             var result, inputValue = nptvl.slice(), charCodes = "", initialNdx = 0;
             if (resetMaskSet(), getMaskSet().p = seekNext(-1), !strict) if (opts.autoUnmask !== !0) {
                 var staticInput = getBufferTemplate().slice(0, seekNext(-1)).join(""), matches = inputValue.join("").match(new RegExp("^" + Inputmask.escapeRegex(staticInput), "g"));
-                matches && matches.length > 0 && (inputValue.splice(0, matches.length * staticInput.length), 
+                matches && matches.length > 0 && (inputValue.splice(0, matches.length * staticInput.length),
                 initialNdx = seekNext(initialNdx));
             } else initialNdx = seekNext(initialNdx);
             $.each(inputValue, function(ndx, charCode) {
@@ -89963,13 +89963,13 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                     var lvp = getLastValidPosition(void 0, !0), lvTest = getMaskSet().validPositions[lvp], nextTest = getTestTemplate(lvp + 1, lvTest ? lvTest.locator.slice() : void 0, lvp);
                     if (!isTemplateMatch() || strict || opts.autoUnmask) {
                         var pos = strict ? ndx : null == nextTest.match.fn && nextTest.match.optionality && lvp + 1 < getMaskSet().p ? lvp + 1 : getMaskSet().p;
-                        result = keypressEvent.call(input, keypress, !0, !1, strict, pos), initialNdx = pos + 1, 
+                        result = keypressEvent.call(input, keypress, !0, !1, strict, pos), initialNdx = pos + 1,
                         charCodes = "";
                     } else result = keypressEvent.call(input, keypress, !0, !1, !0, lvp + 1);
-                    if (!strict && $.isFunction(opts.onBeforeWrite) && (result = opts.onBeforeWrite(keypress, getBuffer(), result.forwardPosition, opts), 
+                    if (!strict && $.isFunction(opts.onBeforeWrite) && (result = opts.onBeforeWrite(keypress, getBuffer(), result.forwardPosition, opts),
                     result && result.refreshFromBuffer)) {
                         var refresh = result.refreshFromBuffer;
-                        refreshFromBuffer(refresh === !0 ? refresh : refresh.start, refresh.end, result.buffer), 
+                        refreshFromBuffer(refresh === !0 ? refresh : refresh.start, refresh.end, result.buffer),
                         resetMaskSet(!0), result.caret && (getMaskSet().p = result.caret);
                     }
                 }
@@ -89995,34 +89995,34 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                 return pos;
             }
             var range;
-            if ("number" != typeof begin) return input.setSelectionRange ? (begin = input.selectionStart, 
-            end = input.selectionEnd) : window.getSelection ? (range = window.getSelection().getRangeAt(0), 
-            (range.commonAncestorContainer.parentNode === input || range.commonAncestorContainer === input) && (begin = range.startOffset, 
-            end = range.endOffset)) : document.selection && document.selection.createRange && (range = document.selection.createRange(), 
-            begin = 0 - range.duplicate().moveStart("character", -input.inputmask._valueGet().length), 
+            if ("number" != typeof begin) return input.setSelectionRange ? (begin = input.selectionStart,
+            end = input.selectionEnd) : window.getSelection ? (range = window.getSelection().getRangeAt(0),
+            (range.commonAncestorContainer.parentNode === input || range.commonAncestorContainer === input) && (begin = range.startOffset,
+            end = range.endOffset)) : document.selection && document.selection.createRange && (range = document.selection.createRange(),
+            begin = 0 - range.duplicate().moveStart("character", -input.inputmask._valueGet().length),
             end = begin + range.text.length), {
                 begin: translatePosition(begin),
                 end: translatePosition(end)
             };
             begin = translatePosition(begin), end = translatePosition(end), end = "number" == typeof end ? end : begin;
             var scrollCalc = parseInt(((input.ownerDocument.defaultView || window).getComputedStyle ? (input.ownerDocument.defaultView || window).getComputedStyle(input, null) : input.currentStyle).fontSize) * end;
-            if (input.scrollLeft = scrollCalc > input.scrollWidth ? scrollCalc : 0, mobile || opts.insertMode !== !1 || begin !== end || end++, 
+            if (input.scrollLeft = scrollCalc > input.scrollWidth ? scrollCalc : 0, mobile || opts.insertMode !== !1 || begin !== end || end++,
             input.setSelectionRange) input.selectionStart = begin, input.selectionEnd = end; else if (window.getSelection) {
                 if (range = document.createRange(), void 0 === input.firstChild || null === input.firstChild) {
                     var textNode = document.createTextNode("");
                     input.appendChild(textNode);
                 }
-                range.setStart(input.firstChild, begin < input.inputmask._valueGet().length ? begin : input.inputmask._valueGet().length), 
-                range.setEnd(input.firstChild, end < input.inputmask._valueGet().length ? end : input.inputmask._valueGet().length), 
+                range.setStart(input.firstChild, begin < input.inputmask._valueGet().length ? begin : input.inputmask._valueGet().length),
+                range.setEnd(input.firstChild, end < input.inputmask._valueGet().length ? end : input.inputmask._valueGet().length),
                 range.collapse(!0);
                 var sel = window.getSelection();
                 sel.removeAllRanges(), sel.addRange(range);
-            } else input.createTextRange && (range = input.createTextRange(), range.collapse(!0), 
+            } else input.createTextRange && (range = input.createTextRange(), range.collapse(!0),
             range.moveEnd("character", end), range.moveStart("character", begin), range.select());
         }
         function determineLastRequiredPosition(returnDefinition) {
             var pos, testPos, buffer = getBuffer(), bl = buffer.length, lvp = getLastValidPosition(), positions = {}, lvTest = getMaskSet().validPositions[lvp], ndxIntlzr = void 0 !== lvTest ? lvTest.locator.slice() : void 0;
-            for (pos = lvp + 1; pos < buffer.length; pos++) testPos = getTestTemplate(pos, ndxIntlzr, pos - 1), 
+            for (pos = lvp + 1; pos < buffer.length; pos++) testPos = getTestTemplate(pos, ndxIntlzr, pos - 1),
             ndxIntlzr = testPos.locator.slice(), positions[pos] = $.extend(!0, {}, testPos);
             var lvTestAlt = lvTest && void 0 !== lvTest.alternation ? lvTest.locator[lvTest.alternation] : void 0;
             for (pos = bl - 1; pos > lvp && (testPos = positions[pos], (testPos.match.optionality || testPos.match.optionalQuantifier || lvTestAlt && (lvTestAlt !== positions[pos].locator[lvTest.alternation] && null != testPos.match.fn || null === testPos.match.fn && testPos.locator[lvTest.alternation] && checkAlternationMatch(testPos.locator[lvTest.alternation].toString().split(","), lvTestAlt.toString().split(",")) && "" !== getTests(pos)[0].def)) && buffer[pos] === getPlaceholder(pos, testPos.match)); pos--) bl--;
@@ -90070,7 +90070,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                         },
                         set: function(elem, value) {
                             var result, $elem = $(elem);
-                            return result = valhookSet(elem, value), elem.inputmask && $elem.trigger("setvalue"), 
+                            return result = valhookSet(elem, value), elem.inputmask && $elem.trigger("setvalue"),
                             result;
                         },
                         inputmaskpatch: !0
@@ -90098,7 +90098,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                         return object.constructor.prototype;
                     });
                     var valueProperty = Object.getPrototypeOf ? Object.getOwnPropertyDescriptor(Object.getPrototypeOf(npt), "value") : void 0;
-                    valueProperty && valueProperty.get && valueProperty.set ? (valueGet = valueProperty.get, 
+                    valueProperty && valueProperty.get && valueProperty.set ? (valueGet = valueProperty.get,
                     valueSet = valueProperty.set, Object.defineProperty(npt, "value", {
                         get: getter,
                         set: setter,
@@ -90112,8 +90112,8 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                         set: setter,
                         configurable: !0
                     }));
-                } else document.__lookupGetter__ && npt.__lookupGetter__("value") && (valueGet = npt.__lookupGetter__("value"), 
-                valueSet = npt.__lookupSetter__("value"), npt.__defineGetter__("value", getter), 
+                } else document.__lookupGetter__ && npt.__lookupGetter__("value") && (valueGet = npt.__lookupGetter__("value"),
+                valueSet = npt.__lookupSetter__("value"), npt.__defineGetter__("value", getter),
                 npt.__defineSetter__("value", setter));
                 npt.inputmask.__valueGet = valueGet, npt.inputmask._valueGet = function(overruleRTL) {
                     return isRTL && overruleRTL !== !0 ? valueGet.call(this.el).split("").reverse().join("") : valueGet.call(this.el);
@@ -90133,7 +90133,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                     var lastAlt, validInputs = [], positionsClone = $.extend(!0, {}, getMaskSet().validPositions);
                     for (lastAlt = getLastValidPosition(); lastAlt >= 0; lastAlt--) {
                         var validPos = getMaskSet().validPositions[lastAlt];
-                        if (validPos && (null != validPos.match.fn && validInputs.push(validPos.input), 
+                        if (validPos && (null != validPos.match.fn && validInputs.push(validPos.input),
                         delete getMaskSet().validPositions[lastAlt], void 0 !== validPos.alternation && validPos.locator[validPos.alternation] === getTestTemplate(lastAlt).locator[validPos.alternation])) break;
                     }
                     if (lastAlt > -1) for (;validInputs.length > 0; ) {
@@ -90143,32 +90143,32 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                     } else getMaskSet().validPositions = $.extend(!0, {}, positionsClone);
                 }
             }
-            if ((opts.numericInput || isRTL) && (k === Inputmask.keyCode.BACKSPACE ? k = Inputmask.keyCode.DELETE : k === Inputmask.keyCode.DELETE && (k = Inputmask.keyCode.BACKSPACE), 
+            if ((opts.numericInput || isRTL) && (k === Inputmask.keyCode.BACKSPACE ? k = Inputmask.keyCode.DELETE : k === Inputmask.keyCode.DELETE && (k = Inputmask.keyCode.BACKSPACE),
             isRTL)) {
                 var pend = pos.end;
                 pos.end = pos.begin, pos.begin = pend;
             }
-            k === Inputmask.keyCode.BACKSPACE && (pos.end - pos.begin < 1 || opts.insertMode === !1) ? (pos.begin = seekPrevious(pos.begin), 
-            void 0 === getMaskSet().validPositions[pos.begin] || getMaskSet().validPositions[pos.begin].input !== opts.groupSeparator && getMaskSet().validPositions[pos.begin].input !== opts.radixPoint || pos.begin--) : k === Inputmask.keyCode.DELETE && pos.begin === pos.end && (pos.end = isMask(pos.end) ? pos.end + 1 : seekNext(pos.end) + 1, 
-            void 0 === getMaskSet().validPositions[pos.begin] || getMaskSet().validPositions[pos.begin].input !== opts.groupSeparator && getMaskSet().validPositions[pos.begin].input !== opts.radixPoint || pos.end++), 
+            k === Inputmask.keyCode.BACKSPACE && (pos.end - pos.begin < 1 || opts.insertMode === !1) ? (pos.begin = seekPrevious(pos.begin),
+            void 0 === getMaskSet().validPositions[pos.begin] || getMaskSet().validPositions[pos.begin].input !== opts.groupSeparator && getMaskSet().validPositions[pos.begin].input !== opts.radixPoint || pos.begin--) : k === Inputmask.keyCode.DELETE && pos.begin === pos.end && (pos.end = isMask(pos.end) ? pos.end + 1 : seekNext(pos.end) + 1,
+            void 0 === getMaskSet().validPositions[pos.begin] || getMaskSet().validPositions[pos.begin].input !== opts.groupSeparator && getMaskSet().validPositions[pos.begin].input !== opts.radixPoint || pos.end++),
             stripValidPositions(pos.begin, pos.end, !1, strict), strict !== !0 && generalize();
             var lvp = getLastValidPosition(pos.begin);
             lvp < pos.begin ? (-1 === lvp && resetMaskSet(), getMaskSet().p = seekNext(lvp)) : strict !== !0 && (getMaskSet().p = pos.begin);
         }
         function keydownEvent(e) {
             var input = this, $input = $(input), k = e.keyCode, pos = caret(input);
-            if (k === Inputmask.keyCode.BACKSPACE || k === Inputmask.keyCode.DELETE || iphone && k === Inputmask.keyCode.BACKSPACE_SAFARI || e.ctrlKey && k === Inputmask.keyCode.X && !isInputEventSupported("cut")) e.preventDefault(), 
-            handleRemove(input, k, pos), writeBuffer(input, getBuffer(), getMaskSet().p, e, undoValue !== getBuffer().join("")), 
-            input.inputmask._valueGet() === getBufferTemplate().join("") ? $input.trigger("cleared") : isComplete(getBuffer()) === !0 && $input.trigger("complete"), 
+            if (k === Inputmask.keyCode.BACKSPACE || k === Inputmask.keyCode.DELETE || iphone && k === Inputmask.keyCode.BACKSPACE_SAFARI || e.ctrlKey && k === Inputmask.keyCode.X && !isInputEventSupported("cut")) e.preventDefault(),
+            handleRemove(input, k, pos), writeBuffer(input, getBuffer(), getMaskSet().p, e, undoValue !== getBuffer().join("")),
+            input.inputmask._valueGet() === getBufferTemplate().join("") ? $input.trigger("cleared") : isComplete(getBuffer()) === !0 && $input.trigger("complete"),
             opts.showTooltip && (input.title = opts.tooltip || getMaskSet().mask); else if (k === Inputmask.keyCode.END || k === Inputmask.keyCode.PAGE_DOWN) {
                 e.preventDefault();
                 var caretPos = seekNext(getLastValidPosition());
                 opts.insertMode || caretPos !== getMaskLength() || e.shiftKey || caretPos--, caret(input, e.shiftKey ? pos.begin : caretPos, caretPos, !0);
-            } else k === Inputmask.keyCode.HOME && !e.shiftKey || k === Inputmask.keyCode.PAGE_UP ? (e.preventDefault(), 
-            caret(input, 0, e.shiftKey ? pos.begin : 0, !0)) : (opts.undoOnEscape && k === Inputmask.keyCode.ESCAPE || 90 === k && e.ctrlKey) && e.altKey !== !0 ? (checkVal(input, !0, !1, undoValue.split("")), 
-            $input.trigger("click")) : k !== Inputmask.keyCode.INSERT || e.shiftKey || e.ctrlKey ? opts.tabThrough === !0 && k === Inputmask.keyCode.TAB ? (e.shiftKey === !0 ? (null === getTest(pos.begin).fn && (pos.begin = seekNext(pos.begin)), 
-            pos.end = seekPrevious(pos.begin, !0), pos.begin = seekPrevious(pos.end, !0)) : (pos.begin = seekNext(pos.begin, !0), 
-            pos.end = seekNext(pos.begin, !0), pos.end < getMaskLength() && pos.end--), pos.begin < getMaskLength() && (e.preventDefault(), 
+            } else k === Inputmask.keyCode.HOME && !e.shiftKey || k === Inputmask.keyCode.PAGE_UP ? (e.preventDefault(),
+            caret(input, 0, e.shiftKey ? pos.begin : 0, !0)) : (opts.undoOnEscape && k === Inputmask.keyCode.ESCAPE || 90 === k && e.ctrlKey) && e.altKey !== !0 ? (checkVal(input, !0, !1, undoValue.split("")),
+            $input.trigger("click")) : k !== Inputmask.keyCode.INSERT || e.shiftKey || e.ctrlKey ? opts.tabThrough === !0 && k === Inputmask.keyCode.TAB ? (e.shiftKey === !0 ? (null === getTest(pos.begin).fn && (pos.begin = seekNext(pos.begin)),
+            pos.end = seekPrevious(pos.begin, !0), pos.begin = seekPrevious(pos.end, !0)) : (pos.begin = seekNext(pos.begin, !0),
+            pos.end = seekNext(pos.begin, !0), pos.end < getMaskLength() && pos.end--), pos.begin < getMaskLength() && (e.preventDefault(),
             caret(input, pos.begin, pos.end))) : opts.insertMode !== !1 || e.shiftKey || (k === Inputmask.keyCode.RIGHT ? setTimeout(function() {
                 var caretPos = caret(input);
                 caret(input, caretPos.begin);
@@ -90180,7 +90180,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
         }
         function keypressEvent(e, checkval, writeOut, strict, ndx) {
             var input = this, $input = $(input), k = e.which || e.charCode || e.keyCode;
-            if (!(checkval === !0 || e.ctrlKey && e.altKey) && (e.ctrlKey || e.metaKey || ignorable)) return k === Inputmask.keyCode.ENTER && undoValue !== getBuffer().join("") && (undoValue = getBuffer().join(""), 
+            if (!(checkval === !0 || e.ctrlKey && e.altKey) && (e.ctrlKey || e.metaKey || ignorable)) return k === Inputmask.keyCode.ENTER && undoValue !== getBuffer().join("") && (undoValue = getBuffer().join(""),
             setTimeout(function() {
                 $input.trigger("change");
             }, 0)), !0;
@@ -90206,13 +90206,13 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                         opts.onKeyValidation.call(self, k, valResult, opts);
                     }, 0), getMaskSet().writeOutBuffer && valResult !== !1) {
                         var buffer = getBuffer();
-                        writeBuffer(input, buffer, opts.numericInput && void 0 === valResult.caret ? seekPrevious(forwardPosition) : forwardPosition, e, checkval !== !0), 
+                        writeBuffer(input, buffer, opts.numericInput && void 0 === valResult.caret ? seekPrevious(forwardPosition) : forwardPosition, e, checkval !== !0),
                         checkval !== !0 && setTimeout(function() {
                             isComplete(buffer) === !0 && $input.trigger("complete");
                         }, 0);
                     }
                 }
-                if (opts.showTooltip && (input.title = opts.tooltip || getMaskSet().mask), e.preventDefault(), 
+                if (opts.showTooltip && (input.title = opts.tooltip || getMaskSet().mask), e.preventDefault(),
                 checkval) return valResult.forwardPosition = forwardPosition, valResult;
             }
         }
@@ -90220,9 +90220,9 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
             var tempValue, input = this, ev = e.originalEvent || e, $input = $(input), inputValue = input.inputmask._valueGet(!0), caretPos = caret(input);
             isRTL && (tempValue = caretPos.end, caretPos.end = caretPos.begin, caretPos.begin = tempValue);
             var valueBeforeCaret = inputValue.substr(0, caretPos.begin), valueAfterCaret = inputValue.substr(caretPos.end, inputValue.length);
-            valueBeforeCaret === (isRTL ? getBufferTemplate().reverse() : getBufferTemplate()).slice(0, caretPos.begin).join("") && (valueBeforeCaret = ""), 
-            valueAfterCaret === (isRTL ? getBufferTemplate().reverse() : getBufferTemplate()).slice(caretPos.end).join("") && (valueAfterCaret = ""), 
-            isRTL && (tempValue = valueBeforeCaret, valueBeforeCaret = valueAfterCaret, valueAfterCaret = tempValue), 
+            valueBeforeCaret === (isRTL ? getBufferTemplate().reverse() : getBufferTemplate()).slice(0, caretPos.begin).join("") && (valueBeforeCaret = ""),
+            valueAfterCaret === (isRTL ? getBufferTemplate().reverse() : getBufferTemplate()).slice(caretPos.end).join("") && (valueAfterCaret = ""),
+            isRTL && (tempValue = valueBeforeCaret, valueBeforeCaret = valueAfterCaret, valueAfterCaret = tempValue),
             window.clipboardData && window.clipboardData.getData ? inputValue = valueBeforeCaret + window.clipboardData.getData("Text") + valueAfterCaret : ev.clipboardData && ev.clipboardData.getData && (inputValue = valueBeforeCaret + ev.clipboardData.getData("text/plain") + valueAfterCaret);
             var pasteValue = inputValue;
             if ($.isFunction(opts.onBeforePaste)) {
@@ -90248,19 +90248,19 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
             var input = this, inputValue = input.inputmask._valueGet();
             if (getBuffer().join("") !== inputValue) {
                 var caretPos = caret(input);
-                if (inputValue = inputValue.replace(new RegExp("(" + Inputmask.escapeRegex(getBufferTemplate().join("")) + ")*"), ""), 
+                if (inputValue = inputValue.replace(new RegExp("(" + Inputmask.escapeRegex(getBufferTemplate().join("")) + ")*"), ""),
                 iemobile) {
                     var inputChar = inputValue.replace(getBuffer().join(""), "");
                     if (1 === inputChar.length) {
                         var keypress = new $.Event("keypress");
-                        return keypress.which = inputChar.charCodeAt(0), keypressEvent.call(input, keypress, !0, !0, !1, getMaskSet().validPositions[caretPos.begin - 1] ? caretPos.begin : caretPos.begin - 1), 
+                        return keypress.which = inputChar.charCodeAt(0), keypressEvent.call(input, keypress, !0, !0, !1, getMaskSet().validPositions[caretPos.begin - 1] ? caretPos.begin : caretPos.begin - 1),
                         !1;
                     }
                 }
-                if (caretPos.begin > inputValue.length && (caret(input, inputValue.length), caretPos = caret(input)), 
+                if (caretPos.begin > inputValue.length && (caret(input, inputValue.length), caretPos = caret(input)),
                 getBuffer().length - inputValue.length !== 1 || inputValue.charAt(caretPos.begin) === getBuffer()[caretPos.begin] || inputValue.charAt(caretPos.begin + 1) === getBuffer()[caretPos.begin] || isMask(caretPos.begin)) {
                     for (var lvp = getLastValidPosition() + 1, bufferTemplate = getBuffer().slice(lvp).join(""); null === inputValue.match(Inputmask.escapeRegex(bufferTemplate) + "$"); ) bufferTemplate = bufferTemplate.slice(1);
-                    inputValue = inputValue.replace(bufferTemplate, ""), inputValue = inputValue.split(""), 
+                    inputValue = inputValue.replace(bufferTemplate, ""), inputValue = inputValue.split(""),
                     checkVal(input, !0, !1, inputValue), isComplete(getBuffer()) === !0 && $(input).trigger("complete");
                 } else e.keyCode = Inputmask.keyCode.BACKSPACE, keydownEvent.call(input, e);
                 e.preventDefault();
@@ -90268,12 +90268,12 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
         }
         function setValueEvent(e) {
             var input = this, value = input.inputmask._valueGet();
-            checkVal(input, !0, !1, ($.isFunction(opts.onBeforeMask) ? opts.onBeforeMask(value, opts) || value : value).split("")), 
+            checkVal(input, !0, !1, ($.isFunction(opts.onBeforeMask) ? opts.onBeforeMask(value, opts) || value : value).split("")),
             undoValue = getBuffer().join(""), (opts.clearMaskOnLostFocus || opts.clearIncomplete) && input.inputmask._valueGet() === getBufferTemplate().join("") && input.inputmask._valueSet("");
         }
         function focusEvent(e) {
             var input = this, nptValue = input.inputmask._valueGet();
-            opts.showMaskOnFocus && (!opts.showMaskOnHover || opts.showMaskOnHover && "" === nptValue) ? input.inputmask._valueGet() !== getBuffer().join("") && writeBuffer(input, getBuffer(), seekNext(getLastValidPosition())) : mouseEnter === !1 && caret(input, seekNext(getLastValidPosition())), 
+            opts.showMaskOnFocus && (!opts.showMaskOnHover || opts.showMaskOnHover && "" === nptValue) ? input.inputmask._valueGet() !== getBuffer().join("") && writeBuffer(input, getBuffer(), seekNext(getLastValidPosition())) : mouseEnter === !1 && caret(input, seekNext(getLastValidPosition())),
             opts.positionCaretOnTab === !0 && setTimeout(function() {
                 caret(input, seekNext(getLastValidPosition()));
             }, 0), undoValue = getBuffer().join("");
@@ -90282,7 +90282,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
             var input = this;
             if (mouseEnter = !1, opts.clearMaskOnLostFocus && document.activeElement !== input) {
                 var buffer = getBuffer().slice(), nptValue = input.inputmask._valueGet();
-                nptValue !== input.getAttribute("placeholder") && "" !== nptValue && (-1 === getLastValidPosition() && nptValue === getBufferTemplate().join("") ? buffer = [] : clearOptionalTail(buffer), 
+                nptValue !== input.getAttribute("placeholder") && "" !== nptValue && (-1 === getLastValidPosition() && nptValue === getBufferTemplate().join("") ? buffer = [] : clearOptionalTail(buffer),
                 writeBuffer(input, buffer));
             }
         }
@@ -90309,7 +90309,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                         var clickPosition = selectedCaret.begin, lvclickPosition = getLastValidPosition(clickPosition, !0), lastPosition = seekNext(lvclickPosition);
                         if (lastPosition > clickPosition) caret(input, isMask(clickPosition) || isMask(clickPosition - 1) ? clickPosition : seekNext(clickPosition)); else {
                             var placeholder = getPlaceholder(lastPosition);
-                            ("" !== placeholder && getBuffer()[lastPosition] !== placeholder || !isMask(lastPosition, !0) && getTest(lastPosition).def === placeholder) && (lastPosition = seekNext(lastPosition)), 
+                            ("" !== placeholder && getBuffer()[lastPosition] !== placeholder || !isMask(lastPosition, !0) && getTest(lastPosition).def === placeholder) && (lastPosition = seekNext(lastPosition)),
                             caret(input, lastPosition);
                         }
                     }
@@ -90324,10 +90324,10 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
         }
         function cutEvent(e) {
             var input = this, $input = $(input), pos = caret(input), ev = e.originalEvent || e, clipboardData = window.clipboardData || ev.clipboardData, clipData = isRTL ? getBuffer().slice(pos.end, pos.begin) : getBuffer().slice(pos.begin, pos.end);
-            clipboardData.setData("text", isRTL ? clipData.reverse().join("") : clipData.join("")), 
-            document.execCommand && document.execCommand("copy"), handleRemove(input, Inputmask.keyCode.DELETE, pos), 
-            writeBuffer(input, getBuffer(), getMaskSet().p, e, undoValue !== getBuffer().join("")), 
-            input.inputmask._valueGet() === getBufferTemplate().join("") && $input.trigger("cleared"), 
+            clipboardData.setData("text", isRTL ? clipData.reverse().join("") : clipData.join("")),
+            document.execCommand && document.execCommand("copy"), handleRemove(input, Inputmask.keyCode.DELETE, pos),
+            writeBuffer(input, getBuffer(), getMaskSet().p, e, undoValue !== getBuffer().join("")),
+            input.inputmask._valueGet() === getBufferTemplate().join("") && $input.trigger("cleared"),
             opts.showTooltip && (input.title = opts.tooltip || getMaskSet().mask);
         }
         function blurEvent(e) {
@@ -90336,10 +90336,10 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                 var nptValue = input.inputmask._valueGet(), buffer = getBuffer().slice();
                 undoValue !== buffer.join("") && setTimeout(function() {
                     $input.trigger("change"), undoValue = buffer.join("");
-                }, 0), "" !== nptValue && (opts.clearMaskOnLostFocus && (-1 === getLastValidPosition() && nptValue === getBufferTemplate().join("") ? buffer = [] : clearOptionalTail(buffer)), 
+                }, 0), "" !== nptValue && (opts.clearMaskOnLostFocus && (-1 === getLastValidPosition() && nptValue === getBufferTemplate().join("") ? buffer = [] : clearOptionalTail(buffer)),
                 isComplete(buffer) === !1 && (setTimeout(function() {
                     $input.trigger("incomplete");
-                }, 0), opts.clearIncomplete && (resetMaskSet(), buffer = opts.clearMaskOnLostFocus ? [] : getBufferTemplate().slice())), 
+                }, 0), opts.clearIncomplete && (resetMaskSet(), buffer = opts.clearMaskOnLostFocus ? [] : getBufferTemplate().slice())),
                 writeBuffer(input, buffer, void 0, e));
             }
         }
@@ -90348,8 +90348,8 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
             mouseEnter = !0, document.activeElement !== input && opts.showMaskOnHover && input.inputmask._valueGet() !== getBuffer().join("") && writeBuffer(input, getBuffer());
         }
         function submitEvent(e) {
-            undoValue !== getBuffer().join("") && $el.trigger("change"), opts.clearMaskOnLostFocus && -1 === getLastValidPosition() && el.inputmask._valueGet && el.inputmask._valueGet() === getBufferTemplate().join("") && el.inputmask._valueSet(""), 
-            opts.removeMaskOnSubmit && (el.inputmask._valueSet(el.inputmask.unmaskedvalue(), !0), 
+            undoValue !== getBuffer().join("") && $el.trigger("change"), opts.clearMaskOnLostFocus && -1 === getLastValidPosition() && el.inputmask._valueGet && el.inputmask._valueGet() === getBufferTemplate().join("") && el.inputmask._valueSet(""),
+            opts.removeMaskOnSubmit && (el.inputmask._valueSet(el.inputmask.unmaskedvalue(), !0),
             setTimeout(function() {
                 writeBuffer(el, getBuffer());
             }, 0));
@@ -90360,24 +90360,24 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
             }, 0);
         }
         function mask(elem) {
-            if (el = elem, $el = $(el), opts.showTooltip && (el.title = opts.tooltip || getMaskSet().mask), 
-            ("rtl" === el.dir || opts.rightAlign) && (el.style.textAlign = "right"), ("rtl" === el.dir || opts.numericInput) && (el.dir = "ltr", 
-            el.removeAttribute("dir"), el.inputmask.isRTL = !0, isRTL = !0), EventRuler.off(el), 
-            patchValueProperty(el), isElementTypeSupported(el, opts) && (EventRuler.on(el, "submit", submitEvent), 
-            EventRuler.on(el, "reset", resetEvent), EventRuler.on(el, "mouseenter", mouseenterEvent), 
-            EventRuler.on(el, "blur", blurEvent), EventRuler.on(el, "focus", focusEvent), EventRuler.on(el, "mouseleave", mouseleaveEvent), 
-            EventRuler.on(el, "click", clickEvent), EventRuler.on(el, "dblclick", dblclickEvent), 
-            EventRuler.on(el, "paste", pasteEvent), EventRuler.on(el, "dragdrop", pasteEvent), 
-            EventRuler.on(el, "drop", pasteEvent), EventRuler.on(el, "cut", cutEvent), EventRuler.on(el, "complete", opts.oncomplete), 
-            EventRuler.on(el, "incomplete", opts.onincomplete), EventRuler.on(el, "cleared", opts.oncleared), 
-            EventRuler.on(el, "keydown", keydownEvent), EventRuler.on(el, "keypress", keypressEvent), 
-            EventRuler.on(el, "input", inputFallBackEvent)), EventRuler.on(el, "setvalue", setValueEvent), 
+            if (el = elem, $el = $(el), opts.showTooltip && (el.title = opts.tooltip || getMaskSet().mask),
+            ("rtl" === el.dir || opts.rightAlign) && (el.style.textAlign = "right"), ("rtl" === el.dir || opts.numericInput) && (el.dir = "ltr",
+            el.removeAttribute("dir"), el.inputmask.isRTL = !0, isRTL = !0), EventRuler.off(el),
+            patchValueProperty(el), isElementTypeSupported(el, opts) && (EventRuler.on(el, "submit", submitEvent),
+            EventRuler.on(el, "reset", resetEvent), EventRuler.on(el, "mouseenter", mouseenterEvent),
+            EventRuler.on(el, "blur", blurEvent), EventRuler.on(el, "focus", focusEvent), EventRuler.on(el, "mouseleave", mouseleaveEvent),
+            EventRuler.on(el, "click", clickEvent), EventRuler.on(el, "dblclick", dblclickEvent),
+            EventRuler.on(el, "paste", pasteEvent), EventRuler.on(el, "dragdrop", pasteEvent),
+            EventRuler.on(el, "drop", pasteEvent), EventRuler.on(el, "cut", cutEvent), EventRuler.on(el, "complete", opts.oncomplete),
+            EventRuler.on(el, "incomplete", opts.onincomplete), EventRuler.on(el, "cleared", opts.oncleared),
+            EventRuler.on(el, "keydown", keydownEvent), EventRuler.on(el, "keypress", keypressEvent),
+            EventRuler.on(el, "input", inputFallBackEvent)), EventRuler.on(el, "setvalue", setValueEvent),
             "" !== el.inputmask._valueGet() || opts.clearMaskOnLostFocus === !1 || document.activeElement === el) {
                 var initialValue = $.isFunction(opts.onBeforeMask) ? opts.onBeforeMask(el.inputmask._valueGet(), opts) || el.inputmask._valueGet() : el.inputmask._valueGet();
                 checkVal(el, !0, !1, initialValue.split(""));
                 var buffer = getBuffer().slice();
-                undoValue = buffer.join(""), isComplete(buffer) === !1 && opts.clearIncomplete && resetMaskSet(), 
-                opts.clearMaskOnLostFocus && document.activeElement !== el && (-1 === getLastValidPosition() ? buffer = [] : clearOptionalTail(buffer)), 
+                undoValue = buffer.join(""), isComplete(buffer) === !1 && opts.clearIncomplete && resetMaskSet(),
+                opts.clearMaskOnLostFocus && document.activeElement !== el && (-1 === getLastValidPosition() ? buffer = [] : clearOptionalTail(buffer)),
                 writeBuffer(el, buffer), document.activeElement === el && caret(el, seekNext(getLastValidPosition()));
             }
         }
@@ -90417,13 +90417,13 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                         e.preventDefault();
                     }
                 };
-                input.inputmask.events[eventName] = input.inputmask.events[eventName] || [], input.inputmask.events[eventName].push(ev), 
+                input.inputmask.events[eventName] = input.inputmask.events[eventName] || [], input.inputmask.events[eventName].push(ev),
                 -1 !== $.inArray(eventName, [ "submit", "reset" ]) ? null != input.form && $(input.form).on(eventName, ev) : $(input).on(eventName, ev);
             },
             off: function(input, event) {
                 if (input.inputmask && input.inputmask.events) {
                     var events;
-                    event ? (events = [], events[event] = input.inputmask.events[event]) : events = input.inputmask.events, 
+                    event ? (events = [], events[event] = input.inputmask.events[event]) : events = input.inputmask.events,
                     $.each(events, function(eventName, evArr) {
                         for (;evArr.length > 0; ) {
                             var ev = evArr.pop();
@@ -90439,20 +90439,20 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
             return el = actionObj.el, isComplete(getBuffer());
 
           case "unmaskedvalue":
-            return el = actionObj.el, void 0 !== el && void 0 !== el.inputmask ? (maskset = el.inputmask.maskset, 
-            opts = el.inputmask.opts, isRTL = el.inputmask.isRTL) : (valueBuffer = actionObj.value, 
-            opts.numericInput && (isRTL = !0), valueBuffer = ($.isFunction(opts.onBeforeMask) ? opts.onBeforeMask(valueBuffer, opts) || valueBuffer : valueBuffer).split(""), 
-            checkVal(void 0, !1, !1, isRTL ? valueBuffer.reverse() : valueBuffer), $.isFunction(opts.onBeforeWrite) && opts.onBeforeWrite(void 0, getBuffer(), 0, opts)), 
+            return el = actionObj.el, void 0 !== el && void 0 !== el.inputmask ? (maskset = el.inputmask.maskset,
+            opts = el.inputmask.opts, isRTL = el.inputmask.isRTL) : (valueBuffer = actionObj.value,
+            opts.numericInput && (isRTL = !0), valueBuffer = ($.isFunction(opts.onBeforeMask) ? opts.onBeforeMask(valueBuffer, opts) || valueBuffer : valueBuffer).split(""),
+            checkVal(void 0, !1, !1, isRTL ? valueBuffer.reverse() : valueBuffer), $.isFunction(opts.onBeforeWrite) && opts.onBeforeWrite(void 0, getBuffer(), 0, opts)),
             unmaskedvalue(el);
 
           case "mask":
-            el = actionObj.el, maskset = el.inputmask.maskset, opts = el.inputmask.opts, isRTL = el.inputmask.isRTL, 
+            el = actionObj.el, maskset = el.inputmask.maskset, opts = el.inputmask.opts, isRTL = el.inputmask.isRTL,
             undoValue = getBuffer().join(""), mask(el);
             break;
 
           case "format":
-            return opts.numericInput && (isRTL = !0), valueBuffer = ($.isFunction(opts.onBeforeMask) ? opts.onBeforeMask(actionObj.value, opts) || actionObj.value : actionObj.value).split(""), 
-            checkVal(void 0, !1, !1, isRTL ? valueBuffer.reverse() : valueBuffer), $.isFunction(opts.onBeforeWrite) && opts.onBeforeWrite(void 0, getBuffer(), 0, opts), 
+            return opts.numericInput && (isRTL = !0), valueBuffer = ($.isFunction(opts.onBeforeMask) ? opts.onBeforeMask(actionObj.value, opts) || actionObj.value : actionObj.value).split(""),
+            checkVal(void 0, !1, !1, isRTL ? valueBuffer.reverse() : valueBuffer), $.isFunction(opts.onBeforeWrite) && opts.onBeforeWrite(void 0, getBuffer(), 0, opts),
             actionObj.metadata ? {
                 value: isRTL ? getBuffer().slice().reverse().join("") : getBuffer().join(""),
                 metadata: maskScope({
@@ -90461,7 +90461,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
             } : isRTL ? getBuffer().slice().reverse().join("") : getBuffer().join("");
 
           case "isValid":
-            opts.numericInput && (isRTL = !0), actionObj.value ? (valueBuffer = actionObj.value.split(""), 
+            opts.numericInput && (isRTL = !0), actionObj.value ? (valueBuffer = actionObj.value.split(""),
             checkVal(void 0, !1, !0, isRTL ? valueBuffer.reverse() : valueBuffer)) : actionObj.value = getBuffer().join("");
             for (var buffer = getBuffer(), rl = determineLastRequiredPosition(), lmib = buffer.length - 1; lmib > rl && !isMask(lmib); lmib--) ;
             return buffer.splice(rl, lmib + 1 - rl), isComplete(buffer) && actionObj.value === getBuffer().join("");
@@ -90470,15 +90470,15 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
             return getBufferTemplate().join("");
 
           case "remove":
-            el = actionObj.el, $el = $(el), maskset = el.inputmask.maskset, opts = el.inputmask.opts, 
+            el = actionObj.el, $el = $(el), maskset = el.inputmask.maskset, opts = el.inputmask.opts,
             el.inputmask._valueSet(unmaskedvalue(el)), EventRuler.off(el);
             var valueProperty;
-            Object.getOwnPropertyDescriptor && Object.getPrototypeOf ? (valueProperty = Object.getOwnPropertyDescriptor(Object.getPrototypeOf(el), "value"), 
+            Object.getOwnPropertyDescriptor && Object.getPrototypeOf ? (valueProperty = Object.getOwnPropertyDescriptor(Object.getPrototypeOf(el), "value"),
             valueProperty && el.inputmask.__valueGet && Object.defineProperty(el, "value", {
                 get: el.inputmask.__valueGet,
                 set: el.inputmask.__valueSet,
                 configurable: !0
-            })) : document.__lookupGetter__ && el.__lookupGetter__("value") && el.inputmask.__valueGet && (el.__defineGetter__("value", el.inputmask.__valueGet), 
+            })) : document.__lookupGetter__ && el.__lookupGetter__("value") && el.inputmask.__valueGet && (el.__defineGetter__("value", el.inputmask.__valueGet),
             el.__defineSetter__("value", el.inputmask.__valueSet)), el.inputmask = void 0;
             break;
 
@@ -90576,14 +90576,14 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
         masksCache: {},
         mask: function(elems) {
             var that = this;
-            return "string" == typeof elems && (elems = document.getElementById(elems) || document.querySelectorAll(elems)), 
+            return "string" == typeof elems && (elems = document.getElementById(elems) || document.querySelectorAll(elems)),
             elems = elems.nodeName ? [ elems ] : elems, $.each(elems, function(ndx, el) {
                 var scopedOpts = $.extend(!0, {}, that.opts);
                 importAttributeOptions(el, scopedOpts, $.extend(!0, {}, that.userOptions));
                 var maskset = generateMaskSet(scopedOpts, that.noMasksCache);
-                void 0 !== maskset && (void 0 !== el.inputmask && el.inputmask.remove(), el.inputmask = new Inputmask(), 
-                el.inputmask.opts = scopedOpts, el.inputmask.noMasksCache = that.noMasksCache, el.inputmask.userOptions = $.extend(!0, {}, that.userOptions), 
-                el.inputmask.el = el, el.inputmask.maskset = maskset, el.inputmask.isRTL = !1, $.data(el, "_inputmask_opts", scopedOpts), 
+                void 0 !== maskset && (void 0 !== el.inputmask && el.inputmask.remove(), el.inputmask = new Inputmask(),
+                el.inputmask.opts = scopedOpts, el.inputmask.noMasksCache = that.noMasksCache, el.inputmask.userOptions = $.extend(!0, {}, that.userOptions),
+                el.inputmask.el = el, el.inputmask.maskset = maskset, el.inputmask.isRTL = !1, $.data(el, "_inputmask_opts", scopedOpts),
                 maskScope({
                     action: "mask",
                     el: el
@@ -90591,7 +90591,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
             }), elems && elems[0] ? elems[0].inputmask || this : this;
         },
         option: function(options, noremask) {
-            return "string" == typeof options ? this.opts[options] : "object" == typeof options ? ($.extend(this.userOptions, options), 
+            return "string" == typeof options ? this.opts[options] : "object" == typeof options ? ($.extend(this.userOptions, options),
             this.el && noremask !== !0 && this.mask(this.el), this) : void 0;
         },
         unmaskedvalue: function(value) {
@@ -90841,7 +90841,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                 var $input = $(this);
                 if (e.ctrlKey && e.keyCode === Inputmask.keyCode.RIGHT) {
                     var today = new Date();
-                    $input.val(today.getDate().toString() + (today.getMonth() + 1).toString() + today.getFullYear().toString()), 
+                    $input.val(today.getDate().toString() + (today.getMonth() + 1).toString() + today.getFullYear().toString()),
                     $input.trigger("setvalue");
                 }
             },
@@ -90856,7 +90856,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                 "1": {
                     validator: function(chrs, maskset, pos, strict, opts) {
                         var isValid = opts.regex.val1.test(chrs);
-                        return strict || isValid || chrs.charAt(1) !== opts.separator && -1 === "-./".indexOf(chrs.charAt(1)) || !(isValid = opts.regex.val1.test("0" + chrs.charAt(0))) ? isValid : (maskset.buffer[pos - 1] = "0", 
+                        return strict || isValid || chrs.charAt(1) !== opts.separator && -1 === "-./".indexOf(chrs.charAt(1)) || !(isValid = opts.regex.val1.test("0" + chrs.charAt(0))) ? isValid : (maskset.buffer[pos - 1] = "0",
                         {
                             refreshFromBuffer: {
                                 start: pos - 1,
@@ -90873,12 +90873,12 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                             isNaN(maskset.buffer[pos + 1]) || (pchrs += maskset.buffer[pos + 1]);
                             var isValid = 1 === pchrs.length ? opts.regex.val1pre.test(pchrs) : opts.regex.val1.test(pchrs);
                             if (!strict && !isValid) {
-                                if (isValid = opts.regex.val1.test(chrs + "0")) return maskset.buffer[pos] = chrs, 
+                                if (isValid = opts.regex.val1.test(chrs + "0")) return maskset.buffer[pos] = chrs,
                                 maskset.buffer[++pos] = "0", {
                                     pos: pos,
                                     c: "0"
                                 };
-                                if (isValid = opts.regex.val1.test("0" + chrs)) return maskset.buffer[pos] = "0", 
+                                if (isValid = opts.regex.val1.test("0" + chrs)) return maskset.buffer[pos] = "0",
                                 pos++, {
                                     pos: pos
                                 };
@@ -90893,7 +90893,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                         var frontValue = opts.getFrontValue(maskset.mask, maskset.buffer, opts);
                         -1 !== frontValue.indexOf(opts.placeholder[0]) && (frontValue = "01" + opts.separator);
                         var isValid = opts.regex.val2(opts.separator).test(frontValue + chrs);
-                        if (!strict && !isValid && (chrs.charAt(1) === opts.separator || -1 !== "-./".indexOf(chrs.charAt(1))) && (isValid = opts.regex.val2(opts.separator).test(frontValue + "0" + chrs.charAt(0)))) return maskset.buffer[pos - 1] = "0", 
+                        if (!strict && !isValid && (chrs.charAt(1) === opts.separator || -1 !== "-./".indexOf(chrs.charAt(1))) && (isValid = opts.regex.val2(opts.separator).test(frontValue + "0" + chrs.charAt(0)))) return maskset.buffer[pos - 1] = "0",
                         {
                             refreshFromBuffer: {
                                 start: pos - 1,
@@ -90917,7 +90917,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                             var frontValue = opts.getFrontValue(maskset.mask, maskset.buffer, opts);
                             -1 !== frontValue.indexOf(opts.placeholder[0]) && (frontValue = "01" + opts.separator);
                             var isValid = 1 === chrs.length ? opts.regex.val2pre(opts.separator).test(frontValue + chrs) : opts.regex.val2(opts.separator).test(frontValue + chrs);
-                            return strict || isValid || !(isValid = opts.regex.val2(opts.separator).test(frontValue + "0" + chrs)) ? isValid : (maskset.buffer[pos] = "0", 
+                            return strict || isValid || !(isValid = opts.regex.val2(opts.separator).test(frontValue + "0" + chrs)) ? isValid : (maskset.buffer[pos] = "0",
                             pos++, {
                                 pos: pos
                             });
@@ -90941,12 +90941,12 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                             var isValid = opts.isInYearRange(chrs, opts.yearrange.minyear, opts.yearrange.maxyear);
                             if (!strict && !isValid) {
                                 var yearPrefix = opts.determinebaseyear(opts.yearrange.minyear, opts.yearrange.maxyear, chrs + "0").toString().slice(0, 1);
-                                if (isValid = opts.isInYearRange(yearPrefix + chrs, opts.yearrange.minyear, opts.yearrange.maxyear)) return maskset.buffer[pos++] = yearPrefix.charAt(0), 
+                                if (isValid = opts.isInYearRange(yearPrefix + chrs, opts.yearrange.minyear, opts.yearrange.maxyear)) return maskset.buffer[pos++] = yearPrefix.charAt(0),
                                 {
                                     pos: pos
                                 };
-                                if (yearPrefix = opts.determinebaseyear(opts.yearrange.minyear, opts.yearrange.maxyear, chrs + "0").toString().slice(0, 2), 
-                                isValid = opts.isInYearRange(yearPrefix + chrs, opts.yearrange.minyear, opts.yearrange.maxyear)) return maskset.buffer[pos++] = yearPrefix.charAt(0), 
+                                if (yearPrefix = opts.determinebaseyear(opts.yearrange.minyear, opts.yearrange.maxyear, chrs + "0").toString().slice(0, 2),
+                                isValid = opts.isInYearRange(yearPrefix + chrs, opts.yearrange.minyear, opts.yearrange.maxyear)) return maskset.buffer[pos++] = yearPrefix.charAt(0),
                                 maskset.buffer[pos++] = yearPrefix.charAt(1), {
                                     pos: pos
                                 };
@@ -90959,11 +90959,11 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                             var isValid = opts.isInYearRange(chrs, opts.yearrange.minyear, opts.yearrange.maxyear);
                             if (!strict && !isValid) {
                                 var yearPrefix = opts.determinebaseyear(opts.yearrange.minyear, opts.yearrange.maxyear, chrs).toString().slice(0, 2);
-                                if (isValid = opts.isInYearRange(chrs[0] + yearPrefix[1] + chrs[1], opts.yearrange.minyear, opts.yearrange.maxyear)) return maskset.buffer[pos++] = yearPrefix.charAt(1), 
+                                if (isValid = opts.isInYearRange(chrs[0] + yearPrefix[1] + chrs[1], opts.yearrange.minyear, opts.yearrange.maxyear)) return maskset.buffer[pos++] = yearPrefix.charAt(1),
                                 {
                                     pos: pos
                                 };
-                                if (yearPrefix = opts.determinebaseyear(opts.yearrange.minyear, opts.yearrange.maxyear, chrs).toString().slice(0, 2), 
+                                if (yearPrefix = opts.determinebaseyear(opts.yearrange.minyear, opts.yearrange.maxyear, chrs).toString().slice(0, 2),
                                 opts.isInYearRange(yearPrefix + chrs, opts.yearrange.minyear, opts.yearrange.maxyear)) {
                                     var dayMonthValue = maskset.buffer.join("").substr(0, 6);
                                     if (dayMonthValue !== opts.leapday) isValid = !0; else {
@@ -90971,7 +90971,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                                         isValid = year % 4 === 0 ? year % 100 === 0 ? year % 400 === 0 ? !0 : !1 : !0 : !1;
                                     }
                                 } else isValid = !1;
-                                if (isValid) return maskset.buffer[pos - 1] = yearPrefix.charAt(0), maskset.buffer[pos++] = yearPrefix.charAt(1), 
+                                if (isValid) return maskset.buffer[pos - 1] = yearPrefix.charAt(0), maskset.buffer[pos++] = yearPrefix.charAt(1),
                                 maskset.buffer[pos++] = chrs.charAt(0), {
                                     refreshFromBuffer: {
                                         start: pos - 3,
@@ -91014,7 +91014,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                 var $input = $(this);
                 if (e.ctrlKey && e.keyCode === Inputmask.keyCode.RIGHT) {
                     var today = new Date();
-                    $input.val((today.getMonth() + 1).toString() + today.getDate().toString() + today.getFullYear().toString()), 
+                    $input.val((today.getMonth() + 1).toString() + today.getDate().toString() + today.getFullYear().toString()),
                     $input.trigger("setvalue");
                 }
             }
@@ -91028,7 +91028,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                 var $input = $(this);
                 if (e.ctrlKey && e.keyCode === Inputmask.keyCode.RIGHT) {
                     var today = new Date();
-                    $input.val(today.getFullYear().toString() + (today.getMonth() + 1).toString() + today.getDate().toString()), 
+                    $input.val(today.getFullYear().toString() + (today.getMonth() + 1).toString() + today.getDate().toString()),
                     $input.trigger("setvalue");
                 }
             }
@@ -91092,7 +91092,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
             definitions: {
                 h: {
                     validator: function(chrs, maskset, pos, strict, opts) {
-                        if ("24" === opts.hourFormat && 24 === parseInt(chrs, 10)) return maskset.buffer[pos - 1] = "0", 
+                        if ("24" === opts.hourFormat && 24 === parseInt(chrs, 10)) return maskset.buffer[pos - 1] = "0",
                         maskset.buffer[pos] = "0", {
                             refreshFromBuffer: {
                                 start: pos - 1,
@@ -91101,7 +91101,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                             c: "0"
                         };
                         var isValid = opts.regex.hrs.test(chrs);
-                        if (!strict && !isValid && (chrs.charAt(1) === opts.timeseparator || -1 !== "-.:".indexOf(chrs.charAt(1))) && (isValid = opts.regex.hrs.test("0" + chrs.charAt(0)))) return maskset.buffer[pos - 1] = "0", 
+                        if (!strict && !isValid && (chrs.charAt(1) === opts.timeseparator || -1 !== "-.:".indexOf(chrs.charAt(1))) && (isValid = opts.regex.hrs.test("0" + chrs.charAt(0)))) return maskset.buffer[pos - 1] = "0",
                         maskset.buffer[pos] = chrs.charAt(0), pos++, {
                             refreshFromBuffer: {
                                 start: pos - 2,
@@ -91112,9 +91112,9 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                         };
                         if (isValid && "24" !== opts.hourFormat && opts.regex.hrs24.test(chrs)) {
                             var tmp = parseInt(chrs, 10);
-                            return 24 === tmp ? (maskset.buffer[pos + 5] = "a", maskset.buffer[pos + 6] = "m") : (maskset.buffer[pos + 5] = "p", 
-                            maskset.buffer[pos + 6] = "m"), tmp -= 12, 10 > tmp ? (maskset.buffer[pos] = tmp.toString(), 
-                            maskset.buffer[pos - 1] = "0") : (maskset.buffer[pos] = tmp.toString().charAt(1), 
+                            return 24 === tmp ? (maskset.buffer[pos + 5] = "a", maskset.buffer[pos + 6] = "m") : (maskset.buffer[pos + 5] = "p",
+                            maskset.buffer[pos + 6] = "m"), tmp -= 12, 10 > tmp ? (maskset.buffer[pos] = tmp.toString(),
+                            maskset.buffer[pos - 1] = "0") : (maskset.buffer[pos] = tmp.toString().charAt(1),
                             maskset.buffer[pos - 1] = tmp.toString().charAt(0)), {
                                 refreshFromBuffer: {
                                     start: pos - 1,
@@ -91129,7 +91129,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                     prevalidator: [ {
                         validator: function(chrs, maskset, pos, strict, opts) {
                             var isValid = opts.regex.hrspre.test(chrs);
-                            return strict || isValid || !(isValid = opts.regex.hrs.test("0" + chrs)) ? isValid : (maskset.buffer[pos] = "0", 
+                            return strict || isValid || !(isValid = opts.regex.hrs.test("0" + chrs)) ? isValid : (maskset.buffer[pos] = "0",
                             pos++, {
                                 pos: pos
                             });
@@ -91143,7 +91143,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                     prevalidator: [ {
                         validator: function(chrs, maskset, pos, strict, opts) {
                             var isValid = opts.regex.mspre.test(chrs);
-                            return strict || isValid || !(isValid = opts.regex.ms.test("0" + chrs)) ? isValid : (maskset.buffer[pos] = "0", 
+                            return strict || isValid || !(isValid = opts.regex.ms.test("0" + chrs)) ? isValid : (maskset.buffer[pos] = "0",
                             pos++, {
                                 pos: pos
                             });
@@ -91189,7 +91189,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                 var $input = $(this);
                 if (e.ctrlKey && e.keyCode === Inputmask.keyCode.RIGHT) {
                     var today = new Date();
-                    $input.val((today.getMonth() + 1).toString() + today.getDate().toString() + today.getFullYear().toString()), 
+                    $input.val((today.getMonth() + 1).toString() + today.getDate().toString() + today.getFullYear().toString()),
                     $input.trigger("setvalue");
                 }
             }
@@ -91286,8 +91286,8 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
             definitions: {
                 i: {
                     validator: function(chrs, maskset, pos, strict, opts) {
-                        return pos - 1 > -1 && "." !== maskset.buffer[pos - 1] ? (chrs = maskset.buffer[pos - 1] + chrs, 
-                        chrs = pos - 2 > -1 && "." !== maskset.buffer[pos - 2] ? maskset.buffer[pos - 2] + chrs : "0" + chrs) : chrs = "00" + chrs, 
+                        return pos - 1 > -1 && "." !== maskset.buffer[pos - 1] ? (chrs = maskset.buffer[pos - 1] + chrs,
+                        chrs = pos - 2 > -1 && "." !== maskset.buffer[pos - 2] ? maskset.buffer[pos - 2] + chrs : "0" + chrs) : chrs = "00" + chrs,
                         new RegExp("25[0-5]|2[0-4][0-9]|[01][0-9][0-9]").test(chrs);
                     },
                     cardinality: 1
@@ -91343,28 +91343,28 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                     for (var escapedTxt = "", i = 0; i < txt.length; i++) escapedTxt += opts.definitions[txt.charAt(i)] || opts.optionalmarker.start === txt.charAt(i) || opts.optionalmarker.end === txt.charAt(i) || opts.quantifiermarker.start === txt.charAt(i) || opts.quantifiermarker.end === txt.charAt(i) || opts.groupmarker.start === txt.charAt(i) || opts.groupmarker.end === txt.charAt(i) || opts.alternatormarker === txt.charAt(i) ? "\\" + txt.charAt(i) : txt.charAt(i);
                     return escapedTxt;
                 }
-                if (0 !== opts.repeat && isNaN(opts.integerDigits) && (opts.integerDigits = opts.repeat), 
-                opts.repeat = 0, opts.groupSeparator === opts.radixPoint && ("." === opts.radixPoint ? opts.groupSeparator = "," : "," === opts.radixPoint ? opts.groupSeparator = "." : opts.groupSeparator = ""), 
-                " " === opts.groupSeparator && (opts.skipOptionalPartCharacter = void 0), opts.autoGroup = opts.autoGroup && "" !== opts.groupSeparator, 
-                opts.autoGroup && ("string" == typeof opts.groupSize && isFinite(opts.groupSize) && (opts.groupSize = parseInt(opts.groupSize)), 
+                if (0 !== opts.repeat && isNaN(opts.integerDigits) && (opts.integerDigits = opts.repeat),
+                opts.repeat = 0, opts.groupSeparator === opts.radixPoint && ("." === opts.radixPoint ? opts.groupSeparator = "," : "," === opts.radixPoint ? opts.groupSeparator = "." : opts.groupSeparator = ""),
+                " " === opts.groupSeparator && (opts.skipOptionalPartCharacter = void 0), opts.autoGroup = opts.autoGroup && "" !== opts.groupSeparator,
+                opts.autoGroup && ("string" == typeof opts.groupSize && isFinite(opts.groupSize) && (opts.groupSize = parseInt(opts.groupSize)),
                 isFinite(opts.integerDigits))) {
                     var seps = Math.floor(opts.integerDigits / opts.groupSize), mod = opts.integerDigits % opts.groupSize;
-                    opts.integerDigits = parseInt(opts.integerDigits) + (0 === mod ? seps - 1 : seps), 
+                    opts.integerDigits = parseInt(opts.integerDigits) + (0 === mod ? seps - 1 : seps),
                     opts.integerDigits < 1 && (opts.integerDigits = "*");
                 }
-                opts.placeholder.length > 1 && (opts.placeholder = opts.placeholder.charAt(0)), 
-                opts.radixFocus = opts.radixFocus && "" !== opts.placeholder && opts.integerOptional === !0, 
-                opts.definitions[";"] = opts.definitions["~"], opts.definitions[";"].definitionSymbol = "~", 
-                opts.numericInput === !0 && (opts.radixFocus = !1, opts.digitsOptional = !1, isNaN(opts.digits) && (opts.digits = 2), 
+                opts.placeholder.length > 1 && (opts.placeholder = opts.placeholder.charAt(0)),
+                opts.radixFocus = opts.radixFocus && "" !== opts.placeholder && opts.integerOptional === !0,
+                opts.definitions[";"] = opts.definitions["~"], opts.definitions[";"].definitionSymbol = "~",
+                opts.numericInput === !0 && (opts.radixFocus = !1, opts.digitsOptional = !1, isNaN(opts.digits) && (opts.digits = 2),
                 opts.decimalProtect = !1);
                 var mask = autoEscape(opts.prefix);
-                return mask += "[+]", mask += opts.integerOptional === !0 ? "~{1," + opts.integerDigits + "}" : "~{" + opts.integerDigits + "}", 
-                void 0 !== opts.digits && (isNaN(opts.digits) || parseInt(opts.digits) > 0) && (opts.decimalProtect && (opts.radixPointDefinitionSymbol = ":"), 
-                mask += opts.digitsOptional ? "[" + (opts.decimalProtect ? ":" : opts.radixPoint) + ";{1," + opts.digits + "}]" : (opts.decimalProtect ? ":" : opts.radixPoint) + ";{" + opts.digits + "}"), 
-                mask += "[-]", mask += autoEscape(opts.suffix), opts.greedy = !1, null !== opts.min && (opts.min = opts.min.toString().replace(new RegExp(Inputmask.escapeRegex(opts.groupSeparator), "g"), ""), 
-                "," === opts.radixPoint && (opts.min = opts.min.replace(opts.radixPoint, "."))), 
-                null !== opts.max && (opts.max = opts.max.toString().replace(new RegExp(Inputmask.escapeRegex(opts.groupSeparator), "g"), ""), 
-                "," === opts.radixPoint && (opts.max = opts.max.replace(opts.radixPoint, "."))), 
+                return mask += "[+]", mask += opts.integerOptional === !0 ? "~{1," + opts.integerDigits + "}" : "~{" + opts.integerDigits + "}",
+                void 0 !== opts.digits && (isNaN(opts.digits) || parseInt(opts.digits) > 0) && (opts.decimalProtect && (opts.radixPointDefinitionSymbol = ":"),
+                mask += opts.digitsOptional ? "[" + (opts.decimalProtect ? ":" : opts.radixPoint) + ";{1," + opts.digits + "}]" : (opts.decimalProtect ? ":" : opts.radixPoint) + ";{" + opts.digits + "}"),
+                mask += "[-]", mask += autoEscape(opts.suffix), opts.greedy = !1, null !== opts.min && (opts.min = opts.min.toString().replace(new RegExp(Inputmask.escapeRegex(opts.groupSeparator), "g"), ""),
+                "," === opts.radixPoint && (opts.min = opts.min.replace(opts.radixPoint, "."))),
+                null !== opts.max && (opts.max = opts.max.toString().replace(new RegExp(Inputmask.escapeRegex(opts.groupSeparator), "g"), ""),
+                "," === opts.radixPoint && (opts.max = opts.max.replace(opts.radixPoint, "."))),
                 mask;
             },
             placeholder: "",
@@ -91397,27 +91397,27 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
             postFormat: function(buffer, pos, opts) {
                 opts.numericInput === !0 && (buffer = buffer.reverse(), isFinite(pos) && (pos = buffer.join("").length - pos - 1));
                 var i, l, suffixStripped = !1;
-                buffer.length >= opts.suffix.length && buffer.join("").indexOf(opts.suffix) === buffer.length - opts.suffix.length && (buffer.length = buffer.length - opts.suffix.length, 
+                buffer.length >= opts.suffix.length && buffer.join("").indexOf(opts.suffix) === buffer.length - opts.suffix.length && (buffer.length = buffer.length - opts.suffix.length,
                 suffixStripped = !0), pos = pos >= buffer.length ? buffer.length - 1 : pos < opts.prefix.length ? opts.prefix.length : pos;
                 var needsRefresh = !1, charAtPos = buffer[pos], cbuf = buffer.slice();
-                charAtPos === opts.groupSeparator && (cbuf.splice(pos--, 1), charAtPos = cbuf[pos]), 
+                charAtPos === opts.groupSeparator && (cbuf.splice(pos--, 1), charAtPos = cbuf[pos]),
                 charAtPos !== opts.radixPoint && charAtPos !== opts.negationSymbol.front && charAtPos !== opts.negationSymbol.back && (cbuf[pos] = "?");
                 var bufVal = cbuf.join(""), bufValOrigin = bufVal;
                 if (bufVal.length > 0 && opts.autoGroup || -1 !== bufVal.indexOf(opts.groupSeparator)) {
                     var escapedGroupSeparator = Inputmask.escapeRegex(opts.groupSeparator);
                     needsRefresh = 0 === bufVal.indexOf(opts.groupSeparator), bufVal = bufVal.replace(new RegExp(escapedGroupSeparator, "g"), "");
                     var radixSplit = bufVal.split(opts.radixPoint);
-                    if (bufVal = "" === opts.radixPoint ? bufVal : radixSplit[0], bufVal !== opts.prefix + "?0" && bufVal.length >= opts.groupSize + opts.prefix.length) for (var reg = new RegExp("([-+]?[\\d?]+)([\\d?]{" + opts.groupSize + "})"); reg.test(bufVal) && "" !== opts.groupSeparator; ) bufVal = bufVal.replace(reg, "$1" + opts.groupSeparator + "$2"), 
+                    if (bufVal = "" === opts.radixPoint ? bufVal : radixSplit[0], bufVal !== opts.prefix + "?0" && bufVal.length >= opts.groupSize + opts.prefix.length) for (var reg = new RegExp("([-+]?[\\d?]+)([\\d?]{" + opts.groupSize + "})"); reg.test(bufVal) && "" !== opts.groupSeparator; ) bufVal = bufVal.replace(reg, "$1" + opts.groupSeparator + "$2"),
                     bufVal = bufVal.replace(opts.groupSeparator + opts.groupSeparator, opts.groupSeparator);
                     "" !== opts.radixPoint && radixSplit.length > 1 && (bufVal += opts.radixPoint + radixSplit[1]);
                 }
-                for (needsRefresh = bufValOrigin !== bufVal, buffer.length = bufVal.length, i = 0, 
+                for (needsRefresh = bufValOrigin !== bufVal, buffer.length = bufVal.length, i = 0,
                 l = bufVal.length; l > i; i++) buffer[i] = bufVal.charAt(i);
                 var newPos = $.inArray("?", buffer);
-                if (-1 === newPos && (newPos = $.inArray(charAtPos, buffer)), buffer[newPos] = charAtPos, 
+                if (-1 === newPos && (newPos = $.inArray(charAtPos, buffer)), buffer[newPos] = charAtPos,
                 !needsRefresh && suffixStripped) for (i = 0, l = opts.suffix.length; l > i; i++) buffer.push(opts.suffix.charAt(i));
-                return newPos = opts.numericInput && isFinite(pos) ? buffer.join("").length - newPos - 1 : newPos, 
-                opts.numericInput && (buffer = buffer.reverse(), $.inArray(opts.radixPoint, buffer) < newPos && buffer.join("").length - opts.suffix.length !== newPos && (newPos -= 1)), 
+                return newPos = opts.numericInput && isFinite(pos) ? buffer.join("").length - newPos - 1 : newPos,
+                opts.numericInput && (buffer = buffer.reverse(), $.inArray(opts.radixPoint, buffer) < newPos && buffer.join("").length - opts.suffix.length !== newPos && (newPos -= 1)),
                 {
                     pos: newPos,
                     refreshFromBuffer: needsRefresh,
@@ -91428,32 +91428,32 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                 var rslt;
                 if (e && ("blur" === e.type || "checkval" === e.type || "keydown" === e.type)) {
                     var maskedValue = opts.numericInput ? buffer.slice().reverse().join("") : buffer.join(""), processValue = maskedValue.replace(opts.prefix, "");
-                    processValue = processValue.replace(opts.suffix, ""), processValue = processValue.replace(new RegExp(Inputmask.escapeRegex(opts.groupSeparator), "g"), ""), 
+                    processValue = processValue.replace(opts.suffix, ""), processValue = processValue.replace(new RegExp(Inputmask.escapeRegex(opts.groupSeparator), "g"), ""),
                     "," === opts.radixPoint && (processValue = processValue.replace(opts.radixPoint, "."));
                     var isNegative = processValue.match(new RegExp("[-" + Inputmask.escapeRegex(opts.negationSymbol.front) + "]", "g"));
-                    if (isNegative = null !== isNegative && 1 === isNegative.length, processValue = processValue.replace(new RegExp("[-" + Inputmask.escapeRegex(opts.negationSymbol.front) + "]", "g"), ""), 
-                    processValue = processValue.replace(new RegExp(Inputmask.escapeRegex(opts.negationSymbol.back) + "$"), ""), 
-                    isNaN(opts.placeholder) && (processValue = processValue.replace(new RegExp(Inputmask.escapeRegex(opts.placeholder), "g"), "")), 
-                    processValue = processValue === opts.negationSymbol.front ? processValue + "0" : processValue, 
+                    if (isNegative = null !== isNegative && 1 === isNegative.length, processValue = processValue.replace(new RegExp("[-" + Inputmask.escapeRegex(opts.negationSymbol.front) + "]", "g"), ""),
+                    processValue = processValue.replace(new RegExp(Inputmask.escapeRegex(opts.negationSymbol.back) + "$"), ""),
+                    isNaN(opts.placeholder) && (processValue = processValue.replace(new RegExp(Inputmask.escapeRegex(opts.placeholder), "g"), "")),
+                    processValue = processValue === opts.negationSymbol.front ? processValue + "0" : processValue,
                     "" !== processValue && isFinite(processValue)) {
                         var floatValue = parseFloat(processValue), signedFloatValue = isNegative ? -1 * floatValue : floatValue;
-                        if (null !== opts.min && isFinite(opts.min) && signedFloatValue < parseFloat(opts.min) ? (floatValue = Math.abs(opts.min), 
-                        isNegative = opts.min < 0, maskedValue = void 0) : null !== opts.max && isFinite(opts.max) && signedFloatValue > parseFloat(opts.max) && (floatValue = Math.abs(opts.max), 
-                        isNegative = opts.max < 0, maskedValue = void 0), processValue = floatValue.toString().replace(".", opts.radixPoint).split(""), 
+                        if (null !== opts.min && isFinite(opts.min) && signedFloatValue < parseFloat(opts.min) ? (floatValue = Math.abs(opts.min),
+                        isNegative = opts.min < 0, maskedValue = void 0) : null !== opts.max && isFinite(opts.max) && signedFloatValue > parseFloat(opts.max) && (floatValue = Math.abs(opts.max),
+                        isNegative = opts.max < 0, maskedValue = void 0), processValue = floatValue.toString().replace(".", opts.radixPoint).split(""),
                         isFinite(opts.digits)) {
                             var radixPosition = $.inArray(opts.radixPoint, processValue), rpb = $.inArray(opts.radixPoint, maskedValue);
                             -1 === radixPosition && (processValue.push(opts.radixPoint), radixPosition = processValue.length - 1);
                             for (var i = 1; i <= opts.digits; i++) opts.digitsOptional || void 0 !== processValue[radixPosition + i] && processValue[radixPosition + i] !== opts.placeholder.charAt(0) ? -1 !== rpb && void 0 !== maskedValue[rpb + i] && (processValue[radixPosition + i] = processValue[radixPosition + i] || maskedValue[rpb + i]) : processValue[radixPosition + i] = "0";
                             processValue[processValue.length - 1] === opts.radixPoint && delete processValue[processValue.length - 1];
                         }
-                        if (floatValue.toString() !== processValue && floatValue.toString() + "." !== processValue || isNegative) return !isNegative || 0 === floatValue && "blur" === e.type || (processValue.unshift(opts.negationSymbol.front), 
-                        processValue.push(opts.negationSymbol.back)), processValue = (opts.prefix + processValue.join("")).split(""), 
-                        opts.numericInput && (processValue = processValue.reverse()), rslt = opts.postFormat(processValue, opts.numericInput ? caretPos : caretPos - 1, opts), 
-                        rslt.buffer && (rslt.refreshFromBuffer = rslt.buffer.join("") !== buffer.join("")), 
+                        if (floatValue.toString() !== processValue && floatValue.toString() + "." !== processValue || isNegative) return !isNegative || 0 === floatValue && "blur" === e.type || (processValue.unshift(opts.negationSymbol.front),
+                        processValue.push(opts.negationSymbol.back)), processValue = (opts.prefix + processValue.join("")).split(""),
+                        opts.numericInput && (processValue = processValue.reverse()), rslt = opts.postFormat(processValue, opts.numericInput ? caretPos : caretPos - 1, opts),
+                        rslt.buffer && (rslt.refreshFromBuffer = rslt.buffer.join("") !== buffer.join("")),
                         rslt;
                     }
                 }
-                return opts.autoGroup ? (rslt = opts.postFormat(buffer, opts.numericInput ? caretPos : caretPos - 1, opts), 
+                return opts.autoGroup ? (rslt = opts.postFormat(buffer, opts.numericInput ? caretPos : caretPos - 1, opts),
                 rslt.caret = caretPos <= opts.prefix.length ? rslt.pos : rslt.pos + 1, rslt) : void 0;
             },
             regex: {
@@ -91527,7 +91527,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                         c: integerValue[0],
                         caret: radixPos + 1
                     };
-                    if (!integerValue || "0" === integerValue[0] && integerValue.index + 1 !== pos) return maskset.buffer[integerValue ? integerValue.index : pos] = "0", 
+                    if (!integerValue || "0" === integerValue[0] && integerValue.index + 1 !== pos) return maskset.buffer[integerValue ? integerValue.index : pos] = "0",
                     {
                         pos: (integerValue ? integerValue.index : pos) + 1,
                         c: opts.radixPoint
@@ -91546,7 +91546,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                     var radixPosition = $.inArray(opts.radixPoint, maskset.buffer), matchRslt = maskset.buffer.slice(0, -1 !== radixPosition ? radixPosition : void 0).join("").match(opts.regex.integerNPart(opts));
                     if (matchRslt && (-1 === radixPosition || radixPosition >= pos)) {
                         var decimalPart = -1 === radixPosition ? 0 : parseInt(maskset.buffer.slice(radixPosition + 1).join(""));
-                        if (0 === matchRslt[0].indexOf("" !== opts.placeholder ? opts.placeholder.charAt(0) : "0") && (matchRslt.index + 1 === pos || isSelection !== !0 && 0 === decimalPart)) return maskset.buffer.splice(matchRslt.index, 1), 
+                        if (0 === matchRslt[0].indexOf("" !== opts.placeholder ? opts.placeholder.charAt(0) : "0") && (matchRslt.index + 1 === pos || isSelection !== !0 && 0 === decimalPart)) return maskset.buffer.splice(matchRslt.index, 1),
                         {
                             pos: matchRslt.index,
                             remove: matchRslt.index
@@ -91560,9 +91560,9 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                 "~": {
                     validator: function(chrs, maskset, pos, strict, opts, isSelection) {
                         var isValid = opts.signHandler(chrs, maskset, pos, strict, opts);
-                        if (!isValid && (isValid = opts.radixHandler(chrs, maskset, pos, strict, opts), 
-                        !isValid && (isValid = strict ? new RegExp("[0-9" + Inputmask.escapeRegex(opts.groupSeparator) + "]").test(chrs) : new RegExp("[0-9]").test(chrs), 
-                        isValid === !0 && (isValid = opts.leadingZeroHandler(chrs, maskset, pos, strict, opts, isSelection), 
+                        if (!isValid && (isValid = opts.radixHandler(chrs, maskset, pos, strict, opts),
+                        !isValid && (isValid = strict ? new RegExp("[0-9" + Inputmask.escapeRegex(opts.groupSeparator) + "]").test(chrs) : new RegExp("[0-9]").test(chrs),
+                        isValid === !0 && (isValid = opts.leadingZeroHandler(chrs, maskset, pos, strict, opts, isSelection),
                         isValid === !0)))) {
                             var radixPosition = $.inArray(opts.radixPoint, maskset.buffer);
                             isValid = -1 !== radixPosition && (opts.digitsOptional === !1 || maskset.validPositions[pos]) && opts.numericInput !== !0 && pos > radixPosition && !strict ? {
@@ -91599,7 +91599,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                 "-": {
                     validator: function(chrs, maskset, pos, strict, opts) {
                         var isValid = opts.signHandler(chrs, maskset, pos, strict, opts);
-                        return !isValid && strict && opts.allowMinus && chrs === opts.negationSymbol.back && (isValid = !0), 
+                        return !isValid && strict && opts.allowMinus && chrs === opts.negationSymbol.back && (isValid = !0),
                         isValid;
                     },
                     cardinality: 1,
@@ -91626,32 +91626,32 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
             },
             onUnMask: function(maskedValue, unmaskedValue, opts) {
                 var processValue = maskedValue.replace(opts.prefix, "");
-                return processValue = processValue.replace(opts.suffix, ""), processValue = processValue.replace(new RegExp(Inputmask.escapeRegex(opts.groupSeparator), "g"), ""), 
-                opts.unmaskAsNumber ? ("" !== opts.radixPoint && -1 !== processValue.indexOf(opts.radixPoint) && (processValue = processValue.replace(Inputmask.escapeRegex.call(this, opts.radixPoint), ".")), 
+                return processValue = processValue.replace(opts.suffix, ""), processValue = processValue.replace(new RegExp(Inputmask.escapeRegex(opts.groupSeparator), "g"), ""),
+                opts.unmaskAsNumber ? ("" !== opts.radixPoint && -1 !== processValue.indexOf(opts.radixPoint) && (processValue = processValue.replace(Inputmask.escapeRegex.call(this, opts.radixPoint), ".")),
                 Number(processValue)) : processValue;
             },
             isComplete: function(buffer, opts) {
                 var maskedValue = buffer.join(""), bufClone = buffer.slice();
                 if (opts.postFormat(bufClone, 0, opts), bufClone.join("") !== maskedValue) return !1;
                 var processValue = maskedValue.replace(opts.prefix, "");
-                return processValue = processValue.replace(opts.suffix, ""), processValue = processValue.replace(new RegExp(Inputmask.escapeRegex(opts.groupSeparator), "g"), ""), 
-                "," === opts.radixPoint && (processValue = processValue.replace(Inputmask.escapeRegex(opts.radixPoint), ".")), 
+                return processValue = processValue.replace(opts.suffix, ""), processValue = processValue.replace(new RegExp(Inputmask.escapeRegex(opts.groupSeparator), "g"), ""),
+                "," === opts.radixPoint && (processValue = processValue.replace(Inputmask.escapeRegex(opts.radixPoint), ".")),
                 isFinite(processValue);
             },
             onBeforeMask: function(initialValue, opts) {
                 if ("" !== opts.radixPoint && isFinite(initialValue)) initialValue = initialValue.toString().replace(".", opts.radixPoint); else {
                     var kommaMatches = initialValue.match(/,/g), dotMatches = initialValue.match(/\./g);
-                    dotMatches && kommaMatches ? dotMatches.length > kommaMatches.length ? (initialValue = initialValue.replace(/\./g, ""), 
-                    initialValue = initialValue.replace(",", opts.radixPoint)) : kommaMatches.length > dotMatches.length ? (initialValue = initialValue.replace(/,/g, ""), 
+                    dotMatches && kommaMatches ? dotMatches.length > kommaMatches.length ? (initialValue = initialValue.replace(/\./g, ""),
+                    initialValue = initialValue.replace(",", opts.radixPoint)) : kommaMatches.length > dotMatches.length ? (initialValue = initialValue.replace(/,/g, ""),
                     initialValue = initialValue.replace(".", opts.radixPoint)) : initialValue = initialValue.indexOf(".") < initialValue.indexOf(",") ? initialValue.replace(/\./g, "") : initialValue = initialValue.replace(/,/g, "") : initialValue = initialValue.replace(new RegExp(Inputmask.escapeRegex(opts.groupSeparator), "g"), "");
                 }
-                if (0 === opts.digits && (-1 !== initialValue.indexOf(".") ? initialValue = initialValue.substring(0, initialValue.indexOf(".")) : -1 !== initialValue.indexOf(",") && (initialValue = initialValue.substring(0, initialValue.indexOf(",")))), 
+                if (0 === opts.digits && (-1 !== initialValue.indexOf(".") ? initialValue = initialValue.substring(0, initialValue.indexOf(".")) : -1 !== initialValue.indexOf(",") && (initialValue = initialValue.substring(0, initialValue.indexOf(",")))),
                 "" !== opts.radixPoint && isFinite(opts.digits) && -1 !== initialValue.indexOf(opts.radixPoint)) {
                     var valueParts = initialValue.split(opts.radixPoint), decPart = valueParts[1].match(new RegExp("\\d*"))[0];
                     if (parseInt(opts.digits) < decPart.toString().length) {
                         var digitsFactor = Math.pow(10, parseInt(opts.digits));
-                        initialValue = initialValue.replace(Inputmask.escapeRegex(opts.radixPoint), "."), 
-                        initialValue = Math.round(parseFloat(initialValue) * digitsFactor) / digitsFactor, 
+                        initialValue = initialValue.replace(Inputmask.escapeRegex(opts.radixPoint), "."),
+                        initialValue = Math.round(parseFloat(initialValue) * digitsFactor) / digitsFactor,
                         initialValue = initialValue.toString().replace(".", opts.radixPoint);
                     }
                 }
@@ -91735,7 +91735,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
             nojumpsThreshold: 1,
             onBeforeMask: function(value, opts) {
                 var processedValue = value.replace(/^0{1,2}/, "").replace(/[\s]/g, "");
-                return (processedValue.indexOf(opts.countrycode) > 1 || -1 === processedValue.indexOf(opts.countrycode)) && (processedValue = "+" + opts.countrycode + processedValue), 
+                return (processedValue.indexOf(opts.countrycode) > 1 || -1 === processedValue.indexOf(opts.countrycode)) && (processedValue = "+" + opts.countrycode + processedValue),
                 processedValue;
             }
         },
@@ -91763,7 +91763,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                 r: {
                     validator: function(chrs, maskset, pos, strict, opts) {
                         function RegexToken(isGroup, isQuantifier) {
-                            this.matches = [], this.isGroup = isGroup || !1, this.isQuantifier = isQuantifier || !1, 
+                            this.matches = [], this.isGroup = isGroup || !1, this.isQuantifier = isQuantifier || !1,
                             this.quantifier = {
                                 min: 1,
                                 max: 1
@@ -91771,7 +91771,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                         }
                         function analyseRegex() {
                             var match, m, currentToken = new RegexToken(), opengroups = [];
-                            for (opts.regexTokens = []; match = opts.tokenizer.exec(opts.regex); ) switch (m = match[0], 
+                            for (opts.regexTokens = []; match = opts.tokenizer.exec(opts.regex); ) switch (m = match[0],
                             m.charAt(0)) {
                               case "(":
                                 opengroups.push(new RegexToken(!0));
@@ -91792,10 +91792,10 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                                     max: mq1
                                 }, opengroups.length > 0) {
                                     var matches = opengroups[opengroups.length - 1].matches;
-                                    match = matches.pop(), match.isGroup || (groupToken = new RegexToken(!0), groupToken.matches.push(match), 
+                                    match = matches.pop(), match.isGroup || (groupToken = new RegexToken(!0), groupToken.matches.push(match),
                                     match = groupToken), matches.push(match), matches.push(quantifierToken);
-                                } else match = currentToken.matches.pop(), match.isGroup || (groupToken = new RegexToken(!0), 
-                                groupToken.matches.push(match), match = groupToken), currentToken.matches.push(match), 
+                                } else match = currentToken.matches.pop(), match.isGroup || (groupToken = new RegexToken(!0),
+                                groupToken.matches.push(match), match = groupToken), currentToken.matches.push(match),
                                 currentToken.matches.push(quantifierToken);
                                 break;
 
@@ -91813,7 +91813,7 @@ var pattern_email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+"
                                     var crrntndx = $.inArray(matchToken, token.matches), matchGroup = token.matches[crrntndx - 1], regexPartBak = regexPart;
                                     if (isNaN(matchToken.quantifier.max)) {
                                         for (;matchToken.repeaterPart && matchToken.repeaterPart !== regexPart && matchToken.repeaterPart.length > regexPart.length && !(isvalid = validateRegexToken(matchGroup, !0)); ) ;
-                                        isvalid = isvalid || validateRegexToken(matchGroup, !0), isvalid && (matchToken.repeaterPart = regexPart), 
+                                        isvalid = isvalid || validateRegexToken(matchGroup, !0), isvalid && (matchToken.repeaterPart = regexPart),
                                         regexPart = regexPartBak + matchToken.quantifier.max;
                                     } else {
                                         for (var i = 0, qm = matchToken.quantifier.max - 1; qm > i && !(isvalid = validateRegexToken(matchGroup, !0)); i++) ;
@@ -96130,7 +96130,7 @@ var l2i = {
                     if (url.indexOf('/index.html') > -1 && lineNumber == 1) return;
 
                     l2i.exceptions.uncatchable.onerror.custom("UNCATCHABLE: ----------------" + errorMsg, url, lineNumber);
-                    
+
                     if (l2i.exceptions.uncatchable.onerror.original) {
                         l2i.exceptions.uncatchable.onerror.original(errorMsg, url, lineNumber);
                     }
@@ -96313,7 +96313,7 @@ var l2i = {
         }
     }
 }
-var wl = "mobile"; //  название WL в url запросов 
+var wl = "mobile"; //  название WL в url запросов
 var wlPath = "DreamClub"; // имя папки WL
 var linkWebSite = "https://dreamclub.kz/"; // ссылка на сайт
 var linkWebSiteName = "www.dreamclub.kz"; // название сайта
@@ -96325,48 +96325,48 @@ var supportEmail = "info@dreamclub.kz"; // email службы поддержки
 var nameCompany = "© 2015-2016 mWallet, Inc."; // информация о компании
 var defaultMaskPhone = "KZ"; // по умолчанию маска для телефона
 var textIsFirstCurrency = false; // отображать перывм валюту или сумму
-var versionCode = "2387"; // версия кода
-var versionName = "2.0.0"; // версия приложения
+var versionCode = "2398"; // версия кода
+var versionName = "2.0.1"; // версия приложения
 var allViewCurrency = false; // везде показывать одну валюту ?
 var tokenHockeyAPP = "77ca34bbf988432783ef60dcdf6f91a0"; // хокеап токен для отправки логов
 var hockeyAppID = "35ec523b3f204b4ebcbbc9f43c3ab80b"; // хокеап ID приложения
 var isPhoneByCurrency = "false"; // валюта в зависимости от маски теелфона
 var logoWhite = false; //  лого белое или нет для корзины что бы показывать логотип с фоном илиили без
 var masterPass = false; // платежная система MasterPass
-var urlImage = "https://mobipay.ua/"; // url для загрузки аватаорк 
+var urlImage = "https://mobipay.ua/"; // url для загрузки аватаорк
 
 localStorage.tagwayAppIdForTest = 11; // AppId тестового сервера для TagWay
 localStorage.tagwayAppIdForProd = 6; // AppId продктивного сервера для TagWay
 
 localStorage.tagwaySignKeyForTest = "technoport!virtual"; // SignKey тестового сервера для TagWay
 localStorage.tagwaySignKeyForProd = "AAtUeP4+!Jy1tiI"; // SignKey продктивного сервера для TagWay
-localStorage.shareUrl = ""; // url для шаринга 
+localStorage.shareUrl = ""; // url для шаринга
 
 // URL сервера
-localStorage.url = "https://api2-uat.dreamclub.kz/v2/client";
+localStorage.url = "https://api2.dreamclub.kz/v2/client";
 localStorage.urlDev = "http://dev.mobipay.ua/";
 
 // ключ
-localStorage.mobile_key = "Ni&#)_SDj0270ghBNFLAU*!@(*!@T@^T@&^GD7JSOIN9(@#&_)ISFLKN~B|>F?ZC><VNQ{*NPXCW{P<MPA@#&!*+_!(~||}{|XMO~UNF(@#6840|}98v1a@Y)**^&^%%ijsdb"; 
+localStorage.mobile_key = "Ni&#)_SDj0270ghBNFLAU*!@(*!@T@^T@&^GD7JSOIN9(@#&_)ISFLKN~B|>F?ZC><VNQ{*NPXCW{P<MPA@#&!*+_!(~||}{|XMO~UNF(@#6840|}98v1a@Y)**^&^%%ijsdb";
 localStorage.version = "1002";
 
 var isAuthFirstPhone = true;// первый этап регистрации телефона
 var isBusiness = false;
-var iOSApiKey = '568871462958-b2896akfnp46idnb35htom915h7dumod.apps.googleusercontent.com'; 
+var iOSApiKey = '568871462958-b2896akfnp46idnb35htom915h7dumod.apps.googleusercontent.com';
 
 //localStorage.uimei = "334bf8ca771fa6b9";
 var trackerWithId = 'UA-38647612-2';
 var pushNotifiSenderID = "568871462958";
-  
+
 // имя в localStorage для сохранения настроек дашборда
 var settingsDashboard = "demoSettings34";
 
 // имя в localStorage для сохранения настроек виджетов
 var settingWidgetCache = "settingWidgetCache";
- 
+
 // флаг для указания запуск в бразуере или на телефоне
 var isMobile = true;
-var isDebug = true; 
+var isDebug = true;
 
 localStorage.configTagwayIfForMobiPay = true; // указываем тегвея для мобипея или нет
 localStorage.configTagwayIsProd = true; // указываем продакшин
@@ -96375,9 +96375,9 @@ localStorage.configTagwayIsProd = true; // указываем продакшин
 var timeoutRender = 600;
 // анимация фона при открытии страницы
 var timeoutAnimate = 600;
- 
+
 var maskPhone = "+00 (000) 000 00 00";
-var maskPhoneRus = "+0 (000) 000 00 00"; 
+var maskPhoneRus = "+0 (000) 000 00 00";
 //var maskPhone2 = "+ 3 8 ( 9 9 9 ) 9 9 9  9 9  9 9";
 
 var dateFormat = "DD.MM.YYYY";
@@ -96406,6 +96406,19 @@ var cmd_names = {
     CMD_GET_QR: "/qr-code",
     CMD_GET_BALANCE_BONUSES: "/balance-bonuses",
     CMD_GET_BALANCE_PROMO: "/balance-promo-codes",
+
+	// RESMI#CHANGES
+	CMD_GET_BALANCE_MY_WALLETS: "/balance",
+	CMD_TRANSFER_BONUSES_MY_WALLETS: "/promo/withdraw-bonuses-on-ewallet",
+	CMD_PURCHASE_GIFT: "/promo/purchase-gift",
+  CMD_EXCHANGE: "/operation/exchange",
+
+  CMD_GET_ALL_GIFTS_LIST: "/all-gifts",
+	CMD_GET_MY_GIFTS_LIST: "/gifts",
+  CMD_GET_CURRENCIES: "/currencies",
+
+	// RESMI#END-CHANGES
+
     CMD_GET_TRANSACTIONS_HISTORY: "/transactions",
     CMD_GET_ACTIVATE_CODE: "/promo/codes",
     CMD_WITHDRAW_BONUSES_ON_PHONE: "/promo/withdraw-bonuses-on-phone",
@@ -96467,7 +96480,7 @@ var cmd_names = {
 var listMAsk = [{"iso":"UA","country":"Ukraine","mcode":"+380","mask":"+38 (xxx) xxx xx xx","active":true,"value":"Ukraine"},{"iso":"RU","country":"Russian Federation","mcode":"+79","mask":"+7 (xxx) xxx xx xx","active":false,"value":"Russian Federation"},{"iso":"AF","country":"Afghanistan","mcode":"+93","mask":"+93 xx xxx xxxx","active":false,"value":"Afghanistan"},{"iso":"AL","country":"Albania","mcode":"+355","mask":"+355 xx xxx xxxx","active":false,"value":"Albania"},{"iso":"DZ","country":"Algeria","mcode":"+213","mask":"+213 xxx xx xx xx","active":false,"value":"Algeria"},{"iso":"AS","country":"American Samoa","mcode":"+1684","mask":"+1 684-xxx-xxxx","active":false,"value":"American Samoa"},{"iso":"AD","country":"Andorra","mcode":"+376","mask":"+376 xxx xxx","active":false,"value":"Andorra"},{"iso":"AO","country":"Angola","mcode":"+244","mask":"+244 xxx xxx xxx","active":false,"value":"Angola"},{"iso":"AI","country":"Anguilla","mcode":"+1264","mask":"+1 264-xxx-xxxx","active":false,"value":"Anguilla"},{"iso":"AG","country":"Antigua And Barbuda","mcode":"+1268","mask":"+1 268-xxx-xxx","active":false,"value":"Antigua And Barbuda"},{"iso":"AE","country":"Arab Emirates","mcode":"+971","mask":"+ 971 xxxxxxx","active":false,"value":"Arab Emirates"},{"iso":"AR","country":"Argentina","mcode":"+54","mask":"+54 x xx xxxx-xxxx","active":false,"value":"Argentina"},{"iso":"AM","country":"Armenia","mcode":"+374","mask":"+374 xx xxxxxx","active":false,"value":"Armenia"},{"iso":"AW","country":"Aruba","mcode":"+297","mask":"+297 xxx xxxx","active":false,"value":"Aruba"},{"iso":"AU","country":"Australia","mcode":"+61","mask":"+61 xxx xxx xxx","active":false,"value":"Australia"},{"iso":"AT","country":"Austria","mcode":"+43","mask":"+43 xxx xxxxxx","active":false,"value":"Austria"},{"iso":"AZ","country":"Azerbaijan","mcode":"+994","mask":"+994 xx xxx xx xx","active":false,"value":"Azerbaijan"},{"iso":"BS","country":"Bahamas","mcode":"+1242","mask":"+1 242-xxx-xxxx","active":false,"value":"Bahamas"},{"iso":"BH","country":"Bahrain","mcode":"+973","mask":"+973 xxxx xxxx","active":false,"value":"Bahrain"},{"iso":"BD","country":"Bangladesh","mcode":"+880","mask":"+880 xxxx xxxxxx","active":false,"value":"Bangladesh"},{"iso":"BB","country":"Barbados","mcode":"+1246","mask":"+1 246-xxx-xxxx","active":false,"value":"Barbados"},{"iso":"BY","country":"Belarus","mcode":"+375","mask":"+375 xx xxx xxxx","active":false,"value":"Belarus"},{"iso":"BE","country":"Belgium","mcode":"+32","mask":"+32 xxx xx xx xx","active":false,"value":"Belgium"},{"iso":"BZ","country":"Belize","mcode":"+501","mask":"+501 xxx-xxxx","active":false,"value":"Belize"},{"iso":"BJ","country":"Benin","mcode":"+229","mask":"+229 xx xx xx xx","active":false,"value":"Benin"},{"iso":"BM","country":"Bermuda","mcode":"+1441","mask":"+1 441-xxx-xxxx","active":false,"value":"Bermuda"},{"iso":"BT","country":"Bhutan","mcode":"+975","mask":"+975 xx xx xx xx","active":false,"value":"Bhutan"},{"iso":"BO","country":"Bolivia","mcode":"+591","mask":"+591 xxxxxxxx","active":false,"value":"Bolivia"},{"iso":"BQ","country":"Bonaire, Sint Eustatius And Saba","mcode":"+599","mask":"+599 xxx xxxx","active":false,"value":"Bonaire, Sint Eustatius And Saba"},{"iso":"BA","country":"Bosnia And Herzegovina","mcode":"+387","mask":"+387 xx xxx xxx","active":false,"value":"Bosnia And Herzegovina"},{"iso":"BW","country":"Botswana","mcode":"+267","mask":"+267 xx xxx xxx","active":false,"value":"Botswana"},{"iso":"BR","country":"Brazil","mcode":"+55","mask":"+55 xx xxxxx-xxxx","active":false,"value":"Brazil"},{"iso":"IO","country":"British Indian Ocean Territory","mcode":"+246","mask":"+246 xxx xxxx","active":false,"value":"British Indian Ocean Territory"},{"iso":"VG","country":"British Virgin Islands","mcode":"+1284","mask":"+1 284-xxx-xxxx","active":false,"value":"British Virgin Islands"},{"iso":"BN","country":"Brunei Darussalam","mcode":"+673","mask":"+673 xxx xxxx","active":false,"value":"Brunei Darussalam"},{"iso":"BG","country":"Bulgaria","mcode":"+359","mask":"+359 xx xxx xxx","active":false,"value":"Bulgaria"},{"iso":"BF","country":"Burkina Faso","mcode":"+226","mask":"+226 xx xx xx xx","active":false,"value":"Burkina Faso"},{"iso":"BI","country":"Burundi","mcode":"+257","mask":"+257 xx xx xx xx","active":false,"value":"Burundi"},{"iso":"KH","country":"Cambodia","mcode":"+855","mask":"+855 xx xxx xxx","active":false,"value":"Cambodia"},{"iso":"CM","country":"Cameroon","mcode":"+237","mask":"+237 xx xx xx xx","active":false,"value":"Cameroon"},{"iso":"CA","country":"Canada","mcode":"+1","mask":"+1 xxx-xxx-xxxx","active":false,"value":"Canada"},{"iso":"CV","country":"Cape Verde","mcode":"+238","mask":"+238 xxx xx xx","active":false,"value":"Cape Verde"},{"iso":"KY","country":"Cayman Islands","mcode":"+1","mask":"+1 xxx-xxx-xxxx","active":false,"value":"Cayman Islands"},{"iso":"CF","country":"Central African Republic","mcode":"+236","mask":"+236 xx xx xx xx","active":false,"value":"Central African Republic"},{"iso":"CL","country":"Chile","mcode":"+56","mask":"+56 x xxxx xxxx","active":false,"value":"Chile"},{"iso":"CN","country":"China","mcode":"+86","mask":"+86 xxx xxxx xxxx","active":false,"value":"China"},{"iso":"CX","country":"Christmas Island","mcode":"+61","mask":"+61 xxx xxx xxx","active":false,"value":"Christmas Island"},{"iso":"CC","country":"Cocos (Keeling) Islands","mcode":"+61","mask":"+61 xxx xxx xxx","active":false,"value":"Cocos (Keeling) Islands"},{"iso":"CO","country":"Colombia","mcode":"+57","mask":"+57 xxx xxxxxxx","active":false,"value":"Colombia"},{"iso":"KM","country":"Comoros","mcode":"+269","mask":"+269 xxx xx xx","active":false,"value":"Comoros"},{"iso":"CD","country":"Congo [DRC]","mcode":"+242","mask":"+242 xx xxx xxxx","active":false,"value":"Congo [DRC]"},{"iso":"CG","country":"Congo [Republic]","mcode":"+243","mask":"+243 xxx xxx xxx","active":false,"value":"Congo [Republic]"},{"iso":"CK","country":"Cook Islands","mcode":"+682","mask":"+682 xx xxx","active":false,"value":"Cook Islands"},{"iso":"CR","country":"Costa Rica","mcode":"+506","mask":"+506 xxxx xxxx","active":false,"value":"Costa Rica"},{"iso":"CI","country":"Côte D'Ivoire","mcode":"+225","mask":"+225 xx xx xx xx","active":false,"value":"Côte D'Ivoire"},{"iso":"HR","country":"Croatia","mcode":"+385","mask":"+385 xx xxx xxxx","active":false,"value":"Croatia"},{"iso":"CU","country":"Cuba","mcode":"+53","mask":"+53 x xxxxxxx","active":false,"value":"Cuba"},{"iso":"CW","country":"Curaçao","mcode":"+599","mask":"+599 x xxx xxxx","active":false,"value":"Curaçao"},{"iso":"CY","country":"Cyprus","mcode":"+357","mask":"+357 xx xxxxxx","active":false,"value":"Cyprus"},{"iso":"CZ","country":"Czech Republic","mcode":"+42","mask":"+42 (0xx) xxx xx xx","active":false,"value":"Czech Republic"},{"iso":"DK","country":"Denmark","mcode":"+45","mask":"+45 xx xx xx xx","active":false,"value":"Denmark"},{"iso":"DJ","country":"Djibouti","mcode":"+253","mask":"+253 xx xx xx xx","active":false,"value":"Djibouti"},{"iso":"EE","country":"Estonia","mcode":"+372","mask":"+372 xxxx xxxx","active":false,"value":"Estonia"},{"iso":"FR","country":"France","mcode":"+33","mask":"+33 (xxx) xxx xx xx","active":false,"value":"France"},{"iso":"GF","country":"French Guiana","mcode":"+594","mask":"+594 xxx xx xx xx","active":false,"value":"French Guiana"},{"iso":"DE","country":"Germany","mcode":"+49","mask":"+49 (xxx) xxx xx xx","active":false,"value":"Germany"},{"iso":"IN","country":"India","mcode":"+91","mask":"+91 xx xx xxxxxx","active":false,"value":"India"},{"iso":"IR","country":"Iran","mcode":"+98","mask":"+98 xxx xxx xxxx","active":false,"value":"Iran"},{"iso":"IQ","country":"Iraq","mcode":"+964","mask":"+964 xxx xxx xxxx","active":false,"value":"Iraq"},{"iso":"IL","country":"Israel","mcode":"+972","mask":"+972 xx-xxx-xxxx","active":false,"value":"Israel"},{"iso":"IT","country":"Italy","mcode":"+39","mask":"+39 (xxx) xxx xx xx","active":false,"value":"Italy"},{"iso":"JP","country":"Japan","mcode":"+81","mask":"+81 xx-xxxx-xxxx","active":false,"value":"Japan"},{"iso":"KZ","country":"Kazakhstan","mcode":"+7","mask":"+7 (xxx) xxx xxxx","active":false,"value":"Kazakhstan"},{"iso":"KG","country":"Kyrgyzstan","mcode":"+996","mask":"+996 xx xxx xx xx","active":false,"value":"Kyrgyzstan"},{"iso":"PL","country":"Poland","mcode":"+48","mask":"+48 xxx xx-xx-xx","active":false,"value":"Poland"},{"iso":"RO","country":"Romania","mcode":"+40","mask":"+40 (xxx) xxx xx xx","active":false,"value":"Romania"},{"iso":"RW","country":"Rwanda","mcode":"+250","mask":"+250 (xxx) xxx-xxx","active":false,"value":"Rwanda"},{"iso":"SA","country":"Saudi Arabia (kingdom Of Saudi Arabia)","mcode":"+966","mask":"+966-5-xxxx-xxxx","active":false,"value":"Saudi Arabia (kingdom Of Saudi Arabia)"},{"iso":"SG","country":"Singapore","mcode":"+65","mask":"+65 xxxx xxxx","active":false,"value":"Singapore"},{"iso":"SK","country":"Slovakia","mcode":"+421","mask":"+421 (xx) xxx xx xx","active":false,"value":"Slovakia"},{"iso":"ES","country":"Spain","mcode":"+34","mask":"+34 (xxx) xxx xx xx","active":false,"value":"Spain"},{"iso":"TJ","country":"Tajikistan","mcode":"+992","mask":"+992 xxx xx xxxx","active":false,"value":"Tajikistan"},{"iso":"TH","country":"Thailand","mcode":"+66","mask":"+66 xx xxx xxxx","active":false,"value":"Thailand"},{"iso":"US","country":"United States","mcode":"+1","mask":"+1 xxx-xxx-xxxx","active":false,"value":"United States"}];
 
 $(document).ready(function () {
-    
+
     WEBPassport.Models.RequestModel = Backbone.Model.extend({
         url: localStorage.url + "api/" + wl + "/app.php",
         version: '',
@@ -96486,7 +96499,7 @@ $(document).ready(function () {
 
             this.listenTo(Backbone, 'request:send.key.push', this.sendPushKey);
             this.listenTo(Backbone, 'request:send.feedbackError', this.feedbackError);
-            // получить список кодов телефонных 
+            // получить список кодов телефонных
             //this.listenTo(Backbone, 'request:saveWPPrefixes', this.saveWPPrefixes);
 
             localStorage["paymentModulName"] = "";
@@ -96570,7 +96583,7 @@ $(document).ready(function () {
                 this.value = this.country;
                 if (this.mask) // если маска пустая значит Виталик еще не заполнил БД =)
                 {
-                    // устанавливаем выбор маски по настрйокам LWL 
+                    // устанавливаем выбор маски по настрйокам LWL
                     if (this.iso == defaultMaskPhone) {
                         this.active = true;
                         listMaskPhone.selectedMask = this;
@@ -96633,7 +96646,7 @@ $(document).ready(function () {
                 }
 
                 switch (reqModel.cmd) {
-                    
+
                     case cmd_names.CMD_AUTH_MOBILE.replace('/', ''): {
                         this.attributes.CMD_AUTH_MOBILE_response = response.data;
                         break;
@@ -96648,7 +96661,7 @@ $(document).ready(function () {
                             mobipayNavigatorOpen(mobipayPage.pin, "left", { state: 'pin_new' });
                             return;
                         }
-                        
+
                         break;
                     }
                     case cmd_names.CMD_AUTH_REG_EMAIL.replace('/', ''): {
@@ -96667,7 +96680,7 @@ $(document).ready(function () {
                     }
                     // обновляем токен и получаем данные пользователя
                     case cmd_names.CMD_START_APP.replace('/', ''): {
-                     
+
                         var dataModel = {
                             session: response.data.token,
                             email: response.data.email,
@@ -96701,7 +96714,7 @@ $(document).ready(function () {
                         };
 
                         response.json = JSON.stringify(dataModel);
-                       
+
                         console.log("WEBPassport.Views.PIN:onSuccessAfter");
                         console.log("WEBPassport.Views.PIN:onSuccessAfter new session = " + localStorage.session);
 
@@ -96735,7 +96748,7 @@ $(document).ready(function () {
                     }
                 }
 
-                // вызываем функцию success 
+                // вызываем функцию success
                 if (options.callback)
                     options.callback(model, response, options);
             }
@@ -96752,7 +96765,7 @@ $(document).ready(function () {
 
             console.log(JSON.stringify(options));
 
-          
+
             var reqModel = new Object();
             if (options.data) reqModel = JSON.parse('{"' + options.data.replace(/&/g, '","').replace(/=/g, '":"') + '"}');
             if (!reqModel.cmd) reqModel.cmd = options.cmd;
@@ -96831,7 +96844,7 @@ $(document).ready(function () {
             //this.set('json', (JSON.stringify(o_json)));
             //this.setRequestParams(cmd_names.CMD_AUTH_REG_EMAIL);
 
-            
+
             var social_id = "";
             switch(_social)
             {
@@ -96859,7 +96872,7 @@ $(document).ready(function () {
                 "social_gender" + "=" + (_model ? _model.sex : "") + "&" +
                 "social_data" + "=" + JSON.stringify(_obj) + "&" +
                 "is_social_network" + "=" + (_obj ? "1" : "0") + "&" +
-                
+
             "cmd" + "=" + cmd_names.CMD_AUTH_REG_EMAIL.replace('/', '');
             console.log(data);
             this.set('requestData', data);
@@ -96868,7 +96881,7 @@ $(document).ready(function () {
         //собираем ноду json для реквеста auth.reg.email.opt и сохраняем данные в модели
         regMailOtp: function (_session, _otp) {
             console.log("WEBPassport.Models.RequestModel:regMailOtp");
-           
+
 
             this.url = localStorage.url + cmd_names.CMD_AUTH_REG_EMAIL_OTP;
 
@@ -96957,7 +96970,7 @@ $(document).ready(function () {
         },
 
 
-        getListActions: function (_id_client, _callback) {
+        getListActions: function (_id_client, obj, _callback) {
             console.log("WEBPassport.Models.RequestModel:getListPartners");
 
             Backbone.$.ajaxSetup({
@@ -96972,6 +96985,7 @@ $(document).ready(function () {
                 error: this.onError,
                 cmd: cmd_names.CMD_GET_ACTIONS,
                 callback: _callback,
+                obj:obj,
             });
 
         },
@@ -96996,7 +97010,96 @@ $(document).ready(function () {
             });
 
         },
-        
+
+
+		// RESMI#CHANGES
+
+		getBalanceMyWallets: function(_callback, obj)
+		{
+			console.log("WEBPassport.Models.RequestModel:getMyWalletsBalance");
+
+			Backbone.$.ajaxSetup({
+                headers: { "Authorization": "Basic " + btoa(localStorage.session + ":") }
+            });
+
+			var resp = new Backbone.Model();
+			resp.url = localStorage.url + cmd_names.CMD_GET_BALANCE_MY_WALLETS
+
+			resp.fetch(
+			{
+                success: this.onSandDataSuccess,
+                error: this.onError,
+                cmd: cmd_names.CMD_GET_BALANCE_MY_WALLETS,
+                callback: _callback,
+                obj: obj,
+            });
+
+		},
+
+		getAllGifts: function(_callback, obj)
+		{
+			console.log("WEBPassport.Models.RequestModel:getAllGifts");
+
+			Backbone.$.ajaxSetup({
+                headers: { "Authorization": "Basic " + btoa(localStorage.session + ":") }
+            });
+
+			var resp = new Backbone.Model();
+			resp.url = localStorage.url + cmd_names.CMD_GET_ALL_GIFTS_LIST;
+
+			resp.fetch(
+			{
+                success: this.onSandDataSuccess,
+                error: this.onError,
+                cmd: cmd_names.CMD_GET_ALL_GIFTS_LIST,
+                callback: _callback,
+                obj: obj,
+            });
+		},
+
+		getMyGifts: function(_callback, obj)
+		{
+			console.log("WEBPassport.Models.RequestModel:getMyGifts");
+
+			Backbone.$.ajaxSetup({
+                headers: { "Authorization": "Basic " + btoa(localStorage.session + ":") }
+            });
+
+			var resp = new Backbone.Model();
+			resp.url = localStorage.url + cmd_names.CMD_GET_MY_GIFTS_LIST;
+
+			resp.fetch(
+			{
+                success: this.onSandDataSuccess,
+                error: this.onError,
+                cmd: cmd_names.CMD_GET_MY_GIFTS_LIST,
+                callback: _callback,
+                obj: obj,
+            });
+		},
+
+    getCurrencies: function(_callback, obj)
+		{
+			console.log("WEBPassport.Models.RequestModel:getCurrencies");
+
+			Backbone.$.ajaxSetup({
+                headers: { "Authorization": "Basic " + btoa(localStorage.session + ":") }
+            });
+
+			var resp = new Backbone.Model();
+			resp.url = localStorage.url + cmd_names.CMD_GET_CURRENCIES;
+
+			resp.fetch(
+			{
+                success: this.onSandDataSuccess,
+                error: this.onError,
+                cmd: cmd_names.CMD_GET_CURRENCIES,
+                callback: _callback,
+                obj: obj,
+            });
+		},
+
+		// RESMI#END-CHANGES
 
         getBalancePromo: function (_callback, obj) {
             console.log("WEBPassport.Models.RequestModel:getBalancePromo");
@@ -97017,7 +97120,8 @@ $(document).ready(function () {
             });
         },
 
-        getTransactionsHistory: function (_callback, obj, _currency) {
+        getTransactionsHistory: function (_callback, obj, _currency)
+		{
             console.log("WEBPassport.Models.RequestModel:getBalancePromo");
 
             Backbone.$.ajaxSetup({
@@ -97025,7 +97129,7 @@ $(document).ready(function () {
             });
 
             var resp = new Backbone.Model();
-            resp.url = localStorage.url + cmd_names.CMD_GET_TRANSACTIONS_HISTORY + "?currency=" + _currency;
+			resp.url = (_currency != null) ? (localStorage.url + cmd_names.CMD_GET_TRANSACTIONS_HISTORY + "?currency=" + _currency + "&listing=1000") : (localStorage.url + cmd_names.CMD_GET_TRANSACTIONS_HISTORY);
 
             resp.fetch({
                 success: this.onSandDataSuccess,
@@ -97083,8 +97187,97 @@ $(document).ready(function () {
 
         },
 
+		// RESMI#CHANGES
+
+        transferBonusesMyWallets: function (_phone, _amount, _callback) {
+            console.log("WEBPassport.Models.RequestModel:transferBonusesMyWallets");
+
+            Backbone.$.ajaxSetup({
+                headers: {
+                    "Authorization": "Basic " + btoa(localStorage.session + ":")
+                }
+            });
+
+            var resp = new Backbone.Model();
+            resp.url = localStorage.url + cmd_names.CMD_TRANSFER_BONUSES_MY_WALLETS;
+
+            var data = "phone" + "=" + _phone + "&" +
+                           "amount" + "=" + _amount + "&" +
+                           "cmd" + "=" + cmd_names.CMD_TRANSFER_BONUSES_MY_WALLETS.replace('/', '');
+            console.log(data);
+
+            resp.save({}, {
+                data: data,
+                success: this.onSandDataSuccess,
+                error: this.onError,
+                cmd: cmd_names.CMD_TRANSFER_BONUSES_MY_WALLETS,
+                callback: _callback,
+                isHideLoader: true,
+                // obj: obj,
+            });
+        },
+
+        purchaseGift: function (gift_id, _callback) {
+            console.log("WEBPassport.Models.RequestModel:transferBonusesMyWallets");
+
+            Backbone.$.ajaxSetup({
+                headers: {
+                    "Authorization": "Basic " + btoa(localStorage.session + ":")
+                }
+            });
+
+            var resp = new Backbone.Model();
+            resp.url = localStorage.url + cmd_names.CMD_PURCHASE_GIFT;
+
+            var data = "gift_id" + "=" + gift_id;
+            console.log(data);
+
+            resp.save({}, {
+                data: data,
+                success: this.onSandDataSuccess,
+                error: this.onError,
+                cmd: cmd_names.CMD_PURCHASE_GIFT,
+                callback: _callback,
+                isHideLoader: true,
+                // obj: obj,
+            });
+        },
+
+        transferExchange: function (_phone, _sum, _currency_from, _currency_to, obj, _callback, _onFailureCallback) {
+            console.log("WEBPassport.Models.RequestModel:transferBonusesMyWallets");
+
+            Backbone.$.ajaxSetup({
+                headers: {
+                    "Authorization": "Basic " + btoa(localStorage.session + ":")
+                }
+            });
+
+            var resp = new Backbone.Model();
+            resp.url = localStorage.url + cmd_names.CMD_EXCHANGE;
+
+            var data = "phone" + "=" + _phone + "&" +
+                       "sum" + "=" + _sum + "&" +
+                       "currency_from" + "=" + _currency_from + "&" +
+                       "currency_to" + "=" + _currency_to + "&" +
+                       "cmd" + "=" + cmd_names.CMD_EXCHANGE.replace('/', '');
+            console.log(data);
+
+            resp.save({}, {
+                data: data,
+                success: this.onSandDataSuccess,
+                error: _onFailureCallback,
+                cmd: cmd_names.CMD_EXCHANGE,
+                callback: _callback,
+                isHideLoader: true,
+                obj: obj,
+            });
+        },
+
+
+		// RESMI#END-CHANGES
+
         //собираем ноду json для реквеста my.wp.list и сохраняем данные в модели
-        withdrawBonusesPhone: function (_phone, _amount, _callback) {
+        withdrawBonusesPhone: function (_phone, _amount, _operator_code, _callback) {
             console.log("WEBPassport.Models.RequestModel:startCheck");
 
             Backbone.$.ajaxSetup({
@@ -97098,6 +97291,7 @@ $(document).ready(function () {
 
             var data = "phone" + "=" + _phone + "&" +
                            "amount" + "=" + _amount + "&" +
+						   "operator_code" + "=" + _operator_code + "&" +
                            "cmd" + "=" + cmd_names.CMD_WITHDRAW_BONUSES_ON_PHONE.replace('/', '');
             console.log(data);
 
@@ -97232,7 +97426,7 @@ $(document).ready(function () {
                 "birth_day" + "=" + _data.birthday + "&" +
                 "gender" + "=" + _data.sex + "&" +
                 (_data.photo ? ("photo_big" + "=" + _data.photo + "&") : "") +
-                
+
             "cmd" + "=" + cmd_names.CMD_GET_PROFILE.replace('/', '');
             console.log(data);
 
@@ -97436,7 +97630,7 @@ $(document).ready(function () {
             });
             this.url = localStorage.url + cmd_names.CMD_SEND_PUSH_KEY;
             var os = 0;
-            
+
             switch (device.platform.toLowerCase())
             {
                 case 'android':
@@ -97656,11 +97850,11 @@ $(document).ready(function () {
         //собираем ноду json для реквеста settings.save и сохраняем данные в модели
         settingsSave: function (_settings) {
             console.log("WEBPassport.Models.RequestModel:settingsSave");
-           
+
             localStorage[settingsDashboard]
             //JSON.parse(response.json).fa
         },
-        
+
     });
 
     WEBPassport.requestModel = new WEBPassport.Models.RequestModel();
@@ -97705,6 +97899,13 @@ mobipayPage = {
     maxicard_history: "template_maxicard_history", // страница maxi история по карте
 
     balance_promo: "template_balance_promo", // страница Balance Promo
+
+	gifts: "template_gifts",
+	myWallets: "template_my_wallets",
+	gifts_item_info: "template_gifts_item_info",
+  get_mobile_balance: "template_get_mobile_balance",
+	my_wallets_item_info: "template_my_wallets_item_info",
+
     balance_bonuses: "template_balance_bonuses",
     partners: "template_partners",
     partners_item_info: "template_partners_item_info",
@@ -97726,22 +97927,22 @@ mobipayPage = {
 
     payments_lifecell: "template_payments_lifecell", // страница Платежи для Lifecell
 
-    //--start scaner qr 
+    //--start scaner qr
     scaner_qr_myqr: "template_scanerqr_myqr", // страницы ScanerQR_MyQR
     scaner_qr_votes: "template_scanerqr_votes", // страницы ScanerQR_MyQR
-    //--end scaner qr 
+    //--end scaner qr
 
-    sms_confirm: "template_sms_confirm", // страница подтверждения СМС 
+    sms_confirm: "template_sms_confirm", // страница подтверждения СМС
     halp: "template_infoscreen", // страница помощи(справка)
     users: "template_users", // страница My Friends
     user_contacts: "template_user_contacts", // страница контактов My Friends
 
-    presents_partners_cetificates: "template_presents_partners_cetificates", // страница все сертификаты партнера 
-    presents_shipping_certificate: "template_presents_shipping_certificate", // страница отправки сертификата 
-    
-    transfer_bonuses: "template_transfer_bonuses", // страница перевож бонусов дримклаба 
+    presents_partners_cetificates: "template_presents_partners_cetificates", // страница все сертификаты партнера
+    presents_shipping_certificate: "template_presents_shipping_certificate", // страница отправки сертификата
 
-    fishka_dashboard: "template_fishka_dashboard", // страница дашборда для fishka 
+    transfer_bonuses: "template_transfer_bonuses", // страница перевож бонусов дримклаба
+
+    fishka_dashboard: "template_fishka_dashboard", // страница дашборда для fishka
     fishka_login: "template_fishka_login", // страница логина fishka
     fishka_profile_edit: "template_fishka_profile_edit", // страница редактирования профиля fishka
 }
@@ -97764,7 +97965,7 @@ function mobipayNavigatorOpen(page, animation, options) {
     if (!animation)
         animation = "left";
 
-    // если переход на страницу на которую мы уже перешли то нечего не делаем  
+    // если переход на страницу на которую мы уже перешли то нечего не делаем
     if (page == currentPageName)
         return;
     currentPageName = page;
@@ -97777,10 +97978,10 @@ function mobipayNavigatorOpen(page, animation, options) {
         case mobipayPage.dashboard:
             $(document).on('pageinit', 'ons-page#page_dashboard', function () {
                 console.log("mobipayNavigatorOpen: " + page + " | pageinit push");
-               
+
                 __garbageCollector(page);
 
-               
+
                // setTimeout(function () {
                     WEBPassport.Views.dashboard = new WEBPassport.Views.Dashboard({ model: new Backbone.Model(options) }).render();
                // }, window.settings.isEffects ? timeoutRender : 0);
@@ -97813,7 +98014,7 @@ function mobipayNavigatorOpen(page, animation, options) {
                 WEBPassport.Views.oTP_Auth = new WEBPassport.Views.OTP_Auth({ model: WEBPassport.mainViewModel.set(options) });
             });
             break;
-            
+
         case mobipayPage.pin:
             $(document).on('pageinit', 'ons-page#page_pin', function () {
                 console.log("mobipayNavigatorOpen: " + page + " | pageinit push");
@@ -97853,7 +98054,7 @@ function mobipayNavigatorOpen(page, animation, options) {
                 WEBPassport.Views.myQRQRPOS = new WEBPassport.Views.MyQRQRPOS({ model: WEBPassport.mainViewModel.set(options) }).render();
             });
             break;
-            
+
         case mobipayPage.webpassport:
             $(document).on('pageinit', 'ons-page#page_profile', function () {
                 console.log("mobipayNavigatorOpen: " + page + " | pageinit push");
@@ -97899,7 +98100,7 @@ function mobipayNavigatorOpen(page, animation, options) {
                 WEBPassport.Views.p2PcardToCard = new WEBPassport.Views.P2PcardToCard({ model: WEBPassport.mainViewModel.set(options) }).render();
             });
             break;
-         
+
         case mobipayPage.p2p_history:
             $(document).on('pageinit', 'ons-page#page_p2p_history', function () {
                 console.log("mobipayNavigatorOpen: " + page + " | pageinit push");
@@ -97913,14 +98114,14 @@ function mobipayNavigatorOpen(page, animation, options) {
                 WEBPassport.Views.p2PHistoryInfo = new WEBPassport.Views.P2PHistoryInfo({ model: new Backbone.Model(options) }).render();
             });
             break;
-        
+
         case mobipayPage.sms_confirm:
             $(document).on('pageinit', 'ons-page#page_sms_confirm', function () {
                 console.log("mobipayNavigatorOpen: " + page + " | pageinit push");
                 WEBPassport.Views.smsConfirm = new WEBPassport.Views.SmsConfirm({ model: new Backbone.Model(options) });
             });
             break;
-        
+
         case mobipayPage.loyalty:
             if (wlPath == "Foxtrot") {
                 ShowAlert(i18n.t('wbs_coming_soon_label'));
@@ -97966,7 +98167,7 @@ function mobipayNavigatorOpen(page, animation, options) {
                 WEBPassport.Views.settings = new WEBPassport.Views.Settings({ model: WEBPassport.mainViewModel.set(options) }).render();
             });
             break;
-            
+
         case mobipayPage.credit:
             $(document).on('pageinit', 'ons-page#page_credit', function () {
                 console.log("mobipayNavigatorOpen: " + page + " | pageinit push");
@@ -98015,7 +98216,7 @@ function mobipayNavigatorOpen(page, animation, options) {
                 WEBPassport.Views.maxicardHistory = new WEBPassport.Views.MaxicardHistory({ model: WEBPassport.mainViewModel.set(options) }).render();
             });
             break;
-            
+
         case mobipayPage.promotions_and_offers_dreamclub:
             $(document).on('pageinit', 'ons-page#page_promotions_and_offers_dreamclub', function () {
                 console.log("mobipayNavigatorOpen: " + page + " | pageinit push");
@@ -98053,10 +98254,47 @@ function mobipayNavigatorOpen(page, animation, options) {
         case mobipayPage.balance_promo:
             $(document).on('pageinit', 'ons-page#page_balance_promo', function () {
                 console.log("mobipayNavigatorOpen: " + page + " | pageinit push");
-                if (isMobile && StatusBar) StatusBar.styleLightContent();
                 WEBPassport.Views.balancePromo = new WEBPassport.Views.BalancePromo({ model: new Backbone.Model(options) }).render();
             });
             break;
+
+		// CHANGES#RESMI
+        case mobipayPage.gifts:
+            $(document).on('pageinit', 'ons-page#page_gifts', function () {
+                console.log("mobipayNavigatorOpen: " + page + " | pageinit push");
+                WEBPassport.Views.gifts = new WEBPassport.Views.Gifts({ model: new Backbone.Model(options) }).render();
+            });
+            break;
+
+		case mobipayPage.myWallets:
+            $(document).on('pageinit', 'ons-page#page_my_wallets', function () {
+                console.log("mobipayNavigatorOpen: " + page + " | pageinit push");
+                WEBPassport.Views.myWallets = new WEBPassport.Views.MyWallets({ model: new Backbone.Model(options) }).render();
+            });
+            break;
+
+		case mobipayPage.gifts_item_info:
+            $(document).on('pageinit', 'ons-page#page_gifts_item_info', function () {
+                console.log("mobipayNavigatorOpen: " + page + " | pageinit push");
+                WEBPassport.Views.gifts_item_info = new WEBPassport.Views.Gifts_Item_Info({ model: new Backbone.Model(options) }).render();
+            });
+        break;
+
+    case mobipayPage.get_mobile_balance:
+            $(document).on('pageinit', 'ons-page#page_get_mobile_balance', function () {
+                console.log("mobipayNavigatorOpen: " + page + " | pageinit push");
+                WEBPassport.Views.get_mobile_balance = new WEBPassport.Views.Mobile_Balance_Info({ model: new Backbone.Model(options) }).render();
+            });
+        break;
+
+		case mobipayPage.my_wallets_item_info:
+			$(document).on('pageinit', 'ons-page#page_my_wallets_item_info', function () {
+                console.log("mobipayNavigatorOpen: " + page + " | pageinit push");
+                WEBPassport.Views.my_wallets_item_info = new WEBPassport.Views.MyWallets_Item_Info({ model: new Backbone.Model(options) }).render();
+            });
+        break;
+
+		// ENDCHANGES#RESMI
 
         case mobipayPage.balance_bonuses:
             $(document).on('pageinit', 'ons-page#page_balance_bonuses', function () {
@@ -98106,7 +98344,7 @@ function mobipayNavigatorOpen(page, animation, options) {
                 WEBPassport.Views.myQRQRPOSCreate = new WEBPassport.Views.MyQRQRPOSCreate({ model: new Backbone.Model(options) }).render();
             });
             break;
-            
+
         case mobipayPage.accept_payment_qrpos:
             $(document).on('pageinit', 'ons-page#page_accept_payment_qrpos', function () {
                 console.log("mobipayNavigatorOpen: " + page + " | pageinit push");
@@ -98120,14 +98358,14 @@ function mobipayNavigatorOpen(page, animation, options) {
                 WEBPassport.Views.addCardStripe = new WEBPassport.Views.AddCardStripe({ model: new Backbone.Model(options) }).render();
             });
             break;
-            
+
         case mobipayPage.registr_masterpass:
             $(document).on('pageinit', 'ons-page#page_registr_masterpass', function () {
                 console.log("mobipayNavigatorOpen: " + page + " | pageinit push");
                 WEBPassport.Views.registrMasterpass = new WEBPassport.Views.RegistrMasterpass({ model: new Backbone.Model(options) }).render();
             });
             break;
-            
+
         case mobipayPage.partners_item_info_contact:
             $(document).on('pageinit', 'ons-page#page_partners_item_info_contact', function () {
                 console.log("mobipayNavigatorOpen: " + page + " | pageinit push");
@@ -98162,7 +98400,7 @@ function mobipayNavigatorOpen(page, animation, options) {
                 WEBPassport.Views.presentsShippingCertificate = new WEBPassport.Views.PresentsShippingCertificate({ model: new Backbone.Model(options) }).render();
             });
             break;
-            
+
         case mobipayPage.auth_for_phone:
             $(document).on('pageinit', 'ons-page#page_login', function () {
                 console.log("mobipayNavigatorOpen: " + page + " | pageinit push");
@@ -98176,7 +98414,7 @@ function mobipayNavigatorOpen(page, animation, options) {
                 WEBPassport.Views.transferBonuses = new WEBPassport.Views.TransferBonuses({ model: new Backbone.Model(options) }).render();
             });
             break;
-            
+
         case mobipayPage.fishka_dashboard:
             $(document).on('pageinit', 'ons-page#page_fishka_dashboard', function () {
                 console.log("mobipayNavigatorOpen: " + page + " | pageinit push");
@@ -98198,7 +98436,7 @@ function mobipayNavigatorOpen(page, animation, options) {
             });
             break;
 
-            
+
         //--start scaner qr -------------
 
         case mobipayPage.scaner_qr_myqr:
@@ -98214,7 +98452,7 @@ function mobipayNavigatorOpen(page, animation, options) {
                 WEBPassport.Views.scanerQR_Votes = new WEBPassport.Views.ScanerQR_Votes({ model: new Backbone.Model(options) }).render();
             });
             break;
-            
+
         //--end scaner qr -------------
 
         case mobipayPage.halp:
@@ -98293,14 +98531,14 @@ function __garbageCollector(page) {
             if (WEBPassport.Views.auth)
             {
                 console.log("__garbageCollector: auth WEBPassport.Views.auth.destroy");
-                
+
                 WEBPassport.Views.auth.stopListening();
                 WEBPassport.Views.auth.undelegateEvents();
                 WEBPassport.Views.auth.destroy();
             }
             if (WEBPassport.Views.otp) {
                 console.log("__garbageCollector: otp WEBPassport.Views.otp.destroy");
-                
+
                 WEBPassport.Views.otp.stopListening();
                 WEBPassport.Views.otp.undelegateEvents();
                 WEBPassport.Views.otp.destroy();
@@ -98318,7 +98556,7 @@ ons.ready(function () {
 
         if (a.leavePage.name == "")
             a.leavePage.destroy();
-  
+
         //if (a.leavePage.name == mobipayPage.dashboard)
         //    $(".gridster ul").css("visibility", "hidden");
     });
@@ -98477,7 +98715,7 @@ ons.ready(function () {
         showMenu: function () {
             console.log("WEBPassport.Views.IWidget:showMenu: name: " + this.model.attributes.type.name);
             switch (baseTypeWidget[this.model.attributes.type.name].name) {
-                
+
                 case baseTypeWidget.MyQR.name:
                 case baseTypeWidget.QRScanner.name:
                     // не показываем меню
@@ -98515,7 +98753,7 @@ ons.ready(function () {
             // если меню открыто то скрываем его при клике назад
             if (isOpenMenu)
                 Backbone.trigger('WEBPassport.Views.MainView:closeMenu');
-            
+
             else if( $('#mobiPayLoader').is(':visible'))
                 return false;
 
@@ -98537,7 +98775,7 @@ ons.ready(function () {
 
         // перерисовка формы
         resizeCSS: function () {
-            // вызываем функцию updateCSS 
+            // вызываем функцию updateCSS
             // если определенна
             if (this.updateCSS)
                 this.updateCSS();
@@ -98579,14 +98817,14 @@ ons.ready(function () {
         initializeAfter: function () {
             console.log("WEBPassport.Views.Auth:initializeAfter");
             _.bindAll(this, 'onSuccessAfter');
-      
+
             var $this = this;
 
             // TODO: ??????
             this.model.set('state', cmd_names.CMD_AUTH_REG_EMAIL);
             this.model.set('reset_pin', 'hidden');
 
-            // через 1 сек удаляем класс animated и tmp 
+            // через 1 сек удаляем класс animated и tmp
             // для того что бы прокрутки не было
             setTimeout(function () {
                 $($this.el).find(".tmp").removeClass("animated").removeClass("tmp");
@@ -98604,13 +98842,13 @@ ons.ready(function () {
             console.log("WEBPassport.Views.Auth:exitEmailLogin");
             var $this = this;
 
-            // анимация "скрываем строку ввода email" 
+            // анимация "скрываем строку ввода email"
             $(".enter_email_child_row").removeClass("bounceInDown").addClass("bounceOutUp");
 
             // убираем затемнение экрана
             $this.ui.enter_email_div.removeClass("gray_background");
 
-            // скрываем поле ввода email 
+            // скрываем поле ввода email
             setTimeout(function () {
                 $this.ui.enter_email_div.hide();
             }, 800);
@@ -98626,7 +98864,7 @@ ons.ready(function () {
 
             // показываем строку ввода email
             $this.ui.enter_email_div.show();
-            // анимация "показываем строку ввода email" 
+            // анимация "показываем строку ввода email"
             $(".enter_email_child_row").removeClass("bounceOutUp").addClass("bounceInDown");
 
             // затемняем фон и устанавливаем фокус полю ввода для того что бы клава выехала
@@ -98643,7 +98881,7 @@ ons.ready(function () {
 
             localStorage.session = '';
             sessionStorage.otpState = '';
-            
+
             var $this = this;
             var model = this.model;
             var getProfileInfo = function (result) {
@@ -98683,7 +98921,7 @@ ons.ready(function () {
 
             var fbLoginSuccess = function (userData) {
                 console.log("UserInfo: " + JSON.stringify(userData));
-               
+
                 facebookConnectPlugin.api('me/?fields=id,email,first_name,gender,last_name,link,locale,name,timezone,updated_time,birthday', ['email'],
                     getProfileInfo,
                     function (error) {
@@ -98761,7 +98999,7 @@ ons.ready(function () {
             sessionStorage.otpState = '';
             var $this = this;
             var model = this.model;
-           
+
             window.plugins.googleplus.isAvailable(
                 function (available) {
                     if (available) {
@@ -98871,7 +99109,7 @@ ons.ready(function () {
         el: "#page_opt",
         template: '#template_otp',
         ui: {
-            otp_input: "#otp-input", // поле для ввода OTP 
+            otp_input: "#otp-input", // поле для ввода OTP
             send_otp_btn: "#send-otp-btn", // кнопка далее
             //resendOTP: "#resendOTP", // кнопка "Код не пришел на указанный e-mail"
             back_btn: "#back_btn", // кнопка назад,
@@ -98927,7 +99165,7 @@ ons.ready(function () {
             if (isMobile) window.analytics.trackEvent(localStorage.devType, 'win_otp', 'win_otp', null);
             this.returnToMainForm();
         },
-        
+
         // отследить нажатие enter
         sendOTPBefore: function (e) {
             console.log("WEBPassport.Views.OTP:sendOTPBefore");
@@ -99024,7 +99262,7 @@ ons.ready(function () {
         el: "#page_opt",
         template: '#template_otp_auth',
         ui: {
-            otp_input: "#otp-input", // поле для ввода OTP_Auth 
+            otp_input: "#otp-input", // поле для ввода OTP_Auth
             send_otp_btn: "#send-otp-btn", // кнопка далее
             resendOTP: "#resendOTP", // кнопка "Код не пришел на указанный e-mail"
             back_btn: "#back_btn", // кнопка назад,
@@ -99080,7 +99318,7 @@ ons.ready(function () {
             if (isMobile) window.analytics.trackEvent(localStorage.devType, 'win_otp', 'win_otp', null);
             this.returnToMainForm();
         },
-        
+
         // отследить нажатие enter
         sendOTPBefore: function (e) {
             console.log("WEBPassport.Views.OTP_Auth:sendOTPBefore");
@@ -99527,7 +99765,7 @@ ons.ready(function () {
             $this.ui.mobile.parent().parent().parent().hide();
 
             // если добавление карты с экрана Мои карты
-            if ($this.model.attributes.newWalletOption && 
+            if ($this.model.attributes.newWalletOption &&
                 ($this.model.attributes.newWalletOption.indexOf('card') > -1 ||
                 $this.model.attributes.newWalletOption.indexOf('presents') > -1)) {
 
@@ -99559,7 +99797,7 @@ ons.ready(function () {
 
 
             this.changeInput();
-            
+
 
             if (isAuthFirstPhone) this.ui.back_btn.hide();
 
@@ -99600,7 +99838,7 @@ ons.ready(function () {
         setData: function (data) {
             console.log("WEBPassport.Views.WalletCreate:setData data:" + data ? JSON.stringify(data) : "");
             this.selectedPhoneMask = data;
-            // сохраняем изменения 
+            // сохраняем изменения
             listMaskPhone.setActive(data);
             if (this.selectOptionsDialog) this.selectOptionsDialog.renderData(data);
 
@@ -99660,9 +99898,9 @@ ons.ready(function () {
         changeInput: function (e) {
             console.log("WEBPassport.Views.WalletCreate:changeInput");
             var $this = this;
-            
 
-            
+
+
             this.setIntervalPhone = setInterval(function () {
                 if (jQuery.type($this.ui.new_wallet_btn) == "string") {
                     clearInterval($this.setIntervalPhone);
@@ -99752,7 +99990,7 @@ ons.ready(function () {
 
             this.model.set('new_mobile', mobile);
             localStorage.phone = mobile;
-           
+
             var payment = 1;
             var currency = getCurrencyLoyalty(mobile.toString());
 
@@ -99800,15 +100038,15 @@ ons.ready(function () {
             // рендерим данные
             this.listenTo(Backbone, 'WEBPassport.Views.AuthForPhone:render_AuthForPhone', this.setData);
 
-            
+
             ShowLoader();
 
             setTimeout(function () {
                 WEBPassport.requestModel.getWPPrefixes();
                 WEBPassport.requestModel.sandData($this.onSuccessWPPrefixes);
             }, 1000);
-      
-               
+
+
             $this.$el.i18n();
         },
 
@@ -99825,7 +100063,7 @@ ons.ready(function () {
                 this.value = this.country;
                 if(this.mask) // если маска пустая значит Виталик еще не заполнил БД =)
                 {
-                    // устанавливаем выбор маски по настрйокам LWL 
+                    // устанавливаем выбор маски по настрйокам LWL
                     if(this.iso == defaultMaskPhone)
                     {
                         this.active = true;
@@ -99870,7 +100108,7 @@ ons.ready(function () {
         setData: function (data) {
             console.log("WEBPassport.Views.AuthForPhone:setData data:" + data ? JSON.stringify(data) : "");
             this.selectedPhoneMask = data;
-            // сохраняем изменения 
+            // сохраняем изменения
             listMaskPhone.setActive(data);
             if (this.selectOptionsDialog) this.selectOptionsDialog.renderData(data);
 
@@ -99982,7 +100220,7 @@ ons.ready(function () {
         smsConfirm: function (sms) {
             console.log("WEBPassport.Views.AuthForPhone:smsConfirm");
             ShowLoader();
-           
+
             WEBPassport.requestModel.regMobileOtp(sms, WEBPassport.mainViewModel.attributes.new_mobile);
             WEBPassport.requestModel.sandData(this.onSuccessSMSAfter);
         },
@@ -100055,7 +100293,7 @@ ons.ready(function () {
             cartNext: "#cartNext",
             cartPrev: "#cartPrev",
 
-            selected_card_block: "#selected_card_block", // строка выбранной карты 
+            selected_card_block: "#selected_card_block", // строка выбранной карты
             list_cards: "#list_cards", // строка списка карт для выбора
             select_listcard: "#select_listcard",
             changeCard: "#changeCard", // строка выбранной карты
@@ -100174,7 +100412,7 @@ ons.ready(function () {
 
                 $this.isLock = false;
             },400);// window.settings.isEffects ? timeoutRender : 0);
-        
+
             ons.compile(this.$el.get(0));
             $this.updateCSS();
             $this.$el.i18n();
@@ -100192,9 +100430,9 @@ ons.ready(function () {
                 if (buttonIndex == 1) {
                     ShowLoader();
 
-                    
+
                     if (masterPass) {
-                  
+
                         var data = {
                             msisdn: WEBPassport.mainViewModel.attributes.mobile,
                             token: window.masterpass.token,
@@ -100389,9 +100627,9 @@ ons.ready(function () {
                     el: this.ui.changeCard
                 }).render();
             }
-            
+
         },
-     
+
         // нажатие на кнопку назад для возврата с окна списка карт
         back_to_func_pay: function () {
             console.log("WEBPassport.Views.Cart:back_to_func_pay");
@@ -100591,7 +100829,7 @@ ons.ready(function () {
                     $thiss.active = 1;
                     $thiss.main = 0;
                     $thiss.is_card = "1";
-                    
+
                     $thiss.card_type = parseInt($thiss.Value1.substr(0, 1)) == 4 ? 'visa' : "mastercard";
                 });
 
@@ -100605,7 +100843,7 @@ ons.ready(function () {
 
                 this.ui.changeCard.show();
                 this.ui.changeCard_empry.hide();
-            
+
             }
             else {
                 $this.ui.emptyList.show();
@@ -100876,7 +101114,7 @@ ons.ready(function () {
             // уничтожить все данные
             this.listenTo(Backbone, 'Cart.Destroy', this.destroyView);
 
-            // если выбрана карта монекси установить в ней баланс 
+            // если выбрана карта монекси установить в ней баланс
             this.listenTo(Backbone, "WEBPassport.Views.Cart.SelectedCard:setMonexyBalance", this.setMonexyBalance);
 
             this.bindUIElements();
@@ -100897,12 +101135,12 @@ ons.ready(function () {
                 else
                     this.ui.label_number.unmask().mask("00** **** **** 0000", { reverse: true });
             }
-    
+
             ons.compile(this.$el.get(0));
             this.$el.i18n();
         },
 
-        // если выбрана карта монекси установить в ней баланс 
+        // если выбрана карта монекси установить в ней баланс
         setMonexyBalance: function (resp) {
             console.log("WEBPassport.Views.Cart.SelectCardItem:setMonexyBalance  resp:" + resp ? JSON.stringify(resp) : "");
 
@@ -100932,7 +101170,7 @@ ons.ready(function () {
             sms_code: "#sms-code", // поле ввода смс
             new_mobile_input: "#new_mobile_input",// телефон
             auth_sms_btn: "#auth-sms-btn", // кнопка далее
-            timer: "#timer", // 
+            timer: "#timer", //
             resend_sms_btn: "#resend-sms-btn"
         },
         events: {
@@ -100991,7 +101229,7 @@ ons.ready(function () {
             $this.ui.auth_sms_btn.hide();
             $this.ui.resend_sms_btn.hide();
             $this.ui.timer.show();
-            
+
 
             var start = moment();
             var millis, seconds, minutes;
@@ -101019,7 +101257,7 @@ ons.ready(function () {
 
             Backbone.trigger("WEBPassport.Views.WalletCreate:resendData", "WEBPassport.Views.AuthSms:createTimer");
         },
-         
+
         smsSuccess: function (e) {
             console.log('sms success callback');
             if (e) {
@@ -101166,7 +101404,7 @@ ons.ready(function () {
             this.listenTo(Backbone, "WEBPassport.Views.SmsConfirm:returnToMainForm", this.returnToMainForm);
             this.listenTo(Backbone, "WEBPassport.Views.AuthSms:clearScreen", this.clearScreen);
             _.bindAll(this, 'smsSuccess')
-      
+
             var $this = this;
 
             if (isMobile)
@@ -101225,12 +101463,12 @@ ons.ready(function () {
             console.log("WEBPassport.Views.SmsConfirm:sendAuthSms");
 
             var sms = this.ui.sms_code.val();
-            
+
             this.returnToMainForm();
             this.model.attributes.callback(sms);
         },
     });
-}); 
+});
 ons.ready(function () {
     //Вьюшка для страницы AddCardStripe
     WEBPassport.Views.AddCardStripe = WEBPassport.IViews.extend({
@@ -101240,7 +101478,7 @@ ons.ready(function () {
             back_btn: "#back_btn", // кнопка назад
 
             pay_btn: "#pay_btn", // кнопка оплатить
-            selected_card_block: "#selected_card_block", // строка выбранной карты 
+            selected_card_block: "#selected_card_block", // строка выбранной карты
             list_cards: "#list_cards", // строка списка карт для выбора
             select_listcard: "#select_listcard",
             changeCard: "#changeCard", // строка выбранной карты
@@ -101248,7 +101486,7 @@ ons.ready(function () {
 
             back_to_func_pay: "#back_to_func_pay", // кнопка назад для возврата с окна списка карт
             add_card_btn: "#add-card-btn", // кнопка добавить карту
-            
+
             card_number_input: "#card_number_input", // номер карты
 
             expiry_input: "#expiry_input",// период карты
@@ -101322,7 +101560,7 @@ ons.ready(function () {
             console.log("WEBPassport.Views.AddCardStripe:goToPay");
             //if (isMobile) window.analytics.trackEvent(localStorage.devType, 'win_сredit', 'Get Loan', null);
 
-            
+
             var $this = this;
 
             //var amount = parseFloat(this.ui.p2pAmount_input.inputmask('unmaskedvalue'));
@@ -101373,19 +101611,19 @@ ons.ready(function () {
             }
             form.style.display = 'none';
 
-           
+
             Stripe.card.createToken(form, $this.stripeResponseHandler);
 
         },
         stripeResponseHandler: function (status, response) {
             // Grab the form:
             debugger;
-           
+
             if (response.error) { // Problem!
                 HideLoader();
                 // Show the errors on the form:
                 ShowAlert(response.error.message);
-                
+
             } else { // Token was created!
                 // Get the token ID:
                 var token = response.id;
@@ -101428,7 +101666,7 @@ ons.ready(function () {
             back_btn: "#back_btn", // кнопка назад
 
             pay_btn: "#pay_btn", // кнопка оплатить
-            selected_card_block: "#selected_card_block", // строка выбранной карты 
+            selected_card_block: "#selected_card_block", // строка выбранной карты
             list_cards: "#list_cards", // строка списка карт для выбора
             select_listcard: "#select_listcard",
             changeCard: "#changeCard", // строка выбранной карты
@@ -101601,7 +101839,7 @@ ons.ready(function () {
             setTimeout(function () {
                 MFS.validateTransaction($(form_sms), $this.mfsResponseHandler);
             }, 1000);
-            
+
         }
 
     });

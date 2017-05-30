@@ -127,7 +127,7 @@ ons.ready(function () {
             if(wlPath == "Fishka")
             {
                 mobipayNavigatorOpen(mobipayPage.fishka_dashboard, "none");
-                
+
             }
             else if (!localStorage.pin && isAuthFirstPhone) {
                 // this.model.set('state', 'pin_enter');
@@ -207,7 +207,7 @@ ons.ready(function () {
                         }
                     }
                 }
-                //приглашение 
+                //приглашение
                 else if (url.indexOf("invite") > -1) {
                     var myqr = url.replace("news://invite-", "");
                     if (myqr) {
@@ -228,7 +228,7 @@ ons.ready(function () {
                         }
                     }
                 }
-                //голосование 
+                //голосование
                 else if (url.indexOf("vote") > -1) {
                     var token = url.replace("news://vote-", "");
                     if (token) {
@@ -435,7 +435,7 @@ ons.ready(function () {
 
             // для уничтожения полностью дашборда
             this.listenTo(Backbone, 'WEBPassport.Views.Dashboard:clearAll', this.clearAll);
-          
+
            // this.listenTo(Backbone, 'WEBPassport.Views.Dashboard:signInWithAnotherAccount', this.signInWithAnotherAccount);
             this.bindUIElements();
         },
@@ -489,7 +489,7 @@ ons.ready(function () {
                 }
             }, [i18n.t('wbs_yes_btn'), i18n.t('wbs_no_btn')]);
 
-           
+
         },
         // клик на кнопку ПРИГЛАСИТЬ ДРУГА
         inviteFriend: function () {
@@ -534,7 +534,7 @@ ons.ready(function () {
                        { backgroundColor: backgroundColor }
                    );
             }, timeoutAnimate);
-           
+
         },
         // клик на кнопку РЕДАКТИРОВАТЬ
         editUserData: function () {
@@ -575,8 +575,8 @@ ons.ready(function () {
         },
     });
 
-  
-   
+
+
     WEBPassport.Views.mainView = new WEBPassport.Views.MainView({ model: new Backbone.Model() });
 });
 
@@ -585,14 +585,14 @@ typeWidget = new Object();
 
 // При добалвении виджета необходимо:
 //1 - добавить его в baseTypeWidget
-//2 - www\js\views\dashboard\widgets\ добавть js виджета  view-widget-name.js 
+//2 - www\js\views\dashboard\widgets\ добавть js виджета  view-widget-name.js
 // ---- ВАЖНО! name - должен быть одинаковый!!! -----
 //3 - www\js\views\screens\ добавть js страницы view-screen-name.js
 //4 - в конфигурации гранта нужно добавить в массив defaultWidgets name
 //5 - в www\js\views\dashboard\view-dashboard.js во вьюшке WEBPassport.Views.Dashboard в метод createWidget
-// добавит карту для создание виджета 
-//6 - в www\js\views\mobipay_navigator.controller.js добавить записи по анологии 
-//7 - в шаблонах создать разметку имя html шаблона ставим таким же как и name 
+// добавит карту для создание виджета
+//6 - в www\js\views\mobipay_navigator.controller.js добавить записи по анологии
+//7 - в шаблонах создать разметку имя html шаблона ставим таким же как и name
 
 
 // типы виджетов
@@ -1013,6 +1013,27 @@ baseTypeWidget = {
         size_x: 2,
         size_y: 2,
     },//"Перевести бонусы ( дрим клаб )",
+
+	// CHANGES#RESMI
+	Gifts: {
+		name: "Gifts",
+        urlIcon: "fa icon-promocode1",
+        tittle: function () { return "Обменять на подарки" },
+        max_size: [3, 4],
+        min_size: [2, 2],
+        size_x: 2,
+        size_y: 2,
+	},
+	// CHANGES#RESMI
+	MyWallets: {
+		name: "MyWallets",
+        urlIcon: "fa icon-promocode1",
+        tittle: function () { return "Мои кошельки" },
+        max_size: [3, 4],
+        min_size: [2, 2],
+        size_x: 2,
+        size_y: 2,
+	}
 };
 
 // получить настройки(функционала) виджета
@@ -1060,11 +1081,19 @@ function getWSettings(model) {
                 updateInterval: 60000, // интервал обновления
             }
             break;
-        case baseTypeWidget.BalanceBonuses.name:
+
+		// CHANGES#RESMI
+        case baseTypeWidget.Gifts.name:
             item.settings = {
                 updateInterval: 60000, // интервал обновления
             }
             break;
+        case baseTypeWidget.MyWallets.name:
+            item.settings = {
+                updateInterval: 60000, // интервал обновления
+            }
+            break;
+
         default:
             break;
     }
@@ -1328,7 +1357,7 @@ ons.ready(function () {
                 ShowAlert(i18n.t('wbs_functional_development'));
             }, timeoutAnimate);
             //this.modEditOff();
-            //// добавить новую страницу для карусели 
+            //// добавить новую страницу для карусели
             //Backbone.trigger('WEBPassport.Views.Dashboard:addSlideToCarusel');
         },
         // клик по кнопка добавить виджет
@@ -1361,7 +1390,7 @@ ons.ready(function () {
             headerMenu: "#headerMenu", // кнопка вызова меню (справа)
             dotstyle: "#dotstyle", // точки навигации карусели
             userMenuBar: "#userMenuBar", // кнопка для  открытия пользовательского бара
-            save_btn: "#save-btn", // 
+            save_btn: "#save-btn", //
             cancel_btn: "#cancel-btn",
             btns_func_edit: "#btns_func_edit",
             headerTelegram: "#headerTelegram"
@@ -1369,7 +1398,7 @@ ons.ready(function () {
         events: {
             "click .popovershow": "showPopover",  //обработка клика
             "click @ui.headerMenu": "openMenu",   // клик по меню (справа) открыть
-            "click @ui.userMenuBar": "openUserMenu", // клик по кнопке для открытия пользовательского бара 
+            "click @ui.userMenuBar": "openUserMenu", // клик по кнопке для открытия пользовательского бара
             'click @ui.save_btn': "clickSaveFunc",
             'click @ui.cancel_btn': "clickCancelFunc",
             'click @ui.headerTelegram': "clickheaderTelegram", //  клик на телеграм (для дрима)
@@ -1392,7 +1421,7 @@ ons.ready(function () {
             // выключить листание карусели
             this.listenTo(Backbone, 'WEBPassport.Views.Dashboard:caruselDisable', this.caruselDisable);
 
-            // добавить новую страницу для карусели 
+            // добавить новую страницу для карусели
             this.listenTo(Backbone, 'WEBPassport.Views.Dashboard:addSlideToCarusel', this.addSlideToCarusel);
 
             // показать меню виджета
@@ -1414,7 +1443,7 @@ ons.ready(function () {
             //сбросить настройки дашборда
             this.listenTo(Backbone, 'WEBPassport.Views.Dashboard:removeSettings', this.removeSettings);
 
-            // выход с приложения 
+            // выход с приложения
             this.listenTo(Backbone, 'WEBPassport.Views.Dashboard:returnToExit', this.returnToExit);
 
             // для уничтожения полностью дашборда
@@ -1498,7 +1527,7 @@ ons.ready(function () {
 
             this.options.pendingTime = 2000;
         },
-        // выход с приложения 
+        // выход с приложения
         returnToExit: function () {
             console.log("WEBPassport.Views.Dashboard:returnToExit");
             //если открыт фрейм модуля отправлем ему event BackButton
@@ -1585,7 +1614,7 @@ ons.ready(function () {
             console.log("WEBPassport.Views.Dashboard:openMenu");
             Backbone.trigger("WEBPassport.Views.MainView:openMenu");
         },
-        // клик по кнопке для открытия пользовательского бара 
+        // клик по кнопке для открытия пользовательского бара
         openUserMenu: function () {
             console.log("WEBPassport.Views.Dashboard:openUserMenu");
             Backbone.trigger("WEBPassport.Views.MainView:openUserMenu");
@@ -1985,7 +2014,16 @@ ons.ready(function () {
                 case baseTypeWidget.TransferBonuses.name:
                     new WEBPassport.Views.TransferBonusesWidget({ el: "#" + model.id, model: new Backbone.Model(model) }).render();
                     break;
-                    
+
+				// CHANGES#RESMI
+				case baseTypeWidget.Gifts.name:
+					// alert(model.id)
+                    new WEBPassport.Views.GiftsWidget({el: "#" + model.id, model: new Backbone.Model(model)}).render();
+				break;
+				case baseTypeWidget.MyWallets.name:
+                    new WEBPassport.Views.MyWalletsWidget({el: "#" + model.id, model: new Backbone.Model(model)}).render();
+				break;
+
             }
         },
         //сбросить настройки дашборда
@@ -2031,7 +2069,7 @@ ons.ready(function () {
             console.log("WEBPassport.Views.CarouselDashboardItemView:onRender");
             var $this = this;
             $($this.el).hide();
-            
+
             var settingsWidget = getParamsWidget();
             setTimeout(function () {
                 $this.gridster = $this.ui.gridster.gridster({
@@ -2202,7 +2240,7 @@ ons.ready(function () {
                 if (isAvailableWidget(a)) {// если виджет доступен
                     array.push(this);
                 }
-               
+
             });
 
             var newList = new Array();
@@ -2445,6 +2483,9 @@ ons.ready(function () {
     baseTypeWidget.QRScannerDreamClub.urlIcon = typeWidget.QRScannerDreamClub.urlIcon = "fa icon-scanqr-d2";
     baseTypeWidget.WebPassportDreamClub.urlIcon = typeWidget.WebPassportDreamClub.urlIcon = "fa icon-profile-d1";
 
+	baseTypeWidget.Gifts.urlIcon = typeWidget.WebPassportDreamClub.urlIcon = "fa icon-presents-v2";
+	baseTypeWidget.MyWallets.urlIcon = typeWidget.WebPassportDreamClub.urlIcon = "fa icon-mycards";
+
 });
 
 // стандартная схема виджетов
@@ -2461,23 +2502,26 @@ var getStandartShema = function () {
     baseTypeWidget.WebPassportDreamClub.size_x =6;
     baseTypeWidget.WebPassportDreamClub.size_y = 4;
     baseTypeWidget.TransferBonuses.size_x = 3;
+	baseTypeWidget.Gifts.size_x = 3;
+	baseTypeWidget.MyWallets.size_x = 3;
+
     return [{
         widgets: [
-             { id: $.newguid(), col: 1, row: 1, type: baseTypeWidget.WebPassportDreamClub },
-       // { id: $.newguid(), col: 4, row: 1, type: baseTypeWidget.Telegram },
-        //  { id: $.newguid(), col: 5, row: 1, type: baseTypeWidget.Settings },
+           { id: $.newguid(), col: 1, row: 1, type: baseTypeWidget.WebPassportDreamClub },
+		   { id: $.newguid(), col: 1, row: 5, type: baseTypeWidget.MyWallets },
+		   { id: $.newguid(), col: 4, row: 5, type: baseTypeWidget.TransferBonuses },
 
-           { id: $.newguid(), col: 1, row: 5, type: baseTypeWidget.BalancePromo },
-          { id: $.newguid(), col: 4, row: 5, type: baseTypeWidget.BalanceBonuses },
+		  //{ id: $.newguid(), col: 1, row: 5, type: baseTypeWidget.BalancePromo },
+		  //{ id: $.newguid(), col: 4, row: 5, type: baseTypeWidget.BalanceBonuses },
 
-          { id: $.newguid(), col: 1, row: 7, type: baseTypeWidget.Partners },
+           { id: $.newguid(), col: 1, row: 7, type: baseTypeWidget.Partners },
            { id: $.newguid(), col: 4, row: 7, type: baseTypeWidget.ActivateBalancePromo },
 
-           { id: $.newguid(), col: 1, row: 9, type: baseTypeWidget.TransferBonuses },
-           { id: $.newguid(), col: 4, row: 9, type: baseTypeWidget.PromotionsAndOffersDreamclub },
+           { id: $.newguid(), col: 1, row: 9, type: baseTypeWidget.PromotionsAndOffersDreamclub },
+           { id: $.newguid(), col: 4, row: 9, type: baseTypeWidget.Gifts },
 
-          { id: $.newguid(), col: 1, row: 11, type: baseTypeWidget.MyQRDreamClub },
-          { id: $.newguid(), col: 4, row: 11, type: baseTypeWidget.QRScannerDreamClub },
+           { id: $.newguid(), col: 1, row: 11, type: baseTypeWidget.MyQRDreamClub },
+           { id: $.newguid(), col: 4, row: 11, type: baseTypeWidget.QRScannerDreamClub },
         ]
     },
     ];
@@ -2755,7 +2799,7 @@ var cl;
     str += localStorage.signkey;
 
     sign=SHA1(str);
-    
+
     return sign;
 }
 
@@ -3232,7 +3276,7 @@ $(document).ready(function () {
         },
         url: function () {
             var  url = localStorage.urlHost + '/json/syncreply/RegistrationLight';
-                
+
             return url;
         }
     });
@@ -3340,12 +3384,12 @@ ons.ready(function () {
                            );
         },
 
-   
+
         paymentSuccess: function () {
             console.log("WEBPassport.Views.ModuleTagWayController:paymentSuccess");
 
             var $this = this;
-            
+
             var callback = function () {
                 $this.ui.iframe_tagway[0].contentWindow.Backbone.trigger('Tagway.View.App:paymentSuccess');
             }
@@ -3372,7 +3416,7 @@ ons.ready(function () {
         getSessionTagWay: function(email, isOpenFrame)
         {
             console.log("WEBPassport.Views.ModuleTagWayController:getSessionTagWay email:" + email);
-            
+
             WEBPassport.lightRegistrationModel.setCommonParameters();
             WEBPassport.lightRegistrationModel.set('email', email);
             WEBPassport.lightRegistrationModel.set('cellular', "");
@@ -3493,7 +3537,7 @@ ons.ready(function () {
             console.log("WEBPassport.Views.ModuleTagWayController:openTagWayFramePaySuccess");
 
             var $this = this;
-            
+
             if ($this.ui.iframe_tagway.attr("src") != $this.moduleTagWayUrl)
                 $this.ui.iframe_tagway.attr("src", $this.moduleTagWayUrl);
             var callback = function () {
@@ -3618,9 +3662,9 @@ ons.ready(function () {
         //},
 
         onloadTelegram: function () {
-            
+
         },
-      
+
         // признак открытого окна модуля
         isShowModule: false,
         // признак загружен ли модуль
@@ -3676,7 +3720,7 @@ ons.ready(function () {
             //    }
            // },10);
         },
-        
+
         closeFrame: function () {
             console.log("WEBPassport.Views.ModuleTelegramController:closeFrame");
             var $this = this;
@@ -3750,7 +3794,7 @@ ons.ready(function () {
         // открываем ссылку с телеграмм
         saveSession: function () {
             console.log("WEBPassport.Views.ModuleTelegramController:saveSession ");
-            
+
             window.settings.telegram = {
                 user_auth: localStorage["user_auth"],
                 dc: localStorage["dc"],
@@ -3761,14 +3805,14 @@ ons.ready(function () {
             WEBPassport.requestModel.settingsSave(JSON.stringify(window.settings));
 
         },
-        
+
     });
 
     //инициализируем вьюшку для контроля открытия/закрытия модулей
     WEBPassport.Views.moduleTelegramController = new WEBPassport.Views.ModuleTelegramController()
 });
 ons.ready(function () {
-   
+
     WEBPassport.Views.DialogFeedbackError = Marionette.ItemView.extend({
         ui: {
             send_log_btn: "#send_log_btn", // кнопка для отправки лога
@@ -3785,7 +3829,7 @@ ons.ready(function () {
         // клик на кнопку для отправки лога
         sendLog: function () {
             console.log("WEBPassport.Views.DialogFeedbackError:sendLog");
-     
+
             l2i.download();
             this.dialog.hide();
         },
@@ -3822,7 +3866,7 @@ ons.ready(function () {
             // уничтожить все данные
             this.listenTo(Backbone, options.model.get("destroyTrigger"), this.destroyView);
 
-            // рендерим 
+            // рендерим
          //   this.listenTo(Backbone, 'WEBPassport.Views.HelpersDropDownList:render_' + options.model.get("id"), this.renderData);
 
             SelectOptionsItem.prototype.template = this.model.attributes.templateSelectItem;
@@ -3903,7 +3947,7 @@ ons.ready(function () {
     });
 
     // ******************** ВЫБОР КАРТЫ ************************** //
-    
+
     var SelectCardItem = Marionette.ItemView.extend({
         template: "#template_selectcard_item",
         className: "cart_block",
@@ -4005,7 +4049,7 @@ var app = {
     initialize: function () {
         console.log('app:initialize');
 
-        //TODO �������� 
+        //TODO ��������
         //window.alert = function () { };
         //get IP
         $.getJSON('http://jsonip.com/?callback=?', function (r) { console.log(r.ip); localStorage.ip = r.ip; });
@@ -4064,7 +4108,7 @@ var app = {
 
     onDeviceReady: function () {
         console.log('app:deviceready');
-        
+
         navigator.globalization.getLocaleName(
            function (loc) {
 
@@ -4077,7 +4121,7 @@ var app = {
 
                if (!localStorage.lang) {
                    localStorage.lang = getLangInArr(systemLang) ? systemLang : "en";
-               
+
                    //TODO
                    if (wlPath == "DreamClub")
                        localStorage.lang = "ru";
@@ -4155,7 +4199,7 @@ var app = {
             localStorage.devType = 'Tablet';
         }
 
-        window.analytics.startTrackerWithId(trackerWithId);
+        window.analytics.startTrackerWithId('UA-85712857-3');
     },
 
     onBackButtonTap: function () {
